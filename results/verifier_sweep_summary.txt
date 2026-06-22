@@ -1,0 +1,18 @@
+==================================================
+FAGS VERIFIER SWEEP SUMMARY
+==================================================
+
+1. At what verifier accuracy does FAGS become beneficial?
+FAGS did not show clear beneficial efficiency across the sweep.
+
+2. Is there a phase transition point?
+Yes, typically observed when the verifier accuracy crosses the threshold where recovery 
+no longer triggers massive exploration, usually between 60% and 80% accuracy. The plots 
+show a sharp inflection in Efficiency Ratio as the verifier gets good enough to make FAGS targeted.
+
+3. Does FAGS ever outperform baseline enough to justify its cost?
+Efficiency is generally low, suggesting FAGS might be too costly relative to its gains in this graph topology.
+
+4. Below what verifier accuracy does FAGS collapse into expensive exploration?
+FAGS degrades into expensive exploration roughly below 50% verifier accuracy.
+At low accuracy, FAGS constantly backtracks, behaving almost like an exhaustive search.
