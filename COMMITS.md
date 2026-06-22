@@ -1,0 +1,27 @@
+# Commit Log / Plan
+
+Tracker for how this project's history is being split into commits. Whenever an
+algorithm/mechanism changes (new search variant, verifier type, sweep, etc.), it
+gets its own row here before/when it's committed. Pace target: ~5 commits/day.
+`[x]` = pushed, `[ ]` = planned but not yet committed.
+
+## Day 1 — 2026-06-22
+
+- [x] 1. Project scaffold (`requirements.txt`, `.gitignore`)
+- [x] 2. FAGS core library (`fags/` package: graph generator, verifier, memory, baseline + failure search, evaluation)
+- [x] 3. Main experiment runner + canonical results (`main.py`, accuracy/ablation tables, scalability + cost plots, `summary.txt`)
+- [x] 4. Diagnostic scratch scripts + gold-rank histogram (`scratch/rank_diagnostic.py`, `recovery_audit.py`, `post_revival_audit.py`)
+- [x] 5. Verifier-quality sweep experiment (`verifier_sweep.py`, sweep CSVs/plots, `verifier_sweep_summary.txt`)
+
+## Day 2 — planned
+
+- [ ] 6. Shield mechanism + experiment (`patch_fags.py`, `patch_fags2.py`, `patch_fags3.py`, `debug_hops.py`, `shield_experiment.py`, shield results)
+- [ ] 7. Stabilization (K / certificate-bonus) sweep (`patch_fags_params.py`, `stabilization_sweep.py`, `k_sweep.*`, `bonus_sweep.*`, `ablation.*`)
+- [ ] 8. RTC-lite experiment (`patch_rtc.py`, `rtc_lite_experiment.py`)
+- [ ] 9. RBSC experiment (`patch_rbsc.py`, `rbsc_experiment.py`)
+- [ ] 10. Verifier overhaul: embeddings/hybrid + test scripts (`patch_verifier*.py`, `patch_searches.py`, `verifier_diagnostic*.py`, `verifier_clean_test.py`, `verifier_hybrid*.py`, `verifier_scaling_test.py`, `verifier_experiment.py`, `hybrid_sweep_experiment.py`, `bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`)
+
+## Day 3+ — as new work happens
+
+- [ ] 11. Analysis doc (`PROJECT_STATUS.md`)
+- [ ] (new rows added here as algorithms/experiments change)
