@@ -1,0 +1,42 @@
+==================================================
+FAGS EXPERIMENTAL EVALUATION SUMMARY
+==================================================
+
+1. RESEARCH QUESTION ANSWER
+---------------------------
+NO. The hypothesis failed or could not be validated with significant efficiency.
+The accuracy gains were marginal relative to the search cost increase.
+
+2. TOP PERFORMING STRATEGY (Medium Graph)
+-----------------------------------------
+Strategy: Threshold Memory (t=0.10)
+Baseline Accuracy: 4.30%
+FAGS Accuracy: 9.40%
+Accuracy Gain: +5.10%
+Additional Search Cost: +837.41% nodes visited
+Efficiency Ratio: 0.006 (Accuracy Gain / Cost)
+Statistical Significance (Accuracy p-value): 7.39486e-09
+Gold Path Recovery Rate: 0.00%
+
+3. ABLATION SUMMARY
+-------------------
+Ablation: Top-1 (No Re-Verification)
+  Accuracy Gain: 6.60%
+  Additional Cost: 1737.66%
+  Gold Path Recovery: 0.12%
+
+Ablation: Top-1 (Max Backtracks=1)
+  Accuracy Gain: 4.10%
+  Additional Cost: 812.06%
+  Gold Path Recovery: 0.00%
+
+Ablation: Top-1 (Max Backtracks=2)
+  Accuracy Gain: 4.40%
+  Additional Cost: 818.14%
+  Gold Path Recovery: 0.00%
+
+Ablation: Top-1 (Max Backtracks=5)
+  Accuracy Gain: 4.90%
+  Additional Cost: 794.74%
+  Gold Path Recovery: 0.12%
+
