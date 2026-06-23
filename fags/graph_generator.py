@@ -64,8 +64,12 @@ for _dom, _rels in DOMAIN_RELATIONS.items():
         _REL_DOMAIN[_r] = _dom
 
 # Build confusable lookup: relation → list of confusable partners
+# Sorted iteration: CONFUSABLE_PAIRS is a set, whose iteration order depends
+# on Python's per-process string hash randomization. Without sorting, the
+# resulting list order (and therefore every rng.choice() downstream) is
+# non-deterministic across runs even with an explicit seed.
 _CONFUSABLE_MAP: dict[str, list[str]] = {}
-for _a, _b in CONFUSABLE_PAIRS:
+for _a, _b in sorted(CONFUSABLE_PAIRS):
     _CONFUSABLE_MAP.setdefault(_a, []).append(_b)
     _CONFUSABLE_MAP.setdefault(_b, []).append(_a)
 
