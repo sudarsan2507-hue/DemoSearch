@@ -25,6 +25,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 
 - [x] 11. Analysis doc (`PROJECT_STATUS.md`)
 
-## Day 4+ — as new work happens
+## Day 4 — 2026-06-23
+
+- [x] 12. Fix graph-generator reproducibility bug (`fags/graph_generator.py`: sort `CONFUSABLE_PAIRS` iteration so `_CONFUSABLE_MAP` — and therefore every seeded experiment — is deterministic across processes/hash seeds)
+- [x] 13. Add budget-matched random-restart control experiment (`budget_matched_control_experiment.py`, `results/budget_matched_control.*`) — tests whether FAGS beats a dumb baseline given the same node-visit budget; answer: only on the Small graph
+- [x] 14. Update `PROJECT_STATUS.md` with the control-experiment finding and revised net takeaway
+
+## Day 5+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
