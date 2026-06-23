@@ -1,0 +1,5 @@
+Configuration,Baseline Accuracy,FAGS Accuracy,Accuracy Gain,Additional Search Cost,Efficiency Ratio,Gold Path Recovery Rate,Avg Hops Survived Post Revival
+FAGS (No Shield),2.80%,8.20%,5.40%,985.47%,0.005,0.00%,1.33
+FAGS (Shield K=1),2.80%,8.00%,5.20%,950.40%,0.005,0.23%,1.00
+FAGS (Shield K=2),2.80%,6.60%,3.80%,989.25%,0.004,0.00%,1.50
+FAGS (Shield K=3),2.80%,8.60%,5.80%,1023.84%,0.006,0.46%,1.86
