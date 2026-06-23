@@ -13,15 +13,15 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 4. Diagnostic scratch scripts + gold-rank histogram (`scratch/rank_diagnostic.py`, `recovery_audit.py`, `post_revival_audit.py`)
 - [x] 5. Verifier-quality sweep experiment (`verifier_sweep.py`, sweep CSVs/plots, `verifier_sweep_summary.txt`)
 
-## Day 2 — planned
+## Day 2 — 2026-06-23
 
-- [ ] 6. Shield mechanism + experiment (`patch_fags.py`, `patch_fags2.py`, `patch_fags3.py`, `debug_hops.py`, `shield_experiment.py`, shield results)
-- [ ] 7. Stabilization (K / certificate-bonus) sweep (`patch_fags_params.py`, `stabilization_sweep.py`, `k_sweep.*`, `bonus_sweep.*`, `ablation.*`)
-- [ ] 8. RTC-lite experiment (`patch_rtc.py`, `rtc_lite_experiment.py`)
-- [ ] 9. RBSC experiment (`patch_rbsc.py`, `rbsc_experiment.py`)
-- [ ] 10. Verifier overhaul: embeddings/hybrid + test scripts (`patch_verifier*.py`, `patch_searches.py`, `verifier_diagnostic*.py`, `verifier_clean_test.py`, `verifier_hybrid*.py`, `verifier_scaling_test.py`, `verifier_experiment.py`, `hybrid_sweep_experiment.py`, `bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`)
+- [x] 6. Shield mechanism + experiment (`patch_fags.py`, `patch_fags2.py`, `patch_fags3.py`, `debug_hops.py`, `shield_experiment.py`, shield results)
+- [x] 7. Stabilization (K / certificate-bonus) sweep (`patch_fags_params.py`, `stabilization_sweep.py`, `k_sweep.*`, `bonus_sweep.*`, `ablation.*`)
+- [x] 8. RTC-lite experiment (`patch_rtc.py`, `rtc_lite_experiment.py`)
+- [x] 9. RBSC experiment (`patch_rbsc.py`, `rbsc_experiment.py`)
+- [x] 10. Verifier overhaul: embeddings/hybrid + test scripts (`patch_verifier*.py`, `patch_searches.py`, `verifier_diagnostic*.py`, `verifier_clean_test.py`, `verifier_hybrid*.py`, `verifier_scaling_test.py`, `verifier_experiment.py`, `hybrid_sweep_experiment.py`, `bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`)
 
-## Day 3+ — as new work happens
+## Day 3+ — planned
 
 - [ ] 11. Analysis doc (`PROJECT_STATUS.md`)
 - [ ] (new rows added here as algorithms/experiments change)
