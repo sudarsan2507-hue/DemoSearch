@@ -1,0 +1,4 @@
+Graph Size,Baseline Acc (1x cost),Random-Restart Baseline Acc (budget-matched),FAGS Acc,FAGS Mean Nodes,RRB Mean Nodes,FAGS - RRB Acc Gain,p-value (FAGS vs RRB)
+Small,4.40%,8.90%,16.20%,13.16,13.60,7.30%,2.10354e-09
+Medium,4.30%,8.40%,8.70%,30.23,30.16,0.30%,7.79825e-01
+Large,10.30%,15.40%,13.80%,35.38,34.61,-1.60%,1.97438e-01

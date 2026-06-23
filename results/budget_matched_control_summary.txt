@@ -1,0 +1,47 @@
+==================================================
+BUDGET-MATCHED RANDOM-RESTART CONTROL - SUMMARY
+==================================================
+
+Research question: once a dumb baseline is given the SAME node-visit
+budget FAGS actually spends per query (via random restarts, since the
+noisy verifier makes each baseline_search call stochastic), does FAGS's
+targeted failure-memory revival still beat it?
+
+-- Small graph --
+  Baseline (1x cost) accuracy:              4.40%
+  Random-Restart Baseline (budget-matched): 8.90% (mean nodes=13.60)
+  FAGS accuracy:                            16.20% (mean nodes=13.16)
+  FAGS - RRB accuracy gain:                 +7.30%
+  p-value (FAGS vs RRB, paired t-test):     2.10354e-09
+  Verdict:                                  FAGS beats RRB (significant)
+
+-- Medium graph --
+  Baseline (1x cost) accuracy:              4.30%
+  Random-Restart Baseline (budget-matched): 8.40% (mean nodes=30.16)
+  FAGS accuracy:                            8.70% (mean nodes=30.23)
+  FAGS - RRB accuracy gain:                 +0.30%
+  p-value (FAGS vs RRB, paired t-test):     7.79825e-01
+  Verdict:                                  no significant difference
+
+-- Large graph --
+  Baseline (1x cost) accuracy:              10.30%
+  Random-Restart Baseline (budget-matched): 15.40% (mean nodes=34.61)
+  FAGS accuracy:                            13.80% (mean nodes=35.38)
+  FAGS - RRB accuracy gain:                 -1.60%
+  p-value (FAGS vs RRB, paired t-test):     1.97438e-01
+  Verdict:                                  no significant difference
+
+CONCLUSION
+----------
+Across 3 graph sizes: FAGS significantly beat the budget-matched
+random-restart control in 1, lost to it in 0, and was statistically
+indistinguishable from it in 2.
+
+FAGS does NOT consistently clear the budget-matched random-restart
+control. The clear win only shows up on the Small graph; on Medium it is
+a statistical tie, and on Large the dumb random-restart control actually
+scores higher (not significant, but not a FAGS win either). This means
+most of FAGS's previously-reported accuracy gains over the 1x baseline
+are explained by spending 8-17x more search budget, not by intelligent
+targeted recovery onto the gold path - consistent with the near-0% Gold
+Path Recovery Rate seen in every earlier experiment in this repo.
