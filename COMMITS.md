@@ -21,7 +21,10 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 9. RBSC experiment (`patch_rbsc.py`, `rbsc_experiment.py`)
 - [x] 10. Verifier overhaul: embeddings/hybrid + test scripts (`patch_verifier*.py`, `patch_searches.py`, `verifier_diagnostic*.py`, `verifier_clean_test.py`, `verifier_hybrid*.py`, `verifier_scaling_test.py`, `verifier_experiment.py`, `hybrid_sweep_experiment.py`, `bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`)
 
-## Day 3+ — planned
+## Day 3 — 2026-06-23
 
-- [ ] 11. Analysis doc (`PROJECT_STATUS.md`)
+- [x] 11. Analysis doc (`PROJECT_STATUS.md`)
+
+## Day 4+ — as new work happens
+
 - [ ] (new rows added here as algorithms/experiments change)
