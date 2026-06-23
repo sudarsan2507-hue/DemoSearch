@@ -1,0 +1,6 @@
+Configuration,Baseline Accuracy,FAGS Accuracy,Accuracy Gain,Additional Search Cost,Efficiency Ratio,Gold Path Recovery Rate,Avg Hops Survived Post Revival
+K=0,2.40%,7.20%,4.80%,1035.76%,0.005,0.23%,1.00
+K=1,2.40%,8.80%,6.40%,1041.83%,0.006,0.46%,1.30
+K=2,2.40%,8.80%,6.40%,1073.81%,0.006,0.00%,1.25
+K=3,2.40%,7.00%,4.60%,1058.71%,0.004,0.23%,1.50
+K=5,2.40%,6.80%,4.40%,1012.72%,0.004,0.23%,1.00
