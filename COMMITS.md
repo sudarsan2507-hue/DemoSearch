@@ -54,6 +54,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 24. Add Diversity Memory experiment (`diversity_memory_experiment.py`, `results/diversity_memory_*`) — tests it against the budget-matched control across all 3 graph sizes; finding: mechanism fires on ~99% of opportunities but is statistically indistinguishable from plain Top1Memory everywhere, and the Large-graph loss vs the control becomes significant where it wasn't before
 - [x] 25. Update `PROJECT_STATUS.md` with the Diversity Memory finding and final revised takeaway
 
-## Day 9+ — as new work happens
+## Day 9 — 2026-06-23
+
+- [x] 26. Add beam search (`fags/beam_search.py`) — a structurally different algorithm replacing FAGS's commit-then-recover design with K live hypotheses expanded and pruned concurrently at every hop
+- [x] 27. Add beam search experiment (`beam_search_experiment.py`, `results/beam_search_*`) — sweeps beam width across all 3 graph sizes vs Baseline/FAGS-Top1/budget-matched RRB; **headline finding: beam search strictly dominates FAGS in the cost/accuracy tradeoff and beats the budget-matched control in 14/15 configurations** — the first mechanism in this whole investigation to clear that bar
+- [x] 28. Update `PROJECT_STATUS.md` with the beam search finding as the new headline result
+
+## Day 10+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)

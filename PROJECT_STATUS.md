@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §11), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), and the diversity-aware memory experiment (§9)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §12), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), and — the headline result — beam search (§10)._
 
 ## 1. What this project is
 
@@ -148,14 +148,34 @@ All of the above compares FAGS (8–17× the node budget) against a single-shot 
 
 **Reading:** despite firing on ~99% of opportunities, DiversityMemory is statistically indistinguishable from plain Top1Memory on every graph size (p > 0.05 throughout) — picking a *structurally different* relation doesn't make it more likely to be the *correct* one; it just substitutes one kind of guess for another. Against the budget-matched control specifically: the Small-graph win merely matches what plain FAGS already achieved there (§6); Medium remains the same statistical tie as before; and Large gets *worse* — what was a non-significant loss for plain FAGS becomes a significant one for DiversityMemory. The targeted-revival design's weakness isn't *which* specific candidate it revives — it's that revival itself, however chosen, isn't a reliable source of accuracy at this verifier quality.
 
-## 10. Net takeaway (updated)
+## 10. Beam search: the structurally different algorithm that actually works (`fags/beam_search.py`, `beam_search_experiment.py`)
+
+**The pivot:** every mechanism tested in §3-9 sits on the same architecture — walk one path greedily, detect failure, pick one rejected candidate to revive, repeat. Five independent experiments showed that architecture isn't reliably better than spending the same search budget on diversified random restarts, no matter which candidate gets revived or how that choice is informed. `fags/beam_search.py` abandons the architecture itself: it keeps the **K best live hypotheses concurrently** at every hop (classic beam search — expand all live hypotheses, score every resulting candidate with the same `Verifier`, keep the global top-K), so a wrong early guess never needs to be *detected* and *recovered from* — the better alternative was already being explored the whole time. A candidate transition into evidence-contradicting territory is dropped per-hypothesis (same hard constraint as `FailureType.CONTRADICTION`, just scoped to one hypothesis instead of ending the whole search); the single-path `PATH_MISALIGNMENT` early-exit isn't needed since a wandering hypothesis just loses the next prune.
+
+**Method:** swept beam width K ∈ {1, 2, 3, 5, 8} across all 3 graph sizes (1000 queries, seed=101 — same setup as every other comparison in this doc), against plain Baseline, plain FAGS-Top1, and a budget-matched random-restart control (RRB) sized to each beam run's actual node cost per query.
+
+**Result** (`results/beam_search_table.csv`, `.png`, `_summary.txt`) — beam search doesn't just beat the random-restart control, it **strictly dominates FAGS-Top1 in the cost/accuracy tradeoff**:
+
+| Graph | Beam config | Beam Acc | Beam Nodes | FAGS-Top1 Acc | FAGS-Top1 Nodes |
+|---|---|---|---|---|---|
+| Medium | width=3 | **22.70%** | 15.05 | 8.90% | 28.45 |
+| Medium | width=8 | **37.40%** | 27.85 | 8.90% | 28.45 |
+| Large | width=2 | **18.80%** | 11.37 | 13.80% | 34.68 |
+| Large | width=5 | **24.10%** | 25.28 | 13.80% | 34.68 |
+
+Beam width=3 on Medium gets 2.5× FAGS's accuracy at **half** FAGS's search cost. Beam width=2 on Large beats FAGS's accuracy at **a third** of FAGS's cost. Against the budget-matched random-restart control specifically, beam search won with statistical significance in **14 of 15** (graph size × beam width) configurations — the lone exception (Large, width=1) was a non-significant tie.
+
+**Reading:** the problem was never which candidate FAGS revives — it was the commit-then-recover architecture itself. Holding multiple real, score-derived hypotheses concurrently (correlated diversity) beats both targeted single-path revival *and* uncorrelated random-restart diversity, decisively and consistently. This is the first mechanism tried in this entire investigation that clears the budget-matched bar on more than one graph size.
+
+## 11. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
-- Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence now points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
-- None of the add-on knobs or mechanism redesigns tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture. The failure-pattern penalty actively hurts FAGS; diversity-aware revival is statistically indistinguishable from the naive version it was meant to fix, and made the Large-graph result worse.
-- **Revised recommendation:** five independent angles (knob-tuning, budget-matched control, stronger verifier, learned avoidance, diversity-aware revival) all point the same way: it isn't which candidate FAGS revives, or how informed the choice is — *revival itself*, as a mechanism, isn't reliably better than spending the same search budget on diversified random retries. Treat the FAGS hypothesis as **not supported** by this graph topology; further investment should go toward a structurally different search algorithm (e.g. true beam search holding multiple live hypotheses concurrently, never fully committing+backtracking) rather than another revival-selection heuristic.
+- Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
+- None of the add-on knobs or mechanism redesigns tried on top of FAGS's architecture (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture.
+- **But the underlying research question has a clear positive answer once the architecture changes:** beam search (§10) strictly dominates FAGS in the cost/accuracy tradeoff across both graph sizes that matter (Medium, Large), and beats the budget-matched random-restart control on 14/15 configurations tested.
+- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — six independent experiments (knob-tuning, budget-matched control, stronger verifier, learned avoidance, diversity-aware revival, and the beam-search comparison itself) show it's not salvageable by changing what gets revived. Adopt beam search as the production recommendation instead; if going further, the next experiment would be sweeping beam width against verifier quality (mirroring §"Verifier-quality sweep" in §4) to find where it stops being worth the cost, and re-running the gold-path-recovery and gold-rank diagnostics (§4) against beam search specifically.
 
-## 11. State of the repo / housekeeping notes
+## 12. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.
