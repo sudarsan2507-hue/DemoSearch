@@ -1,0 +1,38 @@
+==================================================
+BEAM SEARCH EXPERIMENT - SUMMARY
+==================================================
+
+Beam search keeps the K best live hypotheses concurrently at every hop,
+instead of FAGS's commit-then-recover design. Tests whether correlated
+diversity (real partial-path scores) beats uncorrelated diversity (random
+restarts) at matched search cost, across beam widths [1, 2, 3, 5, 8].
+
+-- Small graph (Baseline=5.10%, FAGS-Top1=16.40%) --
+  width=1: Beam=19.90% (4.0 nodes) vs RRB=5.00% (4.8 nodes) | gain=+14.90% p=1.15e-28 <-- BEAM WINS
+  width=2: Beam=29.10% (5.3 nodes) vs RRB=6.40% (6.1 nodes) | gain=+22.70% p=9.64e-53 <-- BEAM WINS
+  width=3: Beam=33.20% (5.9 nodes) vs RRB=6.80% (6.5 nodes) | gain=+26.40% p=8.37e-67 <-- BEAM WINS
+  width=5: Beam=40.10% (6.7 nodes) vs RRB=7.80% (7.4 nodes) | gain=+32.30% p=1.06e-86 <-- BEAM WINS
+  width=8: Beam=42.30% (7.4 nodes) vs RRB=5.40% (8.0 nodes) | gain=+36.90% p=5.40e-102 <-- BEAM WINS
+
+-- Medium graph (Baseline=4.30%, FAGS-Top1=8.90%) --
+  width=1: Beam=10.10% (6.4 nodes) vs RRB=5.70% (7.7 nodes) | gain=+4.40% p=6.48e-06 <-- BEAM WINS
+  width=2: Beam=17.20% (11.2 nodes) vs RRB=6.60% (12.2 nodes) | gain=+10.60% p=1.17e-18 <-- BEAM WINS
+  width=3: Beam=22.70% (15.0 nodes) vs RRB=5.80% (16.0 nodes) | gain=+16.90% p=1.86e-37 <-- BEAM WINS
+  width=5: Beam=29.90% (21.1 nodes) vs RRB=6.80% (21.9 nodes) | gain=+23.10% p=8.25e-57 <-- BEAM WINS
+  width=8: Beam=37.40% (27.8 nodes) vs RRB=8.20% (28.5 nodes) | gain=+29.20% p=1.87e-73 <-- BEAM WINS
+
+-- Large graph (Baseline=8.80%, FAGS-Top1=13.80%) --
+  width=1: Beam=11.50% (6.4 nodes) vs RRB=10.80% (7.9 nodes) | gain=+0.70% p=4.68e-01 
+  width=2: Beam=18.80% (11.4 nodes) vs RRB=12.10% (12.9 nodes) | gain=+6.70% p=5.78e-10 <-- BEAM WINS
+  width=3: Beam=21.30% (16.2 nodes) vs RRB=11.30% (17.6 nodes) | gain=+10.00% p=7.82e-18 <-- BEAM WINS
+  width=5: Beam=24.10% (25.3 nodes) vs RRB=13.90% (26.3 nodes) | gain=+10.20% p=7.08e-20 <-- BEAM WINS
+  width=8: Beam=26.50% (38.5 nodes) vs RRB=14.70% (39.0 nodes) | gain=+11.80% p=7.00e-24 <-- BEAM WINS
+
+CONCLUSION
+----------
+Beam Search beat the budget-matched random-restart control with
+significance in 14/15 (graph size x beam width) configurations.
+Majority win: correlated diversity (beam) beats uncorrelated diversity
+(random restarts) at matched cost more often than not - a structurally
+different search algorithm succeeds where every revival-selection
+heuristic on top of FAGS's architecture failed.
