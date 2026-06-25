@@ -36,6 +36,11 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 15. Regenerate canonical results under the fixed deterministic generator (`main.py`, `shield_experiment.py`, `stabilization_sweep.py`, `verifier_sweep.py`, `scratch/rank_diagnostic.py`); fixed an unrelated latent bug in `verifier_sweep.py`'s `ControlledVerifier.score()`
 - [x] 16. Update `PROJECT_STATUS.md` with regenerated numbers and housekeeping notes
 
-## Day 6+ — as new work happens
+## Day 6 — 2026-06-23
+
+- [x] 17. Add HybridVerifier budget-matched control (`budget_matched_control_embedding_experiment.py`, `results/budget_matched_control_embedding.*`) — tests whether a stronger (rule+BGE) verifier rescues FAGS; answer: no, FAGS loses to the dumb control significantly worse than with the weak verifier
+- [x] 18. Update `PROJECT_STATUS.md` with the HybridVerifier finding and final revised recommendation
+
+## Day 7+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)

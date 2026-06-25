@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6-7) and again after regenerating all canonical results under the fixed deterministic generator (§4 numbers, §8)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §9), and the HybridVerifier follow-up control (§7)._
 
 ## 1. What this project is
 
@@ -81,7 +81,7 @@ Top-level scripts (`bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`, `hy
 - Add-on mechanisms tried so far to fix this (dynamic re-verification, shield depth, certificate bonus, RBSC linear/nonlinear, RTC-lite, embedding-based verifiers BGE/MiniLM, hybrid verifier) have **not yet found a configuration where Efficiency Ratio is convincingly good** — best observed ratios are ~0.10–0.14 in a narrow 60–80% verifier-accuracy band, otherwise ~0.003–0.03.
 - Current written conclusion (`results/summary.txt`, `verifier_sweep_summary.txt`): the core hypothesis is **not validated** as efficient; FAGS recovers some accuracy but does so by approaching brute-force exploration rather than targeted recovery.
 
-All of the above compares FAGS (8–17× the node budget) against a single-shot 1× baseline — not an apples-to-apples comparison. §7 closes that gap.
+All of the above compares FAGS (8–17× the node budget) against a single-shot 1× baseline — not an apples-to-apples comparison. §6 closes that gap.
 
 ## 6. Follow-up: Budget-Matched Random-Restart Control (`budget_matched_control_experiment.py`)
 
@@ -101,14 +101,26 @@ All of the above compares FAGS (8–17× the node budget) against a single-shot 
 
 **Side finding — reproducibility bug fixed:** while building this control, re-running the *same* script with the *same* `seed=` gave different numbers each process run. Root cause: `fags/graph_generator.py` built `_CONFUSABLE_MAP` by iterating the module-level `CONFUSABLE_PAIRS` **set**, whose iteration order depends on Python's per-process string-hash randomization — so distractor-edge generation (and every downstream number in this repo) was never actually deterministic across processes despite the explicit `seed=` parameters everywhere. Fixed by sorting the iteration (`for _a, _b in sorted(CONFUSABLE_PAIRS):`); verified byte-identical CSVs across repeated runs and across different `PYTHONHASHSEED` values after the fix. This doesn't change any of the *qualitative* conclusions already drawn (both pre- and post-fix runs told the same story), but every existing CSV in `results/` was generated under an unrecorded, effectively-random hash seed — treat exact decimal values as having ±1 percentage point of run-to-run noise; the qualitative pattern (small but real gain, huge cost, ~0% gold recovery) is stable.
 
-## 7. Net takeaway (updated)
+## 7. Does a stronger verifier rescue FAGS? (`budget_matched_control_embedding_experiment.py`)
 
-- The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large.
-- Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence now points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery.
+**Question:** §6 found FAGS only beats the budget-matched control on the Small graph with the weak rule-based `Verifier`. Is that because the verifier signal is too noisy for targeted memory to exploit? Re-ran the identical budget-matched control with `HybridVerifier` (rule-based + `BAAI/bge-small-en-v1.5` embeddings, alpha=0.5) on a 500-node graph / 500 queries (seed=42, matching the scale of the repo's other embedding experiments since real model inference is much slower than the synthetic scorer).
+
+**Result** (`results/budget_matched_control_embedding.csv`, `.png`, `_summary.txt`):
+
+| Verifier | Baseline (1×) | Random-Restart Baseline (budget-matched) | FAGS | FAGS − RRB | p-value |
+|---|---|---|---|---|---|
+| HybridVerifier (rule+BGE) | 3.60% | **14.80%** | 6.80% | **−8.00%** | 5.7e-05 |
+
+**Reading:** the opposite of "rescued" — with a *stronger* verifier the budget-matched dumb control beats FAGS by a wide, statistically significant margin (14.80% vs 6.80%). So the verifier's discriminative power was not the bottleneck holding FAGS back; the failure-memory/revival mechanism itself doesn't reliably turn a search budget into accuracy as well as plain randomized retries do. A plausible reason: FAGS's memory revival is *targeted* — it keeps retrying specific previously-rejected branches — whereas random restarts explore a more diverse set of paths per unit of budget, and diversity seems to matter more than targeting here.
+
+## 8. Net takeaway (updated)
+
+- The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
+- Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence now points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
 - None of the add-on knobs tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers) changed this picture — they tune the cost/accuracy tradeoff slightly but don't address the underlying issue.
-- **Revised recommendation:** the verifier's discriminative power (§4, gold-rank histogram: only ~58–60% rank-1 accuracy) is the real ceiling. Further work should target improving the verifier signal itself, or accept that FAGS-style failure memory is not worth its search-cost overhead in this graph topology.
+- **Revised recommendation:** the evidence no longer points at "improve the verifier" as the fix — §7 tested that directly and FAGS got worse, not better. The failure-memory/revival mechanism's core design (targeted retry of specific rejected branches) looks structurally weaker than diversified random exploration at matched cost. Worth treating the FAGS hypothesis as **not supported** by this graph topology, rather than continuing to tune its knobs.
 
-## 8. State of the repo / housekeeping notes
+## 9. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.
