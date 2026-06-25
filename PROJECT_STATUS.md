@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §10), the HybridVerifier follow-up control (§7), and the learned failure-pattern-graph experiment (§8)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §11), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), and the diversity-aware memory experiment (§9)._
 
 ## 1. What this project is
 
@@ -132,14 +132,30 @@ All of the above compares FAGS (8–17× the node budget) against a single-shot 
 
 **Reading:** the idea was implemented properly (real signal, proper train/test split, not a sparsity artifact) and **didn't pan out** — worse, it actively conflicts with FAGS's existing recovery mechanism. The same-relation-repeat pattern is a real structural insight about this graph generator's distractor placement, but turning it into a flat score penalty removes useful options more often than it removes bad ones.
 
-## 9. Net takeaway (updated)
+## 9. Diversity-aware memory: does avoiding confusable reverts close the gap? (`diversity_memory_experiment.py`)
+
+**Hypothesis (from §6's reading):** FAGS's memory always revives the highest-scoring rejected candidate, but distractors are deliberately confusable with the gold relation — so "second-best" is usually just another guess from the same confusable cluster as the winner, not a genuinely different hypothesis. Added `DiversityMemory` to `fags/memory.py`: it revives the highest-scoring reject that is **not** the same relation as, confusable with, or highly-coherent with (≥0.5) the winning relation, falling back to the best score only if every reject is too similar. This needed an additive `winner_relation` parameter threaded through `FailureMemory.store()` (all 4 strategies updated; `failure_search.py` now passes it).
+
+**Verified the mechanism actually fires:** instrumented a run over 1000 Medium-graph queries — a genuinely diverse alternative was available and chosen in 27,748 of 28,001 `store()` calls (99.1%); only 253 times did every reject fall in the winner's cluster, forcing a same-cluster fallback. This is not a mechanism that rarely triggers.
+
+**Result** (`results/diversity_memory_table.csv`, `.png`, `_summary.txt`), same 3 sizes / 1000 queries / seed=101 as §6's control:
+
+| Graph | Baseline | FAGS-Top1 | FAGS-Diversity | RRB (matched to Diversity) | Diversity vs Top1 | Diversity vs RRB |
+|---|---|---|---|---|---|---|
+| Small | 5.00% | 16.90% | 16.40% | 8.70% | −0.50% (p=0.61) | **+7.70%** (p=7.3e-10) |
+| Medium | 3.60% | 7.60% | 8.90% | 8.80% | +1.30% (p=0.18) | +0.10% (p=0.93) |
+| Large | 9.10% | 13.80% | 12.00% | 14.80% | −1.80% (p=0.07) | **−2.80%** (p=0.020) |
+
+**Reading:** despite firing on ~99% of opportunities, DiversityMemory is statistically indistinguishable from plain Top1Memory on every graph size (p > 0.05 throughout) — picking a *structurally different* relation doesn't make it more likely to be the *correct* one; it just substitutes one kind of guess for another. Against the budget-matched control specifically: the Small-graph win merely matches what plain FAGS already achieved there (§6); Medium remains the same statistical tie as before; and Large gets *worse* — what was a non-significant loss for plain FAGS becomes a significant one for DiversityMemory. The targeted-revival design's weakness isn't *which* specific candidate it revives — it's that revival itself, however chosen, isn't a reliable source of accuracy at this verifier quality.
+
+## 10. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
 - Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence now points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
-- None of the add-on knobs tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty) changed this picture — they tune the cost/accuracy tradeoff slightly, and the failure-pattern penalty actively hurts FAGS, but none address the underlying issue.
-- **Revised recommendation:** four independent angles (knob-tuning, budget-matched control, stronger verifier, learned avoidance) all point the same way. Worth treating the FAGS hypothesis as **not supported** by this graph topology, rather than continuing to search for the configuration that rescues it.
+- None of the add-on knobs or mechanism redesigns tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture. The failure-pattern penalty actively hurts FAGS; diversity-aware revival is statistically indistinguishable from the naive version it was meant to fix, and made the Large-graph result worse.
+- **Revised recommendation:** five independent angles (knob-tuning, budget-matched control, stronger verifier, learned avoidance, diversity-aware revival) all point the same way: it isn't which candidate FAGS revives, or how informed the choice is — *revival itself*, as a mechanism, isn't reliably better than spending the same search budget on diversified random retries. Treat the FAGS hypothesis as **not supported** by this graph topology; further investment should go toward a structurally different search algorithm (e.g. true beam search holding multiple live hypotheses concurrently, never fully committing+backtracking) rather than another revival-selection heuristic.
 
-## 10. State of the repo / housekeeping notes
+## 11. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.

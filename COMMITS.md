@@ -48,6 +48,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 21. Add Failure Pattern Graph experiment (`failure_pattern_graph_experiment.py`, `results/failure_pattern_graph_*`) — tests it with a proper train/test split; finding: real learned signal, but doesn't beat baseline at equal cost, and significantly hurts FAGS when composed with it
 - [x] 22. Update `PROJECT_STATUS.md` with the Failure Pattern Graph finding and final revised takeaway
 
-## Day 8+ — as new work happens
+## Day 8 — 2026-06-23
+
+- [x] 23. Add `DiversityMemory` to `fags/memory.py` — revives the highest-scoring rejected candidate that is NOT the same as/confusable with/highly coherent with the winning relation (the user's proposed fix for §6's finding that targeted revival loses to dumb random restarts); threaded an additive `winner_relation` param through `FailureMemory.store()` and `failure_search.py`'s call site
+- [x] 24. Add Diversity Memory experiment (`diversity_memory_experiment.py`, `results/diversity_memory_*`) — tests it against the budget-matched control across all 3 graph sizes; finding: mechanism fires on ~99% of opportunities but is statistically indistinguishable from plain Top1Memory everywhere, and the Large-graph loss vs the control becomes significant where it wasn't before
+- [x] 25. Update `PROJECT_STATUS.md` with the Diversity Memory finding and final revised takeaway
+
+## Day 9+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
