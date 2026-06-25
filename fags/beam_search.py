@@ -30,6 +30,7 @@ from __future__ import annotations
 
 import time
 from dataclasses import dataclass, field
+from typing import Optional
 
 from fags import Edge, FailureType, KnowledgeGraph, Query, SearchResult
 from fags.verifier import Verifier
@@ -61,8 +62,21 @@ def beam_search(
     verifier: Verifier,
     beam_width: int = 5,
     max_depth: int = 6,
+    max_children_per_parent: Optional[int] = None,
 ) -> SearchResult:
-    """Run beam search: K live hypotheses expanded and pruned in parallel."""
+    """Run beam search: K live hypotheses expanded and pruned in parallel.
+
+    max_children_per_parent : if set, caps how many of the new beam's slots
+        a single parent hypothesis may fill. Plain top-K pruning can let one
+        strong-but-wrong early branch supply most/all of the next beam,
+        crowding out genuinely different hypotheses from weaker-scoring
+        parents; capping forces a spread across distinct lineages instead.
+        The cap is relaxed (to ceil(beam_width / live_parent_count)) when
+        there are fewer live parents than that would allow, so a single
+        start node can still grow the beam out to full width on the first
+        hop instead of being stuck at size 1 forever. None (default)
+        reproduces the original unconstrained top-K behaviour.
+    """
     t0 = time.perf_counter()
     start = query.start_node
 
@@ -110,8 +124,23 @@ def beam_search(
 
         pool.sort(key=lambda x: x[0], reverse=True)
         new_beam: list[_Hypothesis] = []
+        children_count: dict[int, int] = {}
 
-        for new_cumulative, parent, edge in pool[:beam_width]:
+        effective_cap = None
+        if max_children_per_parent is not None:
+            live_parent_count = len({id(p) for _, p, _ in pool})
+            adaptive_floor = -(-beam_width // live_parent_count)  # ceil division
+            effective_cap = max(max_children_per_parent, adaptive_floor)
+
+        for new_cumulative, parent, edge in pool:
+            if len(new_beam) >= beam_width:
+                break
+            if effective_cap is not None:
+                pid = id(parent)
+                if children_count.get(pid, 0) >= effective_cap:
+                    continue
+                children_count[pid] = children_count.get(pid, 0) + 1
+
             new_path = parent.path + [edge.target]
             all_visited_nodes.add(edge.target)
 
