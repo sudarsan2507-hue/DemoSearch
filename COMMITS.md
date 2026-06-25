@@ -60,6 +60,11 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 27. Add beam search experiment (`beam_search_experiment.py`, `results/beam_search_*`) — sweeps beam width across all 3 graph sizes vs Baseline/FAGS-Top1/budget-matched RRB; **headline finding: beam search strictly dominates FAGS in the cost/accuracy tradeoff and beats the budget-matched control in 14/15 configurations** — the first mechanism in this whole investigation to clear that bar
 - [x] 28. Update `PROJECT_STATUS.md` with the beam search finding as the new headline result
 
-## Day 10+ — as new work happens
+## Day 10 — 2026-06-23
+
+- [x] 29. Add beam search HybridVerifier experiment (`beam_search_embedding_experiment.py`, `results/beam_search_embedding_*`) — tests whether a stronger verifier helps beam search the way it hurt FAGS; finding: never loses to the budget-matched control (vs FAGS's decisive loss under the same verifier), and pulls significantly ahead at width=5
+- [x] 30. Update `PROJECT_STATUS.md` with the beam search verifier-quality stress test
+
+## Day 11+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)

@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §12), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), and — the headline result — beam search (§10)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §13), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), and beam search's own verifier-quality stress test (§11)._
 
 ## 1. What this project is
 
@@ -167,15 +167,30 @@ Beam width=3 on Medium gets 2.5× FAGS's accuracy at **half** FAGS's search cost
 
 **Reading:** the problem was never which candidate FAGS revives — it was the commit-then-recover architecture itself. Holding multiple real, score-derived hypotheses concurrently (correlated diversity) beats both targeted single-path revival *and* uncorrelated random-restart diversity, decisively and consistently. This is the first mechanism tried in this entire investigation that clears the budget-matched bar on more than one graph size.
 
-## 11. Net takeaway (updated)
+## 11. Does a stronger verifier help beam search the way it hurt FAGS? (`beam_search_embedding_experiment.py`)
+
+**Question:** §7 found a stronger verifier (HybridVerifier) made FAGS's loss to the budget-matched control *worse* (14.80% vs 6.80%, p=5.7e-05) — the bottleneck was architectural, not verifier quality. Beam search's mechanism is different: it depends on the verifier's ranking quality to avoid pruning the gold hypothesis out of the top-K. Prediction: a stronger verifier should help, not hurt. Repeated `beam_search_experiment.py`'s comparison with `HybridVerifier` (rule+BGE) on a 500-node graph / 500 queries (seed=42), sweeping width ∈ {1, 2, 3, 5}.
+
+**Result** (`results/beam_search_embedding_table.csv`, `.png`, `_summary.txt`):
+
+| Width | Beam Acc | Beam Nodes | RRB Acc (matched) | vs RRB | FAGS-Top1 (ref) |
+|---|---|---|---|---|---|
+| 1 | 3.80% | 6.7 | 5.20% | −1.40% (p=0.25) | 7.00% @ 48.1 nodes |
+| 2 | 7.00% | 12.4 | 7.60% | −0.60% (p=0.71) | |
+| 3 | 8.60% | 17.8 | 9.20% | −0.60% (p=0.73) | dominates FAGS (higher acc, 1/3 the cost) |
+| 5 | **14.40%** | 27.7 | 10.40% | **+4.00%** (p=0.033) | dominates FAGS (2× acc, ~half the cost) |
+
+**Reading:** partial confirmation. At low widths beam search is a statistical *tie* with the budget-matched control (never a significant loss, unlike FAGS, which lost decisively under the same stronger verifier) — and at width=5 it pulls clearly ahead. Across every width except w=1, beam search beats plain FAGS-Top1 outright at a fraction of FAGS's cost (48.1 nodes). So the prediction holds directionally: a stronger verifier doesn't reverse beam search's advantage the way it reversed FAGS's — it just shifts where the advantage shows up, requiring more width before it clearly separates from the dumb control. Beam search's advantage scales with verifier quality; FAGS's commit-then-recover design actively gets worse with it.
+
+## 12. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
 - Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
 - None of the add-on knobs or mechanism redesigns tried on top of FAGS's architecture (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture.
-- **But the underlying research question has a clear positive answer once the architecture changes:** beam search (§10) strictly dominates FAGS in the cost/accuracy tradeoff across both graph sizes that matter (Medium, Large), and beats the budget-matched random-restart control on 14/15 configurations tested.
-- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — six independent experiments (knob-tuning, budget-matched control, stronger verifier, learned avoidance, diversity-aware revival, and the beam-search comparison itself) show it's not salvageable by changing what gets revived. Adopt beam search as the production recommendation instead; if going further, the next experiment would be sweeping beam width against verifier quality (mirroring §"Verifier-quality sweep" in §4) to find where it stops being worth the cost, and re-running the gold-path-recovery and gold-rank diagnostics (§4) against beam search specifically.
+- **The underlying research question has a clear positive answer once the architecture changes:** beam search (§10) strictly dominates FAGS in the cost/accuracy tradeoff across both graph sizes that matter (Medium, Large), beats the budget-matched random-restart control on 14/15 configurations with the weak verifier, and — unlike FAGS — never loses to that control under a stronger verifier either (§11), pulling clearly ahead again at wider beams.
+- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — seven independent experiments now confirm it's not salvageable by changing what gets revived, while beam search's advantage holds up under every stress test thrown at it (graph size, search-cost matching, and verifier quality). Adopt beam search as the production recommendation. If going further: find where the width/verifier-quality cost-accuracy curve plateaus (width=5 was still climbing here), and re-run the gold-rank/gold-path-recovery diagnostics (§4) against beam search specifically.
 
-## 12. State of the repo / housekeeping notes
+## 13. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.
