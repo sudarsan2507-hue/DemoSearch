@@ -1,0 +1,45 @@
+==================================================
+DIVERSITY MEMORY EXPERIMENT - SUMMARY
+==================================================
+
+DiversityMemory revives the highest-scoring rejected candidate that is
+NOT the same as / confusable with / highly coherent with the winning
+relation, instead of always taking the single highest score (Top1Memory).
+The bar that matters: does it beat the budget-matched random-restart
+control, where Top1Memory/ThresholdMemory did not (see
+budget_matched_control_experiment.py)?
+
+-- Small graph --
+  Baseline (1x):                       5.00%
+  FAGS-Top1 (8-17x cost):               16.90%
+  FAGS-Diversity (12.7 nodes):           16.40%
+  Random-Restart (matched to Diversity, 13.1 nodes): 8.70%
+  Diversity vs Baseline: +11.40% (p=9.734e-22)
+  Diversity vs Top1:     -0.50% (p=6.082e-01)
+  Diversity vs RRB:      +7.70% (p=7.275e-10)
+
+-- Medium graph --
+  Baseline (1x):                       3.60%
+  FAGS-Top1 (8-17x cost):               7.60%
+  FAGS-Diversity (28.7 nodes):           8.90%
+  Random-Restart (matched to Diversity, 28.7 nodes): 8.80%
+  Diversity vs Baseline: +5.30% (p=6.668e-10)
+  Diversity vs Top1:     +1.30% (p=1.778e-01)
+  Diversity vs RRB:      +0.10% (p=9.258e-01)
+
+-- Large graph --
+  Baseline (1x):                       9.10%
+  FAGS-Top1 (8-17x cost):               13.80%
+  FAGS-Diversity (32.2 nodes):           12.00%
+  Random-Restart (matched to Diversity, 32.1 nodes): 14.80%
+  Diversity vs Baseline: +2.90% (p=4.602e-03)
+  Diversity vs Top1:     -1.80% (p=7.184e-02)
+  Diversity vs RRB:      -2.80% (p=1.956e-02)
+
+CONCLUSION
+----------
+DiversityMemory beat the budget-matched random-restart control with
+significance on 1/3 graph sizes.
+Partial win: diversity-aware revival helps on some graph sizes but not
+all - an improvement over Top1Memory's complete inability to clear this
+bar, but not a full fix.
