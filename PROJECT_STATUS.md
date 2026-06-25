@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §13), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), and beam search's own verifier-quality stress test (§11)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §14), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), beam search's own verifier-quality stress test (§11), and the diverse-beam-pruning experiment (§12)._
 
 ## 1. What this project is
 
@@ -182,15 +182,32 @@ Beam width=3 on Medium gets 2.5× FAGS's accuracy at **half** FAGS's search cost
 
 **Reading:** partial confirmation. At low widths beam search is a statistical *tie* with the budget-matched control (never a significant loss, unlike FAGS, which lost decisively under the same stronger verifier) — and at width=5 it pulls clearly ahead. Across every width except w=1, beam search beats plain FAGS-Top1 outright at a fraction of FAGS's cost (48.1 nodes). So the prediction holds directionally: a stronger verifier doesn't reverse beam search's advantage the way it reversed FAGS's — it just shifts where the advantage shows up, requiring more width before it clearly separates from the dumb control. Beam search's advantage scales with verifier quality; FAGS's commit-then-recover design actively gets worse with it.
 
-## 12. Net takeaway (updated)
+## 12. Diverse beam pruning: can the beam itself be improved? (`max_children_per_parent` in `fags/beam_search.py`, `diverse_beam_search_experiment.py`)
+
+**Hypothesis:** plain beam search's top-K pruning is purely score-based, so one strong-but-wrong early branch can supply most/all of the next beam, crowding out hypotheses from weaker-scoring (but possibly correct) parents. Added `max_children_per_parent` to `beam_search()`: caps how many slots a single parent can fill, forcing a spread across distinct lineages. The cap is relaxed automatically when there are fewer live parents than needed to fill the beam otherwise — without this, a single start node would permanently cap the beam at size 1 from the very first hop (caught via smoke-testing before the full run).
+
+**Method:** cost-neutral comparison (same beam width, so ~same search cost) — capped vs plain/uncapped beam search, at widths {5, 8} × caps {1, 2, 3}, across all 3 graph sizes (1000 queries, seed=101).
+
+**Result** (`results/diverse_beam_search_table.csv`, `.png`, `_summary.txt`) — the aggregate tally (5 significant wins / 4 significant losses out of 18 configs) is misleading; it hides a clean **size-dependent split**:
+
+| Graph | Capping vs plain beam (same cost) |
+|---|---|
+| Small | **Helps** — 3/6 configs significant wins, 0 losses |
+| Medium | **Helps** — 2/6 configs significant wins, 0 losses |
+| Large | **Hurts** — 0/6 wins, 4/6 significant losses (up to −5.40%, p=4.6e-07) |
+
+**Reading:** Small graphs have few genuinely good candidates per branch to begin with, so capping barely removes anything valuable while still spreading slots across more lineages — a cheap win. Large graphs have many more genuinely good candidates per branch; forcing a spread throws away legitimately strong options just because they happen to share a parent, which costs more than the diversity buys. This is the *same failure mode* `DiversityMemory` hit for FAGS (§9) — forcing structural diversity doesn't reliably correlate with correctness — just resurfacing in a different mechanism, and specifically on the graph size where it matters most. **Net: diversity-capping is not a safe default.** It should be tuned per graph scale (or just left off) rather than applied uniformly; plain/uncapped beam search remains the better choice at the Large-graph regime where beam search's win over FAGS was largest.
+
+## 13. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
 - Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
 - None of the add-on knobs or mechanism redesigns tried on top of FAGS's architecture (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture.
 - **The underlying research question has a clear positive answer once the architecture changes:** beam search (§10) strictly dominates FAGS in the cost/accuracy tradeoff across both graph sizes that matter (Medium, Large), beats the budget-matched random-restart control on 14/15 configurations with the weak verifier, and — unlike FAGS — never loses to that control under a stronger verifier either (§11), pulling clearly ahead again at wider beams.
-- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — seven independent experiments now confirm it's not salvageable by changing what gets revived, while beam search's advantage holds up under every stress test thrown at it (graph size, search-cost matching, and verifier quality). Adopt beam search as the production recommendation. If going further: find where the width/verifier-quality cost-accuracy curve plateaus (width=5 was still climbing here), and re-run the gold-rank/gold-path-recovery diagnostics (§4) against beam search specifically.
+- **Forcing diversity within the beam is a wash, not a free win** (§12): it helps on Small/Medium but actively hurts on Large, the same "structural diversity ≠ correctness" failure mode that sank `DiversityMemory` for FAGS, just at a different scale.
+- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — seven independent experiments now confirm it's not salvageable by changing what gets revived, while plain (uncapped) beam search's advantage holds up under every stress test thrown at it (graph size, search-cost matching, verifier quality) and isn't improved by diversity-capping. Adopt **plain beam search** as the production recommendation, not a diversity-capped variant. If going further: find where the width/verifier-quality cost-accuracy curve plateaus (width=5-8 was still climbing in every test so far), and re-run the gold-rank/gold-path-recovery diagnostics (§4) against beam search specifically.
 
-## 13. State of the repo / housekeeping notes
+## 14. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.

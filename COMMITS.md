@@ -65,6 +65,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 29. Add beam search HybridVerifier experiment (`beam_search_embedding_experiment.py`, `results/beam_search_embedding_*`) — tests whether a stronger verifier helps beam search the way it hurt FAGS; finding: never loses to the budget-matched control (vs FAGS's decisive loss under the same verifier), and pulls significantly ahead at width=5
 - [x] 30. Update `PROJECT_STATUS.md` with the beam search verifier-quality stress test
 
-## Day 11+ — as new work happens
+## Day 11 — 2026-06-23
+
+- [x] 31. Add `max_children_per_parent` diversity cap to `fags/beam_search.py` — caps how many of the new beam's slots one parent hypothesis can fill, with an adaptive floor so a single start node can still grow the beam to full width on the first hop
+- [x] 32. Add diverse beam search experiment (`diverse_beam_search_experiment.py`, `results/diverse_beam_search_*`) — cost-neutral comparison vs plain beam search at widths {5,8} x caps {1,2,3} across all 3 graph sizes; finding: size-dependent split, helps on Small/Medium, significantly hurts on Large (same "diversity != correctness" failure mode as DiversityMemory for FAGS)
+- [x] 33. Update `PROJECT_STATUS.md` with the diverse beam pruning finding; revises production recommendation to plain (uncapped) beam search
+
+## Day 12+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
