@@ -3,26 +3,26 @@ FAGS RECOVERY SHIELD EXPERIMENT SUMMARY
 ==================================================
 
 Configuration: FAGS (No Shield)
-  Accuracy Gain: +5.40%
-  Recovery Rate: 0.00%
-  Efficiency Ratio: 0.005
-  Avg Hops Survived Post Revival: 1.33
+  Accuracy Gain: +6.40%
+  Recovery Rate: 0.46%
+  Efficiency Ratio: 0.006
+  Avg Hops Survived Post Revival: 1.44
 
 Configuration: FAGS (Shield K=1)
-  Accuracy Gain: +5.20%
-  Recovery Rate: 0.23%
-  Efficiency Ratio: 0.005
-  Avg Hops Survived Post Revival: 1.00
-
-Configuration: FAGS (Shield K=2)
-  Accuracy Gain: +3.80%
-  Recovery Rate: 0.00%
-  Efficiency Ratio: 0.004
-  Avg Hops Survived Post Revival: 1.50
-
-Configuration: FAGS (Shield K=3)
   Accuracy Gain: +5.80%
   Recovery Rate: 0.46%
   Efficiency Ratio: 0.006
-  Avg Hops Survived Post Revival: 1.86
+  Avg Hops Survived Post Revival: 1.29
+
+Configuration: FAGS (Shield K=2)
+  Accuracy Gain: +5.00%
+  Recovery Rate: 0.00%
+  Efficiency Ratio: 0.005
+  Avg Hops Survived Post Revival: 1.30
+
+Configuration: FAGS (Shield K=3)
+  Accuracy Gain: +5.60%
+  Recovery Rate: 0.23%
+  Efficiency Ratio: 0.005
+  Avg Hops Survived Post Revival: 1.43
 

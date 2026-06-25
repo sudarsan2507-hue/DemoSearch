@@ -35,9 +35,16 @@ class ControlledVerifier(Verifier):
         self.current_query = query
         self.cached_scores = {}
 
-    def score(self, keywords, edge, path_relations=None):
+    def score(self, query_or_keywords, edge, path_relations=None):
         if self.current_query is None:
-            return super().score(keywords, edge, path_relations)
+            return super().score(query_or_keywords, edge, path_relations)
+
+        if hasattr(query_or_keywords, "keywords"):
+            keywords = query_or_keywords.keywords
+        elif isinstance(query_or_keywords, str):
+            keywords = query_or_keywords.split()
+        else:
+            keywords = query_or_keywords
 
         source_node = edge.source
         

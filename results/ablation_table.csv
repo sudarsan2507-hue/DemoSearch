@@ -1,5 +1,5 @@
 Configuration,Baseline Accuracy,FAGS Accuracy,Accuracy Gain,Baseline Nodes Visited,FAGS Nodes Visited,Additional Search Cost,Efficiency Ratio,Gold Path Recovery Rate
-Top-1 (No Re-Verification),4.30%,10.90%,6.60%,3.18,58.36,1737.66%,0.004,0.12%
-Top-1 (Max Backtracks=1),4.30%,8.40%,4.10%,3.18,28.97,812.06%,0.005,0.00%
-Top-1 (Max Backtracks=2),4.30%,8.70%,4.40%,3.18,29.16,818.14%,0.005,0.00%
-Top-1 (Max Backtracks=5),4.30%,9.20%,4.90%,3.18,28.42,794.74%,0.006,0.12%
+Top-1 (No Re-Verification),4.30%,11.30%,7.00%,3.18,57.70,1716.78%,0.004,0.24%
+Top-1 (Max Backtracks=1),4.30%,9.00%,4.70%,3.18,28.78,806.27%,0.006,0.00%
+Top-1 (Max Backtracks=2),4.30%,8.90%,4.60%,3.18,29.07,815.33%,0.006,0.12%
+Top-1 (Max Backtracks=5),4.30%,9.30%,5.00%,3.18,28.38,793.70%,0.006,0.12%
