@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §9), and the HybridVerifier follow-up control (§7)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §10), the HybridVerifier follow-up control (§7), and the learned failure-pattern-graph experiment (§8)._
 
 ## 1. What this project is
 
@@ -113,14 +113,33 @@ All of the above compares FAGS (8–17× the node budget) against a single-shot 
 
 **Reading:** the opposite of "rescued" — with a *stronger* verifier the budget-matched dumb control beats FAGS by a wide, statistically significant margin (14.80% vs 6.80%). So the verifier's discriminative power was not the bottleneck holding FAGS back; the failure-memory/revival mechanism itself doesn't reliably turn a search budget into accuracy as well as plain randomized retries do. A plausible reason: FAGS's memory revival is *targeted* — it keeps retrying specific previously-rejected branches — whereas random restarts explore a more diverse set of paths per unit of budget, and diversity seems to matter more than targeting here.
 
-## 8. Net takeaway (updated)
+## 8. Does a learned cross-query "failure pattern graph" help? (`failure_pattern_graph_experiment.py`)
+
+**User's proposal:** instead of (or alongside) FAGS's reactive within-query memory, learn a cross-query failure-pattern signal — which relation transitions tend to precede a dead-end/contradiction/misalignment — from past searches, and use it to steer *away* from those transitions before they're attempted (avoidance), not just recover from them after the fact.
+
+**Implementation** (`fags/failure_pattern_graph.py`):
+- `FailurePatternGraph`: Beta-smoothed failure rate per `(prev_relation, relation)` transition bigram.
+- `train_failure_pattern_graph(...)`: runs plain greedy `baseline_search` over a training set; for each finished path, blames the *last* transition before a DEAD_END/CONTRADICTION/PATH_MISALIGNMENT as the "mistake," and treats every other transition (including all of a successful path's) as neutral/good.
+- `PatternAwareVerifier`: wraps any verifier, subtracting `penalty_weight × learned_failure_rate(prev_rel, candidate_rel)` from its score — composable with both `baseline_search` (→ "Pattern-Aware Greedy", same cost as baseline) and `failure_search` (→ "FAGS+FPG").
+- Required adding a `path_relations` field to `SearchResult` (additive, all four return sites in `baseline_search.py`/`failure_search.py` updated) so a finished path's relation sequence is recoverable for training.
+
+**Method:** trained the FPG on one graph (100 nodes, 1000 queries, seed=101), evaluated on a **different, held-out** graph (seed=202) — genuine transfer test, not memorization. Swept `penalty_weight` ∈ {0.0, 0.1, 0.2, 0.3, 0.5}.
+
+**Result** (`results/failure_pattern_graph_table.csv`, `.png`, `_summary.txt`, `_patterns.txt`):
+- Training signal was real and substantial: 2,176 transition observations across 425 distinct `(prev_rel, rel)` pairs, 951 attributed failure-edges. Top learned failure-prone patterns are dominated by **same-relation-twice repeats** (e.g. `CURRENT_PM→CURRENT_PM` at 92% failure rate, `WROTE→WROTE` at 83%) — almost none of these are in the hand-authored `CONFUSABLE_PAIRS`, and most have the *default* `RELATION_COHERENCE` value, meaning the FPG learned a genuinely new signal, not a rediscovery of existing hand-coded knowledge.
+- **Pattern-Aware Greedy vs Baseline** (same 1× search cost): no penalty weight beats baseline with significance (best: +0.10%, p=0.88). The new signal exists but doesn't translate into better single-shot greedy decisions.
+- **FAGS+FPG vs plain FAGS**: monotonically *worse* as penalty weight increases — significantly worse at penalty=0.2 (−2.30%, p=0.030), 0.3 (−2.40%, p=0.026), and 0.5 (−2.90%, p=0.0063). Penalizing "risky-looking" transitions apparently also suppresses some of the legitimate alternatives FAGS's memory needs for successful revival.
+
+**Reading:** the idea was implemented properly (real signal, proper train/test split, not a sparsity artifact) and **didn't pan out** — worse, it actively conflicts with FAGS's existing recovery mechanism. The same-relation-repeat pattern is a real structural insight about this graph generator's distractor placement, but turning it into a flat score penalty removes useful options more often than it removes bad ones.
+
+## 9. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
 - Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence now points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
-- None of the add-on knobs tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers) changed this picture — they tune the cost/accuracy tradeoff slightly but don't address the underlying issue.
-- **Revised recommendation:** the evidence no longer points at "improve the verifier" as the fix — §7 tested that directly and FAGS got worse, not better. The failure-memory/revival mechanism's core design (targeted retry of specific rejected branches) looks structurally weaker than diversified random exploration at matched cost. Worth treating the FAGS hypothesis as **not supported** by this graph topology, rather than continuing to tune its knobs.
+- None of the add-on knobs tried (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty) changed this picture — they tune the cost/accuracy tradeoff slightly, and the failure-pattern penalty actively hurts FAGS, but none address the underlying issue.
+- **Revised recommendation:** four independent angles (knob-tuning, budget-matched control, stronger verifier, learned avoidance) all point the same way. Worth treating the FAGS hypothesis as **not supported** by this graph topology, rather than continuing to search for the configuration that rescues it.
 
-## 9. State of the repo / housekeeping notes
+## 10. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.

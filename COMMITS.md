@@ -41,6 +41,13 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 17. Add HybridVerifier budget-matched control (`budget_matched_control_embedding_experiment.py`, `results/budget_matched_control_embedding.*`) — tests whether a stronger (rule+BGE) verifier rescues FAGS; answer: no, FAGS loses to the dumb control significantly worse than with the weak verifier
 - [x] 18. Update `PROJECT_STATUS.md` with the HybridVerifier finding and final revised recommendation
 
-## Day 7+ — as new work happens
+## Day 7 — 2026-06-23
+
+- [x] 19. Add `path_relations` field to `SearchResult` (`fags/__init__.py`, `fags/baseline_search.py`, `fags/failure_search.py`) so a finished path's relation sequence is recoverable; fixes a copy-paste gap where the field was only populated on the success-path return, not the failure-path one
+- [x] 20. Add Failure Pattern Graph mechanism (`fags/failure_pattern_graph.py`: `FailurePatternGraph`, `train_failure_pattern_graph`, `PatternAwareVerifier`) — the user's proposed cross-query learned-avoidance idea
+- [x] 21. Add Failure Pattern Graph experiment (`failure_pattern_graph_experiment.py`, `results/failure_pattern_graph_*`) — tests it with a proper train/test split; finding: real learned signal, but doesn't beat baseline at equal cost, and significantly hurts FAGS when composed with it
+- [x] 22. Update `PROJECT_STATUS.md` with the Failure Pattern Graph finding and final revised takeaway
+
+## Day 8+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
