@@ -1,0 +1,27 @@
+==================================================
+BEAM SEARCH WITH HYBRIDVERIFIER - SUMMARY
+==================================================
+
+Repeats beam_search_experiment.py's comparison but swaps the weak
+rule-based Verifier for HybridVerifier (rule-based + BGE embeddings,
+alpha=0.5), to test whether a stronger verifier helps beam search the
+way it HURT FAGS in budget_matched_control_embedding_experiment.py.
+500-node graph, 500 queries, seed=42.
+
+Baseline accuracy:          3.20%
+FAGS-Top1 accuracy:         7.00% (48.14 nodes)
+
+width=1: Beam=3.80% (6.7 nodes) vs RRB=5.20% (8.2 nodes) | gain=-1.40% p=2.50e-01 
+width=2: Beam=7.00% (12.4 nodes) vs RRB=7.60% (13.9 nodes) | gain=-0.60% p=7.10e-01 
+width=3: Beam=8.60% (17.8 nodes) vs RRB=9.20% (19.1 nodes) | gain=-0.60% p=7.29e-01  | DOMINATES FAGS (higher acc, lower cost)
+width=5: Beam=14.40% (27.7 nodes) vs RRB=10.40% (28.1 nodes) | gain=+4.00% p=3.29e-02 <-- BEAM WINS | DOMINATES FAGS (higher acc, lower cost)
+
+CONCLUSION
+----------
+Beam Search beat the budget-matched RRB control with significance in 1/4 widths.
+Beam Search strictly dominated FAGS-Top1 (higher accuracy AND lower cost) in 2/4 widths.
+
+Partial confirmation: beam search still beats the control on some
+widths with a stronger verifier, but not as cleanly as with the weak
+verifier - unlike FAGS, which got WORSE across the board, beam search's
+advantage is dampened rather than reversed.
