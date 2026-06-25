@@ -1,0 +1,55 @@
+==================================================
+DIVERSE BEAM SEARCH EXPERIMENT - SUMMARY
+==================================================
+
+Tests whether capping how many of the new beam's slots a single
+parent hypothesis can fill (forcing a spread across distinct lineages)
+improves accuracy at the SAME beam width, vs plain (uncapped) beam
+search - a cost-neutral comparison, not a cost/accuracy tradeoff.
+
+Small w=5 cap=1: 41.70% (plain: 40.60%) gain=+1.10% p=3.420e-02  <-- CAP WINS
+Small w=5 cap=2: 40.50% (plain: 40.60%) gain=-0.10% p=8.695e-01
+Small w=5 cap=3: 40.00% (plain: 40.60%) gain=-0.60% p=3.430e-01
+Small w=8 cap=1: 42.80% (plain: 42.20%) gain=+0.60% p=1.423e-02  <-- CAP WINS
+Small w=8 cap=2: 42.30% (plain: 42.20%) gain=+0.10% p=6.549e-01
+Small w=8 cap=3: 42.70% (plain: 42.20%) gain=+0.50% p=2.527e-02  <-- CAP WINS
+Medium w=5 cap=1: 28.80% (plain: 29.40%) gain=-0.60% p=6.791e-01
+Medium w=5 cap=2: 29.40% (plain: 29.40%) gain=+0.00% p=1.000e+00
+Medium w=5 cap=3: 29.10% (plain: 29.40%) gain=-0.30% p=8.144e-01
+Medium w=8 cap=1: 39.90% (plain: 35.70%) gain=+4.20% p=7.837e-03  <-- CAP WINS
+Medium w=8 cap=2: 37.90% (plain: 35.70%) gain=+2.20% p=1.198e-01
+Medium w=8 cap=3: 38.80% (plain: 35.70%) gain=+3.10% p=2.043e-02  <-- CAP WINS
+Large w=5 cap=1: 19.20% (plain: 24.60%) gain=-5.40% p=4.608e-07  <-- CAP LOSES
+Large w=5 cap=2: 22.80% (plain: 24.60%) gain=-1.80% p=3.383e-02  <-- CAP LOSES
+Large w=5 cap=3: 24.70% (plain: 24.60%) gain=+0.10% p=8.965e-01
+Large w=8 cap=1: 21.80% (plain: 27.00%) gain=-5.20% p=8.784e-06  <-- CAP LOSES
+Large w=8 cap=2: 24.90% (plain: 27.00%) gain=-2.10% p=1.524e-02  <-- CAP LOSES
+Large w=8 cap=3: 26.70% (plain: 27.00%) gain=-0.30% p=7.142e-01
+
+Significant wins for capping: 5/18
+Significant losses for capping: 4/18
+
+BY GRAPH SIZE
+-------------
+  Small: 3 significant wins, 0 significant losses -> capping HELPS
+  Medium: 2 significant wins, 0 significant losses -> capping HELPS
+  Large: 0 significant wins, 4 significant losses -> capping HURTS
+
+CONCLUSION
+----------
+The aggregate tally (5 wins / 4 losses across all configs) hides a
+real, size-dependent pattern - it is NOT a uniform refinement:
+  - Small graph: capping HELPS
+  - Medium graph: capping HELPS
+  - Large graph: capping HURTS
+
+Small graphs have few candidates per branch to begin with, so capping
+barely removes anything valuable while still spreading slots across more
+lineages - a cheap win. Large graphs have many more genuinely good
+candidates per branch; forcing a spread throws away legitimately strong
+options just because they share a parent, which costs more than the
+diversity buys - the same failure mode DiversityMemory hit for FAGS,
+just resurfacing in a different mechanism. Net: diversity-capping is not
+a safe default - it should be tuned per graph scale, or skipped for
+anything resembling the Large-graph regime, where plain (uncapped) beam
+search remains the better choice.
