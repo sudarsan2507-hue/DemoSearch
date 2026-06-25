@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6-7)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6-7) and again after regenerating all canonical results under the fixed deterministic generator (§4 numbers, §8)._
 
 ## 1. What this project is
 
@@ -52,11 +52,11 @@ Top-level scripts (`bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`, `hy
 
 | Graph | Best config | Baseline Acc | FAGS Acc | Gain | Extra nodes visited | Efficiency Ratio |
 |---|---|---|---|---|---|---|
-| Medium | Threshold (t=0.10) | 4.30% | 9.40% | **+5.10%** | **+837%** | 0.006 |
+| Medium | Threshold (t=0.20) | 4.30% | 10.80% | **+6.50%** | **+941%** | 0.007 |
 
-- p-value for the accuracy gain is tiny (7.4e‑09) — the gain is real, not noise.
+- p-value for the accuracy gain is tiny (5.6e‑12) — the gain is real, not noise.
 - **Gold Path Recovery Rate is ~0%** — FAGS almost never actually finds its way back onto the true gold path; the accuracy gain comes mostly from get­ting *lucky* on alternate routes, at the cost of 8–17× more nodes visited (`results/accuracy_and_cost_table.csv`, `results/accuracy_vs_cost.png`, `results/scalability.png`).
-- Ablations (`results/ablation_table.csv`): turning off dynamic re-verification *increases* the accuracy gain (+6.60%) but balloons cost to +1738%. Capping backtracks (1/2/5) barely changes the picture — FAGS is consistently expensive no matter how it's throttled.
+- Ablations (`results/ablation_table.csv`): turning off dynamic re-verification *increases* the accuracy gain (+7.00%) but balloons cost to +1717%. Capping backtracks (1/2/5) barely changes the picture — FAGS is consistently expensive no matter how it's throttled.
 
 ### Verifier-quality sweep (`results/verifier_sweep_summary.txt`, `verifier_quality_sweep.csv`, `verifier_sweep_table.csv`, `results/sweep_efficiency.png`)
 
@@ -67,7 +67,7 @@ Top-level scripts (`bge_scale_experiment.py`, `bge_vs_minilm_experiment.py`, `hy
 ### Shield / Certificate ablation (`results/shield_experiment_summary.txt`, `shield_experiment_table.csv`, `results/shield_accuracy.png`, `results/shield_hops_survived.png`, `k_sweep.csv`, `bonus_sweep.csv`)
 
 - Shield and Certificate mechanisms were added to try to make revival "stick" (survive more hops post-revival) instead of immediately re-failing.
-- Result: differences between No-Shield / Shield-only / Cert-only / Shield+Cert are small and noisy (accuracy gains 3.8–6.6%, recovery rate 0–0.46%, efficiency ratio 0.004–0.006). **Cert Only** nudges accuracy gain highest (+6.60%) but lowest hops-survived (1.00); **Shield+Cert** is the most balanced but not clearly better.
+- Result: differences between No-Shield / Shield-only / Cert-only / Shield+Cert are small and noisy (accuracy gains 3.8–5.8%, recovery rate 0–0.45%, efficiency ratio 0.004–0.006). **Cert Only** nudges accuracy gain highest (+5.80%) with the best hops-survived (1.88); the others are clustered close together with no clear winner.
 - `k_sweep.csv` (shield depth K=0..5) and `bonus_sweep.csv` (certificate bonus 0.00–0.20) both show flat, noisy curves with no clear optimum — these knobs aren't moving the needle.
 
 ### Structural diagnostic (`results/gold_rank_histogram.png`)
@@ -113,4 +113,5 @@ All of the above compares FAGS (8–17× the node budget) against a single-shot 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.
 - `scratch/` holds ad hoc audit/diagnostic scripts (`post_revival_audit.py`, `rank_diagnostic.py`, `recovery_audit.py`, `verifier_sweep.py` duplicate).
-- No `.git` repo is initialized in this directory yet, so there's no commit history to cross-reference — this report is based purely on current file/data state.
+- The repo is now under git (see `COMMITS.md` for the commit-by-commit breakdown), pushed to `https://github.com/sudarsan2507-hue/DemoSearch.git`.
+- All numbers in this doc as of 2026-06-23 reflect a full regeneration of `main.py`, `shield_experiment.py`, `stabilization_sweep.py`, `verifier_sweep.py`, and `scratch/rank_diagnostic.py` under the fixed deterministic generator (§6). `verifier_sweep.py` also had a latent, unrelated bug fixed (`ControlledVerifier.score()` wasn't extracting `query.keywords`, so it crashed against the current `fags/verifier.py`).

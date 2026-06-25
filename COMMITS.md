@@ -31,6 +31,11 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 13. Add budget-matched random-restart control experiment (`budget_matched_control_experiment.py`, `results/budget_matched_control.*`) — tests whether FAGS beats a dumb baseline given the same node-visit budget; answer: only on the Small graph
 - [x] 14. Update `PROJECT_STATUS.md` with the control-experiment finding and revised net takeaway
 
-## Day 5+ — as new work happens
+## Day 5 — 2026-06-23
+
+- [x] 15. Regenerate canonical results under the fixed deterministic generator (`main.py`, `shield_experiment.py`, `stabilization_sweep.py`, `verifier_sweep.py`, `scratch/rank_diagnostic.py`); fixed an unrelated latent bug in `verifier_sweep.py`'s `ControlledVerifier.score()`
+- [x] 16. Update `PROJECT_STATUS.md` with regenerated numbers and housekeeping notes
+
+## Day 6+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
