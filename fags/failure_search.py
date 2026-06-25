@@ -323,6 +323,7 @@ def failure_search(
                 hops_survived_post_revival=hops_survived_post_revival,
                 successful_recovery_margins=succ_margins,
                 failed_recovery_margins=[],
+                path_relations=list(path_relations),
             )
 
     elapsed = time.perf_counter() - t0
@@ -347,6 +348,7 @@ def failure_search(
         visited_node_set=visited_nodes,
         successful_recovery_margins=[],
         failed_recovery_margins=fail_margins,
+        path_relations=list(path_relations),
     )
 
 

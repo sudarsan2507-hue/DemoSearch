@@ -122,6 +122,7 @@ class SearchResult:
     trajectory_utilities: int = 0
     successful_recovery_margins: list[float] = field(default_factory=list)
     failed_recovery_margins: list[float] = field(default_factory=list)
+    path_relations: list[str] = field(default_factory=list)
 
 
 # ──────────────────────────────────────────────

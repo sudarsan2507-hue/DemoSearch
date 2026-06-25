@@ -112,6 +112,7 @@ def baseline_search(
                 failure_type=FailureType.NONE,
                 edges_explored=edges_explored,
                 visited_node_set=visited_nodes,
+                path_relations=list(path_relations),
             )
 
     # Budget exhausted (loop finished without answer or prior failure)
@@ -129,4 +130,5 @@ def baseline_search(
         failure_type=failure_type,
         edges_explored=edges_explored,
         visited_node_set=visited_nodes,
+        path_relations=list(path_relations),
     )
