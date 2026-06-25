@@ -1,0 +1,23 @@
+==================================================
+BUDGET-MATCHED CONTROL WITH HYBRIDVERIFIER - SUMMARY
+==================================================
+
+Repeats budget_matched_control_experiment.py's control (does FAGS
+beat a dumb baseline given the SAME node-visit budget?) but swaps the
+weak rule-based Verifier for HybridVerifier (rule-based + BGE
+embeddings, alpha=0.5), to test whether a stronger verifier signal
+changes the verdict. 500-node graph, 500 queries, seed=42.
+
+Baseline (1x cost) accuracy:              3.60%
+Random-Restart Baseline (budget-matched): 14.80% (mean nodes=44.35)
+FAGS accuracy:                            6.80% (mean nodes=47.15)
+FAGS - RRB accuracy gain:                 -8.00%
+p-value (FAGS vs RRB, paired t-test):     5.66084e-05
+
+CONCLUSION
+----------
+Even with a stronger verifier, FAGS does NOT clear the budget-matched
+random-restart control with statistical significance. The verifier's
+discriminative power alone is not what was limiting FAGS - the
+underlying recovery mechanism itself does not reliably beat spending
+the same compute on dumb retries.

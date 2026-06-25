@@ -1,0 +1,2 @@
+Verifier,Baseline Acc (1x cost),Random-Restart Baseline Acc (budget-matched),FAGS Acc,FAGS Mean Nodes,RRB Mean Nodes,FAGS - RRB Acc Gain,p-value (FAGS vs RRB)
+HybridVerifier (rule+BGE),3.60%,14.80%,6.80%,47.15,44.35,-8.00%,5.66084e-05
