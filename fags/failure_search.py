@@ -207,6 +207,7 @@ def failure_search(
                 winner_score=best_score,
                 depth=depth,
                 path_so_far=list(path),
+                winner_relation=best_edge.relation,
             )
 
         # 3. Path misalignment check
