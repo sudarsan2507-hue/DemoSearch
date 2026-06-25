@@ -1,0 +1,11 @@
+Arm,Penalty Weight,Reference Acc,Variant Acc,Acc Gain vs Reference,Reference Nodes,Variant Nodes,p-value
+PAG vs Baseline,0.0,6.60%,5.60%,-1.00%,3.13,3.20,1.31738e-01
+PAG vs Baseline,0.1,6.60%,5.40%,-1.20%,3.13,3.15,7.04211e-02
+PAG vs Baseline,0.2,6.60%,6.70%,+0.10%,3.13,3.17,8.75988e-01
+PAG vs Baseline,0.3,6.60%,6.50%,-0.10%,3.13,3.06,8.90827e-01
+PAG vs Baseline,0.5,6.60%,5.60%,-1.00%,3.13,3.04,1.13891e-01
+FAGS+FPG vs FAGS,0.0,13.00%,12.80%,-0.20%,25.55,25.91,8.46087e-01
+FAGS+FPG vs FAGS,0.1,13.00%,11.10%,-1.90%,25.55,24.32,6.87570e-02
+FAGS+FPG vs FAGS,0.2,13.00%,10.70%,-2.30%,25.55,23.37,3.04205e-02
+FAGS+FPG vs FAGS,0.3,13.00%,10.60%,-2.40%,25.55,22.27,2.57844e-02
+FAGS+FPG vs FAGS,0.5,13.00%,10.10%,-2.90%,25.55,21.37,6.31162e-03

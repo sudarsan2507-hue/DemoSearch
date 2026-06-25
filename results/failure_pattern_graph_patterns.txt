@@ -1,0 +1,17 @@
+Top learned failure-prone transitions (prev_relation -> relation):
+prev_rel              rel                   fail_rate   n     coherence   confusable
+CURRENT_PM            CURRENT_PM            0.923       11    0.30        False     
+HAS_PROPERTY          RELATED_TO            0.889       7     0.30        False     
+AWARD_WON             DISCOVERED_BY         0.889       7     0.80        False     
+PREDECESSOR_OF        HAS_PROPERTY          0.857       5     0.30        False     
+RELATED_TO            HAS_PROPERTY          0.857       5     0.30        False     
+PARENT_OF             PARENT_OF             0.857       5     0.30        False     
+POPULATION_OF         HAS_PROPERTY          0.857       5     0.30        False     
+WROTE                 WROTE                 0.833       10    0.30        False     
+LANGUAGE_OF           FOUNDED_IN            0.750       6     0.30        False     
+BELONGS_TO            CURRENT_GOVERNMENT    0.750       6     0.80        False     
+DISCOVERED_BY         DISCOVERED_BY         0.727       9     0.30        False     
+INVENTED_BY           AWARD_WON             0.714       5     0.80        False     
+START                 MEMBER_OF             0.714       12    n/a         n/a       
+DISCOVERED_BY         AWARD_WON             0.714       5     0.80        False     
+FORMER_PM             CURRENT_LEADER        0.714       5     0.80        False     

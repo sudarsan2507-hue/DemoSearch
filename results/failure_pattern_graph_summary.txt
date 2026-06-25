@@ -1,0 +1,44 @@
+==================================================
+FAILURE PATTERN GRAPH (FPG) EXPERIMENT - SUMMARY
+==================================================
+
+Trained an FPG on baseline-search outcomes from one graph (seed=101), learning which (prev_relation, relation) transitions
+precede DEAD_END/CONTRADICTION/PATH_MISALIGNMENT failures. Evaluated
+on a DIFFERENT, held-out graph (seed=202) to test genuine
+transfer, not memorization.
+
+1. PATTERN-AWARE GREEDY vs BASELINE (same search cost - 'free lunch' test)
+----------------------------------------------------------------------
+Baseline accuracy:        6.60%
+Best PAG (penalty=0.2): 6.70%, gain +0.10%, p=8.760e-01
+Nodes visited - baseline: 3.13, PAG: 3.17 (should be ~equal - same single-shot greedy walk, no extra search)
+
+2. FAGS+FPG vs PLAIN FAGS (does avoidance help on top of recovery?)
+----------------------------------------------------------------------
+Plain FAGS accuracy:      13.00%
+Best FAGS+FPG (penalty=0.0): 12.80%, gain over plain FAGS -0.20%, p=8.461e-01
+
+3. LEARNED PATTERNS vs HAND-AUTHORED PRIORS
+----------------------------------------------------------------------
+See failure_pattern_graph_patterns.txt for the full list. If the
+top learned failure-prone transitions mostly have LOW RELATION_COHERENCE
+or ARE flagged confusable, the FPG is mostly rediscovering signal the
+rule-based Verifier's path_coherence term already encodes. If the FPG
+beats both baselines anyway, it's adding something the existing
+hand-authored tables miss (e.g. transition FREQUENCY information, which
+RELATION_COHERENCE doesn't weight by how often each pair actually occurs).
+
+CONCLUSION
+----------
+Pattern-Aware Greedy does NOT beat plain Baseline at equal search cost
+with statistical significance for any penalty weight tested. The FPG has
+real, non-trivial learned signal (see patterns file) - it is not just
+noise from data sparsity - but that signal doesn't translate into better
+greedy decisions when injected as a flat score penalty.
+
+FAGS+FPG is SIGNIFICANTLY WORSE than plain FAGS at higher penalty weights
+(penalty=0.5: -2.90%, p=6.312e-03). Penalizing transitions that
+match a learned failure pattern apparently also suppresses some of the
+alternatives FAGS's reactive memory relies on for successful revival -
+composing avoidance with recovery this way actively conflicts with how
+FAGS already works, rather than complementing it.
