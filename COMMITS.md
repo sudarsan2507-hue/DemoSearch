@@ -100,6 +100,13 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 46. Add MCTS-at-large-budgets experiment (`mcts_large_budget_experiment.py`, `results/mcts_large_budget_*`) — sweeps both algorithms up to 1280-node budgets on Medium/Large graphs; caught and corrected a measurement pitfall (beam was only swept to width=60/~186 nodes while MCTS reached ~372, which would have overstated the gap as +56% instead of the true +15.40%) by extending beam's sweep to matched cost before reporting; **finding: MCTS does catch up to and pass beam search, but only at ~5-10x larger budgets (200+ nodes) than anything compared in §16 (5-40 nodes)**
 - [x] 47. Update `PROJECT_STATUS.md` with the corrected MCTS-crossover finding — revises the "beam search undefeated" framing to "undefeated at small/moderate budgets; MCTS wins at large ones"
 
-## Day 18+ — as new work happens
+## Day 18 — 2026-06-28
+
+- [x] 48. Add beam-seeded MCTS hybrid (`fags/beam_seeded_mcts_search.py`) — spends the first `seed_depth` hops on plain beam-search-style expansion (sealing each round's losers) before handing the remaining budget to standard MCTS starting from the seeded tips, built to test whether removing MCTS's "rediscover diversity" cost closes the §17 crossover gap
+- [x] 49. Fix a node-budget-vs-depth-cap bug in the hybrid before it could be evaluated — seeding was capped by node count, which let it run all the way to max_depth whenever budget was generous, leaving MCTS zero hops of room (measured: 67% of non-immediately-successful seedings hit this). Re-capped by depth instead
+- [x] 50. Add beam-seeded MCTS vs beam search vs pure MCTS experiment (`beam_seeded_mcts_experiment.py`, `results/beam_seeded_mcts_*`) — per-query budget-matched comparison across widths {2,3,5,8,15,25,40} x all 3 graph sizes; **finding: the hybrid never beats plain beam search (0/21), and is at best a wash with pure MCTS (4 wins/7 losses/10 ties)** — beam-seeding did not close the small-budget gap
+- [x] 51. Update `PROJECT_STATUS.md` with the beam-seeded MCTS finding — eighth independent composition/improvement attempt across the project, none have beaten the relevant baseline in its budget regime
+
+## Day 19+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
