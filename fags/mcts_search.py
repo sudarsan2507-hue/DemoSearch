@@ -173,12 +173,22 @@ def mcts_search(
 
     # Safety cap: a node_budget that's never reached (e.g. a genuine dead-end
     # start with zero candidates) would otherwise spin forever re-selecting
-    # the same terminal root.
-    max_simulations = max(1000, node_budget * 200)
+    # the same terminal root. A second case needs its own guard: once
+    # node_budget exceeds the graph's actual reachable size, all_visited_nodes
+    # can never reach it no matter how exhaustively the tree is searched -
+    # stale_count detects "no new node added for a while" (the reachable
+    # space is fully explored) and bails, independent of how large
+    # node_budget is. max_simulations is a fixed, generous backstop, not
+    # scaled by node_budget (scaling it was the actual source of the
+    # 128,000+-simulation risk this comment used to warn about).
+    max_simulations = 20000
+    stale_limit = 300
+    stale_count = 0
     simulations = 0
 
-    while len(all_visited_nodes) < node_budget and simulations < max_simulations:
+    while len(all_visited_nodes) < node_budget and simulations < max_simulations and stale_count < stale_limit:
         simulations += 1
+        _prev_visited_count = len(all_visited_nodes)
 
         # --- Selection ---
         node = root
@@ -247,6 +257,11 @@ def mcts_search(
             n.visits += 1
             n.value_sum += reward
             n = n.parent
+
+        if len(all_visited_nodes) == _prev_visited_count:
+            stale_count += 1
+        else:
+            stale_count = 0
 
     # Budget exhausted without success: report the tree's most-trusted path
     # (most-visited child at each level, the standard MCTS "robust child" rule).
