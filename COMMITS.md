@@ -82,6 +82,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 37. Add beam search top-K ranking variants experiment (`beam_search_topk_variants_experiment.py`, `results/beam_search_topk_variants_*`) — widths {5,8} x diversity penalties {0,0.05,0.1,0.2} x aggregation {mean,sum} across all 3 graph sizes; finding: sum aggregation is a clean null (0/6), soft diversity penalty just replicates §12's hard-cap pattern (3 wins/2 losses, same Small/Medium-helps-Large-hurts split), combined washes out to 0/18 — fourth/fifth refinement attempt to fail to beat plain beam search
 - [x] 38. Update `PROJECT_STATUS.md` with the top-K ranking-rule variants finding
 
-## Day 15+ — as new work happens
+## Day 15 — 2026-06-27
+
+- [x] 39. Add global best-first search (`fags/best_first_search.py`) — alternative pruning paradigm to beam search: one global priority queue across all depths, always expand the best-scoring frontier hypothesis, budget-capped instead of width-capped
+- [x] 40. Add best-first vs beam search experiment (`best_first_search_experiment.py`, `results/best_first_search_*`) — per-query budget-matched comparison (exact same node budget) across widths {2,3,5,8} x all 3 graph sizes; **finding: beam search wins all 12/12 configurations with extreme significance (p as low as 1e-57), best-first collapses to near-0% on Large at low budgets** — the most decisive result of the whole investigation, confirming fixed-width beam's guaranteed breadth is load-bearing, not arbitrary
+- [x] 41. Update `PROJECT_STATUS.md` with the best-first search finding
+
+## Day 16+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
