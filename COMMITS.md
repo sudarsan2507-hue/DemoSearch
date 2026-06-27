@@ -71,6 +71,11 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 32. Add diverse beam search experiment (`diverse_beam_search_experiment.py`, `results/diverse_beam_search_*`) — cost-neutral comparison vs plain beam search at widths {5,8} x caps {1,2,3} across all 3 graph sizes; finding: size-dependent split, helps on Small/Medium, significantly hurts on Large (same "diversity != correctness" failure mode as DiversityMemory for FAGS)
 - [x] 33. Update `PROJECT_STATUS.md` with the diverse beam pruning finding; revises production recommendation to plain (uncapped) beam search
 
-## Day 12+ — as new work happens
+## Day 13 — 2026-06-27
+
+- [x] 34. Add beam search + Failure Pattern Graph experiment (`beam_search_fpg_experiment.py`, `results/beam_search_fpg_*`) — composes the existing `PatternAwareVerifier` (no new core code) with beam search across widths {3,5,8} x penalties {0.05-0.3}; finding: clean null (0 significant wins, 0 significant losses) - never hurts beam the way it hurt FAGS, but doesn't help either
+- [x] 35. Update `PROJECT_STATUS.md` with the beam+FPG null result
+
+## Day 14+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
