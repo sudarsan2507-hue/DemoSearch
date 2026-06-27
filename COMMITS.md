@@ -88,6 +88,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 40. Add best-first vs beam search experiment (`best_first_search_experiment.py`, `results/best_first_search_*`) — per-query budget-matched comparison (exact same node budget) across widths {2,3,5,8} x all 3 graph sizes; **finding: beam search wins all 12/12 configurations with extreme significance (p as low as 1e-57), best-first collapses to near-0% on Large at low budgets** — the most decisive result of the whole investigation, confirming fixed-width beam's guaranteed breadth is load-bearing, not arbitrary
 - [x] 41. Update `PROJECT_STATUS.md` with the best-first search finding
 
-## Day 16+ — as new work happens
+## Day 16 — 2026-06-28
+
+- [x] 42. Add Monte Carlo Tree Search (`fags/mcts_search.py`) — UCB1 selection + greedy rollout + backpropagation, budget-capped by total nodes visited; built to test whether explicit exploration/exploitation balance fixes best-first search's tunnel-vision collapse from §15
+- [x] 43. Add MCTS vs beam search experiment (`mcts_search_experiment.py`, `results/mcts_search_*`) — per-query budget-matched comparison across widths {2,3,5,8} x all 3 graph sizes, with best-first shown for reference; **finding: MCTS loses to beam search 10/12 (2 non-significant ties) but completely fixes best-first's collapse (10-15x better than best-first on Large at low budgets)** — confirms the exploration-vs-exploitation theory but still doesn't beat beam search
+- [x] 44. Update `PROJECT_STATUS.md` with the MCTS finding
+
+## Day 17+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
