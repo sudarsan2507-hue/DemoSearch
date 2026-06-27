@@ -1,0 +1,39 @@
+==================================================
+GLOBAL BEST-FIRST SEARCH vs BEAM SEARCH - SUMMARY
+==================================================
+
+Per-query budget-matched comparison: for each query, best-first search
+gets the EXACT node budget beam search used for that query, so any
+accuracy difference is attributable to the pruning paradigm (global
+frontier vs fixed-width-per-hop) alone, not search cost.
+
+-- Small graph --
+  width=2: Beam=30.00% (5.3 nodes) vs Best-First=13.10% (5.1 nodes) gain=-16.90% p=2.743e-22  <-- BEAM WINS
+  width=3: Beam=33.80% (5.9 nodes) vs Best-First=15.00% (5.7 nodes) gain=-18.80% p=7.310e-29  <-- BEAM WINS
+  width=5: Beam=39.10% (6.8 nodes) vs Best-First=18.40% (6.5 nodes) gain=-20.70% p=3.619e-41  <-- BEAM WINS
+  width=8: Beam=42.10% (7.4 nodes) vs Best-First=19.00% (7.1 nodes) gain=-23.10% p=2.443e-57  <-- BEAM WINS
+
+-- Medium graph --
+  width=2: Beam=17.50% (11.2 nodes) vs Best-First=8.40% (10.9 nodes) gain=-9.10% p=3.448e-09  <-- BEAM WINS
+  width=3: Beam=21.90% (15.0 nodes) vs Best-First=9.60% (14.4 nodes) gain=-12.30% p=2.849e-13  <-- BEAM WINS
+  width=5: Beam=28.40% (21.3 nodes) vs Best-First=11.40% (20.2 nodes) gain=-17.00% p=4.599e-21  <-- BEAM WINS
+  width=8: Beam=37.30% (27.8 nodes) vs Best-First=15.80% (26.1 nodes) gain=-21.50% p=1.027e-28  <-- BEAM WINS
+
+-- Large graph --
+  width=2: Beam=17.20% (11.5 nodes) vs Best-First=0.90% (11.5 nodes) gain=-16.30% p=9.096e-37  <-- BEAM WINS
+  width=3: Beam=20.70% (16.2 nodes) vs Best-First=1.40% (16.1 nodes) gain=-19.30% p=8.498e-43  <-- BEAM WINS
+  width=5: Beam=23.70% (25.3 nodes) vs Best-First=2.40% (25.0 nodes) gain=-21.30% p=7.980e-45  <-- BEAM WINS
+  width=8: Beam=26.10% (38.7 nodes) vs Best-First=3.10% (38.2 nodes) gain=-23.00% p=1.671e-48  <-- BEAM WINS
+
+Best-first wins: 0/12
+Beam wins: 12/12
+
+CONCLUSION
+----------
+Beam search beats global best-first search at matched cost more often
+than it loses. Keeping a fixed, diverse width alive at every depth
+apparently matters more than concentrating budget on the single
+best-looking frontier node - best-first search's greedy concentration
+risks tunnel vision on a locally-strong but ultimately wrong
+hypothesis, burning the whole budget on it before the queue
+naturally surfaces an alternative.
