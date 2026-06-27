@@ -1,0 +1,39 @@
+==================================================
+BEAM SEARCH + FAILURE PATTERN GRAPH - SUMMARY
+==================================================
+
+Composes the learned Failure Pattern Graph (trained on a held-out
+graph, seed=101) with beam search (tested on a different graph,
+seed=202), via the same PatternAwareVerifier wrapper that hurt FAGS in
+failure_pattern_graph_experiment.py. Cost-neutral comparison (same
+width) vs plain beam search.
+
+-- width=3 (plain beam: 26.90%) --
+  penalty=0.05: 26.40% gain=-0.50% p=7.134e-01
+  penalty=0.1: 28.30% gain=+1.40% p=3.200e-01
+  penalty=0.15: 26.50% gain=-0.40% p=7.707e-01
+  penalty=0.2: 24.40% gain=-2.50% p=5.443e-02
+  penalty=0.3: 24.60% gain=-2.30% p=8.910e-02
+
+-- width=5 (plain beam: 33.40%) --
+  penalty=0.05: 32.50% gain=-0.90% p=5.415e-01
+  penalty=0.1: 35.00% gain=+1.60% p=2.809e-01
+  penalty=0.15: 35.30% gain=+1.90% p=2.014e-01
+  penalty=0.2: 34.10% gain=+0.70% p=6.395e-01
+  penalty=0.3: 33.60% gain=+0.20% p=8.928e-01
+
+-- width=8 (plain beam: 43.30%) --
+  penalty=0.05: 43.60% gain=+0.30% p=8.436e-01
+  penalty=0.1: 44.10% gain=+0.80% p=5.680e-01
+  penalty=0.15: 43.40% gain=+0.10% p=9.459e-01
+  penalty=0.2: 45.50% gain=+2.20% p=1.540e-01
+  penalty=0.3: 43.00% gain=-0.30% p=8.430e-01
+
+Significant wins for FPG composition: 0/15
+Significant losses for FPG composition: 0/15
+
+CONCLUSION
+----------
+No consistent effect - the failure-pattern penalty is statistically a
+wash when composed with beam search, neither helping nor hurting
+reliably across widths/penalty weights tested.
