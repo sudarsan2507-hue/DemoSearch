@@ -1,0 +1,93 @@
+==================================================
+MCTS vs BEAM SEARCH ACROSS A WIDE BUDGET RANGE - SUMMARY
+==================================================
+
+Independent sweeps (not per-query budget-matched) plotted on a shared
+mean-nodes-visited axis. Large graph beam search was extended to widths
+{80,110,150,200,260,350} after the first pass, because MCTS budgets up to
+1280 reached ~372 mean nodes while beam had only been swept to width=60
+(~186 nodes) - comparing MCTS at full budget against beam capped at less
+than half that cost would have overstated the gap. All gaps below use the
+properly cost-matched (nearest-neighbor) beam point.
+
+-- Medium graph --
+  Beam Search:
+    width=2: 18.20% @ 11.1 nodes
+    width=3: 22.40% @ 15.1 nodes
+    width=5: 29.00% @ 21.3 nodes
+    width=8: 38.80% @ 27.6 nodes
+    width=15: 47.60% @ 37.2 nodes
+    width=25: 57.40% @ 42.0 nodes
+    width=40: 62.80% @ 45.3 nodes
+    width=60: 70.00% @ 46.7 nodes
+  MCTS:
+    budget=10: 16.20% @ 11.3 nodes
+    budget=20: 26.00% @ 18.9 nodes
+    budget=40: 43.00% @ 31.7 nodes
+    budget=80: 73.00% @ 46.7 nodes
+    budget=160: 76.00% @ 48.1 nodes
+    budget=640: 76.00% @ 48.1 nodes
+    budget=320: 76.00% @ 48.4 nodes
+    budget=1280: 76.00% @ 49.0 nodes
+  Gap at matched cost (nearest-neighbor by mean nodes):
+    MCTS@11 nodes (16.20%) vs Beam@11 nodes (18.20%): gap=-2.00%
+    MCTS@19 nodes (26.00%) vs Beam@21 nodes (29.00%): gap=-3.00%
+    MCTS@32 nodes (43.00%) vs Beam@28 nodes (38.80%): gap=+4.20%
+    MCTS@47 nodes (73.00%) vs Beam@47 nodes (70.00%): gap=+3.00%
+    MCTS@48 nodes (76.00%) vs Beam@47 nodes (70.00%): gap=+6.00%
+    MCTS@48 nodes (76.00%) vs Beam@47 nodes (70.00%): gap=+6.00%
+    MCTS@48 nodes (76.00%) vs Beam@47 nodes (70.00%): gap=+6.00%
+    MCTS@49 nodes (76.00%) vs Beam@47 nodes (70.00%): gap=+6.00%
+
+-- Large graph --
+  Beam Search:
+    width=2: 16.20% @ 11.6 nodes
+    width=3: 21.20% @ 16.1 nodes
+    width=5: 23.40% @ 25.5 nodes
+    width=8: 25.00% @ 39.1 nodes
+    width=15: 28.40% @ 68.2 nodes
+    width=25: 32.00% @ 102.4 nodes
+    width=40: 40.20% @ 139.7 nodes
+    width=60: 42.00% @ 186.0 nodes
+    width=80: 52.60% @ 214.9 nodes
+    width=110: 56.60% @ 255.5 nodes
+    width=150: 65.60% @ 288.6 nodes
+    width=200: 73.20% @ 314.2 nodes
+    width=260: 75.40% @ 351.8 nodes
+    width=350: 82.80% @ 374.2 nodes
+  MCTS:
+    budget=10: 14.40% @ 11.7 nodes
+    budget=20: 16.60% @ 21.1 nodes
+    budget=40: 18.60% @ 36.2 nodes
+    budget=80: 25.40% @ 65.8 nodes
+    budget=160: 33.00% @ 125.8 nodes
+    budget=320: 52.00% @ 212.6 nodes
+    budget=640: 78.20% @ 317.6 nodes
+    budget=1280: 98.20% @ 371.8 nodes
+  Gap at matched cost (nearest-neighbor by mean nodes):
+    MCTS@12 nodes (14.40%) vs Beam@12 nodes (16.20%): gap=-1.80%
+    MCTS@21 nodes (16.60%) vs Beam@26 nodes (23.40%): gap=-6.80%
+    MCTS@36 nodes (18.60%) vs Beam@39 nodes (25.00%): gap=-6.40%
+    MCTS@66 nodes (25.40%) vs Beam@68 nodes (28.40%): gap=-3.00%
+    MCTS@126 nodes (33.00%) vs Beam@140 nodes (40.20%): gap=-7.20%
+    MCTS@213 nodes (52.00%) vs Beam@215 nodes (52.60%): gap=-0.60%
+    MCTS@318 nodes (78.20%) vs Beam@314 nodes (73.20%): gap=+5.00%
+    MCTS@372 nodes (98.20%) vs Beam@374 nodes (82.80%): gap=+15.40%
+
+CONCLUSION
+----------
+Medium: best matched-cost gap = +6.00% (positive = MCTS ahead)
+Large: best matched-cost gap = +15.40% (positive = MCTS ahead)
+
+At properly matched cost, MCTS does close the gap and pull ahead of beam
+search at large budgets on both graphs - but the Large-graph margin is much
+smaller than an earlier draft of this analysis suggested (+15.40% at the
+highest matched point, not +56.20%; that earlier figure compared MCTS at
+its full budget against beam capped at less than half the cost, and was
+corrected before being reported here). On Medium the two are roughly tied
+until ~30 nodes, then MCTS pulls ahead by ~6 points near graph exhaustion
+(~48 nodes). On Large the two are statistically tied around 210 nodes, then
+MCTS pulls ahead more decisively as cost grows further (+5% at ~315 nodes,
++15% at ~373 nodes) - a real, growing advantage at large budgets,
+consistent with the standing theory that MCTS needs far more than 5-40
+nodes to pay off, just smaller in magnitude than first measured.
