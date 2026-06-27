@@ -1,6 +1,6 @@
 # DemoSearch / FAGS — Project Status
 
-_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §15), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), beam search's own verifier-quality stress test (§11), and the diverse-beam-pruning experiment (§12); updated again 2026-06-27 with the beam search + Failure Pattern Graph composition (§13)._
+_Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §16), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), beam search's own verifier-quality stress test (§11), and the diverse-beam-pruning experiment (§12); updated again 2026-06-27 with the beam search + Failure Pattern Graph composition (§13) and the top-K ranking-rule variants (§14)._
 
 ## 1. What this project is
 
@@ -208,16 +208,32 @@ Beam width=3 on Medium gets 2.5× FAGS's accuracy at **half** FAGS's search cost
 
 **Reading:** the hypothesis is half-confirmed. Beam search never gets *hurt* by the FPG penalty the way FAGS did — even at penalty=0.3, where FAGS lost −2.90% (p=0.0063), beam search shows no significant change at any width. That's consistent with the "no revival step to conflict with" theory. But it also doesn't *help*: the learned avoidance signal doesn't add anything once candidates are already competing across multiple live hypotheses and pruned by raw verifier score — beam search's own selection pressure is apparently already capturing what the FPG signal would add. Net: composing FPG with beam search is safe but pointless here, a genuinely different (neutral) outcome from the same composition with FAGS (actively harmful) or DiversityMemory (size-dependent).
 
-## 14. Net takeaway (updated)
+## 14. Changing the top-K ranking rule itself (`score_aggregation`, `diversity_penalty_weight` in `fags/beam_search.py`, `beam_search_topk_variants_experiment.py`)
+
+**Hypothesis:** §12 and §13 only constrained or nudged the *existing* ranking rule (cumulative mean per-hop score) — they never changed the rule itself. Added two genuinely different rules to `beam_search()`: `score_aggregation="sum"` (rank by total accumulated score, the convention classic NLP beam search uses, instead of the mean) and `diversity_penalty_weight` (a **soft** version of §12's hard `max_children_per_parent` cap — greedy iterative selection where a crowded parent's later candidates sink gradually instead of being banned outright once a quota is hit).
+
+**Method:** cost-neutral comparison (same beam width) vs the established plain-beam baseline (mean, no penalty), at widths {5, 8} × diversity penalties {0, 0.05, 0.1, 0.2} × aggregation {mean, sum} — same 3 graph sizes / 1000 queries / seed=101.
+
+**Result** (`results/beam_search_topk_variants_table.csv`, `.png`, `_summary.txt`) — reported per-axis, since a pooled win/loss tally would hide which idea (if any) actually did something:
+
+| Axis | Significant wins | Significant losses |
+|---|---|---|
+| Sum aggregation alone (the genuinely new idea) | 0/6 | 0/6 |
+| Soft diversity penalty (mean aggregation) | 3/18 | 2/18 |
+| Sum + soft diversity combined | 0/18 | 0/18 |
+
+**Reading:** sum aggregation — the one idea here that wasn't already tested in some form — is a **clean null**: ranking by total accumulated score instead of average doesn't measurably change accuracy anywhere. The soft diversity penalty's 3 wins / 2 losses **just replicate §12's hard-cap pattern** (helps Small/Medium, hurts Large) with a softer mechanism — not a new finding, the same failure mode resurfacing. Combining sum with the diversity penalty washes the effect out entirely. This is now the fourth and fifth independent refinement attempt (after diversity-capping and FPG composition) that fails to find a configuration reliably beating plain beam search's simplest rule — increasingly strong evidence the simple version (mean aggregation, plain top-K, no diversity adjustment) is at or near a local optimum for this verifier's signal, not that the right tweak hasn't been found yet.
+
+## 15. Net takeaway (updated)
 
 - The original FAGS-vs-1×-baseline comparison (§4) overstates FAGS: once a dumb baseline gets the same node-visit budget (§6), FAGS only wins decisively on the Small graph, is a statistical tie on Medium, and loses (not significantly) on Large — and loses *significantly* once the verifier is upgraded (§7).
 - Combined with the ~0% Gold Path Recovery Rate seen across every experiment, the evidence points to **FAGS's accuracy gains being mostly an artifact of spending 8–17× more search budget**, not of the failure-memory mechanism doing intelligent targeted recovery — and a better verifier makes this worse for FAGS, not better.
 - None of the add-on knobs or mechanism redesigns tried on top of FAGS's architecture (dynamic re-verification, shield depth, certificate bonus, RBSC, RTC-lite, better embedding verifiers, a learned cross-query failure-pattern penalty, diversity-aware revival) changed this picture.
 - **The underlying research question has a clear positive answer once the architecture changes:** beam search (§10) strictly dominates FAGS in the cost/accuracy tradeoff across both graph sizes that matter (Medium, Large), beats the budget-matched random-restart control on 14/15 configurations with the weak verifier, and — unlike FAGS — never loses to that control under a stronger verifier either (§11), pulling clearly ahead again at wider beams.
-- **Forcing diversity within the beam is a wash, not a free win** (§12), and **composing it with the learned failure-pattern signal is a clean null** (§13) — beam search's plain top-K-by-verifier-score pruning hasn't been beaten by any refinement attempted on top of it, including the two mechanisms (diversity-aware selection, learned avoidance) that were built specifically to try.
-- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — seven independent experiments now confirm it's not salvageable by changing what gets revived. Plain (uncapped, unweighted) beam search remains the production recommendation; two separate attempts to improve on it (diversity-capping, learned-pattern composition) both failed to beat it, suggesting its simple top-K-by-score rule is already close to as good as this verifier's signal allows. If going further: find where the width/verifier-quality cost-accuracy curve plateaus, and re-run the gold-rank/gold-path-recovery diagnostics (§4) against beam search specifically.
+- **Four independent refinement attempts on top of plain beam search all failed to beat it**: hard diversity-capping (§12), FPG composition (§13), sum aggregation (§14), and soft diversity penalty (§14) — the last of which just re-confirms §12's pattern rather than adding new information. Plain beam search's simplest rule (mean aggregation, unconstrained top-K) looks close to a local optimum for this verifier's signal.
+- **Revised recommendation:** stop iterating on FAGS's commit-then-recover design — seven independent experiments now confirm it's not salvageable by changing what gets revived. Plain (uncapped, mean-aggregation, unweighted) beam search remains the production recommendation — nothing tried since has beaten it. If going further: the remaining open angles are a structurally different pruning paradigm (global best-first/A*-style search instead of fixed-width-per-hop), or improving the verifier signal itself (the gold-rank ceiling from §4 was never re-measured against beam search specifically).
 
-## 15. State of the repo / housekeeping notes
+## 16. State of the repo / housekeeping notes
 
 - `patch_*.py` at the project root are one-off code-mutation scripts (string find/replace against `fags/failure_search.py` and `fags/verifier.py`) used during development to add features (certificate params, RBSC, RTC-lite, verifier descriptions). They already did their job — the resulting code is in `fags/`. They're historical, not part of the run pipeline.
 - Many `verifier_*.py` and `*_experiment.py` / `*_sweep.py` scripts at the root are one-off probes, not integrated into `main.py`; each hardcodes its own small experiment matrix.

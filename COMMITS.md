@@ -76,6 +76,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 34. Add beam search + Failure Pattern Graph experiment (`beam_search_fpg_experiment.py`, `results/beam_search_fpg_*`) — composes the existing `PatternAwareVerifier` (no new core code) with beam search across widths {3,5,8} x penalties {0.05-0.3}; finding: clean null (0 significant wins, 0 significant losses) - never hurts beam the way it hurt FAGS, but doesn't help either
 - [x] 35. Update `PROJECT_STATUS.md` with the beam+FPG null result
 
-## Day 14+ — as new work happens
+## Day 14 — 2026-06-27
+
+- [x] 36. Add `score_aggregation` (sum vs mean) and `diversity_penalty_weight` (soft per-parent penalty) to `fags/beam_search.py` — two genuinely different top-K ranking rules, vs §12's hard cap which only constrained the existing rule
+- [x] 37. Add beam search top-K ranking variants experiment (`beam_search_topk_variants_experiment.py`, `results/beam_search_topk_variants_*`) — widths {5,8} x diversity penalties {0,0.05,0.1,0.2} x aggregation {mean,sum} across all 3 graph sizes; finding: sum aggregation is a clean null (0/6), soft diversity penalty just replicates §12's hard-cap pattern (3 wins/2 losses, same Small/Medium-helps-Large-hurts split), combined washes out to 0/18 — fourth/fifth refinement attempt to fail to beat plain beam search
+- [x] 38. Update `PROJECT_STATUS.md` with the top-K ranking-rule variants finding
+
+## Day 15+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
