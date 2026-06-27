@@ -94,6 +94,12 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 - [x] 43. Add MCTS vs beam search experiment (`mcts_search_experiment.py`, `results/mcts_search_*`) — per-query budget-matched comparison across widths {2,3,5,8} x all 3 graph sizes, with best-first shown for reference; **finding: MCTS loses to beam search 10/12 (2 non-significant ties) but completely fixes best-first's collapse (10-15x better than best-first on Large at low budgets)** — confirms the exploration-vs-exploitation theory but still doesn't beat beam search
 - [x] 44. Update `PROJECT_STATUS.md` with the MCTS finding
 
-## Day 17+ — as new work happens
+## Day 17 — 2026-06-28
+
+- [x] 45. Fix MCTS safety-net scaling bug (`fags/mcts_search.py`) before testing larger node budgets — max_simulations was scaling UP with node_budget, backwards; could spin 128,000+ wasted simulations once budget exceeds a graph's reachable size. Replaced with a stale-count detector (bails once the reachable space stops growing, independent of budget size) plus a fixed backstop
+- [x] 46. Add MCTS-at-large-budgets experiment (`mcts_large_budget_experiment.py`, `results/mcts_large_budget_*`) — sweeps both algorithms up to 1280-node budgets on Medium/Large graphs; caught and corrected a measurement pitfall (beam was only swept to width=60/~186 nodes while MCTS reached ~372, which would have overstated the gap as +56% instead of the true +15.40%) by extending beam's sweep to matched cost before reporting; **finding: MCTS does catch up to and pass beam search, but only at ~5-10x larger budgets (200+ nodes) than anything compared in §16 (5-40 nodes)**
+- [x] 47. Update `PROJECT_STATUS.md` with the corrected MCTS-crossover finding — revises the "beam search undefeated" framing to "undefeated at small/moderate budgets; MCTS wins at large ones"
+
+## Day 18+ — as new work happens
 
 - [ ] (new rows added here as algorithms/experiments change)
