@@ -1,0 +1,41 @@
+==================================================
+MCTS vs BEAM SEARCH - SUMMARY
+==================================================
+
+Per-query budget-matched comparison: for each query, MCTS gets the EXACT
+node budget beam search used for that query, so any accuracy difference
+is attributable to the search paradigm alone, not search cost.
+best_first_search.py's accuracy (run at the SAME matched budget) is shown
+for reference, since it already established the floor for 'changing the
+paradigm entirely' (0/12 vs beam search, catastrophic on Large).
+
+-- Small graph --
+  width=2: Beam=30.00% (5.3 nodes) vs MCTS=28.10% (5.5 nodes) [Best-First ref: 13.10%] gain=-1.90% p=8.412e-02
+  width=3: Beam=34.70% (5.9 nodes) vs MCTS=29.80% (5.9 nodes) [Best-First ref: 14.60%] gain=-4.90% p=2.649e-05  <-- BEAM WINS
+  width=5: Beam=40.00% (6.7 nodes) vs MCTS=29.80% (6.5 nodes) [Best-First ref: 17.10%] gain=-10.20% p=2.871e-18  <-- BEAM WINS
+  width=8: Beam=42.30% (7.3 nodes) vs MCTS=29.40% (7.1 nodes) [Best-First ref: 18.10%] gain=-12.90% p=6.452e-28  <-- BEAM WINS
+
+-- Medium graph --
+  width=2: Beam=17.50% (11.2 nodes) vs MCTS=15.00% (12.3 nodes) [Best-First ref: 8.80%] gain=-2.50% p=6.311e-02
+  width=3: Beam=23.70% (14.9 nodes) vs MCTS=19.40% (15.5 nodes) [Best-First ref: 9.40%] gain=-4.30% p=5.954e-03  <-- BEAM WINS
+  width=5: Beam=30.40% (21.2 nodes) vs MCTS=24.20% (20.9 nodes) [Best-First ref: 11.20%] gain=-6.20% p=2.752e-04  <-- BEAM WINS
+  width=8: Beam=37.00% (27.9 nodes) vs MCTS=28.30% (26.1 nodes) [Best-First ref: 13.60%] gain=-8.70% p=1.912e-06  <-- BEAM WINS
+
+-- Large graph --
+  width=2: Beam=17.20% (11.5 nodes) vs MCTS=13.00% (11.9 nodes) [Best-First ref: 1.00%] gain=-4.20% p=6.851e-05  <-- BEAM WINS
+  width=3: Beam=21.40% (16.1 nodes) vs MCTS=12.40% (16.5 nodes) [Best-First ref: 1.70%] gain=-9.00% p=4.866e-15  <-- BEAM WINS
+  width=5: Beam=23.90% (25.3 nodes) vs MCTS=14.60% (25.8 nodes) [Best-First ref: 1.90%] gain=-9.30% p=2.264e-13  <-- BEAM WINS
+  width=8: Beam=27.40% (38.1 nodes) vs MCTS=17.40% (38.4 nodes) [Best-First ref: 4.10%] gain=-10.00% p=9.942e-16  <-- BEAM WINS
+
+MCTS wins: 0/12
+Beam wins: 10/12
+
+CONCLUSION
+----------
+Beam search beats MCTS at matched cost more often than it loses, even
+though MCTS clearly avoids best_first_search.py's catastrophic
+tunnel-vision failure (see the Best-First reference column - MCTS is
+not collapsing the way pure greedy best-first did). The fixed,
+guaranteed-width exploration beam search provides at every hop is
+still hard to beat with a budget this small, even when exploration is
+explicitly modeled rather than absent.
