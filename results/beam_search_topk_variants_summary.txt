@@ -1,0 +1,95 @@
+==================================================
+BEAM SEARCH TOP-K RANKING VARIANTS - SUMMARY
+==================================================
+
+Tests two different ranking rules against the established plain-beam
+baseline (mean aggregation, no diversity penalty), at the SAME beam
+width (cost-neutral): score_aggregation='sum' vs 'mean', and a soft
+diversity_penalty_weight vs the hard max_children_per_parent cap
+tested previously.
+
+SUM vs MEAN (diversity_penalty=0, isolating aggregation only)
+------------------------------------------------------------
+  Small w=5: 39.90% vs baseline 40.60% gain=-0.70% p=2.369e-01
+  Small w=8: 42.20% vs baseline 42.40% gain=-0.20% p=4.145e-01
+  Medium w=5: 28.20% vs baseline 29.40% gain=-1.20% p=3.576e-01
+  Medium w=8: 37.80% vs baseline 36.00% gain=+1.80% p=1.798e-01
+  Large w=5: 24.40% vs baseline 24.60% gain=-0.20% p=7.996e-01
+  Large w=8: 27.30% vs baseline 26.20% gain=+1.10% p=1.381e-01
+  Sum aggregation: 0 significant wins, 0 significant losses (of 6 size x width configs)
+
+SOFT DIVERSITY PENALTY (mean aggregation, varying weight)
+------------------------------------------------------------
+  Small w=5 penalty=0.05: 40.50% vs baseline 40.60% gain=-0.10% p=8.528e-01
+  Small w=5 penalty=0.1: 41.00% vs baseline 40.60% gain=+0.40% p=4.145e-01
+  Small w=5 penalty=0.2: 41.20% vs baseline 40.60% gain=+0.60% p=2.395e-01
+  Small w=8 penalty=0.05: 42.60% vs baseline 42.40% gain=+0.20% p=3.176e-01
+  Small w=8 penalty=0.1: 42.50% vs baseline 42.40% gain=+0.10% p=5.640e-01
+  Small w=8 penalty=0.2: 43.20% vs baseline 42.40% gain=+0.80% p=1.134e-02  <-- WINS
+  Medium w=5 penalty=0.05: 29.50% vs baseline 29.40% gain=+0.10% p=9.391e-01
+  Medium w=5 penalty=0.1: 30.30% vs baseline 29.40% gain=+0.90% p=5.084e-01
+  Medium w=5 penalty=0.2: 30.40% vs baseline 29.40% gain=+1.00% p=4.753e-01
+  Medium w=8 penalty=0.05: 39.40% vs baseline 36.00% gain=+3.40% p=2.063e-02  <-- WINS
+  Medium w=8 penalty=0.1: 38.80% vs baseline 36.00% gain=+2.80% p=4.655e-02  <-- WINS
+  Medium w=8 penalty=0.2: 37.80% vs baseline 36.00% gain=+1.80% p=2.100e-01
+  Large w=5 penalty=0.05: 23.40% vs baseline 24.60% gain=-1.20% p=1.276e-01
+  Large w=5 penalty=0.1: 22.90% vs baseline 24.60% gain=-1.70% p=3.214e-02  <-- LOSES
+  Large w=5 penalty=0.2: 20.80% vs baseline 24.60% gain=-3.80% p=2.002e-05  <-- LOSES
+  Large w=8 penalty=0.05: 27.50% vs baseline 26.20% gain=+1.30% p=1.015e-01
+  Large w=8 penalty=0.1: 26.70% vs baseline 26.20% gain=+0.50% p=5.416e-01
+  Large w=8 penalty=0.2: 25.50% vs baseline 26.20% gain=-0.70% p=4.633e-01
+  Soft diversity penalty: 3 significant wins, 2 significant losses (of 18 configs)
+
+SUM + SOFT DIVERSITY PENALTY COMBINED
+------------------------------------------------------------
+  Small w=5 penalty=0.05: 40.00% vs baseline 40.60% gain=-0.60% p=3.176e-01
+  Small w=5 penalty=0.1: 40.60% vs baseline 40.60% gain=+0.00% p=1.000e+00
+  Small w=5 penalty=0.2: 40.40% vs baseline 40.60% gain=-0.20% p=7.318e-01
+  Small w=8 penalty=0.05: 42.40% vs baseline 42.40% gain=+0.00% p=1.000e+00
+  Small w=8 penalty=0.1: 42.40% vs baseline 42.40% gain=+0.00% p=1.000e+00
+  Small w=8 penalty=0.2: 42.80% vs baseline 42.40% gain=+0.40% p=1.025e-01
+  Medium w=5 penalty=0.05: 31.60% vs baseline 29.40% gain=+2.20% p=9.155e-02
+  Medium w=5 penalty=0.1: 28.90% vs baseline 29.40% gain=-0.50% p=7.104e-01
+  Medium w=5 penalty=0.2: 28.30% vs baseline 29.40% gain=-1.10% p=4.164e-01
+  Medium w=8 penalty=0.05: 36.80% vs baseline 36.00% gain=+0.80% p=5.719e-01
+  Medium w=8 penalty=0.1: 37.60% vs baseline 36.00% gain=+1.60% p=2.484e-01
+  Medium w=8 penalty=0.2: 38.50% vs baseline 36.00% gain=+2.50% p=6.165e-02
+  Large w=5 penalty=0.05: 24.60% vs baseline 24.60% gain=+0.00% p=1.000e+00
+  Large w=5 penalty=0.1: 23.90% vs baseline 24.60% gain=-0.70% p=3.541e-01
+  Large w=5 penalty=0.2: 24.00% vs baseline 24.60% gain=-0.60% p=4.798e-01
+  Large w=8 penalty=0.05: 26.90% vs baseline 26.20% gain=+0.70% p=3.704e-01
+  Large w=8 penalty=0.1: 26.70% vs baseline 26.20% gain=+0.50% p=5.475e-01
+  Large w=8 penalty=0.2: 26.30% vs baseline 26.20% gain=+0.10% p=9.069e-01
+  Sum+diversity combined: 0 significant wins, 0 significant losses (of 18 configs)
+
+CONCLUSION
+----------
+The aggregate (3 wins / 2 losses across 42 configs) is misleading on its own -
+all 5 of those results come from ONE axis (the soft diversity penalty), and
+they replicate diverse_beam_search_experiment.py's already-known pattern
+rather than revealing anything new:
+  - Sum aggregation alone (the genuinely untested idea): 0/6 significant
+    results in either direction. A clean null - ranking by total
+    accumulated score instead of average doesn't measurably change
+    accuracy at this verifier's noise level.
+  - Soft diversity penalty (mean aggregation): 3 wins (Small/Medium,
+    mostly at width=8) and 2 losses (Large, at width=5) - the exact same
+    size-dependent split the hard max_children_per_parent cap produced.
+    A softer mechanism doesn't escape the same failure mode: diversity
+    helps where candidates are scarce (Small/Medium) and hurts where they
+    are plentiful (Large), regardless of whether it's enforced as a hard
+    quota or a continuous penalty.
+  - Sum + soft diversity combined: 0/18 significant results either way -
+    combining the two changes washes out the diversity penalty's effect
+    rather than compounding it.
+
+Net: changing the top-K ranking rule does NOT do what the "why not change
+the top-K method" question hoped for. Sum vs mean is indistinguishable from
+noise; diversity-based reranking (hard or soft) just re-confirms the
+existing Small/Medium-helps, Large-hurts split already found in
+diverse_beam_search_experiment.py. This is now the fourth and fifth
+independent refinement attempt (after diversity-capping and FPG
+composition) that fails to find a configuration that reliably beats plain
+beam search's simplest rule (mean aggregation, plain top-K, no diversity
+adjustment) - increasingly strong evidence that the simple version is at
+or near a local optimum for this verifier's signal.
