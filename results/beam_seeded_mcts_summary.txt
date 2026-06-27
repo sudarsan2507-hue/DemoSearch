@@ -1,0 +1,90 @@
+==================================================
+BEAM-SEEDED MCTS vs BEAM SEARCH vs PURE MCTS - SUMMARY
+==================================================
+
+Per-query budget-matched comparison: MCTS and the hybrid both get each
+query's EXACT node budget from beam search at a given width. Hybrid uses
+seed_depth=2, beam_width=5 for its beam-seeding phase.
+Tests whether beam-seeding lets MCTS's advantage show up at budgets well
+below the ~200-300 node crossover found for pure MCTS.
+
+-- Small graph --
+  width=2: Beam=30.00% (5.3 nodes) | MCTS=27.60% | Hybrid=22.00% (5.0 nodes)
+    vs Beam: gain=-8.00% p=2.73e-04 <-- BEAM WINS
+    vs MCTS: gain=-5.60% p=5.00e-03 <-- MCTS WINS
+  width=3: Beam=32.80% (6.0 nodes) | MCTS=31.20% | Hybrid=25.20% (5.7 nodes)
+    vs Beam: gain=-7.60% p=2.71e-04 <-- BEAM WINS
+    vs MCTS: gain=-6.00% p=1.17e-03 <-- MCTS WINS
+  width=5: Beam=41.00% (6.8 nodes) | MCTS=29.40% | Hybrid=29.20% (6.3 nodes)
+    vs Beam: gain=-11.80% p=7.35e-13 <-- BEAM WINS
+    vs MCTS: gain=-0.20% p=9.08e-01
+  width=8: Beam=42.40% (7.3 nodes) | MCTS=29.00% | Hybrid=29.20% (6.5 nodes)
+    vs Beam: gain=-13.20% p=1.37e-16 <-- BEAM WINS
+    vs MCTS: gain=+0.20% p=9.13e-01
+  width=15: Beam=42.60% (7.9 nodes) | MCTS=29.80% | Hybrid=29.60% (6.6 nodes)
+    vs Beam: gain=-13.00% p=2.45e-16 <-- BEAM WINS
+    vs MCTS: gain=-0.20% p=9.12e-01
+  width=25: Beam=42.80% (8.1 nodes) | MCTS=29.40% | Hybrid=29.40% (6.7 nodes)
+    vs Beam: gain=-13.40% p=2.48e-17 <-- BEAM WINS
+    vs MCTS: gain=+0.00% p=1.00e+00
+  width=40: Beam=43.20% (8.3 nodes) | MCTS=32.00% | Hybrid=27.60% (6.7 nodes)
+    vs Beam: gain=-15.60% p=3.75e-20 <-- BEAM WINS
+    vs MCTS: gain=-4.40% p=1.89e-02 <-- MCTS WINS
+
+-- Medium graph --
+  width=2: Beam=18.20% (11.1 nodes) | MCTS=14.20% | Hybrid=8.00% (11.9 nodes)
+    vs Beam: gain=-10.20% p=1.92e-06 <-- BEAM WINS
+    vs MCTS: gain=-6.20% p=8.47e-04 <-- MCTS WINS
+  width=3: Beam=21.40% (15.2 nodes) | MCTS=16.40% | Hybrid=12.40% (15.3 nodes)
+    vs Beam: gain=-9.00% p=1.90e-04 <-- BEAM WINS
+    vs MCTS: gain=-4.00% p=4.11e-02 <-- MCTS WINS
+  width=5: Beam=30.60% (21.0 nodes) | MCTS=24.60% | Hybrid=24.00% (20.1 nodes)
+    vs Beam: gain=-6.60% p=9.17e-03 <-- BEAM WINS
+    vs MCTS: gain=-0.60% p=7.99e-01
+  width=8: Beam=36.60% (28.1 nodes) | MCTS=31.20% | Hybrid=33.20% (25.7 nodes)
+    vs Beam: gain=-3.40% p=1.58e-01
+    vs MCTS: gain=+2.00% p=4.05e-01
+  width=15: Beam=49.40% (36.5 nodes) | MCTS=33.40% | Hybrid=38.80% (32.2 nodes)
+    vs Beam: gain=-10.60% p=5.50e-05 <-- BEAM WINS
+    vs MCTS: gain=+5.40% p=2.58e-02 <-- HYBRID BEATS MCTS
+  width=25: Beam=58.20% (41.9 nodes) | MCTS=40.40% | Hybrid=44.40% (35.7 nodes)
+    vs Beam: gain=-13.80% p=9.08e-08 <-- BEAM WINS
+    vs MCTS: gain=+4.00% p=7.94e-02
+  width=40: Beam=63.80% (45.2 nodes) | MCTS=40.60% | Hybrid=43.60% (38.6 nodes)
+    vs Beam: gain=-20.20% p=7.66e-16 <-- BEAM WINS
+    vs MCTS: gain=+3.00% p=2.16e-01
+
+-- Large graph --
+  width=2: Beam=16.20% (11.6 nodes) | MCTS=12.00% | Hybrid=4.60% (12.9 nodes)
+    vs Beam: gain=-11.60% p=7.74e-09 <-- BEAM WINS
+    vs MCTS: gain=-7.40% p=2.52e-06 <-- MCTS WINS
+  width=3: Beam=19.80% (16.3 nodes) | MCTS=12.80% | Hybrid=4.40% (16.3 nodes)
+    vs Beam: gain=-15.40% p=2.91e-13 <-- BEAM WINS
+    vs MCTS: gain=-8.40% p=5.60e-07 <-- MCTS WINS
+  width=5: Beam=23.60% (25.5 nodes) | MCTS=14.20% | Hybrid=13.80% (25.7 nodes)
+    vs Beam: gain=-9.80% p=5.02e-08 <-- BEAM WINS
+    vs MCTS: gain=-0.40% p=8.06e-01
+  width=8: Beam=26.20% (38.8 nodes) | MCTS=16.60% | Hybrid=22.00% (38.6 nodes)
+    vs Beam: gain=-4.20% p=5.30e-03 <-- BEAM WINS
+    vs MCTS: gain=+5.40% p=1.52e-03 <-- HYBRID BEATS MCTS
+  width=15: Beam=29.60% (67.6 nodes) | MCTS=21.80% | Hybrid=25.20% (64.4 nodes)
+    vs Beam: gain=-4.40% p=1.38e-02 <-- BEAM WINS
+    vs MCTS: gain=+3.40% p=7.15e-02
+  width=25: Beam=32.00% (102.7 nodes) | MCTS=25.40% | Hybrid=32.00% (93.4 nodes)
+    vs Beam: gain=+0.00% p=1.00e+00
+    vs MCTS: gain=+6.60% p=2.62e-03 <-- HYBRID BEATS MCTS
+  width=40: Beam=36.80% (142.2 nodes) | MCTS=29.40% | Hybrid=34.40% (127.5 nodes)
+    vs Beam: gain=-2.40% p=3.04e-01
+    vs MCTS: gain=+5.00% p=3.64e-02 <-- HYBRID BEATS MCTS
+
+Hybrid beats Beam: 0/21 | Beam beats Hybrid: 18/21
+Hybrid beats MCTS: 4/21 | MCTS beats Hybrid: 7/21
+
+CONCLUSION
+----------
+The hybrid does not beat beam search at these budgets either. Compare
+against the 'vs MCTS' rows: if the hybrid is statistically indistinguishable
+from pure MCTS, beam-seeding didn't change MCTS's fundamental budget
+requirement, just gave it a (possibly redundant) head start that gets
+overtaken by the same dynamics that made pure MCTS need ~200+ nodes in
+the first place.
