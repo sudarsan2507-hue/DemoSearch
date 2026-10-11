@@ -1,0 +1,246 @@
+FAILURE INFORMATIVENESS SWEEP (300 trees/cell, H=8, b=3); success @ 100 expansions (%)
+
+d'=0.5 rho=0.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0             2.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1             1.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2             1.0          100.0          100.0           98.7           98.7          100.0          100.0           88.3           88.3           94.3
+  3             2.7           83.3           83.3           67.7           67.7           76.7           76.7           21.3           21.3           46.3
+  4             0.7           48.0           48.0           38.7           38.7           47.7           47.7            6.0            6.0           22.3
+  5             2.7           30.0           30.0           26.3           26.3           28.0           28.0            1.7            1.7           12.7
+
+d'=0.5 rho=0.5
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0             2.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1             1.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2             1.0          100.0          100.0           98.7          100.0          100.0          100.0           88.3          100.0           94.3
+  3             2.7           83.3          100.0           67.7          100.0           76.7          100.0           21.3           99.3           46.3
+  4             0.7           48.0          100.0           38.7          100.0           47.7          100.0            6.0           64.3           22.3
+  5             2.7           30.0          100.0           26.3          100.0           28.0          100.0            1.7           24.3           12.7
+
+d'=0.5 rho=1.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0             2.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1             1.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2             1.0          100.0          100.0           98.7          100.0          100.0          100.0           88.3          100.0           94.3
+  3             2.7           83.3          100.0           67.7          100.0           76.7          100.0           21.3          100.0           46.3
+  4             0.7           48.0          100.0           38.7          100.0           47.7          100.0            6.0           86.0           22.3
+  5             2.7           30.0          100.0           26.3          100.0           28.0          100.0            1.7           36.0           12.7
+
+d'=1.0 rho=0.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            15.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            10.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            10.3          100.0          100.0           99.7           99.7          100.0          100.0           99.0           99.0          100.0
+  3             8.3           92.3           92.3           84.0           84.0           95.0           95.0           69.7           69.7           78.3
+  4             9.3           58.7           58.7           63.3           63.3           70.3           70.3           42.7           42.7           49.0
+  5             9.0           47.7           47.7           50.0           50.0           56.0           56.0           33.7           33.7           37.3
+
+d'=1.0 rho=0.5
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            15.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            10.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            10.3          100.0          100.0           99.7          100.0          100.0          100.0           99.0          100.0          100.0
+  3             8.3           92.3          100.0           84.0          100.0           95.0          100.0           69.7          100.0           78.3
+  4             9.3           58.7          100.0           63.3          100.0           70.3          100.0           42.7           99.0           49.0
+  5             9.0           47.7          100.0           50.0          100.0           56.0          100.0           33.7           91.0           37.3
+
+d'=1.0 rho=1.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            15.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            10.3          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            10.3          100.0          100.0           99.7          100.0          100.0          100.0           99.0          100.0          100.0
+  3             8.3           92.3          100.0           84.0          100.0           95.0          100.0           69.7          100.0           78.3
+  4             9.3           58.7          100.0           63.3          100.0           70.3          100.0           42.7          100.0           49.0
+  5             9.0           47.7          100.0           50.0          100.0           56.0          100.0           33.7           99.7           37.3
+
+d'=2.0 rho=0.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            68.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            67.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            64.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  3            70.0           99.7           99.7           98.3           98.3          100.0          100.0          100.0          100.0           98.7
+  4            64.0           90.0           90.0           97.0           97.0           99.0           99.0           99.3           99.3           94.7
+  5            66.7           85.0           85.0           87.7           87.7           94.0           94.0           98.3           98.3           89.7
+
+d'=2.0 rho=0.5
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            68.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            67.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            64.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  3            70.0           99.7          100.0           98.3          100.0          100.0          100.0          100.0          100.0           98.7
+  4            64.0           90.0          100.0           97.0          100.0           99.0          100.0           99.3          100.0           94.7
+  5            66.7           85.0          100.0           87.7          100.0           94.0          100.0           98.3          100.0           89.7
+
+d'=2.0 rho=1.0
+  K        Restarts            DFS       DFS+diag     FAGS-style FAGS-style+dia BestFirst-mean BestFirst-mean      Posterior Posterior+diag Posterior-loca
+  0            68.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  1            67.7          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  2            64.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0          100.0
+  3            70.0           99.7          100.0           98.3          100.0          100.0          100.0          100.0          100.0           98.7
+  4            64.0           90.0          100.0           97.0          100.0           99.0          100.0           99.3          100.0           94.7
+  5            66.7           85.0          100.0           87.7          100.0           94.0          100.0           98.3          100.0           89.7
+
+SIGNIFICANT TESTS (Holm p<0.05)
+  d'=0.5 rho=0.0 K=0  FAGS-style - Restarts                    diff= +98.0pp [+96.3,+99.7]
+  d'=0.5 rho=0.0 K=1  FAGS-style - Restarts                    diff= +98.7pp [+97.3,+99.7]
+  d'=0.5 rho=0.0 K=2  Posterior - Posterior-localblame         diff=  -6.0pp [-9.0,-3.7]
+  d'=0.5 rho=0.0 K=2  FAGS-style - Restarts                    diff= +97.7pp [+95.7,+99.3]
+  d'=0.5 rho=0.0 K=2  BestFirst-mean - Posterior               diff= +11.7pp [+7.7,+15.7]
+  d'=0.5 rho=0.0 K=2  BestFirst-mean - Beam-8 (same cost)      diff= +11.0pp [+6.0,+14.7]
+  d'=0.5 rho=0.0 K=3  Posterior - Posterior-localblame         diff= -25.0pp [-29.7,-19.7]
+  d'=0.5 rho=0.0 K=3  FAGS-style - Restarts                    diff= +65.0pp [+60.0,+70.3]
+  d'=0.5 rho=0.0 K=3  BestFirst-mean - Posterior               diff= +55.3pp [+50.0,+61.3]
+  d'=0.5 rho=0.0 K=4  Posterior - Posterior-localblame         diff= -16.3pp [-20.7,-11.3]
+  d'=0.5 rho=0.0 K=4  FAGS-style - Restarts                    diff= +38.0pp [+32.7,+43.0]
+  d'=0.5 rho=0.0 K=4  BestFirst-mean - Posterior               diff= +41.7pp [+36.3,+46.3]
+  d'=0.5 rho=0.0 K=5  Posterior - Posterior-localblame         diff= -11.0pp [-14.7,-7.3]
+  d'=0.5 rho=0.0 K=5  FAGS-style - Restarts                    diff= +23.7pp [+18.7,+29.3]
+  d'=0.5 rho=0.0 K=5  BestFirst-mean - Posterior               diff= +26.3pp [+21.0,+32.0]
+  d'=0.5 rho=0.5 K=0  FAGS-style - Restarts                    diff= +98.0pp [+96.3,+99.7]
+  d'=0.5 rho=0.5 K=1  FAGS-style - Restarts                    diff= +98.7pp [+97.3,+99.7]
+  d'=0.5 rho=0.5 K=2  Posterior+diag - Posterior               diff= +11.7pp [+7.7,+15.7]
+  d'=0.5 rho=0.5 K=2  Posterior - Posterior-localblame         diff=  -6.0pp [-9.0,-3.7]
+  d'=0.5 rho=0.5 K=2  FAGS-style - Restarts                    diff= +97.7pp [+95.7,+99.3]
+  d'=0.5 rho=0.5 K=2  BestFirst-mean - Posterior               diff= +11.7pp [+7.7,+15.7]
+  d'=0.5 rho=0.5 K=3  DFS+diag - DFS                           diff= +16.7pp [+12.7,+20.7]
+  d'=0.5 rho=0.5 K=3  FAGS-style+diag - FAGS-style             diff= +32.3pp [+27.0,+37.0]
+  d'=0.5 rho=0.5 K=3  BestFirst-mean+diag - BestFirst-mean     diff= +23.3pp [+18.7,+28.0]
+  d'=0.5 rho=0.5 K=3  Posterior+diag - Posterior               diff= +78.0pp [+72.7,+81.7]
+  d'=0.5 rho=0.5 K=3  Posterior - Posterior-localblame         diff= -25.0pp [-29.7,-19.7]
+  d'=0.5 rho=0.5 K=3  FAGS-style - Restarts                    diff= +65.0pp [+60.0,+70.3]
+  d'=0.5 rho=0.5 K=3  BestFirst-mean - Posterior               diff= +55.3pp [+50.0,+61.3]
+  d'=0.5 rho=0.5 K=4  DFS+diag - DFS                           diff= +52.0pp [+46.7,+57.7]
+  d'=0.5 rho=0.5 K=4  FAGS-style+diag - FAGS-style             diff= +61.3pp [+56.3,+66.7]
+  d'=0.5 rho=0.5 K=4  BestFirst-mean+diag - BestFirst-mean     diff= +52.3pp [+47.3,+58.3]
+  d'=0.5 rho=0.5 K=4  Posterior+diag - Posterior               diff= +58.3pp [+52.3,+63.3]
+  d'=0.5 rho=0.5 K=4  Posterior - Posterior-localblame         diff= -16.3pp [-20.7,-11.3]
+  d'=0.5 rho=0.5 K=4  FAGS-style - Restarts                    diff= +38.0pp [+32.7,+43.0]
+  d'=0.5 rho=0.5 K=4  BestFirst-mean - Posterior               diff= +41.7pp [+36.3,+46.3]
+  d'=0.5 rho=0.5 K=5  DFS+diag - DFS                           diff= +70.0pp [+64.3,+75.0]
+  d'=0.5 rho=0.5 K=5  FAGS-style+diag - FAGS-style             diff= +73.7pp [+68.3,+78.3]
+  d'=0.5 rho=0.5 K=5  BestFirst-mean+diag - BestFirst-mean     diff= +72.0pp [+66.0,+77.3]
+  d'=0.5 rho=0.5 K=5  Posterior+diag - Posterior               diff= +22.7pp [+18.0,+27.3]
+  d'=0.5 rho=0.5 K=5  Posterior - Posterior-localblame         diff= -11.0pp [-14.7,-7.3]
+  d'=0.5 rho=0.5 K=5  FAGS-style - Restarts                    diff= +23.7pp [+18.7,+29.3]
+  d'=0.5 rho=0.5 K=5  BestFirst-mean - Posterior               diff= +26.3pp [+21.0,+32.0]
+  d'=0.5 rho=1.0 K=0  FAGS-style - Restarts                    diff= +98.0pp [+96.3,+99.7]
+  d'=0.5 rho=1.0 K=1  FAGS-style - Restarts                    diff= +98.7pp [+97.3,+99.7]
+  d'=0.5 rho=1.0 K=2  Posterior+diag - Posterior               diff= +11.7pp [+7.7,+15.7]
+  d'=0.5 rho=1.0 K=2  Posterior - Posterior-localblame         diff=  -6.0pp [-9.0,-3.7]
+  d'=0.5 rho=1.0 K=2  FAGS-style - Restarts                    diff= +97.7pp [+95.7,+99.3]
+  d'=0.5 rho=1.0 K=2  BestFirst-mean - Posterior               diff= +11.7pp [+7.7,+15.7]
+  d'=0.5 rho=1.0 K=3  DFS+diag - DFS                           diff= +16.7pp [+12.7,+20.7]
+  d'=0.5 rho=1.0 K=3  FAGS-style+diag - FAGS-style             diff= +32.3pp [+27.0,+37.0]
+  d'=0.5 rho=1.0 K=3  BestFirst-mean+diag - BestFirst-mean     diff= +23.3pp [+18.7,+28.0]
+  d'=0.5 rho=1.0 K=3  Posterior+diag - Posterior               diff= +78.7pp [+73.7,+82.7]
+  d'=0.5 rho=1.0 K=3  Posterior - Posterior-localblame         diff= -25.0pp [-29.7,-19.7]
+  d'=0.5 rho=1.0 K=3  FAGS-style - Restarts                    diff= +65.0pp [+60.0,+70.3]
+  d'=0.5 rho=1.0 K=3  BestFirst-mean - Posterior               diff= +55.3pp [+50.0,+61.3]
+  d'=0.5 rho=1.0 K=4  DFS+diag - DFS                           diff= +52.0pp [+46.7,+57.7]
+  d'=0.5 rho=1.0 K=4  FAGS-style+diag - FAGS-style             diff= +61.3pp [+56.3,+66.7]
+  d'=0.5 rho=1.0 K=4  BestFirst-mean+diag - BestFirst-mean     diff= +52.3pp [+47.3,+58.3]
+  d'=0.5 rho=1.0 K=4  Posterior+diag - Posterior               diff= +80.0pp [+75.3,+83.7]
+  d'=0.5 rho=1.0 K=4  Posterior - Posterior-localblame         diff= -16.3pp [-20.7,-11.3]
+  d'=0.5 rho=1.0 K=4  FAGS-style - Restarts                    diff= +38.0pp [+32.7,+43.0]
+  d'=0.5 rho=1.0 K=4  BestFirst-mean - Posterior               diff= +41.7pp [+36.3,+46.3]
+  d'=0.5 rho=1.0 K=5  DFS+diag - DFS                           diff= +70.0pp [+64.3,+75.0]
+  d'=0.5 rho=1.0 K=5  FAGS-style+diag - FAGS-style             diff= +73.7pp [+68.3,+78.3]
+  d'=0.5 rho=1.0 K=5  BestFirst-mean+diag - BestFirst-mean     diff= +72.0pp [+66.0,+77.3]
+  d'=0.5 rho=1.0 K=5  Posterior+diag - Posterior               diff= +34.3pp [+29.0,+39.3]
+  d'=0.5 rho=1.0 K=5  Posterior - Posterior-localblame         diff= -11.0pp [-14.7,-7.3]
+  d'=0.5 rho=1.0 K=5  FAGS-style - Restarts                    diff= +23.7pp [+18.7,+29.3]
+  d'=0.5 rho=1.0 K=5  BestFirst-mean - Posterior               diff= +26.3pp [+21.0,+32.0]
+  d'=1.0 rho=0.0 K=0  FAGS-style - Restarts                    diff= +85.0pp [+80.7,+88.7]
+  d'=1.0 rho=0.0 K=1  FAGS-style - Restarts                    diff= +89.7pp [+86.0,+92.7]
+  d'=1.0 rho=0.0 K=1  BestFirst-mean - Beam-3 (same cost)      diff=  +9.0pp [+4.7,+13.0]
+  d'=1.0 rho=0.0 K=2  FAGS-style - Restarts                    diff= +89.3pp [+85.7,+92.7]
+  d'=1.0 rho=0.0 K=2  BestFirst-mean - Beam-8 (same cost)      diff=  +8.7pp [+5.0,+12.0]
+  d'=1.0 rho=0.0 K=3  FAGS-style - Restarts                    diff= +75.7pp [+70.7,+80.7]
+  d'=1.0 rho=0.0 K=3  FAGS-style - BestFirst-mean              diff= -11.0pp [-15.3,-7.0]
+  d'=1.0 rho=0.0 K=3  BestFirst-mean - Posterior               diff= +25.3pp [+20.3,+30.3]
+  d'=1.0 rho=0.0 K=4  FAGS-style - Restarts                    diff= +54.0pp [+48.0,+60.0]
+  d'=1.0 rho=0.0 K=4  BestFirst-mean - Posterior               diff= +27.7pp [+22.3,+32.7]
+  d'=1.0 rho=0.0 K=5  FAGS-style - Restarts                    diff= +41.0pp [+35.3,+46.7]
+  d'=1.0 rho=0.0 K=5  BestFirst-mean - Posterior               diff= +22.3pp [+17.3,+28.0]
+  d'=1.0 rho=0.5 K=0  FAGS-style - Restarts                    diff= +85.0pp [+80.7,+88.7]
+  d'=1.0 rho=0.5 K=1  FAGS-style - Restarts                    diff= +89.7pp [+86.0,+92.7]
+  d'=1.0 rho=0.5 K=2  FAGS-style - Restarts                    diff= +89.3pp [+85.7,+92.7]
+  d'=1.0 rho=0.5 K=3  DFS+diag - DFS                           diff=  +7.7pp [+5.0,+10.7]
+  d'=1.0 rho=0.5 K=3  FAGS-style+diag - FAGS-style             diff= +16.0pp [+11.7,+20.7]
+  d'=1.0 rho=0.5 K=3  BestFirst-mean+diag - BestFirst-mean     diff=  +5.0pp [+3.0,+7.3]
+  d'=1.0 rho=0.5 K=3  Posterior+diag - Posterior               diff= +30.3pp [+25.7,+35.3]
+  d'=1.0 rho=0.5 K=3  FAGS-style - Restarts                    diff= +75.7pp [+70.7,+80.7]
+  d'=1.0 rho=0.5 K=3  FAGS-style - BestFirst-mean              diff= -11.0pp [-15.3,-7.0]
+  d'=1.0 rho=0.5 K=3  BestFirst-mean - Posterior               diff= +25.3pp [+20.3,+30.3]
+  d'=1.0 rho=0.5 K=4  DFS+diag - DFS                           diff= +41.3pp [+35.7,+46.3]
+  d'=1.0 rho=0.5 K=4  FAGS-style+diag - FAGS-style             diff= +36.7pp [+31.7,+41.7]
+  d'=1.0 rho=0.5 K=4  BestFirst-mean+diag - BestFirst-mean     diff= +29.7pp [+24.7,+34.7]
+  d'=1.0 rho=0.5 K=4  Posterior+diag - Posterior               diff= +56.3pp [+50.7,+61.7]
+  d'=1.0 rho=0.5 K=4  FAGS-style - Restarts                    diff= +54.0pp [+48.0,+60.0]
+  d'=1.0 rho=0.5 K=4  BestFirst-mean - Posterior               diff= +27.7pp [+22.3,+32.7]
+  d'=1.0 rho=0.5 K=5  DFS+diag - DFS                           diff= +52.3pp [+47.0,+58.3]
+  d'=1.0 rho=0.5 K=5  FAGS-style+diag - FAGS-style             diff= +50.0pp [+44.3,+55.7]
+  d'=1.0 rho=0.5 K=5  BestFirst-mean+diag - BestFirst-mean     diff= +44.0pp [+38.3,+49.0]
+  d'=1.0 rho=0.5 K=5  Posterior+diag - Posterior               diff= +57.3pp [+52.0,+63.0]
+  d'=1.0 rho=0.5 K=5  FAGS-style - Restarts                    diff= +41.0pp [+35.3,+46.7]
+  d'=1.0 rho=0.5 K=5  BestFirst-mean - Posterior               diff= +22.3pp [+17.3,+28.0]
+  d'=1.0 rho=1.0 K=0  FAGS-style - Restarts                    diff= +85.0pp [+80.7,+88.7]
+  d'=1.0 rho=1.0 K=1  FAGS-style - Restarts                    diff= +89.7pp [+86.0,+92.7]
+  d'=1.0 rho=1.0 K=2  FAGS-style - Restarts                    diff= +89.3pp [+85.7,+92.7]
+  d'=1.0 rho=1.0 K=3  DFS+diag - DFS                           diff=  +7.7pp [+5.0,+10.7]
+  d'=1.0 rho=1.0 K=3  FAGS-style+diag - FAGS-style             diff= +16.0pp [+11.7,+20.7]
+  d'=1.0 rho=1.0 K=3  BestFirst-mean+diag - BestFirst-mean     diff=  +5.0pp [+3.0,+7.3]
+  d'=1.0 rho=1.0 K=3  Posterior+diag - Posterior               diff= +30.3pp [+25.7,+35.3]
+  d'=1.0 rho=1.0 K=3  FAGS-style - Restarts                    diff= +75.7pp [+70.7,+80.7]
+  d'=1.0 rho=1.0 K=3  FAGS-style - BestFirst-mean              diff= -11.0pp [-15.3,-7.0]
+  d'=1.0 rho=1.0 K=3  BestFirst-mean - Posterior               diff= +25.3pp [+20.3,+30.3]
+  d'=1.0 rho=1.0 K=4  DFS+diag - DFS                           diff= +41.3pp [+35.7,+46.3]
+  d'=1.0 rho=1.0 K=4  FAGS-style+diag - FAGS-style             diff= +36.7pp [+31.7,+41.7]
+  d'=1.0 rho=1.0 K=4  BestFirst-mean+diag - BestFirst-mean     diff= +29.7pp [+24.7,+34.7]
+  d'=1.0 rho=1.0 K=4  Posterior+diag - Posterior               diff= +57.3pp [+52.0,+62.7]
+  d'=1.0 rho=1.0 K=4  FAGS-style - Restarts                    diff= +54.0pp [+48.0,+60.0]
+  d'=1.0 rho=1.0 K=4  BestFirst-mean - Posterior               diff= +27.7pp [+22.3,+32.7]
+  d'=1.0 rho=1.0 K=5  DFS+diag - DFS                           diff= +52.3pp [+47.0,+58.3]
+  d'=1.0 rho=1.0 K=5  FAGS-style+diag - FAGS-style             diff= +50.0pp [+44.3,+55.7]
+  d'=1.0 rho=1.0 K=5  BestFirst-mean+diag - BestFirst-mean     diff= +44.0pp [+38.3,+49.0]
+  d'=1.0 rho=1.0 K=5  Posterior+diag - Posterior               diff= +66.0pp [+60.7,+71.3]
+  d'=1.0 rho=1.0 K=5  FAGS-style - Restarts                    diff= +41.0pp [+35.3,+46.7]
+  d'=1.0 rho=1.0 K=5  BestFirst-mean - Posterior               diff= +22.3pp [+17.3,+28.0]
+  d'=2.0 rho=0.0 K=0  FAGS-style - Restarts                    diff= +31.3pp [+26.0,+36.3]
+  d'=2.0 rho=0.0 K=0  BestFirst-mean - Beam-1 (same cost)      diff= -16.0pp [-19.7,-12.3]
+  d'=2.0 rho=0.0 K=1  FAGS-style - Restarts                    diff= +32.3pp [+27.0,+37.3]
+  d'=2.0 rho=0.0 K=1  BestFirst-mean - Beam-1 (same cost)      diff= -13.7pp [-17.7,-10.0]
+  d'=2.0 rho=0.0 K=2  FAGS-style - Restarts                    diff= +36.0pp [+30.7,+41.3]
+  d'=2.0 rho=0.0 K=2  BestFirst-mean - Beam-1 (same cost)      diff= -14.0pp [-18.3,-10.0]
+  d'=2.0 rho=0.0 K=3  FAGS-style - Restarts                    diff= +28.3pp [+23.3,+33.3]
+  d'=2.0 rho=0.0 K=3  BestFirst-mean - Beam-1 (same cost)      diff= -13.7pp [-17.3,-10.0]
+  d'=2.0 rho=0.0 K=4  FAGS-style - Restarts                    diff= +33.0pp [+28.0,+38.3]
+  d'=2.0 rho=0.0 K=4  BestFirst-mean - Beam-1 (same cost)      diff= -12.7pp [-17.0,-9.3]
+  d'=2.0 rho=0.0 K=5  Posterior - Posterior-localblame         diff=  +8.7pp [+5.7,+12.3]
+  d'=2.0 rho=0.0 K=5  FAGS-style - Restarts                    diff= +21.0pp [+15.7,+26.3]
+  d'=2.0 rho=0.0 K=5  BestFirst-mean - Beam-1 (same cost)      diff= -17.0pp [-21.0,-13.0]
+  d'=2.0 rho=0.5 K=0  FAGS-style - Restarts                    diff= +31.3pp [+26.0,+36.3]
+  d'=2.0 rho=0.5 K=1  FAGS-style - Restarts                    diff= +32.3pp [+27.0,+37.3]
+  d'=2.0 rho=0.5 K=2  FAGS-style - Restarts                    diff= +36.0pp [+30.7,+41.3]
+  d'=2.0 rho=0.5 K=3  FAGS-style - Restarts                    diff= +28.3pp [+23.3,+33.3]
+  d'=2.0 rho=0.5 K=4  DFS+diag - DFS                           diff= +10.0pp [+6.7,+13.7]
+  d'=2.0 rho=0.5 K=4  FAGS-style - Restarts                    diff= +33.0pp [+28.0,+38.3]
+  d'=2.0 rho=0.5 K=5  DFS+diag - DFS                           diff= +15.0pp [+11.0,+19.7]
+  d'=2.0 rho=0.5 K=5  FAGS-style+diag - FAGS-style             diff= +12.3pp [+8.3,+15.7]
+  d'=2.0 rho=0.5 K=5  BestFirst-mean+diag - BestFirst-mean     diff=  +6.0pp [+3.3,+9.0]
+  d'=2.0 rho=0.5 K=5  Posterior - Posterior-localblame         diff=  +8.7pp [+5.7,+12.3]
+  d'=2.0 rho=0.5 K=5  FAGS-style - Restarts                    diff= +21.0pp [+15.7,+26.3]
+  d'=2.0 rho=1.0 K=0  FAGS-style - Restarts                    diff= +31.3pp [+26.0,+36.3]
+  d'=2.0 rho=1.0 K=1  FAGS-style - Restarts                    diff= +32.3pp [+27.0,+37.3]
+  d'=2.0 rho=1.0 K=2  FAGS-style - Restarts                    diff= +36.0pp [+30.7,+41.3]
+  d'=2.0 rho=1.0 K=3  FAGS-style - Restarts                    diff= +28.3pp [+23.3,+33.3]
+  d'=2.0 rho=1.0 K=4  DFS+diag - DFS                           diff= +10.0pp [+6.7,+13.7]
+  d'=2.0 rho=1.0 K=4  FAGS-style - Restarts                    diff= +33.0pp [+28.0,+38.3]
+  d'=2.0 rho=1.0 K=5  DFS+diag - DFS                           diff= +15.0pp [+11.0,+19.7]
+  d'=2.0 rho=1.0 K=5  FAGS-style+diag - FAGS-style             diff= +12.3pp [+8.3,+15.7]
+  d'=2.0 rho=1.0 K=5  BestFirst-mean+diag - BestFirst-mean     diff=  +6.0pp [+3.3,+9.0]
+  d'=2.0 rho=1.0 K=5  Posterior - Posterior-localblame         diff=  +8.7pp [+5.7,+12.3]
+  d'=2.0 rho=1.0 K=5  FAGS-style - Restarts                    diff= +21.0pp [+15.7,+26.3]
+
+540 tests total; runtime 1244s
