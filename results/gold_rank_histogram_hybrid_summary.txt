@@ -1,0 +1,31 @@
+==================================================
+GOLD RELATION RANK DIAGNOSTIC - HYBRIDVERIFIER vs RULE-BASED
+==================================================
+
+Re-measures the SS4 gold-rank ceiling (rule-based Verifier: ~57-60%
+rank-1) using HybridVerifier (rule + BAAI/bge-small-en-v1.5 embeddings,
+alpha=0.5), to quantify how much the embedding signal raises the
+discriminative ceiling every search algorithm in this project inherits.
+
+-- Small graph --
+  Rule-based:     Rank1=59.76%  Rank2=18.59%  Rank3=9.41%  Rank4+=12.24%
+  HybridVerifier: Rank1=33.65%  Rank2=14.60%  Rank3=10.52%  Rank4+=41.23%
+  Rank-1 change: -26.11 percentage points
+
+-- Medium graph --
+  Rule-based:     Rank1=57.38%  Rank2=19.27%  Rank3=9.51%  Rank4+=13.84%
+  HybridVerifier: Rank1=29.67%  Rank2=14.13%  Rank3=11.33%  Rank4+=44.87%
+  Rank-1 change: -27.71 percentage points
+
+-- Large graph --
+  Rule-based:     Rank1=60.19%  Rank2=17.87%  Rank3=9.06%  Rank4+=12.88%
+  HybridVerifier: Rank1=32.83%  Rank2=13.71%  Rank3=10.43%  Rank4+=43.03%
+  Rank-1 change: -27.36 percentage points
+
+CONCLUSION
+----------
+HybridVerifier does NOT raise the rank-1 ceiling (avg -27.06
+points) despite producing higher downstream search accuracy in SS7/SS11.
+This would mean its benefit comes entirely from elsewhere (e.g. a cleaner
+score gap reducing noise-driven misranking at the search level) rather
+than from genuinely ranking gold relations higher.

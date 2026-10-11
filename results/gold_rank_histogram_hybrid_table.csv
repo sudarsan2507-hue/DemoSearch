@@ -1,0 +1,7 @@
+Graph Size,Verifier,Rank 1 %,Rank 2 %,Rank 3 %,Rank 4+ %,Total Decision Points
+Small,HybridVerifier,33.65,14.60,10.52,41.23,1664
+Small,Rule-based (reference),59.76,18.59,9.41,12.24,
+Medium,HybridVerifier,29.67,14.13,11.33,44.87,1783
+Medium,Rule-based (reference),57.38,19.27,9.51,13.84,
+Large,HybridVerifier,32.83,13.71,10.43,43.03,1736
+Large,Rule-based (reference),60.19,17.87,9.06,12.88,
