@@ -10,7 +10,20 @@ The testbed is a synthetic multi-hop knowledge-graph QA task: each graph has gol
 - **FAGS (Failure-Aware Graph Search)** — same greedy search, but backtracks locally on a dead end/contradiction and can resume from the best previously-rejected branch in a failure memory
 - A large set of follow-up experiments comparing FAGS against alternative search paradigms: beam search, diverse/diversity-aware beam pruning, best-first search, and MCTS (including a beam-seeded MCTS hybrid), plus budget-matched controls and embedding-model ablations (BGE vs MiniLM)
 
-See `PROJECT_STATUS.md` for the full experiment log and results write-up.
+See `PROJECT_STATUS.md` for the full experiment log and results write-up. **Start at §21–25**: results before §21 were produced under a generator bug that made most gold paths unreachable and are kept only as a historical record.
+
+### v2 experiments (fixed generator, cluster-level statistics)
+
+```bash
+python revalidation_experiment.py         # §21 core claims re-tested on the fixed generator
+python error_decomposition_experiment.py  # §22 commit protocol + search/verifier/hop-blindness decomposition
+python failure_informativeness_experiment.py  # §23 when failure memory can help (delay x diagnosis x verifier)
+python metaqa_experiment.py               # §24 MetaQA with BGE verifiers (needs data/metaqa/, see §24)
+python noisy_diagnosis_experiment.py      # §27 failure diagnoses that are sometimes wrong
+python sudoku_experiment.py               # §28 real task: Sudoku with conflict-set diagnosis (needs data/sudoku/)
+```
+
+Outputs go to `results/v2/`.
 
 ## Tech Stack
 

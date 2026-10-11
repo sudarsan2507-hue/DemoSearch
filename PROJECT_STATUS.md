@@ -2,6 +2,8 @@
 
 _Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and `results/*.png`. Initial pass 2026-06-22; updated 2026-06-23 with the budget-matched control experiment (§6), the regenerated canonical results (§4 numbers, §20), the HybridVerifier follow-up control (§7), the learned failure-pattern-graph experiment (§8), the diversity-aware memory experiment (§9), the headline beam search result (§10), beam search's own verifier-quality stress test (§11), and the diverse-beam-pruning experiment (§12); updated again 2026-06-27 with the beam search + Failure Pattern Graph composition (§13), the top-K ranking-rule variants (§14), and global best-first search as an alternative pruning paradigm (§15); updated again 2026-06-28 with MCTS as a second alternative paradigm (§16), MCTS's crossover at large budgets (§17), and a beam-seeded MCTS hybrid built to close the small-budget gap (§18)._
 
+> **⚠ 2026-10-11 correction — read §21–25 first.** Every number in §4–18 was produced by a generator bug that made every 3+ hop gold path contradict itself (the gold path was unreachable in 76–98% of queries), under a protocol that hands the search a perfect goal test, with inconsistent cost accounting across algorithms and per-query tests on pseudo-replicated queries. §21 re-validates the core claims on the fixed generator (several reverse), §22 replaces the goal-test protocol with commit-to-an-answer and decomposes the error, §23 tests *when* learning from failure can help at all (with a theoretical result), and §24 checks external validity on MetaQA. §4–18 are kept unchanged below as the historical record; reproduce them with `generate_dataset(..., legacy_evidence_bug=True)`.
+
 ## 1. What this project is
 
 A research codebase testing one hypothesis:
@@ -302,3 +304,150 @@ Beam width=3 on Medium gets 2.5× FAGS's accuracy at **half** FAGS's search cost
 - `scratch/` holds ad hoc audit/diagnostic scripts (`post_revival_audit.py`, `rank_diagnostic.py`, `recovery_audit.py`, `verifier_sweep.py` duplicate).
 - The repo is now under git (see `COMMITS.md` for the commit-by-commit breakdown), pushed to `https://github.com/sudarsan2507-hue/DemoSearch.git`.
 - All numbers in this doc as of 2026-06-23 reflect a full regeneration of `main.py`, `shield_experiment.py`, `stabilization_sweep.py`, `verifier_sweep.py`, and `scratch/rank_diagnostic.py` under the fixed deterministic generator (§6). `verifier_sweep.py` also had a latent, unrelated bug fixed (`ControlledVerifier.score()` wasn't extracting `query.keywords`, so it crashed against the current `fags/verifier.py`).
+
+## 21. Re-validation on the fixed generator (`revalidation_experiment.py`, `results/v2/revalidation_*`)
+
+**The bug.** `_create_gold_paths` wrote evidence `path_{start} = step_j` on every intermediate gold node — one key, a different value per step — so walking any 3+ hop gold path tripped the contradiction check that baseline, FAGS, beam, best-first and MCTS all enforce. By hop count: 2 hops 9% blocked, 3/4/5 hops **100%** blocked. A verifier that picks the exact gold edge every time scored 2.5% / 11.5% / 24.3% (Small/Medium/Large). Every success in §4–18 was a detour through background edges, which is why Gold Path Recovery was ~0% everywhere. Fixed by giving each step its own key (`gold_{path_id}_step_{j}`); the old behaviour is kept behind `legacy_evidence_bug=True` and reproduces the old numbers (e.g. Medium baseline 3.6%, FAGS 10.4%, Beam-5 30.4% vs §4/§10's 4.3% / 10.8% / ~30%).
+
+**Second problem: cost accounting.** `beam_search` scores every neighbour of every live hypothesis but counts only the K nodes it keeps; `best_first_search` counts every scored child. Matching the two on `nodes_visited` (as §15–16 did) gave best-first ~20× fewer verifier calls (Large, width 8: 32 vs 629). `best_first_search` / `mcts_search` now accept `score_budget` (verifier calls), and every matched comparison is run both ways.
+
+**Method.** Same goal-test protocol as §4–18 (so differences are attributable to the fix), 3 graph seeds × 500 queries per size, CIs and paired tests clustered on (seed, gold path) via `fags/stats.py` (cluster sign-flip permutation, cluster bootstrap), Holm over all 51 tests.
+
+| Claim (section) | Fixed generator | Verdict |
+|---|---|---|
+| FAGS ≈ budget-matched restarts (§6) | FAGS − RRB(calls-matched): **+34.3 / +22.3 / +3.2pp** (Small/Med/Large), all Holm-sig. Node-matched: +25.2 / +6.3 / −8.6pp | **Reversed**: FAGS beats restarts per verifier call on every size |
+| Beam strictly dominates FAGS (§10) | Beam-3 vs FAGS: −1.1 / −1.5 / +13.9pp at ~1.7× FAGS's calls (153 vs 91 Small) | **Weakened**: beam wins only with more calls, except on Large |
+| Best-first is catastrophic (§15) | Node-matched: Beam-8 +46–55pp. Call-matched: **best-first wins by 2–51pp** | **Accounting artifact** — but confounded: best-first goal-tests every *scored* child, beam only kept ones (see §22) |
+| MCTS < beam at small budgets (§16) | Beam ahead by 10–30pp under both accountings | **Holds** |
+| Accuracies | Small baseline 3.8% → 43.4%; Beam-8 Small 97.8% | Old absolute numbers meaningless |
+
+The best-first reversal is itself the lesson: under the goal-test protocol the *ranking* of algorithms depends on bookkeeping (what counts as cost, when the goal test fires). That protocol cannot rank search algorithms reliably, which motivates §22.
+
+## 22. Commit-to-an-answer protocol and error decomposition (`fags/committed.py`, `error_decomposition_experiment.py`, `results/v2/error_decomposition_*`)
+
+**Protocol.** The agent is told the hop count H (as MetaQA systems are), runs to exactly H hops with no goal test, and commits to one endpoint. Scored by Hits@1 against the answer set A(q) = every node reachable by following the gold relation sequence (the labelled `answer_node` is one member; mean |A(q)| = 1.9–2.5, so labelled-answer accuracy is capped at a Bayes ceiling of 60–67% for any agent that sees only the question).
+
+**Decomposition.** Hold the search fixed, swap verifiers: oracle-plan (knows each hop's gold relation) → hop-aware (rule verifier matching only hop t's keywords: an oracle *decomposition*, keyword dropout and noise kept) → hop-blind (the repo's `Verifier`, whole keyword bag every hop). 3 seeds × 500 queries × 3 sizes, Holm over 24 tests.
+
+| Graph | Width | Hop-blind Hits@1 | Search loss | Verifier-noise loss | **Hop-blindness loss** | Legacy goal-test (beam-8) |
+|---|---|---|---|---|---|---|
+| Small | 1 / 3 / 8 / 64 | 32.5 / 39.6 / 39.5 / 40.0% | 30.8 / 1.6 / 0 / 0pp | 1.4 / 5.8 / 4.8 / 4.4pp | 35.3 / 53.0 / 55.7 / 55.6pp | 97.7% |
+| Medium | 1 / 3 / 8 / 64 | 22.0 / 28.5 / 27.8 / 28.5% | 34.4 / 2.5 / 0 / 0pp | 7.1 / 6.9 / 7.2 / 7.9pp | 36.5 / 62.1 / 65.0 / 63.5pp | 70.5% |
+| Large | 1 / 3 / 8 / 64 | 20.9 / 26.2 / 26.7 / 26.9% | 33.5 / 1.9 / 0 / 0pp | 6.7 / 8.1 / 6.4 / 7.1pp | 38.9 / 63.8 / 66.9 / 66.1pp | 50.9% |
+
+Every hop-aware vs hop-blind difference is Holm-significant (+35 to +67pp). Readings:
+1. **Search is solved at width 3.** Under an honest protocol, widening the beam past 3 changes nothing; the whole FAGS/beam/best-first/MCTS contest of §4–18 was being fought over a quantity (search loss ≤2.5pp at w≥3) that barely matters.
+2. **The dominant error is hop-blindness** (53–67pp): the verifier scores each hop against the whole question, so it cannot tell which hop it is on. Raw verifier noise costs only 4–8pp — which is why upgrading the verifier's *scores* (BGE, hybrid, §7/§11) never moved anything.
+3. **The goal-test protocol inflates accuracy 1.9–2.5×** (Small 97.7% vs 39.5% for the same beam), because touching the answer node anywhere is far easier than committing to it.
+
+Caveat: the hop-aware verifier uses an oracle decomposition of the question. §24 tests a realistic, non-oracle hop-aware verifier on real data.
+
+## 23. When can learning from failure help? (`fags/delayed_failure.py`, `failure_informativeness_experiment.py`, `results/v2/failure_informativeness*`)
+
+**Theory (the result that reframes the project).** Model the search as inference over which root-to-leaf path is the gold one, with a factorized prior P(child correct | parent on gold path) = q(child), Σ q = 1 over siblings (e.g. softmax of verifier scores). Let D be the set of nodes observed dead (subtree contains no goal). *Proposition:* for any unexpanded node n whose ancestors are alive, P(n ∈ π | D) = P(n ∈ π) / P(π ∩ D = ∅). *Proof:* nodes on a path through n are exactly n's ancestors, n, and n's descendants; ancestors are alive and descendants are unobserved, so {n ∈ π} ⊆ {π ∩ D = ∅}. ∎ The denominator is shared by every frontier node, so **non-diagnostic failures cannot change the ranking of unexplored alternatives — they can only eliminate the dead node.** Every systematic search already eliminates, so "failure memory" adds value only if failures are *diagnostic* (they point at their cause — a contradiction naming the conflicting evidence, a failing test naming the line), or if the prior is non-factorized (failures correlated across branches, the §8 FPG idea). FAGS's revive-the-best-rejected-score policy, and any "re-rank after failure" policy, is not justified by Bayesian evidence when failures are non-diagnostic. The KG benchmark's dead ends and contradictions are non-diagnostic, which explains §6–9's nulls.
+
+**Environment.** Trees of depth 8, branching 3; a wrong move roots a decoy subtree whose "lure" children look correct for L ~ U{0..K} steps before a dead end (K = failure delay); with probability ρ a dead end names the wrong turn that caused it (diagnosis); verifier scores N(d′,1) for correct/lure vs N(0,1). Policies (same trees, same expansion budget): memoryless restarts, DFS, FAGS-style (local backtracking + raw-score memory), best-first on mean score, exact posterior search (elimination only), posterior with *local blame* (renormalize the dead node's siblings = blame the latest decision), each systematic one with and without using diagnosis (DFS+diagnosis is conflict-directed backjumping). 300 trees per cell × K∈{0..5} × ρ∈{0,.5,1} × d′∈{.5,1,2}; per-tree paired tests, Holm over 540.
+
+**Pre-registered hypotheses and outcomes** (success within 100 expansions):
+- **H1** (ρ=0 ⇒ diagnosis changes nothing): **holds** exactly (all differences 0).
+- **H2** (diagnosis gain grows with ρ and K): **holds** — mean gain 0pp at K≤1, +1.2pp at K=2, **+17.6 / +34.5 / +40.6pp at K=3/4/5**; 58 significant wins, 0 losses across the four search families. Even ρ=0.5 captures nearly all of it (decoy subtrees produce many failures; one diagnosis suffices).
+- **H3** (local blame falls behind exact elimination as K grows): **refuted** — local blame wins 12 cells, loses 3. Exact posterior ordering expands the *most probable* node, which is breadth-heavy and expensive at depth 8; local blame keeps the parent's mass and so pushes depth. Most-probable-first ≠ cheapest-to-goal; the gap is about ordering cost, not inference quality.
+- **H4** (memory beats memoryless restarts): **holds** in 54/54 cells (e.g. d′=1, K=3: restarts 8% vs DFS 92%).
+- FAGS-style revival without diagnosis never beats plain best-first-mean (0 wins, 3 losses); best-first-mean vs beam at equal cost: no reliable difference (2 significant wins, 6 losses — all 6 against width-1 beam — out of 108).
+
+**Reading.** FAGS's intuition is right in a specific, testable regime — **failures that are delayed and diagnostic** — and provably idle outside it. Scoring-based revival ("revive the best-scoring reject") is never the ingredient that helps; using the *content* of the failure is.
+
+Limitation: the diagnosis signal is an oracle that names the true culprit with probability ρ; a noisy diagnosis (sometimes naming the wrong ancestor) is the obvious next variant. The posterior policies assume a factorized prior, which the lure mechanism violates; an exact posterior under the true generative model could extract some information from non-diagnostic failures.
+
+## 24. External validity: MetaQA with a real embedding verifier (`fags/metaqa.py`, `metaqa_experiment.py`, `results/v2/metaqa_*`)
+
+**Setup.** MetaQA vanilla (Zhang et al., 2018; KB of 134k movie triples; data from the `camazlucas/MetaQA` mirror into `data/metaqa/`, git-ignored), random 1000 test questions each from 2-hop and 3-hop. Search over directed relation paths (18 relations incl. inverses) from the topic entity, commit after k hops, score expected Hits@1 and F1 against the gold answer set. Verifiers are real `BAAI/bge-small-en-v1.5` embeddings, no oracle information: *relation-level* (cos(question, relation text), the same at every hop — hop-blind) and *path-level* (cos(question, text of the whole partial path) — hop-aware). Oracle = best executable k-hop path by F1. Clustered on oracle path type (24 / 31 clusters — conservative; most question templates share a path type), Holm over 16 tests.
+
+| Split | rel-greedy | rel-beam-3/8/18 | path-greedy | path-beam-3/8/18 | path-exhaustive | oracle | legacy goal-test (beams) |
+|---|---|---|---|---|---|---|---|
+| 2-hop | 87.4% | 87.2% | 91.2% | 91.5% | 91.4% | 100% | 100% |
+| 3-hop | 29.5% | 35.9 / 35.7 / 35.7% | 35.8% | **45.5%** | 49.3% | 100% | 98–100% |
+
+Readings, against §22's synthetic findings:
+1. **Search saturates at width 3 — replicates.** Widths 3, 8, 18 give identical answers on both splits; exhaustive scoring of every executable path adds only −0.1pp (2-hop) / +3.8pp (3-hop, n.s.).
+2. **Hop-aware scoring beats hop-blind — replicates in direction, smaller and not significant under template clustering:** +4.3pp (2-hop), +9.6–9.8pp (3-hop), CIs overlapping 0. The effect is smaller than synthetic because MetaQA relations are type-constrained: a relation at the wrong hop usually yields an empty set and is pruned, which a synthetic graph never does.
+3. **The verifier, not the search, is the ceiling:** oracle − path-exhaustive = **+50.7pp** on 3-hop (Holm p = 0.007). Even scoring every possible path, a frozen embedding verifier picks the right one under half the time.
+4. **Goal-test inflation replicates and is extreme:** 98–100% "success" vs 36–46% committed Hits@1 on 3-hop.
+5. MetaQA's failures (empty entity sets) are immediate (K = 0) and non-diagnostic, so by §23 failure memory has nothing to offer there; FAGS was not run on MetaQA.
+
+## 25. Net takeaway (supersedes §5 and §19)
+
+- The headline numbers of §4–18 were artifacts of a generator bug (gold paths unreachable), a protocol that leaks the goal, inconsistent cost accounting, and pseudo-replicated statistics. On the fixed generator, **FAGS does beat budget-matched random restarts per verifier call on all three sizes** (§21) — the original "it's just extra budget" conclusion was itself an artifact.
+- Under an honest commit-to-an-answer protocol, **search is a solved sub-problem at beam width ~3** on both the synthetic benchmark and MetaQA; the remaining error is the verifier — overwhelmingly its **hop-blindness** in the synthetic task (53–67pp), and ranking quality on MetaQA 3-hop (51pp gap to oracle).
+- **Learning from failure provably cannot re-rank the frontier when failures are non-diagnostic** (§23 proposition); it helps — by up to +41pp at equal budget — exactly when failures are delayed *and* name their cause. Revival by raw score is never the helpful ingredient. That benefit survives noisy diagnoses only when they are treated as evidence (Bayesian down-weighting or two-vote agreement): pruning on every diagnosis becomes harmful at 5–20% diagnosis error (§27). The same pattern holds on a real task with nothing injected (Sudoku, §28): score-based revival ≈ systematic search, conflict-set diagnosis always helps, and helps significantly more when the search ordering lets failures surface late.
+- Research directions that follow: (a) hop-/plan-aware verifiers (question decomposition, path-level scoring, LLM verifiers) evaluated under the commit protocol; (b) environments whose failures carry diagnostic content (contradictions naming evidence, unit-test failures, type errors) and learned diagnosis with noise; (c) cost-aware ordering (most-probable-first ≠ cheapest-to-goal, H3).
+
+## 26. Housekeeping for the v2 work
+
+- New modules: `fags/stats.py` (cluster tests, Holm), `fags/committed.py`, `fags/delayed_failure.py`, `fags/metaqa.py`. New field `Query.gold_path_id`; new params `legacy_evidence_bug`, `score_budget`.
+- New scripts: `revalidation_experiment.py`, `error_decomposition_experiment.py`, `failure_informativeness_experiment.py`, `metaqa_experiment.py`; all outputs under `results/v2/`.
+- `results/gold_rank_histogram_hybrid_*` (untracked) was generated at noise 0.30 although the script now says 0.08, and it measures relation rank, which §22 shows is not the binding quantity; treat it as superseded.
+- Wall-clock (4-core machine shared with other jobs): re-validation 52 min, decomposition 63 min, failure sweep 20 min, MetaQA 11 min (+10 min one-off path-embedding cache).
+
+## 27. Noisy diagnosis: does learning from failure survive wrong diagnoses? (`noisy_diagnosis_experiment.py`, `results/v2/noisy_diagnosis*`)
+
+**Why.** §23's diagnosis was an oracle — when it fired it always named the true wrong turn. Real diagnoses (contradiction messages, failing tests, type errors) are sometimes wrong, and a wrong one can name a node *on the solution path*; acting on it by pruning destroys the only solution.
+
+**Setup.** Same environment and same trees as §23 (verified: ε = 0 reproduces §23 exactly, e.g. Posterior+diag at d′=1, K=5: 0.910 vs 0.910). When a diagnosis fires, with probability ε it names a uniformly random *other* ancestor of the dead node. Grid: ε ∈ {0, .05, .1, .2, .3, .5} × ρ ∈ {.5, 1} × K ∈ {3, 5} × d′ ∈ {.5, 1}, 300 trees per cell, success within 100 expansions, per-tree paired tests, Holm over 624 tests. Ways of acting on a diagnosis:
+- **hard** — prune the named subtree on first diagnosis (§23's +diag);
+- **vote2** — prune only once two separate failures name the same node;
+- **soft** — Bayesian: a node on the gold path can only be named by error, so multiply the named node's subtree mass by LR = (ε̂/m) / ((1−ε̂) + ε̂/m) (m = other ancestors the error could have picked) instead of zeroing it; run calibrated (ε̂ = ε) and with a fixed guess ε̂ = 0.2. Implemented in `posterior_search(..., diag_error_hat=...)`.
+
+Sanity check: at ε = 0.5, ρ = 1, K = 5, hard-pruning DFS leaves **73/100 trees unsolvable even with a 20,000-expansion budget**; the soft update leaves 0/100.
+
+**Pre-registered hypotheses — all three hold** (counts over the 40 cells with ε > 0):
+
+| Comparison | Sig. wins | Sig. losses |
+|---|---|---|
+| X+hard vs no diagnosis (DFS / BestFirst-mean / PostLB) | 11 / 8 / 13 | **17 / 21 / 15** |
+| X+vote2 vs no diagnosis (DFS / BestFirst-mean) | 25 / 20 | 6 / 8 |
+| vote2 vs hard (DFS / BestFirst-mean) | **40 / 40** | 0 / 0 |
+| PostLB+soft (calibrated) vs no diagnosis | **38** | **0** |
+| PostLB+soft (fixed ε̂ = 0.2) vs no diagnosis | 39 | 0 |
+| PostLB+soft vs PostLB+hard (calibrated / fixed guess) | 40 / 40 | 0 / 0 |
+| Post (exact) +soft vs no diagnosis / vs hard | 36 / 35 | 0 / 0 |
+
+- **N1 (hard pruning has a break-even error rate):** holds. Hard pruning becomes significantly *worse than ignoring diagnoses* at ε* ≈ **0.05–0.2 when K = 3** and ≈ 0.3–0.5 (or never, at ρ = .5) when K = 5 — the more valuable diagnosis is (longer delays), the more error it tolerates. E.g. d′=1, K=3, ρ=.5: DFS 92.3% vs DFS+hard 81.0% at ε = .1 and 38.0% at ε = .5.
+- **N2 (soft is never worse than no diagnosis, and beats hard at high ε):** holds — 0 significant losses in 80 soft-vs-no-diagnosis tests, and it beats hard in every ε > 0 cell. It is robust to not knowing ε: the fixed guess ε̂ = 0.2 performs the same as calibrated (e.g. 77.7% vs 73.0% at ε = .5, d′=.5, K=3).
+- **N3 (voting raises the break-even):** holds — vote2 beats hard in all 80 tests; its ε* moves from 0.05–0.2 to 0.2–0.5 or never.
+
+**Reading.** The §23 conclusion survives realistic, imperfect diagnosis — but only if the agent treats a diagnosis as *evidence*, not as a command. Acting on every diagnosis (hard pruning, i.e. textbook backjumping) is actively harmful once ~5–20% of diagnoses are wrong; requiring agreement (vote2) or doing the Bayesian down-weighting keeps the benefit while removing the catastrophic failure mode. In absolute terms the best policy depends on the regime: PostLB+soft is best at d′ = 1 (≥ 92% up to ε = .3), while DFS+vote2 is best at d′ = 0.5, K = 5, where the posterior ordering's breadth bias (§23 H3) holds PostLB back (DFS+vote2 79% vs PostLB+soft 34% at ε = .3). A soft (likelihood-weighted) variant of DFS/best-first — combining depth-first ordering with Bayesian diagnosis handling — is the obvious next policy.
+
+**Limitation (§27).** Diagnosis errors here are uniform over ancestors; real diagnosers likely err *systematically* (e.g. blaming the most recent step), which an agent could learn. ε̂ is fixed per run; learning it online from diagnoses that later prove wrong is untested.
+
+## 28. Real task: Sudoku with natural, diagnostic failures (`fags/sudoku_env.py`, `sudoku_experiment.py`, `results/v2/sudoku_*`)
+
+**Why.** §23 and §27 inject delay and diagnosis into a synthetic tree. This tests the same predictions where nothing is injected. No LLM API key or local generative model was available, so an LLM code-generation task was not possible; Sudoku is the classic domain whose failures naturally carry diagnostic content.
+
+**Environment.** Forward-checking search over partial assignments, with a fixed branching variable per node so every policy searches the same tree:
+- **Verifier:** the least-constraining-value heuristic. A child's score is minus the number of peer domains its value removes something from — a real, imperfect heuristic.
+- **Failure:** a domain wipe-out, discovered when the dead child is expanded.
+- **Diagnosis:** the conflict set (FC-CBJ, Prosser 1993). An exhausted node's conflict set is the union of its children's conflict sets, plus the assignments that had already removed values from its own variable. The deepest assignment in it is the culprit, and its whole subtree is provably dead. The diagnosis is sound, so the "+CBJ" hard pruning never loses a solution.
+- **Failure delay:** varied by a standard, natural design choice. **MRV** ordering (fail-first) surfaces mistakes quickly; **static** row-major ordering surfaces them many assignments later.
+
+Every policy is the unchanged code from `fags/delayed_failure.py`, plugged in through the same tree interface. The posterior policies are omitted: their per-step sweep is impractical on trees 50–60 levels deep.
+
+**Verification.** On 40 hard puzzles, every solution matched the dataset's answer, and DFS+CBJ solved every puzzle DFS solved and was never more expensive (expected for backjumping). The experiment script also asserts every returned solution against the reference answer.
+
+**Data.** 200 puzzles from `sapientinc/sudoku-extreme` (test split, 422,786 puzzles), stratified 4 × 50 by its backtrack rating (0–5, 6–20, 21–50, 51+), plus Norvig's top95. Budget 20,000 expansions. Puzzles are independent, so paired tests are per puzzle, on success@20000 and on log-cost (unsolved runs censored at the budget, which understates gains), Holm over 27 tests. Runtime 33 min.
+
+| Ordering | Restarts | DFS | DFS+CBJ | FAGS-style | FAGS-style+CBJ | BestFirst-mean | BestFirst-mean+CBJ |
+|---|---|---|---|---|---|---|---|
+| MRV (success@20000) | 45.1% | 88.8% | 89.8% | 91.5% | 91.9% | 88.1% | 90.5% |
+| static (success@20000) | 2.7% | 37.3% | **47.1%** | 36.6% | **44.1%** | 37.6% | **46.1%** |
+| CBJ speed-up, MRV / static | | | ×1.06 / **×1.22** | | ×1.02 / **×1.13** | | ×1.06 / **×1.20** |
+
+**Pre-registered predictions — all four hold:**
+- **R1 (revival by raw score is no better than systematic search):** holds. FAGS-style vs DFS and vs BestFirst-mean: no significant difference under either ordering (Holm p ≥ 0.06). Under MRV, FAGS-style is numerically slightly ahead (+2.7pp vs DFS, +3.4pp vs BestFirst-mean); under static ordering it is numerically slightly behind.
+- **R2 (diagnosis never hurts):** holds. The conflict set significantly lowers cost for all three policies under both orderings (Holm p ≤ 2e-12). Under static ordering it also raises success by +9.8 / +7.5 / +8.5pp (DFS / FAGS-style / BestFirst-mean, all Holm p ≤ 3e-5).
+- **R3 (the gain grows with failure delay):** holds. The per-puzzle cost reduction from diagnosis is significantly larger under static ordering than under MRV for all three policies (+0.10 to +0.14 in log-cost, Holm p ≤ 2e-10).
+- **R4 (memory beats memoryless restarts):** holds. DFS beats restarts by +43.7pp (MRV) and +34.6pp (static).
+
+**Reading.** On a real task with real heuristics and real failure explanations, the §23 picture reappears. Reviving the best-scoring rejected alternative adds nothing reliable over plain systematic search. Using what a failure says about its cause helps, and helps more when the search design lets mistakes surface late. This also explains a known result in the constraint-satisfaction literature, that backjumping adds little on top of forward checking with MRV (Chen & van Beek, 2001): fail-first ordering keeps failure delay short, which is exactly the regime where §23 predicts diagnosis is worth little.
+
+**Limitations.** The diagnosis here is exact (sound), so §27's noisy-diagnosis results are not tested on a real task. The measured backjump distance differs only modestly between orderings (2.03 vs 2.55 assignments skipped), so "delay" is manipulated through the ordering rather than measured directly. The verifier is a fixed heuristic, not a learned or LLM verifier. The posterior policies were not run.
