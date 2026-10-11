@@ -1,0 +1,133 @@
+RE-VALIDATION ON THE FIXED GENERATOR (goal-test protocol, as in SS4-18)
+3 graph seeds x 500 queries per size; CIs and tests clustered on (seed, gold path)
+
+-- Small --
+  legacy (seed 101)  Baseline       acc=  3.8% [  1.0,  7.4]  nodes=   2.6  calls=  34.3  via-gold-path=  0.8%
+  legacy (seed 101)  FAGS           acc= 16.4% [  8.3, 25.6]  nodes=  13.0  calls=  48.1  via-gold-path=  2.4%
+  legacy (seed 101)  RRB@FAGS       acc=  7.0% [  2.2, 12.9]  nodes=  13.4  calls= 175.7  via-gold-path=  0.8%
+  legacy (seed 101)  Beam-5         acc= 40.8% [ 26.2, 55.1]  nodes=   6.7  calls=  35.6  via-gold-path=  1.8%
+  fixed (3 seeds)    Baseline       acc= 43.4% [ 38.8, 47.9]  nodes=   5.6  calls=  88.4  via-gold-path= 16.3%
+  fixed (3 seeds)    FAGS           acc= 84.0% [ 81.3, 86.6]  nodes=   9.6  calls=  90.9  via-gold-path= 16.7%
+  fixed (3 seeds)    RRB@FAGS       acc= 58.8% [ 54.4, 62.8]  nodes=   9.0  calls= 142.5  via-gold-path= 19.2%
+  fixed (3 seeds)    RRB@FAGS/calls acc= 49.7% [ 45.3, 54.0]  nodes=   5.6  calls= 112.3  via-gold-path= 16.1%
+  fixed (3 seeds)    Beam-2         acc= 71.7% [ 67.0, 75.9]  nodes=   7.5  calls= 127.0  via-gold-path= 28.2%
+  fixed (3 seeds)    Beam-3         acc= 82.9% [ 79.2, 86.2]  nodes=   8.4  calls= 153.4  via-gold-path= 30.8%
+  fixed (3 seeds)    BestFirst@3    acc= 35.5% [ 28.5, 43.3]  nodes=   7.1  calls=   7.8  via-gold-path=  0.1%
+  fixed (3 seeds)    MCTS@3         acc= 62.1% [ 58.3, 65.5]  nodes=   7.4  calls= 137.2  via-gold-path= 17.1%
+  fixed (3 seeds)    RRB@Beam-3     acc= 56.8% [ 52.7, 60.7]  nodes=   8.2  calls= 130.6  via-gold-path= 19.7%
+  fixed (3 seeds)    BestFirst@3/calls acc=100.0% [100.0,100.0]  nodes=  11.3  calls=  17.3  via-gold-path=  6.4%
+  fixed (3 seeds)    MCTS@3/calls   acc= 62.8% [ 58.9, 66.3]  nodes=   7.4  calls= 135.7  via-gold-path= 18.5%
+  fixed (3 seeds)    RRB@Beam-3/calls acc= 59.9% [ 56.1, 63.7]  nodes=   5.4  calls= 144.4  via-gold-path= 18.9%
+  fixed (3 seeds)    Beam-5         acc= 92.5% [ 90.3, 94.5]  nodes=   9.4  calls= 186.4  via-gold-path= 31.1%
+  fixed (3 seeds)    Beam-8         acc= 97.8% [ 96.5, 98.9]  nodes=  10.1  calls= 201.1  via-gold-path= 26.3%
+  fixed (3 seeds)    BestFirst@8    acc= 42.5% [ 36.3, 49.5]  nodes=   8.3  calls=  10.1  via-gold-path=  0.1%
+  fixed (3 seeds)    MCTS@8         acc= 69.7% [ 65.8, 73.2]  nodes=   7.8  calls= 155.7  via-gold-path= 19.5%
+  fixed (3 seeds)    RRB@Beam-8     acc= 59.1% [ 54.7, 63.3]  nodes=   9.0  calls= 144.1  via-gold-path= 19.5%
+  fixed (3 seeds)    BestFirst@8/calls acc=100.0% [100.0,100.0]  nodes=  11.3  calls=  17.5  via-gold-path=  5.9%
+  fixed (3 seeds)    MCTS@8/calls   acc= 67.7% [ 64.0, 71.4]  nodes=   7.4  calls= 146.1  via-gold-path= 19.2%
+  fixed (3 seeds)    RRB@Beam-8/calls acc= 62.3% [ 58.2, 66.2]  nodes=   5.3  calls= 161.9  via-gold-path= 19.7%
+  TEST FAGS - Baseline          diff= +40.6pp [ +36.2, +44.9]  p=0.0001  p_holm=0.0051
+  TEST FAGS - RRB@FAGS          diff= +25.2pp [ +20.3, +29.9]  p=0.0001  p_holm=0.0051
+  TEST FAGS - RRB@FAGS/calls    diff= +34.3pp [ +30.1, +38.6]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - RRB@Beam-3      diff= +26.1pp [ +22.7, +29.5]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3     diff= +47.3pp [ +39.0, +55.6]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3          diff= +20.8pp [ +16.7, +24.7]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - RRB@Beam-3/calls diff= +22.9pp [ +18.9, +27.2]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3/calls diff= -17.1pp [ -20.8, -13.8]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3/calls    diff= +20.1pp [ +16.8, +23.4]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8      diff= +38.7pp [ +34.3, +42.8]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8     diff= +55.3pp [ +48.4, +61.8]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8          diff= +28.1pp [ +24.5, +31.9]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8/calls diff= +35.5pp [ +31.4, +39.4]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8/calls diff=  -2.2pp [  -3.5,  -1.1]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8/calls    diff= +30.1pp [ +26.1, +34.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - FAGS            diff=  -1.1pp [  -4.9,  +2.4]  p=0.5713  p_holm=0.8301
+  TEST Beam-8 - FAGS            diff= +13.8pp [ +11.2, +16.5]  p=0.0001  p_holm=0.0051
+
+-- Medium --
+  legacy (seed 101)  Baseline       acc=  3.6% [  1.8,  5.8]  nodes=   3.2  calls=  50.4  via-gold-path=  3.2%
+  legacy (seed 101)  FAGS           acc= 10.4% [  7.4, 13.9]  nodes=  30.4  calls= 109.4  via-gold-path=  5.4%
+  legacy (seed 101)  RRB@FAGS       acc=  8.2% [  5.3, 11.4]  nodes=  30.8  calls= 491.2  via-gold-path=  5.8%
+  legacy (seed 101)  Beam-5         acc= 30.4% [ 24.9, 36.0]  nodes=  21.1  calls= 157.5  via-gold-path= 10.2%
+  fixed (3 seeds)    Baseline       acc= 20.5% [ 18.2, 23.0]  nodes=   6.3  calls= 118.4  via-gold-path= 13.6%
+  fixed (3 seeds)    FAGS           acc= 46.7% [ 43.9, 49.4]  nodes=  26.7  calls= 143.8  via-gold-path= 14.6%
+  fixed (3 seeds)    RRB@FAGS       acc= 40.4% [ 37.7, 43.2]  nodes=  22.8  calls= 432.7  via-gold-path= 22.3%
+  fixed (3 seeds)    RRB@FAGS/calls acc= 24.3% [ 21.8, 27.0]  nodes=   6.2  calls= 183.9  via-gold-path= 15.9%
+  fixed (3 seeds)    Beam-2         acc= 35.5% [ 32.5, 38.6]  nodes=  10.4  calls= 193.7  via-gold-path= 24.8%
+  fixed (3 seeds)    Beam-3         acc= 45.1% [ 42.0, 48.3]  nodes=  13.5  calls= 256.3  via-gold-path= 29.9%
+  fixed (3 seeds)    BestFirst@3    acc= 11.3% [  9.0, 13.7]  nodes=  12.8  calls=  12.5  via-gold-path=  0.3%
+  fixed (3 seeds)    MCTS@3         acc= 34.9% [ 32.2, 37.6]  nodes=  13.2  calls= 260.3  via-gold-path= 19.2%
+  fixed (3 seeds)    RRB@Beam-3     acc= 27.9% [ 25.3, 30.2]  nodes=  14.4  calls= 271.6  via-gold-path= 16.5%
+  fixed (3 seeds)    BestFirst@3/calls acc= 95.8% [ 94.7, 96.8]  nodes=  44.2  calls=  70.6  via-gold-path= 21.3%
+  fixed (3 seeds)    MCTS@3/calls   acc= 31.3% [ 28.8, 33.9]  nodes=  13.4  calls= 263.1  via-gold-path= 17.3%
+  fixed (3 seeds)    RRB@Beam-3/calls acc= 29.9% [ 27.2, 32.6]  nodes=   6.1  calls= 275.9  via-gold-path= 17.5%
+  fixed (3 seeds)    Beam-5         acc= 59.5% [ 56.5, 62.5]  nodes=  18.3  calls= 362.1  via-gold-path= 36.9%
+  fixed (3 seeds)    Beam-8         acc= 72.5% [ 69.8, 75.2]  nodes=  23.3  calls= 491.3  via-gold-path= 40.3%
+  fixed (3 seeds)    BestFirst@8    acc= 18.9% [ 16.1, 21.7]  nodes=  21.2  calls=  23.2  via-gold-path=  0.7%
+  fixed (3 seeds)    MCTS@8         acc= 44.1% [ 41.3, 46.9]  nodes=  19.8  calls= 429.9  via-gold-path= 20.2%
+  fixed (3 seeds)    RRB@Beam-8     acc= 38.3% [ 35.4, 41.1]  nodes=  21.5  calls= 407.0  via-gold-path= 20.8%
+  fixed (3 seeds)    BestFirst@8/calls acc= 98.8% [ 98.1, 99.3]  nodes=  44.8  calls=  74.3  via-gold-path= 21.3%
+  fixed (3 seeds)    MCTS@8/calls   acc= 44.6% [ 41.8, 47.4]  nodes=  19.0  calls= 414.5  via-gold-path= 20.8%
+  fixed (3 seeds)    RRB@Beam-8/calls acc= 37.0% [ 34.3, 39.9]  nodes=   6.0  calls= 455.5  via-gold-path= 21.1%
+  TEST FAGS - Baseline          diff= +26.2pp [ +23.2, +29.1]  p=0.0001  p_holm=0.0051
+  TEST FAGS - RRB@FAGS          diff=  +6.3pp [  +2.7,  +9.9]  p=0.0003  p_holm=0.0051
+  TEST FAGS - RRB@FAGS/calls    diff= +22.3pp [ +19.3, +25.4]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - RRB@Beam-3      diff= +17.3pp [ +14.2, +20.4]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3     diff= +33.9pp [ +29.6, +38.1]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3          diff= +10.3pp [  +7.0, +13.5]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - RRB@Beam-3/calls diff= +15.3pp [ +11.8, +18.7]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3/calls diff= -50.7pp [ -54.1, -47.4]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3/calls    diff= +13.9pp [ +10.6, +17.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8      diff= +34.1pp [ +30.7, +37.3]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8     diff= +53.6pp [ +49.1, +57.9]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8          diff= +28.4pp [ +24.9, +31.9]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8/calls diff= +35.5pp [ +32.0, +39.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8/calls diff= -26.3pp [ -29.2, -23.5]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8/calls    diff= +27.9pp [ +24.2, +31.3]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - FAGS            diff=  -1.5pp [  -5.1,  +2.0]  p=0.4151  p_holm=0.8301
+  TEST Beam-8 - FAGS            diff= +25.8pp [ +22.1, +29.3]  p=0.0001  p_holm=0.0051
+
+-- Large --
+  legacy (seed 101)  Baseline       acc=  7.2% [  5.2,  9.4]  nodes=   4.4  calls=  77.0  via-gold-path=  7.2%
+  legacy (seed 101)  FAGS           acc= 12.4% [  9.6, 15.4]  nodes=  34.9  calls= 144.3  via-gold-path= 11.2%
+  legacy (seed 101)  RRB@FAGS       acc= 15.6% [ 12.4, 18.8]  nodes=  34.1  calls= 594.8  via-gold-path= 14.4%
+  legacy (seed 101)  Beam-5         acc= 23.6% [ 20.0, 27.2]  nodes=  25.5  calls= 360.5  via-gold-path= 20.0%
+  fixed (3 seeds)    Baseline       acc= 12.7% [ 11.0, 14.3]  nodes=   6.4  calls= 123.9  via-gold-path= 12.3%
+  fixed (3 seeds)    FAGS           acc= 19.9% [ 17.9, 21.9]  nodes=  40.6  calls= 170.6  via-gold-path= 16.9%
+  fixed (3 seeds)    RRB@FAGS       acc= 28.5% [ 26.3, 30.7]  nodes=  36.4  calls= 710.1  via-gold-path= 25.7%
+  fixed (3 seeds)    RRB@FAGS/calls acc= 16.7% [ 14.8, 18.5]  nodes=   6.4  calls= 219.7  via-gold-path= 16.0%
+  fixed (3 seeds)    Beam-2         acc= 25.9% [ 23.6, 28.1]  nodes=  11.1  calls= 208.1  via-gold-path= 24.4%
+  fixed (3 seeds)    Beam-3         acc= 33.7% [ 31.3, 36.1]  nodes=  15.1  calls= 283.9  via-gold-path= 31.6%
+  fixed (3 seeds)    BestFirst@3    acc=  1.1% [  0.5,  1.6]  nodes=  15.0  calls=  14.1  via-gold-path=  0.3%
+  fixed (3 seeds)    MCTS@3         acc= 19.3% [ 17.3, 21.3]  nodes=  15.1  calls= 286.2  via-gold-path= 17.3%
+  fixed (3 seeds)    RRB@Beam-3     acc= 19.6% [ 17.7, 21.6]  nodes=  16.0  calls= 311.5  via-gold-path= 18.6%
+  fixed (3 seeds)    BestFirst@3/calls acc= 56.9% [ 54.4, 59.3]  nodes= 170.4  calls= 194.9  via-gold-path= 36.6%
+  fixed (3 seeds)    MCTS@3/calls   acc= 19.1% [ 17.1, 21.1]  nodes=  16.4  calls= 311.1  via-gold-path= 16.9%
+  fixed (3 seeds)    RRB@Beam-3/calls acc= 18.8% [ 16.9, 20.9]  nodes=   6.3  calls= 320.9  via-gold-path= 17.3%
+  fixed (3 seeds)    Beam-5         acc= 41.3% [ 38.9, 43.7]  nodes=  22.8  calls= 429.1  via-gold-path= 38.3%
+  fixed (3 seeds)    Beam-8         acc= 49.1% [ 46.7, 51.5]  nodes=  33.1  calls= 629.1  via-gold-path= 45.3%
+  fixed (3 seeds)    BestFirst@8    acc=  3.4% [  2.5,  4.3]  nodes=  32.6  calls=  32.2  via-gold-path=  1.2%
+  fixed (3 seeds)    MCTS@8         acc= 25.9% [ 23.8, 28.1]  nodes=  31.4  calls= 601.2  via-gold-path= 21.9%
+  fixed (3 seeds)    RRB@Beam-8     acc= 26.7% [ 24.5, 28.9]  nodes=  31.4  calls= 609.9  via-gold-path= 24.4%
+  fixed (3 seeds)    BestFirst@8/calls acc= 74.9% [ 72.7, 77.1]  nodes= 250.4  calls= 334.9  via-gold-path= 39.5%
+  fixed (3 seeds)    MCTS@8/calls   acc= 24.1% [ 22.0, 26.3]  nodes=  32.0  calls= 610.3  via-gold-path= 20.9%
+  fixed (3 seeds)    RRB@Beam-8/calls acc= 25.9% [ 23.7, 28.0]  nodes=   6.2  calls= 620.7  via-gold-path= 23.9%
+  TEST FAGS - Baseline          diff=  +7.2pp [  +5.3,  +9.2]  p=0.0001  p_holm=0.0051
+  TEST FAGS - RRB@FAGS          diff=  -8.6pp [ -11.4,  -6.0]  p=0.0001  p_holm=0.0051
+  TEST FAGS - RRB@FAGS/calls    diff=  +3.2pp [  +1.1,  +5.4]  p=0.0053  p_holm=0.0159
+  TEST Beam-3 - RRB@Beam-3      diff= +14.1pp [ +11.6, +16.5]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3     diff= +32.7pp [ +30.1, +35.2]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3          diff= +14.5pp [ +12.0, +17.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - RRB@Beam-3/calls diff= +14.9pp [ +12.6, +17.3]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - BestFirst@3/calls diff= -23.1pp [ -26.1, -20.2]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - MCTS@3/calls    diff= +14.6pp [ +12.1, +17.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8      diff= +22.4pp [ +19.7, +25.2]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8     diff= +45.7pp [ +42.9, +48.5]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8          diff= +23.1pp [ +20.5, +26.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - RRB@Beam-8/calls diff= +23.2pp [ +20.6, +26.0]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - BestFirst@8/calls diff= -25.8pp [ -28.9, -22.6]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - MCTS@8/calls    diff= +24.9pp [ +22.3, +27.7]  p=0.0001  p_holm=0.0051
+  TEST Beam-3 - FAGS            diff= +13.9pp [ +11.6, +16.2]  p=0.0001  p_holm=0.0051
+  TEST Beam-8 - FAGS            diff= +29.2pp [ +26.7, +31.8]  p=0.0001  p_holm=0.0051
+
+runtime 3142s
