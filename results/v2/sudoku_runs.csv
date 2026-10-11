@@ -1,0 +1,4131 @@
+puzzle,set,ordering,method,cost
+extreme:r0-5:0,extreme r0-5,mrv,Restarts,
+extreme:r0-5:0,extreme r0-5,mrv,DFS,10785
+extreme:r0-5:0,extreme r0-5,mrv,DFS+CBJ,10133
+extreme:r0-5:0,extreme r0-5,mrv,FAGS-style,7931
+extreme:r0-5:0,extreme r0-5,mrv,FAGS-style+CBJ,7851
+extreme:r0-5:0,extreme r0-5,mrv,BestFirst-mean,10823
+extreme:r0-5:0,extreme r0-5,mrv,BestFirst-mean+CBJ,10248
+extreme:r0-5:0,extreme r0-5,static,Restarts,
+extreme:r0-5:0,extreme r0-5,static,DFS,
+extreme:r0-5:0,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:0,extreme r0-5,static,FAGS-style,
+extreme:r0-5:0,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:0,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:0,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:1,extreme r0-5,mrv,Restarts,2103
+extreme:r0-5:1,extreme r0-5,mrv,DFS,399
+extreme:r0-5:1,extreme r0-5,mrv,DFS+CBJ,375
+extreme:r0-5:1,extreme r0-5,mrv,FAGS-style,240
+extreme:r0-5:1,extreme r0-5,mrv,FAGS-style+CBJ,240
+extreme:r0-5:1,extreme r0-5,mrv,BestFirst-mean,301
+extreme:r0-5:1,extreme r0-5,mrv,BestFirst-mean+CBJ,301
+extreme:r0-5:1,extreme r0-5,static,Restarts,
+extreme:r0-5:1,extreme r0-5,static,DFS,4727
+extreme:r0-5:1,extreme r0-5,static,DFS+CBJ,2423
+extreme:r0-5:1,extreme r0-5,static,FAGS-style,2704
+extreme:r0-5:1,extreme r0-5,static,FAGS-style+CBJ,1911
+extreme:r0-5:1,extreme r0-5,static,BestFirst-mean,1718
+extreme:r0-5:1,extreme r0-5,static,BestFirst-mean+CBJ,981
+extreme:r0-5:2,extreme r0-5,mrv,Restarts,
+extreme:r0-5:2,extreme r0-5,mrv,DFS,
+extreme:r0-5:2,extreme r0-5,mrv,DFS+CBJ,
+extreme:r0-5:2,extreme r0-5,mrv,FAGS-style,
+extreme:r0-5:2,extreme r0-5,mrv,FAGS-style+CBJ,
+extreme:r0-5:2,extreme r0-5,mrv,BestFirst-mean,
+extreme:r0-5:2,extreme r0-5,mrv,BestFirst-mean+CBJ,
+extreme:r0-5:2,extreme r0-5,static,Restarts,
+extreme:r0-5:2,extreme r0-5,static,DFS,
+extreme:r0-5:2,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:2,extreme r0-5,static,FAGS-style,
+extreme:r0-5:2,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:2,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:2,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:3,extreme r0-5,mrv,Restarts,877
+extreme:r0-5:3,extreme r0-5,mrv,DFS,56
+extreme:r0-5:3,extreme r0-5,mrv,DFS+CBJ,56
+extreme:r0-5:3,extreme r0-5,mrv,FAGS-style,67
+extreme:r0-5:3,extreme r0-5,mrv,FAGS-style+CBJ,67
+extreme:r0-5:3,extreme r0-5,mrv,BestFirst-mean,364
+extreme:r0-5:3,extreme r0-5,mrv,BestFirst-mean+CBJ,353
+extreme:r0-5:3,extreme r0-5,static,Restarts,
+extreme:r0-5:3,extreme r0-5,static,DFS,3521
+extreme:r0-5:3,extreme r0-5,static,DFS+CBJ,1909
+extreme:r0-5:3,extreme r0-5,static,FAGS-style,6650
+extreme:r0-5:3,extreme r0-5,static,FAGS-style+CBJ,5146
+extreme:r0-5:3,extreme r0-5,static,BestFirst-mean,3256
+extreme:r0-5:3,extreme r0-5,static,BestFirst-mean+CBJ,1857
+extreme:r0-5:4,extreme r0-5,mrv,Restarts,49
+extreme:r0-5:4,extreme r0-5,mrv,DFS,49
+extreme:r0-5:4,extreme r0-5,mrv,DFS+CBJ,49
+extreme:r0-5:4,extreme r0-5,mrv,FAGS-style,49
+extreme:r0-5:4,extreme r0-5,mrv,FAGS-style+CBJ,49
+extreme:r0-5:4,extreme r0-5,mrv,BestFirst-mean,49
+extreme:r0-5:4,extreme r0-5,mrv,BestFirst-mean+CBJ,49
+extreme:r0-5:4,extreme r0-5,static,Restarts,4877
+extreme:r0-5:4,extreme r0-5,static,DFS,61
+extreme:r0-5:4,extreme r0-5,static,DFS+CBJ,59
+extreme:r0-5:4,extreme r0-5,static,FAGS-style,58
+extreme:r0-5:4,extreme r0-5,static,FAGS-style+CBJ,58
+extreme:r0-5:4,extreme r0-5,static,BestFirst-mean,60
+extreme:r0-5:4,extreme r0-5,static,BestFirst-mean+CBJ,58
+extreme:r0-5:5,extreme r0-5,mrv,Restarts,1724
+extreme:r0-5:5,extreme r0-5,mrv,DFS,243
+extreme:r0-5:5,extreme r0-5,mrv,DFS+CBJ,243
+extreme:r0-5:5,extreme r0-5,mrv,FAGS-style,97
+extreme:r0-5:5,extreme r0-5,mrv,FAGS-style+CBJ,97
+extreme:r0-5:5,extreme r0-5,mrv,BestFirst-mean,61
+extreme:r0-5:5,extreme r0-5,mrv,BestFirst-mean+CBJ,61
+extreme:r0-5:5,extreme r0-5,static,Restarts,
+extreme:r0-5:5,extreme r0-5,static,DFS,2152
+extreme:r0-5:5,extreme r0-5,static,DFS+CBJ,1305
+extreme:r0-5:5,extreme r0-5,static,FAGS-style,2352
+extreme:r0-5:5,extreme r0-5,static,FAGS-style+CBJ,1650
+extreme:r0-5:5,extreme r0-5,static,BestFirst-mean,2290
+extreme:r0-5:5,extreme r0-5,static,BestFirst-mean+CBJ,1452
+extreme:r0-5:6,extreme r0-5,mrv,Restarts,316
+extreme:r0-5:6,extreme r0-5,mrv,DFS,186
+extreme:r0-5:6,extreme r0-5,mrv,DFS+CBJ,186
+extreme:r0-5:6,extreme r0-5,mrv,FAGS-style,176
+extreme:r0-5:6,extreme r0-5,mrv,FAGS-style+CBJ,176
+extreme:r0-5:6,extreme r0-5,mrv,BestFirst-mean,144
+extreme:r0-5:6,extreme r0-5,mrv,BestFirst-mean+CBJ,144
+extreme:r0-5:6,extreme r0-5,static,Restarts,
+extreme:r0-5:6,extreme r0-5,static,DFS,845
+extreme:r0-5:6,extreme r0-5,static,DFS+CBJ,611
+extreme:r0-5:6,extreme r0-5,static,FAGS-style,497
+extreme:r0-5:6,extreme r0-5,static,FAGS-style+CBJ,388
+extreme:r0-5:6,extreme r0-5,static,BestFirst-mean,647
+extreme:r0-5:6,extreme r0-5,static,BestFirst-mean+CBJ,459
+extreme:r0-5:7,extreme r0-5,mrv,Restarts,55
+extreme:r0-5:7,extreme r0-5,mrv,DFS,55
+extreme:r0-5:7,extreme r0-5,mrv,DFS+CBJ,55
+extreme:r0-5:7,extreme r0-5,mrv,FAGS-style,55
+extreme:r0-5:7,extreme r0-5,mrv,FAGS-style+CBJ,55
+extreme:r0-5:7,extreme r0-5,mrv,BestFirst-mean,55
+extreme:r0-5:7,extreme r0-5,mrv,BestFirst-mean+CBJ,55
+extreme:r0-5:7,extreme r0-5,static,Restarts,
+extreme:r0-5:7,extreme r0-5,static,DFS,487
+extreme:r0-5:7,extreme r0-5,static,DFS+CBJ,444
+extreme:r0-5:7,extreme r0-5,static,FAGS-style,632
+extreme:r0-5:7,extreme r0-5,static,FAGS-style+CBJ,534
+extreme:r0-5:7,extreme r0-5,static,BestFirst-mean,566
+extreme:r0-5:7,extreme r0-5,static,BestFirst-mean+CBJ,461
+extreme:r0-5:8,extreme r0-5,mrv,Restarts,166
+extreme:r0-5:8,extreme r0-5,mrv,DFS,55
+extreme:r0-5:8,extreme r0-5,mrv,DFS+CBJ,55
+extreme:r0-5:8,extreme r0-5,mrv,FAGS-style,55
+extreme:r0-5:8,extreme r0-5,mrv,FAGS-style+CBJ,55
+extreme:r0-5:8,extreme r0-5,mrv,BestFirst-mean,55
+extreme:r0-5:8,extreme r0-5,mrv,BestFirst-mean+CBJ,55
+extreme:r0-5:8,extreme r0-5,static,Restarts,
+extreme:r0-5:8,extreme r0-5,static,DFS,2346
+extreme:r0-5:8,extreme r0-5,static,DFS+CBJ,1941
+extreme:r0-5:8,extreme r0-5,static,FAGS-style,2473
+extreme:r0-5:8,extreme r0-5,static,FAGS-style+CBJ,2126
+extreme:r0-5:8,extreme r0-5,static,BestFirst-mean,249
+extreme:r0-5:8,extreme r0-5,static,BestFirst-mean+CBJ,210
+extreme:r0-5:9,extreme r0-5,mrv,Restarts,5237
+extreme:r0-5:9,extreme r0-5,mrv,DFS,174
+extreme:r0-5:9,extreme r0-5,mrv,DFS+CBJ,174
+extreme:r0-5:9,extreme r0-5,mrv,FAGS-style,351
+extreme:r0-5:9,extreme r0-5,mrv,FAGS-style+CBJ,348
+extreme:r0-5:9,extreme r0-5,mrv,BestFirst-mean,347
+extreme:r0-5:9,extreme r0-5,mrv,BestFirst-mean+CBJ,340
+extreme:r0-5:9,extreme r0-5,static,Restarts,
+extreme:r0-5:9,extreme r0-5,static,DFS,4473
+extreme:r0-5:9,extreme r0-5,static,DFS+CBJ,2455
+extreme:r0-5:9,extreme r0-5,static,FAGS-style,899
+extreme:r0-5:9,extreme r0-5,static,FAGS-style+CBJ,671
+extreme:r0-5:9,extreme r0-5,static,BestFirst-mean,3814
+extreme:r0-5:9,extreme r0-5,static,BestFirst-mean+CBJ,2252
+extreme:r0-5:10,extreme r0-5,mrv,Restarts,4922
+extreme:r0-5:10,extreme r0-5,mrv,DFS,106
+extreme:r0-5:10,extreme r0-5,mrv,DFS+CBJ,104
+extreme:r0-5:10,extreme r0-5,mrv,FAGS-style,311
+extreme:r0-5:10,extreme r0-5,mrv,FAGS-style+CBJ,311
+extreme:r0-5:10,extreme r0-5,mrv,BestFirst-mean,207
+extreme:r0-5:10,extreme r0-5,mrv,BestFirst-mean+CBJ,196
+extreme:r0-5:10,extreme r0-5,static,Restarts,
+extreme:r0-5:10,extreme r0-5,static,DFS,2284
+extreme:r0-5:10,extreme r0-5,static,DFS+CBJ,1274
+extreme:r0-5:10,extreme r0-5,static,FAGS-style,1066
+extreme:r0-5:10,extreme r0-5,static,FAGS-style+CBJ,748
+extreme:r0-5:10,extreme r0-5,static,BestFirst-mean,881
+extreme:r0-5:10,extreme r0-5,static,BestFirst-mean+CBJ,660
+extreme:r0-5:11,extreme r0-5,mrv,Restarts,1769
+extreme:r0-5:11,extreme r0-5,mrv,DFS,204
+extreme:r0-5:11,extreme r0-5,mrv,DFS+CBJ,188
+extreme:r0-5:11,extreme r0-5,mrv,FAGS-style,727
+extreme:r0-5:11,extreme r0-5,mrv,FAGS-style+CBJ,710
+extreme:r0-5:11,extreme r0-5,mrv,BestFirst-mean,258
+extreme:r0-5:11,extreme r0-5,mrv,BestFirst-mean+CBJ,238
+extreme:r0-5:11,extreme r0-5,static,Restarts,
+extreme:r0-5:11,extreme r0-5,static,DFS,6430
+extreme:r0-5:11,extreme r0-5,static,DFS+CBJ,3013
+extreme:r0-5:11,extreme r0-5,static,FAGS-style,
+extreme:r0-5:11,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:11,extreme r0-5,static,BestFirst-mean,17454
+extreme:r0-5:11,extreme r0-5,static,BestFirst-mean+CBJ,7499
+extreme:r0-5:12,extreme r0-5,mrv,Restarts,56
+extreme:r0-5:12,extreme r0-5,mrv,DFS,56
+extreme:r0-5:12,extreme r0-5,mrv,DFS+CBJ,56
+extreme:r0-5:12,extreme r0-5,mrv,FAGS-style,56
+extreme:r0-5:12,extreme r0-5,mrv,FAGS-style+CBJ,56
+extreme:r0-5:12,extreme r0-5,mrv,BestFirst-mean,255
+extreme:r0-5:12,extreme r0-5,mrv,BestFirst-mean+CBJ,255
+extreme:r0-5:12,extreme r0-5,static,Restarts,
+extreme:r0-5:12,extreme r0-5,static,DFS,2086
+extreme:r0-5:12,extreme r0-5,static,DFS+CBJ,1598
+extreme:r0-5:12,extreme r0-5,static,FAGS-style,1986
+extreme:r0-5:12,extreme r0-5,static,FAGS-style+CBJ,1635
+extreme:r0-5:12,extreme r0-5,static,BestFirst-mean,2934
+extreme:r0-5:12,extreme r0-5,static,BestFirst-mean+CBJ,2317
+extreme:r0-5:13,extreme r0-5,mrv,Restarts,466
+extreme:r0-5:13,extreme r0-5,mrv,DFS,81
+extreme:r0-5:13,extreme r0-5,mrv,DFS+CBJ,81
+extreme:r0-5:13,extreme r0-5,mrv,FAGS-style,92
+extreme:r0-5:13,extreme r0-5,mrv,FAGS-style+CBJ,92
+extreme:r0-5:13,extreme r0-5,mrv,BestFirst-mean,92
+extreme:r0-5:13,extreme r0-5,mrv,BestFirst-mean+CBJ,92
+extreme:r0-5:13,extreme r0-5,static,Restarts,
+extreme:r0-5:13,extreme r0-5,static,DFS,6107
+extreme:r0-5:13,extreme r0-5,static,DFS+CBJ,3711
+extreme:r0-5:13,extreme r0-5,static,FAGS-style,3119
+extreme:r0-5:13,extreme r0-5,static,FAGS-style+CBJ,2106
+extreme:r0-5:13,extreme r0-5,static,BestFirst-mean,5190
+extreme:r0-5:13,extreme r0-5,static,BestFirst-mean+CBJ,3379
+extreme:r0-5:14,extreme r0-5,mrv,Restarts,176
+extreme:r0-5:14,extreme r0-5,mrv,DFS,156
+extreme:r0-5:14,extreme r0-5,mrv,DFS+CBJ,140
+extreme:r0-5:14,extreme r0-5,mrv,FAGS-style,225
+extreme:r0-5:14,extreme r0-5,mrv,FAGS-style+CBJ,225
+extreme:r0-5:14,extreme r0-5,mrv,BestFirst-mean,259
+extreme:r0-5:14,extreme r0-5,mrv,BestFirst-mean+CBJ,227
+extreme:r0-5:14,extreme r0-5,static,Restarts,
+extreme:r0-5:14,extreme r0-5,static,DFS,7307
+extreme:r0-5:14,extreme r0-5,static,DFS+CBJ,4860
+extreme:r0-5:14,extreme r0-5,static,FAGS-style,7955
+extreme:r0-5:14,extreme r0-5,static,FAGS-style+CBJ,6438
+extreme:r0-5:14,extreme r0-5,static,BestFirst-mean,3971
+extreme:r0-5:14,extreme r0-5,static,BestFirst-mean+CBJ,2726
+extreme:r0-5:15,extreme r0-5,mrv,Restarts,138
+extreme:r0-5:15,extreme r0-5,mrv,DFS,118
+extreme:r0-5:15,extreme r0-5,mrv,DFS+CBJ,96
+extreme:r0-5:15,extreme r0-5,mrv,FAGS-style,87
+extreme:r0-5:15,extreme r0-5,mrv,FAGS-style+CBJ,87
+extreme:r0-5:15,extreme r0-5,mrv,BestFirst-mean,96
+extreme:r0-5:15,extreme r0-5,mrv,BestFirst-mean+CBJ,96
+extreme:r0-5:15,extreme r0-5,static,Restarts,
+extreme:r0-5:15,extreme r0-5,static,DFS,7743
+extreme:r0-5:15,extreme r0-5,static,DFS+CBJ,1644
+extreme:r0-5:15,extreme r0-5,static,FAGS-style,946
+extreme:r0-5:15,extreme r0-5,static,FAGS-style+CBJ,626
+extreme:r0-5:15,extreme r0-5,static,BestFirst-mean,7853
+extreme:r0-5:15,extreme r0-5,static,BestFirst-mean+CBJ,1819
+extreme:r0-5:16,extreme r0-5,mrv,Restarts,
+extreme:r0-5:16,extreme r0-5,mrv,DFS,341
+extreme:r0-5:16,extreme r0-5,mrv,DFS+CBJ,339
+extreme:r0-5:16,extreme r0-5,mrv,FAGS-style,993
+extreme:r0-5:16,extreme r0-5,mrv,FAGS-style+CBJ,987
+extreme:r0-5:16,extreme r0-5,mrv,BestFirst-mean,759
+extreme:r0-5:16,extreme r0-5,mrv,BestFirst-mean+CBJ,686
+extreme:r0-5:16,extreme r0-5,static,Restarts,
+extreme:r0-5:16,extreme r0-5,static,DFS,
+extreme:r0-5:16,extreme r0-5,static,DFS+CBJ,14757
+extreme:r0-5:16,extreme r0-5,static,FAGS-style,
+extreme:r0-5:16,extreme r0-5,static,FAGS-style+CBJ,17067
+extreme:r0-5:16,extreme r0-5,static,BestFirst-mean,11879
+extreme:r0-5:16,extreme r0-5,static,BestFirst-mean+CBJ,8135
+extreme:r0-5:17,extreme r0-5,mrv,Restarts,49
+extreme:r0-5:17,extreme r0-5,mrv,DFS,49
+extreme:r0-5:17,extreme r0-5,mrv,DFS+CBJ,49
+extreme:r0-5:17,extreme r0-5,mrv,FAGS-style,49
+extreme:r0-5:17,extreme r0-5,mrv,FAGS-style+CBJ,49
+extreme:r0-5:17,extreme r0-5,mrv,BestFirst-mean,49
+extreme:r0-5:17,extreme r0-5,mrv,BestFirst-mean+CBJ,49
+extreme:r0-5:17,extreme r0-5,static,Restarts,108
+extreme:r0-5:17,extreme r0-5,static,DFS,51
+extreme:r0-5:17,extreme r0-5,static,DFS+CBJ,51
+extreme:r0-5:17,extreme r0-5,static,FAGS-style,54
+extreme:r0-5:17,extreme r0-5,static,FAGS-style+CBJ,54
+extreme:r0-5:17,extreme r0-5,static,BestFirst-mean,56
+extreme:r0-5:17,extreme r0-5,static,BestFirst-mean+CBJ,55
+extreme:r0-5:18,extreme r0-5,mrv,Restarts,448
+extreme:r0-5:18,extreme r0-5,mrv,DFS,97
+extreme:r0-5:18,extreme r0-5,mrv,DFS+CBJ,93
+extreme:r0-5:18,extreme r0-5,mrv,FAGS-style,113
+extreme:r0-5:18,extreme r0-5,mrv,FAGS-style+CBJ,113
+extreme:r0-5:18,extreme r0-5,mrv,BestFirst-mean,97
+extreme:r0-5:18,extreme r0-5,mrv,BestFirst-mean+CBJ,93
+extreme:r0-5:18,extreme r0-5,static,Restarts,
+extreme:r0-5:18,extreme r0-5,static,DFS,2634
+extreme:r0-5:18,extreme r0-5,static,DFS+CBJ,1290
+extreme:r0-5:18,extreme r0-5,static,FAGS-style,6010
+extreme:r0-5:18,extreme r0-5,static,FAGS-style+CBJ,4173
+extreme:r0-5:18,extreme r0-5,static,BestFirst-mean,5381
+extreme:r0-5:18,extreme r0-5,static,BestFirst-mean+CBJ,3006
+extreme:r0-5:19,extreme r0-5,mrv,Restarts,55
+extreme:r0-5:19,extreme r0-5,mrv,DFS,55
+extreme:r0-5:19,extreme r0-5,mrv,DFS+CBJ,55
+extreme:r0-5:19,extreme r0-5,mrv,FAGS-style,126
+extreme:r0-5:19,extreme r0-5,mrv,FAGS-style+CBJ,126
+extreme:r0-5:19,extreme r0-5,mrv,BestFirst-mean,193
+extreme:r0-5:19,extreme r0-5,mrv,BestFirst-mean+CBJ,193
+extreme:r0-5:19,extreme r0-5,static,Restarts,
+extreme:r0-5:19,extreme r0-5,static,DFS,
+extreme:r0-5:19,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:19,extreme r0-5,static,FAGS-style,
+extreme:r0-5:19,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:19,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:19,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:20,extreme r0-5,mrv,Restarts,48
+extreme:r0-5:20,extreme r0-5,mrv,DFS,48
+extreme:r0-5:20,extreme r0-5,mrv,DFS+CBJ,48
+extreme:r0-5:20,extreme r0-5,mrv,FAGS-style,48
+extreme:r0-5:20,extreme r0-5,mrv,FAGS-style+CBJ,48
+extreme:r0-5:20,extreme r0-5,mrv,BestFirst-mean,48
+extreme:r0-5:20,extreme r0-5,mrv,BestFirst-mean+CBJ,48
+extreme:r0-5:20,extreme r0-5,static,Restarts,1032
+extreme:r0-5:20,extreme r0-5,static,DFS,56
+extreme:r0-5:20,extreme r0-5,static,DFS+CBJ,55
+extreme:r0-5:20,extreme r0-5,static,FAGS-style,64
+extreme:r0-5:20,extreme r0-5,static,FAGS-style+CBJ,63
+extreme:r0-5:20,extreme r0-5,static,BestFirst-mean,52
+extreme:r0-5:20,extreme r0-5,static,BestFirst-mean+CBJ,52
+extreme:r0-5:21,extreme r0-5,mrv,Restarts,8654
+extreme:r0-5:21,extreme r0-5,mrv,DFS,257
+extreme:r0-5:21,extreme r0-5,mrv,DFS+CBJ,257
+extreme:r0-5:21,extreme r0-5,mrv,FAGS-style,206
+extreme:r0-5:21,extreme r0-5,mrv,FAGS-style+CBJ,206
+extreme:r0-5:21,extreme r0-5,mrv,BestFirst-mean,257
+extreme:r0-5:21,extreme r0-5,mrv,BestFirst-mean+CBJ,253
+extreme:r0-5:21,extreme r0-5,static,Restarts,
+extreme:r0-5:21,extreme r0-5,static,DFS,1244
+extreme:r0-5:21,extreme r0-5,static,DFS+CBJ,642
+extreme:r0-5:21,extreme r0-5,static,FAGS-style,160
+extreme:r0-5:21,extreme r0-5,static,FAGS-style+CBJ,138
+extreme:r0-5:21,extreme r0-5,static,BestFirst-mean,417
+extreme:r0-5:21,extreme r0-5,static,BestFirst-mean+CBJ,123
+extreme:r0-5:22,extreme r0-5,mrv,Restarts,868
+extreme:r0-5:22,extreme r0-5,mrv,DFS,2395
+extreme:r0-5:22,extreme r0-5,mrv,DFS+CBJ,2319
+extreme:r0-5:22,extreme r0-5,mrv,FAGS-style,2782
+extreme:r0-5:22,extreme r0-5,mrv,FAGS-style+CBJ,2766
+extreme:r0-5:22,extreme r0-5,mrv,BestFirst-mean,1519
+extreme:r0-5:22,extreme r0-5,mrv,BestFirst-mean+CBJ,1510
+extreme:r0-5:22,extreme r0-5,static,Restarts,
+extreme:r0-5:22,extreme r0-5,static,DFS,
+extreme:r0-5:22,extreme r0-5,static,DFS+CBJ,19653
+extreme:r0-5:22,extreme r0-5,static,FAGS-style,
+extreme:r0-5:22,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:22,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:22,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:23,extreme r0-5,mrv,Restarts,5951
+extreme:r0-5:23,extreme r0-5,mrv,DFS,172
+extreme:r0-5:23,extreme r0-5,mrv,DFS+CBJ,172
+extreme:r0-5:23,extreme r0-5,mrv,FAGS-style,217
+extreme:r0-5:23,extreme r0-5,mrv,FAGS-style+CBJ,217
+extreme:r0-5:23,extreme r0-5,mrv,BestFirst-mean,125
+extreme:r0-5:23,extreme r0-5,mrv,BestFirst-mean+CBJ,125
+extreme:r0-5:23,extreme r0-5,static,Restarts,
+extreme:r0-5:23,extreme r0-5,static,DFS,1449
+extreme:r0-5:23,extreme r0-5,static,DFS+CBJ,788
+extreme:r0-5:23,extreme r0-5,static,FAGS-style,1559
+extreme:r0-5:23,extreme r0-5,static,FAGS-style+CBJ,1174
+extreme:r0-5:23,extreme r0-5,static,BestFirst-mean,1477
+extreme:r0-5:23,extreme r0-5,static,BestFirst-mean+CBJ,1027
+extreme:r0-5:24,extreme r0-5,mrv,Restarts,162
+extreme:r0-5:24,extreme r0-5,mrv,DFS,61
+extreme:r0-5:24,extreme r0-5,mrv,DFS+CBJ,61
+extreme:r0-5:24,extreme r0-5,mrv,FAGS-style,107
+extreme:r0-5:24,extreme r0-5,mrv,FAGS-style+CBJ,107
+extreme:r0-5:24,extreme r0-5,mrv,BestFirst-mean,107
+extreme:r0-5:24,extreme r0-5,mrv,BestFirst-mean+CBJ,107
+extreme:r0-5:24,extreme r0-5,static,Restarts,
+extreme:r0-5:24,extreme r0-5,static,DFS,2846
+extreme:r0-5:24,extreme r0-5,static,DFS+CBJ,2068
+extreme:r0-5:24,extreme r0-5,static,FAGS-style,5014
+extreme:r0-5:24,extreme r0-5,static,FAGS-style+CBJ,3373
+extreme:r0-5:24,extreme r0-5,static,BestFirst-mean,3404
+extreme:r0-5:24,extreme r0-5,static,BestFirst-mean+CBJ,2651
+extreme:r0-5:25,extreme r0-5,mrv,Restarts,49
+extreme:r0-5:25,extreme r0-5,mrv,DFS,49
+extreme:r0-5:25,extreme r0-5,mrv,DFS+CBJ,49
+extreme:r0-5:25,extreme r0-5,mrv,FAGS-style,49
+extreme:r0-5:25,extreme r0-5,mrv,FAGS-style+CBJ,49
+extreme:r0-5:25,extreme r0-5,mrv,BestFirst-mean,49
+extreme:r0-5:25,extreme r0-5,mrv,BestFirst-mean+CBJ,49
+extreme:r0-5:25,extreme r0-5,static,Restarts,7443
+extreme:r0-5:25,extreme r0-5,static,DFS,53
+extreme:r0-5:25,extreme r0-5,static,DFS+CBJ,53
+extreme:r0-5:25,extreme r0-5,static,FAGS-style,64
+extreme:r0-5:25,extreme r0-5,static,FAGS-style+CBJ,62
+extreme:r0-5:25,extreme r0-5,static,BestFirst-mean,62
+extreme:r0-5:25,extreme r0-5,static,BestFirst-mean+CBJ,60
+extreme:r0-5:26,extreme r0-5,mrv,Restarts,47
+extreme:r0-5:26,extreme r0-5,mrv,DFS,47
+extreme:r0-5:26,extreme r0-5,mrv,DFS+CBJ,47
+extreme:r0-5:26,extreme r0-5,mrv,FAGS-style,47
+extreme:r0-5:26,extreme r0-5,mrv,FAGS-style+CBJ,47
+extreme:r0-5:26,extreme r0-5,mrv,BestFirst-mean,47
+extreme:r0-5:26,extreme r0-5,mrv,BestFirst-mean+CBJ,47
+extreme:r0-5:26,extreme r0-5,static,Restarts,588
+extreme:r0-5:26,extreme r0-5,static,DFS,48
+extreme:r0-5:26,extreme r0-5,static,DFS+CBJ,48
+extreme:r0-5:26,extreme r0-5,static,FAGS-style,47
+extreme:r0-5:26,extreme r0-5,static,FAGS-style+CBJ,47
+extreme:r0-5:26,extreme r0-5,static,BestFirst-mean,48
+extreme:r0-5:26,extreme r0-5,static,BestFirst-mean+CBJ,48
+extreme:r0-5:27,extreme r0-5,mrv,Restarts,48
+extreme:r0-5:27,extreme r0-5,mrv,DFS,48
+extreme:r0-5:27,extreme r0-5,mrv,DFS+CBJ,48
+extreme:r0-5:27,extreme r0-5,mrv,FAGS-style,48
+extreme:r0-5:27,extreme r0-5,mrv,FAGS-style+CBJ,48
+extreme:r0-5:27,extreme r0-5,mrv,BestFirst-mean,48
+extreme:r0-5:27,extreme r0-5,mrv,BestFirst-mean+CBJ,48
+extreme:r0-5:27,extreme r0-5,static,Restarts,1315
+extreme:r0-5:27,extreme r0-5,static,DFS,54
+extreme:r0-5:27,extreme r0-5,static,DFS+CBJ,54
+extreme:r0-5:27,extreme r0-5,static,FAGS-style,72
+extreme:r0-5:27,extreme r0-5,static,FAGS-style+CBJ,69
+extreme:r0-5:27,extreme r0-5,static,BestFirst-mean,69
+extreme:r0-5:27,extreme r0-5,static,BestFirst-mean+CBJ,64
+extreme:r0-5:28,extreme r0-5,mrv,Restarts,2472
+extreme:r0-5:28,extreme r0-5,mrv,DFS,9098
+extreme:r0-5:28,extreme r0-5,mrv,DFS+CBJ,9030
+extreme:r0-5:28,extreme r0-5,mrv,FAGS-style,3125
+extreme:r0-5:28,extreme r0-5,mrv,FAGS-style+CBJ,3125
+extreme:r0-5:28,extreme r0-5,mrv,BestFirst-mean,1904
+extreme:r0-5:28,extreme r0-5,mrv,BestFirst-mean+CBJ,1851
+extreme:r0-5:28,extreme r0-5,static,Restarts,
+extreme:r0-5:28,extreme r0-5,static,DFS,
+extreme:r0-5:28,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:28,extreme r0-5,static,FAGS-style,7157
+extreme:r0-5:28,extreme r0-5,static,FAGS-style+CBJ,5853
+extreme:r0-5:28,extreme r0-5,static,BestFirst-mean,5980
+extreme:r0-5:28,extreme r0-5,static,BestFirst-mean+CBJ,4583
+extreme:r0-5:29,extreme r0-5,mrv,Restarts,
+extreme:r0-5:29,extreme r0-5,mrv,DFS,372
+extreme:r0-5:29,extreme r0-5,mrv,DFS+CBJ,350
+extreme:r0-5:29,extreme r0-5,mrv,FAGS-style,312
+extreme:r0-5:29,extreme r0-5,mrv,FAGS-style+CBJ,310
+extreme:r0-5:29,extreme r0-5,mrv,BestFirst-mean,394
+extreme:r0-5:29,extreme r0-5,mrv,BestFirst-mean+CBJ,372
+extreme:r0-5:29,extreme r0-5,static,Restarts,
+extreme:r0-5:29,extreme r0-5,static,DFS,
+extreme:r0-5:29,extreme r0-5,static,DFS+CBJ,9656
+extreme:r0-5:29,extreme r0-5,static,FAGS-style,
+extreme:r0-5:29,extreme r0-5,static,FAGS-style+CBJ,12073
+extreme:r0-5:29,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:29,extreme r0-5,static,BestFirst-mean+CBJ,9329
+extreme:r0-5:30,extreme r0-5,mrv,Restarts,11935
+extreme:r0-5:30,extreme r0-5,mrv,DFS,3676
+extreme:r0-5:30,extreme r0-5,mrv,DFS+CBJ,3419
+extreme:r0-5:30,extreme r0-5,mrv,FAGS-style,5017
+extreme:r0-5:30,extreme r0-5,mrv,FAGS-style+CBJ,4953
+extreme:r0-5:30,extreme r0-5,mrv,BestFirst-mean,3676
+extreme:r0-5:30,extreme r0-5,mrv,BestFirst-mean+CBJ,3526
+extreme:r0-5:30,extreme r0-5,static,Restarts,
+extreme:r0-5:30,extreme r0-5,static,DFS,
+extreme:r0-5:30,extreme r0-5,static,DFS+CBJ,16240
+extreme:r0-5:30,extreme r0-5,static,FAGS-style,
+extreme:r0-5:30,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:30,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:30,extreme r0-5,static,BestFirst-mean+CBJ,12070
+extreme:r0-5:31,extreme r0-5,mrv,Restarts,104
+extreme:r0-5:31,extreme r0-5,mrv,DFS,58
+extreme:r0-5:31,extreme r0-5,mrv,DFS+CBJ,58
+extreme:r0-5:31,extreme r0-5,mrv,FAGS-style,58
+extreme:r0-5:31,extreme r0-5,mrv,FAGS-style+CBJ,58
+extreme:r0-5:31,extreme r0-5,mrv,BestFirst-mean,62
+extreme:r0-5:31,extreme r0-5,mrv,BestFirst-mean+CBJ,62
+extreme:r0-5:31,extreme r0-5,static,Restarts,
+extreme:r0-5:31,extreme r0-5,static,DFS,225
+extreme:r0-5:31,extreme r0-5,static,DFS+CBJ,138
+extreme:r0-5:31,extreme r0-5,static,FAGS-style,342
+extreme:r0-5:31,extreme r0-5,static,FAGS-style+CBJ,326
+extreme:r0-5:31,extreme r0-5,static,BestFirst-mean,546
+extreme:r0-5:31,extreme r0-5,static,BestFirst-mean+CBJ,498
+extreme:r0-5:32,extreme r0-5,mrv,Restarts,7805
+extreme:r0-5:32,extreme r0-5,mrv,DFS,568
+extreme:r0-5:32,extreme r0-5,mrv,DFS+CBJ,568
+extreme:r0-5:32,extreme r0-5,mrv,FAGS-style,399
+extreme:r0-5:32,extreme r0-5,mrv,FAGS-style+CBJ,399
+extreme:r0-5:32,extreme r0-5,mrv,BestFirst-mean,340
+extreme:r0-5:32,extreme r0-5,mrv,BestFirst-mean+CBJ,340
+extreme:r0-5:32,extreme r0-5,static,Restarts,
+extreme:r0-5:32,extreme r0-5,static,DFS,2928
+extreme:r0-5:32,extreme r0-5,static,DFS+CBJ,2239
+extreme:r0-5:32,extreme r0-5,static,FAGS-style,882
+extreme:r0-5:32,extreme r0-5,static,FAGS-style+CBJ,756
+extreme:r0-5:32,extreme r0-5,static,BestFirst-mean,1307
+extreme:r0-5:32,extreme r0-5,static,BestFirst-mean+CBJ,1043
+extreme:r0-5:33,extreme r0-5,mrv,Restarts,
+extreme:r0-5:33,extreme r0-5,mrv,DFS,209
+extreme:r0-5:33,extreme r0-5,mrv,DFS+CBJ,156
+extreme:r0-5:33,extreme r0-5,mrv,FAGS-style,453
+extreme:r0-5:33,extreme r0-5,mrv,FAGS-style+CBJ,450
+extreme:r0-5:33,extreme r0-5,mrv,BestFirst-mean,340
+extreme:r0-5:33,extreme r0-5,mrv,BestFirst-mean+CBJ,291
+extreme:r0-5:33,extreme r0-5,static,Restarts,
+extreme:r0-5:33,extreme r0-5,static,DFS,2448
+extreme:r0-5:33,extreme r0-5,static,DFS+CBJ,2054
+extreme:r0-5:33,extreme r0-5,static,FAGS-style,2610
+extreme:r0-5:33,extreme r0-5,static,FAGS-style+CBJ,2301
+extreme:r0-5:33,extreme r0-5,static,BestFirst-mean,2534
+extreme:r0-5:33,extreme r0-5,static,BestFirst-mean+CBJ,2130
+extreme:r0-5:34,extreme r0-5,mrv,Restarts,48
+extreme:r0-5:34,extreme r0-5,mrv,DFS,48
+extreme:r0-5:34,extreme r0-5,mrv,DFS+CBJ,48
+extreme:r0-5:34,extreme r0-5,mrv,FAGS-style,48
+extreme:r0-5:34,extreme r0-5,mrv,FAGS-style+CBJ,48
+extreme:r0-5:34,extreme r0-5,mrv,BestFirst-mean,48
+extreme:r0-5:34,extreme r0-5,mrv,BestFirst-mean+CBJ,48
+extreme:r0-5:34,extreme r0-5,static,Restarts,3556
+extreme:r0-5:34,extreme r0-5,static,DFS,74
+extreme:r0-5:34,extreme r0-5,static,DFS+CBJ,69
+extreme:r0-5:34,extreme r0-5,static,FAGS-style,86
+extreme:r0-5:34,extreme r0-5,static,FAGS-style+CBJ,86
+extreme:r0-5:34,extreme r0-5,static,BestFirst-mean,83
+extreme:r0-5:34,extreme r0-5,static,BestFirst-mean+CBJ,79
+extreme:r0-5:35,extreme r0-5,mrv,Restarts,2763
+extreme:r0-5:35,extreme r0-5,mrv,DFS,199
+extreme:r0-5:35,extreme r0-5,mrv,DFS+CBJ,199
+extreme:r0-5:35,extreme r0-5,mrv,FAGS-style,581
+extreme:r0-5:35,extreme r0-5,mrv,FAGS-style+CBJ,581
+extreme:r0-5:35,extreme r0-5,mrv,BestFirst-mean,285
+extreme:r0-5:35,extreme r0-5,mrv,BestFirst-mean+CBJ,285
+extreme:r0-5:35,extreme r0-5,static,Restarts,
+extreme:r0-5:35,extreme r0-5,static,DFS,4394
+extreme:r0-5:35,extreme r0-5,static,DFS+CBJ,2267
+extreme:r0-5:35,extreme r0-5,static,FAGS-style,4381
+extreme:r0-5:35,extreme r0-5,static,FAGS-style+CBJ,2690
+extreme:r0-5:35,extreme r0-5,static,BestFirst-mean,4668
+extreme:r0-5:35,extreme r0-5,static,BestFirst-mean+CBJ,2527
+extreme:r0-5:36,extreme r0-5,mrv,Restarts,49
+extreme:r0-5:36,extreme r0-5,mrv,DFS,49
+extreme:r0-5:36,extreme r0-5,mrv,DFS+CBJ,49
+extreme:r0-5:36,extreme r0-5,mrv,FAGS-style,49
+extreme:r0-5:36,extreme r0-5,mrv,FAGS-style+CBJ,49
+extreme:r0-5:36,extreme r0-5,mrv,BestFirst-mean,49
+extreme:r0-5:36,extreme r0-5,mrv,BestFirst-mean+CBJ,49
+extreme:r0-5:36,extreme r0-5,static,Restarts,223
+extreme:r0-5:36,extreme r0-5,static,DFS,50
+extreme:r0-5:36,extreme r0-5,static,DFS+CBJ,50
+extreme:r0-5:36,extreme r0-5,static,FAGS-style,49
+extreme:r0-5:36,extreme r0-5,static,FAGS-style+CBJ,49
+extreme:r0-5:36,extreme r0-5,static,BestFirst-mean,51
+extreme:r0-5:36,extreme r0-5,static,BestFirst-mean+CBJ,51
+extreme:r0-5:37,extreme r0-5,mrv,Restarts,113
+extreme:r0-5:37,extreme r0-5,mrv,DFS,57
+extreme:r0-5:37,extreme r0-5,mrv,DFS+CBJ,57
+extreme:r0-5:37,extreme r0-5,mrv,FAGS-style,57
+extreme:r0-5:37,extreme r0-5,mrv,FAGS-style+CBJ,57
+extreme:r0-5:37,extreme r0-5,mrv,BestFirst-mean,57
+extreme:r0-5:37,extreme r0-5,mrv,BestFirst-mean+CBJ,57
+extreme:r0-5:37,extreme r0-5,static,Restarts,
+extreme:r0-5:37,extreme r0-5,static,DFS,
+extreme:r0-5:37,extreme r0-5,static,DFS+CBJ,15805
+extreme:r0-5:37,extreme r0-5,static,FAGS-style,
+extreme:r0-5:37,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:37,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:37,extreme r0-5,static,BestFirst-mean+CBJ,16353
+extreme:r0-5:38,extreme r0-5,mrv,Restarts,223
+extreme:r0-5:38,extreme r0-5,mrv,DFS,72
+extreme:r0-5:38,extreme r0-5,mrv,DFS+CBJ,72
+extreme:r0-5:38,extreme r0-5,mrv,FAGS-style,116
+extreme:r0-5:38,extreme r0-5,mrv,FAGS-style+CBJ,116
+extreme:r0-5:38,extreme r0-5,mrv,BestFirst-mean,73
+extreme:r0-5:38,extreme r0-5,mrv,BestFirst-mean+CBJ,73
+extreme:r0-5:38,extreme r0-5,static,Restarts,
+extreme:r0-5:38,extreme r0-5,static,DFS,627
+extreme:r0-5:38,extreme r0-5,static,DFS+CBJ,262
+extreme:r0-5:38,extreme r0-5,static,FAGS-style,437
+extreme:r0-5:38,extreme r0-5,static,FAGS-style+CBJ,409
+extreme:r0-5:38,extreme r0-5,static,BestFirst-mean,638
+extreme:r0-5:38,extreme r0-5,static,BestFirst-mean+CBJ,348
+extreme:r0-5:39,extreme r0-5,mrv,Restarts,648
+extreme:r0-5:39,extreme r0-5,mrv,DFS,95
+extreme:r0-5:39,extreme r0-5,mrv,DFS+CBJ,95
+extreme:r0-5:39,extreme r0-5,mrv,FAGS-style,99
+extreme:r0-5:39,extreme r0-5,mrv,FAGS-style+CBJ,99
+extreme:r0-5:39,extreme r0-5,mrv,BestFirst-mean,90
+extreme:r0-5:39,extreme r0-5,mrv,BestFirst-mean+CBJ,90
+extreme:r0-5:39,extreme r0-5,static,Restarts,
+extreme:r0-5:39,extreme r0-5,static,DFS,975
+extreme:r0-5:39,extreme r0-5,static,DFS+CBJ,759
+extreme:r0-5:39,extreme r0-5,static,FAGS-style,398
+extreme:r0-5:39,extreme r0-5,static,FAGS-style+CBJ,368
+extreme:r0-5:39,extreme r0-5,static,BestFirst-mean,959
+extreme:r0-5:39,extreme r0-5,static,BestFirst-mean+CBJ,767
+extreme:r0-5:40,extreme r0-5,mrv,Restarts,9223
+extreme:r0-5:40,extreme r0-5,mrv,DFS,3770
+extreme:r0-5:40,extreme r0-5,mrv,DFS+CBJ,2873
+extreme:r0-5:40,extreme r0-5,mrv,FAGS-style,3209
+extreme:r0-5:40,extreme r0-5,mrv,FAGS-style+CBJ,3000
+extreme:r0-5:40,extreme r0-5,mrv,BestFirst-mean,2004
+extreme:r0-5:40,extreme r0-5,mrv,BestFirst-mean+CBJ,1703
+extreme:r0-5:40,extreme r0-5,static,Restarts,
+extreme:r0-5:40,extreme r0-5,static,DFS,3257
+extreme:r0-5:40,extreme r0-5,static,DFS+CBJ,2258
+extreme:r0-5:40,extreme r0-5,static,FAGS-style,15657
+extreme:r0-5:40,extreme r0-5,static,FAGS-style+CBJ,9991
+extreme:r0-5:40,extreme r0-5,static,BestFirst-mean,10052
+extreme:r0-5:40,extreme r0-5,static,BestFirst-mean+CBJ,5219
+extreme:r0-5:41,extreme r0-5,mrv,Restarts,56
+extreme:r0-5:41,extreme r0-5,mrv,DFS,56
+extreme:r0-5:41,extreme r0-5,mrv,DFS+CBJ,56
+extreme:r0-5:41,extreme r0-5,mrv,FAGS-style,56
+extreme:r0-5:41,extreme r0-5,mrv,FAGS-style+CBJ,56
+extreme:r0-5:41,extreme r0-5,mrv,BestFirst-mean,56
+extreme:r0-5:41,extreme r0-5,mrv,BestFirst-mean+CBJ,56
+extreme:r0-5:41,extreme r0-5,static,Restarts,
+extreme:r0-5:41,extreme r0-5,static,DFS,2625
+extreme:r0-5:41,extreme r0-5,static,DFS+CBJ,1279
+extreme:r0-5:41,extreme r0-5,static,FAGS-style,2662
+extreme:r0-5:41,extreme r0-5,static,FAGS-style+CBJ,1360
+extreme:r0-5:41,extreme r0-5,static,BestFirst-mean,2560
+extreme:r0-5:41,extreme r0-5,static,BestFirst-mean+CBJ,1239
+extreme:r0-5:42,extreme r0-5,mrv,Restarts,
+extreme:r0-5:42,extreme r0-5,mrv,DFS,1306
+extreme:r0-5:42,extreme r0-5,mrv,DFS+CBJ,1293
+extreme:r0-5:42,extreme r0-5,mrv,FAGS-style,1241
+extreme:r0-5:42,extreme r0-5,mrv,FAGS-style+CBJ,1218
+extreme:r0-5:42,extreme r0-5,mrv,BestFirst-mean,850
+extreme:r0-5:42,extreme r0-5,mrv,BestFirst-mean+CBJ,844
+extreme:r0-5:42,extreme r0-5,static,Restarts,
+extreme:r0-5:42,extreme r0-5,static,DFS,
+extreme:r0-5:42,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:42,extreme r0-5,static,FAGS-style,
+extreme:r0-5:42,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:42,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:42,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:43,extreme r0-5,mrv,Restarts,1958
+extreme:r0-5:43,extreme r0-5,mrv,DFS,85
+extreme:r0-5:43,extreme r0-5,mrv,DFS+CBJ,85
+extreme:r0-5:43,extreme r0-5,mrv,FAGS-style,151
+extreme:r0-5:43,extreme r0-5,mrv,FAGS-style+CBJ,151
+extreme:r0-5:43,extreme r0-5,mrv,BestFirst-mean,94
+extreme:r0-5:43,extreme r0-5,mrv,BestFirst-mean+CBJ,94
+extreme:r0-5:43,extreme r0-5,static,Restarts,
+extreme:r0-5:43,extreme r0-5,static,DFS,8143
+extreme:r0-5:43,extreme r0-5,static,DFS+CBJ,4305
+extreme:r0-5:43,extreme r0-5,static,FAGS-style,8061
+extreme:r0-5:43,extreme r0-5,static,FAGS-style+CBJ,4887
+extreme:r0-5:43,extreme r0-5,static,BestFirst-mean,8137
+extreme:r0-5:43,extreme r0-5,static,BestFirst-mean+CBJ,4785
+extreme:r0-5:44,extreme r0-5,mrv,Restarts,259
+extreme:r0-5:44,extreme r0-5,mrv,DFS,619
+extreme:r0-5:44,extreme r0-5,mrv,DFS+CBJ,619
+extreme:r0-5:44,extreme r0-5,mrv,FAGS-style,219
+extreme:r0-5:44,extreme r0-5,mrv,FAGS-style+CBJ,219
+extreme:r0-5:44,extreme r0-5,mrv,BestFirst-mean,619
+extreme:r0-5:44,extreme r0-5,mrv,BestFirst-mean+CBJ,619
+extreme:r0-5:44,extreme r0-5,static,Restarts,
+extreme:r0-5:44,extreme r0-5,static,DFS,7441
+extreme:r0-5:44,extreme r0-5,static,DFS+CBJ,4993
+extreme:r0-5:44,extreme r0-5,static,FAGS-style,7520
+extreme:r0-5:44,extreme r0-5,static,FAGS-style+CBJ,6241
+extreme:r0-5:44,extreme r0-5,static,BestFirst-mean,2427
+extreme:r0-5:44,extreme r0-5,static,BestFirst-mean+CBJ,1794
+extreme:r0-5:45,extreme r0-5,mrv,Restarts,56
+extreme:r0-5:45,extreme r0-5,mrv,DFS,174
+extreme:r0-5:45,extreme r0-5,mrv,DFS+CBJ,144
+extreme:r0-5:45,extreme r0-5,mrv,FAGS-style,116
+extreme:r0-5:45,extreme r0-5,mrv,FAGS-style+CBJ,116
+extreme:r0-5:45,extreme r0-5,mrv,BestFirst-mean,169
+extreme:r0-5:45,extreme r0-5,mrv,BestFirst-mean+CBJ,139
+extreme:r0-5:45,extreme r0-5,static,Restarts,
+extreme:r0-5:45,extreme r0-5,static,DFS,1170
+extreme:r0-5:45,extreme r0-5,static,DFS+CBJ,540
+extreme:r0-5:45,extreme r0-5,static,FAGS-style,552
+extreme:r0-5:45,extreme r0-5,static,FAGS-style+CBJ,379
+extreme:r0-5:45,extreme r0-5,static,BestFirst-mean,791
+extreme:r0-5:45,extreme r0-5,static,BestFirst-mean+CBJ,465
+extreme:r0-5:46,extreme r0-5,mrv,Restarts,
+extreme:r0-5:46,extreme r0-5,mrv,DFS,
+extreme:r0-5:46,extreme r0-5,mrv,DFS+CBJ,
+extreme:r0-5:46,extreme r0-5,mrv,FAGS-style,
+extreme:r0-5:46,extreme r0-5,mrv,FAGS-style+CBJ,
+extreme:r0-5:46,extreme r0-5,mrv,BestFirst-mean,
+extreme:r0-5:46,extreme r0-5,mrv,BestFirst-mean+CBJ,
+extreme:r0-5:46,extreme r0-5,static,Restarts,
+extreme:r0-5:46,extreme r0-5,static,DFS,
+extreme:r0-5:46,extreme r0-5,static,DFS+CBJ,
+extreme:r0-5:46,extreme r0-5,static,FAGS-style,
+extreme:r0-5:46,extreme r0-5,static,FAGS-style+CBJ,
+extreme:r0-5:46,extreme r0-5,static,BestFirst-mean,
+extreme:r0-5:46,extreme r0-5,static,BestFirst-mean+CBJ,
+extreme:r0-5:47,extreme r0-5,mrv,Restarts,498
+extreme:r0-5:47,extreme r0-5,mrv,DFS,79
+extreme:r0-5:47,extreme r0-5,mrv,DFS+CBJ,79
+extreme:r0-5:47,extreme r0-5,mrv,FAGS-style,96
+extreme:r0-5:47,extreme r0-5,mrv,FAGS-style+CBJ,96
+extreme:r0-5:47,extreme r0-5,mrv,BestFirst-mean,79
+extreme:r0-5:47,extreme r0-5,mrv,BestFirst-mean+CBJ,79
+extreme:r0-5:47,extreme r0-5,static,Restarts,
+extreme:r0-5:47,extreme r0-5,static,DFS,1743
+extreme:r0-5:47,extreme r0-5,static,DFS+CBJ,612
+extreme:r0-5:47,extreme r0-5,static,FAGS-style,2236
+extreme:r0-5:47,extreme r0-5,static,FAGS-style+CBJ,1101
+extreme:r0-5:47,extreme r0-5,static,BestFirst-mean,1759
+extreme:r0-5:47,extreme r0-5,static,BestFirst-mean+CBJ,627
+extreme:r0-5:48,extreme r0-5,mrv,Restarts,2525
+extreme:r0-5:48,extreme r0-5,mrv,DFS,227
+extreme:r0-5:48,extreme r0-5,mrv,DFS+CBJ,227
+extreme:r0-5:48,extreme r0-5,mrv,FAGS-style,106
+extreme:r0-5:48,extreme r0-5,mrv,FAGS-style+CBJ,106
+extreme:r0-5:48,extreme r0-5,mrv,BestFirst-mean,358
+extreme:r0-5:48,extreme r0-5,mrv,BestFirst-mean+CBJ,358
+extreme:r0-5:48,extreme r0-5,static,Restarts,
+extreme:r0-5:48,extreme r0-5,static,DFS,5662
+extreme:r0-5:48,extreme r0-5,static,DFS+CBJ,3576
+extreme:r0-5:48,extreme r0-5,static,FAGS-style,4754
+extreme:r0-5:48,extreme r0-5,static,FAGS-style+CBJ,3329
+extreme:r0-5:48,extreme r0-5,static,BestFirst-mean,4982
+extreme:r0-5:48,extreme r0-5,static,BestFirst-mean+CBJ,3233
+extreme:r0-5:49,extreme r0-5,mrv,Restarts,5713
+extreme:r0-5:49,extreme r0-5,mrv,DFS,172
+extreme:r0-5:49,extreme r0-5,mrv,DFS+CBJ,172
+extreme:r0-5:49,extreme r0-5,mrv,FAGS-style,149
+extreme:r0-5:49,extreme r0-5,mrv,FAGS-style+CBJ,149
+extreme:r0-5:49,extreme r0-5,mrv,BestFirst-mean,160
+extreme:r0-5:49,extreme r0-5,mrv,BestFirst-mean+CBJ,160
+extreme:r0-5:49,extreme r0-5,static,Restarts,
+extreme:r0-5:49,extreme r0-5,static,DFS,1342
+extreme:r0-5:49,extreme r0-5,static,DFS+CBJ,449
+extreme:r0-5:49,extreme r0-5,static,FAGS-style,1590
+extreme:r0-5:49,extreme r0-5,static,FAGS-style+CBJ,977
+extreme:r0-5:49,extreme r0-5,static,BestFirst-mean,461
+extreme:r0-5:49,extreme r0-5,static,BestFirst-mean+CBJ,210
+extreme:r6-20:0,extreme r6-20,mrv,Restarts,
+extreme:r6-20:0,extreme r6-20,mrv,DFS,7848
+extreme:r6-20:0,extreme r6-20,mrv,DFS+CBJ,7415
+extreme:r6-20:0,extreme r6-20,mrv,FAGS-style,6522
+extreme:r6-20:0,extreme r6-20,mrv,FAGS-style+CBJ,6423
+extreme:r6-20:0,extreme r6-20,mrv,BestFirst-mean,6919
+extreme:r6-20:0,extreme r6-20,mrv,BestFirst-mean+CBJ,6676
+extreme:r6-20:0,extreme r6-20,static,Restarts,
+extreme:r6-20:0,extreme r6-20,static,DFS,
+extreme:r6-20:0,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:0,extreme r6-20,static,FAGS-style,
+extreme:r6-20:0,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:0,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:0,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:1,extreme r6-20,mrv,Restarts,
+extreme:r6-20:1,extreme r6-20,mrv,DFS,2574
+extreme:r6-20:1,extreme r6-20,mrv,DFS+CBJ,2569
+extreme:r6-20:1,extreme r6-20,mrv,FAGS-style,1775
+extreme:r6-20:1,extreme r6-20,mrv,FAGS-style+CBJ,1770
+extreme:r6-20:1,extreme r6-20,mrv,BestFirst-mean,2523
+extreme:r6-20:1,extreme r6-20,mrv,BestFirst-mean+CBJ,2520
+extreme:r6-20:1,extreme r6-20,static,Restarts,
+extreme:r6-20:1,extreme r6-20,static,DFS,2869
+extreme:r6-20:1,extreme r6-20,static,DFS+CBJ,1738
+extreme:r6-20:1,extreme r6-20,static,FAGS-style,19715
+extreme:r6-20:1,extreme r6-20,static,FAGS-style+CBJ,13892
+extreme:r6-20:1,extreme r6-20,static,BestFirst-mean,6452
+extreme:r6-20:1,extreme r6-20,static,BestFirst-mean+CBJ,4109
+extreme:r6-20:2,extreme r6-20,mrv,Restarts,13670
+extreme:r6-20:2,extreme r6-20,mrv,DFS,4593
+extreme:r6-20:2,extreme r6-20,mrv,DFS+CBJ,4208
+extreme:r6-20:2,extreme r6-20,mrv,FAGS-style,1141
+extreme:r6-20:2,extreme r6-20,mrv,FAGS-style+CBJ,1042
+extreme:r6-20:2,extreme r6-20,mrv,BestFirst-mean,4535
+extreme:r6-20:2,extreme r6-20,mrv,BestFirst-mean+CBJ,4168
+extreme:r6-20:2,extreme r6-20,static,Restarts,
+extreme:r6-20:2,extreme r6-20,static,DFS,
+extreme:r6-20:2,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:2,extreme r6-20,static,FAGS-style,
+extreme:r6-20:2,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:2,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:2,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:3,extreme r6-20,mrv,Restarts,
+extreme:r6-20:3,extreme r6-20,mrv,DFS,
+extreme:r6-20:3,extreme r6-20,mrv,DFS+CBJ,18079
+extreme:r6-20:3,extreme r6-20,mrv,FAGS-style,13484
+extreme:r6-20:3,extreme r6-20,mrv,FAGS-style+CBJ,11766
+extreme:r6-20:3,extreme r6-20,mrv,BestFirst-mean,
+extreme:r6-20:3,extreme r6-20,mrv,BestFirst-mean+CBJ,18096
+extreme:r6-20:3,extreme r6-20,static,Restarts,
+extreme:r6-20:3,extreme r6-20,static,DFS,
+extreme:r6-20:3,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:3,extreme r6-20,static,FAGS-style,
+extreme:r6-20:3,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:3,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:3,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:4,extreme r6-20,mrv,Restarts,
+extreme:r6-20:4,extreme r6-20,mrv,DFS,1651
+extreme:r6-20:4,extreme r6-20,mrv,DFS+CBJ,1619
+extreme:r6-20:4,extreme r6-20,mrv,FAGS-style,542
+extreme:r6-20:4,extreme r6-20,mrv,FAGS-style+CBJ,542
+extreme:r6-20:4,extreme r6-20,mrv,BestFirst-mean,1843
+extreme:r6-20:4,extreme r6-20,mrv,BestFirst-mean+CBJ,1811
+extreme:r6-20:4,extreme r6-20,static,Restarts,
+extreme:r6-20:4,extreme r6-20,static,DFS,
+extreme:r6-20:4,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:4,extreme r6-20,static,FAGS-style,7473
+extreme:r6-20:4,extreme r6-20,static,FAGS-style+CBJ,5484
+extreme:r6-20:4,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:4,extreme r6-20,static,BestFirst-mean+CBJ,19112
+extreme:r6-20:5,extreme r6-20,mrv,Restarts,5685
+extreme:r6-20:5,extreme r6-20,mrv,DFS,10575
+extreme:r6-20:5,extreme r6-20,mrv,DFS+CBJ,9889
+extreme:r6-20:5,extreme r6-20,mrv,FAGS-style,570
+extreme:r6-20:5,extreme r6-20,mrv,FAGS-style+CBJ,570
+extreme:r6-20:5,extreme r6-20,mrv,BestFirst-mean,7726
+extreme:r6-20:5,extreme r6-20,mrv,BestFirst-mean+CBJ,7244
+extreme:r6-20:5,extreme r6-20,static,Restarts,
+extreme:r6-20:5,extreme r6-20,static,DFS,
+extreme:r6-20:5,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:5,extreme r6-20,static,FAGS-style,18029
+extreme:r6-20:5,extreme r6-20,static,FAGS-style+CBJ,14524
+extreme:r6-20:5,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:5,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:6,extreme r6-20,mrv,Restarts,
+extreme:r6-20:6,extreme r6-20,mrv,DFS,4899
+extreme:r6-20:6,extreme r6-20,mrv,DFS+CBJ,4853
+extreme:r6-20:6,extreme r6-20,mrv,FAGS-style,4143
+extreme:r6-20:6,extreme r6-20,mrv,FAGS-style+CBJ,4123
+extreme:r6-20:6,extreme r6-20,mrv,BestFirst-mean,4910
+extreme:r6-20:6,extreme r6-20,mrv,BestFirst-mean+CBJ,4873
+extreme:r6-20:6,extreme r6-20,static,Restarts,
+extreme:r6-20:6,extreme r6-20,static,DFS,8556
+extreme:r6-20:6,extreme r6-20,static,DFS+CBJ,6520
+extreme:r6-20:6,extreme r6-20,static,FAGS-style,8171
+extreme:r6-20:6,extreme r6-20,static,FAGS-style+CBJ,6699
+extreme:r6-20:6,extreme r6-20,static,BestFirst-mean,7454
+extreme:r6-20:6,extreme r6-20,static,BestFirst-mean+CBJ,6156
+extreme:r6-20:7,extreme r6-20,mrv,Restarts,
+extreme:r6-20:7,extreme r6-20,mrv,DFS,6861
+extreme:r6-20:7,extreme r6-20,mrv,DFS+CBJ,6676
+extreme:r6-20:7,extreme r6-20,mrv,FAGS-style,10741
+extreme:r6-20:7,extreme r6-20,mrv,FAGS-style+CBJ,10534
+extreme:r6-20:7,extreme r6-20,mrv,BestFirst-mean,12179
+extreme:r6-20:7,extreme r6-20,mrv,BestFirst-mean+CBJ,11689
+extreme:r6-20:7,extreme r6-20,static,Restarts,
+extreme:r6-20:7,extreme r6-20,static,DFS,
+extreme:r6-20:7,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:7,extreme r6-20,static,FAGS-style,
+extreme:r6-20:7,extreme r6-20,static,FAGS-style+CBJ,15610
+extreme:r6-20:7,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:7,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:8,extreme r6-20,mrv,Restarts,
+extreme:r6-20:8,extreme r6-20,mrv,DFS,9908
+extreme:r6-20:8,extreme r6-20,mrv,DFS+CBJ,9886
+extreme:r6-20:8,extreme r6-20,mrv,FAGS-style,5924
+extreme:r6-20:8,extreme r6-20,mrv,FAGS-style+CBJ,5924
+extreme:r6-20:8,extreme r6-20,mrv,BestFirst-mean,11952
+extreme:r6-20:8,extreme r6-20,mrv,BestFirst-mean+CBJ,11879
+extreme:r6-20:8,extreme r6-20,static,Restarts,
+extreme:r6-20:8,extreme r6-20,static,DFS,
+extreme:r6-20:8,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:8,extreme r6-20,static,FAGS-style,18213
+extreme:r6-20:8,extreme r6-20,static,FAGS-style+CBJ,13873
+extreme:r6-20:8,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:8,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:9,extreme r6-20,mrv,Restarts,16698
+extreme:r6-20:9,extreme r6-20,mrv,DFS,2810
+extreme:r6-20:9,extreme r6-20,mrv,DFS+CBJ,2629
+extreme:r6-20:9,extreme r6-20,mrv,FAGS-style,1770
+extreme:r6-20:9,extreme r6-20,mrv,FAGS-style+CBJ,1737
+extreme:r6-20:9,extreme r6-20,mrv,BestFirst-mean,2341
+extreme:r6-20:9,extreme r6-20,mrv,BestFirst-mean+CBJ,2223
+extreme:r6-20:9,extreme r6-20,static,Restarts,
+extreme:r6-20:9,extreme r6-20,static,DFS,
+extreme:r6-20:9,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:9,extreme r6-20,static,FAGS-style,
+extreme:r6-20:9,extreme r6-20,static,FAGS-style+CBJ,17710
+extreme:r6-20:9,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:9,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:10,extreme r6-20,mrv,Restarts,10403
+extreme:r6-20:10,extreme r6-20,mrv,DFS,5269
+extreme:r6-20:10,extreme r6-20,mrv,DFS+CBJ,5218
+extreme:r6-20:10,extreme r6-20,mrv,FAGS-style,2229
+extreme:r6-20:10,extreme r6-20,mrv,FAGS-style+CBJ,2229
+extreme:r6-20:10,extreme r6-20,mrv,BestFirst-mean,5194
+extreme:r6-20:10,extreme r6-20,mrv,BestFirst-mean+CBJ,5129
+extreme:r6-20:10,extreme r6-20,static,Restarts,
+extreme:r6-20:10,extreme r6-20,static,DFS,13165
+extreme:r6-20:10,extreme r6-20,static,DFS+CBJ,9536
+extreme:r6-20:10,extreme r6-20,static,FAGS-style,8495
+extreme:r6-20:10,extreme r6-20,static,FAGS-style+CBJ,6641
+extreme:r6-20:10,extreme r6-20,static,BestFirst-mean,8969
+extreme:r6-20:10,extreme r6-20,static,BestFirst-mean+CBJ,6636
+extreme:r6-20:11,extreme r6-20,mrv,Restarts,1978
+extreme:r6-20:11,extreme r6-20,mrv,DFS,4707
+extreme:r6-20:11,extreme r6-20,mrv,DFS+CBJ,4538
+extreme:r6-20:11,extreme r6-20,mrv,FAGS-style,2310
+extreme:r6-20:11,extreme r6-20,mrv,FAGS-style+CBJ,2284
+extreme:r6-20:11,extreme r6-20,mrv,BestFirst-mean,4684
+extreme:r6-20:11,extreme r6-20,mrv,BestFirst-mean+CBJ,4636
+extreme:r6-20:11,extreme r6-20,static,Restarts,
+extreme:r6-20:11,extreme r6-20,static,DFS,
+extreme:r6-20:11,extreme r6-20,static,DFS+CBJ,16170
+extreme:r6-20:11,extreme r6-20,static,FAGS-style,14662
+extreme:r6-20:11,extreme r6-20,static,FAGS-style+CBJ,10024
+extreme:r6-20:11,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:11,extreme r6-20,static,BestFirst-mean+CBJ,16140
+extreme:r6-20:12,extreme r6-20,mrv,Restarts,
+extreme:r6-20:12,extreme r6-20,mrv,DFS,3462
+extreme:r6-20:12,extreme r6-20,mrv,DFS+CBJ,3453
+extreme:r6-20:12,extreme r6-20,mrv,FAGS-style,7991
+extreme:r6-20:12,extreme r6-20,mrv,FAGS-style+CBJ,7985
+extreme:r6-20:12,extreme r6-20,mrv,BestFirst-mean,3251
+extreme:r6-20:12,extreme r6-20,mrv,BestFirst-mean+CBJ,3242
+extreme:r6-20:12,extreme r6-20,static,Restarts,
+extreme:r6-20:12,extreme r6-20,static,DFS,2801
+extreme:r6-20:12,extreme r6-20,static,DFS+CBJ,1978
+extreme:r6-20:12,extreme r6-20,static,FAGS-style,3411
+extreme:r6-20:12,extreme r6-20,static,FAGS-style+CBJ,2560
+extreme:r6-20:12,extreme r6-20,static,BestFirst-mean,1528
+extreme:r6-20:12,extreme r6-20,static,BestFirst-mean+CBJ,1013
+extreme:r6-20:13,extreme r6-20,mrv,Restarts,
+extreme:r6-20:13,extreme r6-20,mrv,DFS,
+extreme:r6-20:13,extreme r6-20,mrv,DFS+CBJ,
+extreme:r6-20:13,extreme r6-20,mrv,FAGS-style,12683
+extreme:r6-20:13,extreme r6-20,mrv,FAGS-style+CBJ,12504
+extreme:r6-20:13,extreme r6-20,mrv,BestFirst-mean,
+extreme:r6-20:13,extreme r6-20,mrv,BestFirst-mean+CBJ,
+extreme:r6-20:13,extreme r6-20,static,Restarts,
+extreme:r6-20:13,extreme r6-20,static,DFS,
+extreme:r6-20:13,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:13,extreme r6-20,static,FAGS-style,
+extreme:r6-20:13,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:13,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:13,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:14,extreme r6-20,mrv,Restarts,
+extreme:r6-20:14,extreme r6-20,mrv,DFS,3577
+extreme:r6-20:14,extreme r6-20,mrv,DFS+CBJ,3191
+extreme:r6-20:14,extreme r6-20,mrv,FAGS-style,3740
+extreme:r6-20:14,extreme r6-20,mrv,FAGS-style+CBJ,3677
+extreme:r6-20:14,extreme r6-20,mrv,BestFirst-mean,4567
+extreme:r6-20:14,extreme r6-20,mrv,BestFirst-mean+CBJ,4202
+extreme:r6-20:14,extreme r6-20,static,Restarts,
+extreme:r6-20:14,extreme r6-20,static,DFS,6947
+extreme:r6-20:14,extreme r6-20,static,DFS+CBJ,4429
+extreme:r6-20:14,extreme r6-20,static,FAGS-style,11983
+extreme:r6-20:14,extreme r6-20,static,FAGS-style+CBJ,8675
+extreme:r6-20:14,extreme r6-20,static,BestFirst-mean,11523
+extreme:r6-20:14,extreme r6-20,static,BestFirst-mean+CBJ,7161
+extreme:r6-20:15,extreme r6-20,mrv,Restarts,
+extreme:r6-20:15,extreme r6-20,mrv,DFS,19551
+extreme:r6-20:15,extreme r6-20,mrv,DFS+CBJ,18854
+extreme:r6-20:15,extreme r6-20,mrv,FAGS-style,18845
+extreme:r6-20:15,extreme r6-20,mrv,FAGS-style+CBJ,18460
+extreme:r6-20:15,extreme r6-20,mrv,BestFirst-mean,19584
+extreme:r6-20:15,extreme r6-20,mrv,BestFirst-mean+CBJ,18871
+extreme:r6-20:15,extreme r6-20,static,Restarts,
+extreme:r6-20:15,extreme r6-20,static,DFS,
+extreme:r6-20:15,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:15,extreme r6-20,static,FAGS-style,
+extreme:r6-20:15,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:15,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:15,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:16,extreme r6-20,mrv,Restarts,
+extreme:r6-20:16,extreme r6-20,mrv,DFS,13029
+extreme:r6-20:16,extreme r6-20,mrv,DFS+CBJ,12437
+extreme:r6-20:16,extreme r6-20,mrv,FAGS-style,13076
+extreme:r6-20:16,extreme r6-20,mrv,FAGS-style+CBJ,12873
+extreme:r6-20:16,extreme r6-20,mrv,BestFirst-mean,13042
+extreme:r6-20:16,extreme r6-20,mrv,BestFirst-mean+CBJ,12450
+extreme:r6-20:16,extreme r6-20,static,Restarts,
+extreme:r6-20:16,extreme r6-20,static,DFS,
+extreme:r6-20:16,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:16,extreme r6-20,static,FAGS-style,
+extreme:r6-20:16,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:16,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:16,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:17,extreme r6-20,mrv,Restarts,
+extreme:r6-20:17,extreme r6-20,mrv,DFS,
+extreme:r6-20:17,extreme r6-20,mrv,DFS+CBJ,
+extreme:r6-20:17,extreme r6-20,mrv,FAGS-style,13133
+extreme:r6-20:17,extreme r6-20,mrv,FAGS-style+CBJ,13079
+extreme:r6-20:17,extreme r6-20,mrv,BestFirst-mean,
+extreme:r6-20:17,extreme r6-20,mrv,BestFirst-mean+CBJ,
+extreme:r6-20:17,extreme r6-20,static,Restarts,
+extreme:r6-20:17,extreme r6-20,static,DFS,
+extreme:r6-20:17,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:17,extreme r6-20,static,FAGS-style,
+extreme:r6-20:17,extreme r6-20,static,FAGS-style+CBJ,18337
+extreme:r6-20:17,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:17,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:18,extreme r6-20,mrv,Restarts,662
+extreme:r6-20:18,extreme r6-20,mrv,DFS,2630
+extreme:r6-20:18,extreme r6-20,mrv,DFS+CBJ,2578
+extreme:r6-20:18,extreme r6-20,mrv,FAGS-style,672
+extreme:r6-20:18,extreme r6-20,mrv,FAGS-style+CBJ,656
+extreme:r6-20:18,extreme r6-20,mrv,BestFirst-mean,2185
+extreme:r6-20:18,extreme r6-20,mrv,BestFirst-mean+CBJ,2135
+extreme:r6-20:18,extreme r6-20,static,Restarts,
+extreme:r6-20:18,extreme r6-20,static,DFS,
+extreme:r6-20:18,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:18,extreme r6-20,static,FAGS-style,
+extreme:r6-20:18,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:18,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:18,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:19,extreme r6-20,mrv,Restarts,513
+extreme:r6-20:19,extreme r6-20,mrv,DFS,3701
+extreme:r6-20:19,extreme r6-20,mrv,DFS+CBJ,3688
+extreme:r6-20:19,extreme r6-20,mrv,FAGS-style,3780
+extreme:r6-20:19,extreme r6-20,mrv,FAGS-style+CBJ,3759
+extreme:r6-20:19,extreme r6-20,mrv,BestFirst-mean,5385
+extreme:r6-20:19,extreme r6-20,mrv,BestFirst-mean+CBJ,5283
+extreme:r6-20:19,extreme r6-20,static,Restarts,
+extreme:r6-20:19,extreme r6-20,static,DFS,
+extreme:r6-20:19,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:19,extreme r6-20,static,FAGS-style,
+extreme:r6-20:19,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:19,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:19,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:20,extreme r6-20,mrv,Restarts,
+extreme:r6-20:20,extreme r6-20,mrv,DFS,757
+extreme:r6-20:20,extreme r6-20,mrv,DFS+CBJ,715
+extreme:r6-20:20,extreme r6-20,mrv,FAGS-style,2223
+extreme:r6-20:20,extreme r6-20,mrv,FAGS-style+CBJ,2218
+extreme:r6-20:20,extreme r6-20,mrv,BestFirst-mean,6367
+extreme:r6-20:20,extreme r6-20,mrv,BestFirst-mean+CBJ,5573
+extreme:r6-20:20,extreme r6-20,static,Restarts,
+extreme:r6-20:20,extreme r6-20,static,DFS,
+extreme:r6-20:20,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:20,extreme r6-20,static,FAGS-style,
+extreme:r6-20:20,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:20,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:20,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:21,extreme r6-20,mrv,Restarts,
+extreme:r6-20:21,extreme r6-20,mrv,DFS,5916
+extreme:r6-20:21,extreme r6-20,mrv,DFS+CBJ,5371
+extreme:r6-20:21,extreme r6-20,mrv,FAGS-style,4817
+extreme:r6-20:21,extreme r6-20,mrv,FAGS-style+CBJ,4647
+extreme:r6-20:21,extreme r6-20,mrv,BestFirst-mean,5446
+extreme:r6-20:21,extreme r6-20,mrv,BestFirst-mean+CBJ,5004
+extreme:r6-20:21,extreme r6-20,static,Restarts,
+extreme:r6-20:21,extreme r6-20,static,DFS,17990
+extreme:r6-20:21,extreme r6-20,static,DFS+CBJ,13812
+extreme:r6-20:21,extreme r6-20,static,FAGS-style,18000
+extreme:r6-20:21,extreme r6-20,static,FAGS-style+CBJ,14921
+extreme:r6-20:21,extreme r6-20,static,BestFirst-mean,16516
+extreme:r6-20:21,extreme r6-20,static,BestFirst-mean+CBJ,13172
+extreme:r6-20:22,extreme r6-20,mrv,Restarts,
+extreme:r6-20:22,extreme r6-20,mrv,DFS,3553
+extreme:r6-20:22,extreme r6-20,mrv,DFS+CBJ,3319
+extreme:r6-20:22,extreme r6-20,mrv,FAGS-style,281
+extreme:r6-20:22,extreme r6-20,mrv,FAGS-style+CBJ,278
+extreme:r6-20:22,extreme r6-20,mrv,BestFirst-mean,406
+extreme:r6-20:22,extreme r6-20,mrv,BestFirst-mean+CBJ,391
+extreme:r6-20:22,extreme r6-20,static,Restarts,
+extreme:r6-20:22,extreme r6-20,static,DFS,12902
+extreme:r6-20:22,extreme r6-20,static,DFS+CBJ,9882
+extreme:r6-20:22,extreme r6-20,static,FAGS-style,7173
+extreme:r6-20:22,extreme r6-20,static,FAGS-style+CBJ,5430
+extreme:r6-20:22,extreme r6-20,static,BestFirst-mean,14728
+extreme:r6-20:22,extreme r6-20,static,BestFirst-mean+CBJ,10943
+extreme:r6-20:23,extreme r6-20,mrv,Restarts,
+extreme:r6-20:23,extreme r6-20,mrv,DFS,3333
+extreme:r6-20:23,extreme r6-20,mrv,DFS+CBJ,3254
+extreme:r6-20:23,extreme r6-20,mrv,FAGS-style,2566
+extreme:r6-20:23,extreme r6-20,mrv,FAGS-style+CBJ,2545
+extreme:r6-20:23,extreme r6-20,mrv,BestFirst-mean,4124
+extreme:r6-20:23,extreme r6-20,mrv,BestFirst-mean+CBJ,3997
+extreme:r6-20:23,extreme r6-20,static,Restarts,
+extreme:r6-20:23,extreme r6-20,static,DFS,18968
+extreme:r6-20:23,extreme r6-20,static,DFS+CBJ,13989
+extreme:r6-20:23,extreme r6-20,static,FAGS-style,
+extreme:r6-20:23,extreme r6-20,static,FAGS-style+CBJ,18200
+extreme:r6-20:23,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:23,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:24,extreme r6-20,mrv,Restarts,
+extreme:r6-20:24,extreme r6-20,mrv,DFS,5912
+extreme:r6-20:24,extreme r6-20,mrv,DFS+CBJ,5769
+extreme:r6-20:24,extreme r6-20,mrv,FAGS-style,6105
+extreme:r6-20:24,extreme r6-20,mrv,FAGS-style+CBJ,6024
+extreme:r6-20:24,extreme r6-20,mrv,BestFirst-mean,5912
+extreme:r6-20:24,extreme r6-20,mrv,BestFirst-mean+CBJ,5783
+extreme:r6-20:24,extreme r6-20,static,Restarts,
+extreme:r6-20:24,extreme r6-20,static,DFS,3274
+extreme:r6-20:24,extreme r6-20,static,DFS+CBJ,2178
+extreme:r6-20:24,extreme r6-20,static,FAGS-style,742
+extreme:r6-20:24,extreme r6-20,static,FAGS-style+CBJ,302
+extreme:r6-20:24,extreme r6-20,static,BestFirst-mean,535
+extreme:r6-20:24,extreme r6-20,static,BestFirst-mean+CBJ,159
+extreme:r6-20:25,extreme r6-20,mrv,Restarts,1063
+extreme:r6-20:25,extreme r6-20,mrv,DFS,2169
+extreme:r6-20:25,extreme r6-20,mrv,DFS+CBJ,2140
+extreme:r6-20:25,extreme r6-20,mrv,FAGS-style,1835
+extreme:r6-20:25,extreme r6-20,mrv,FAGS-style+CBJ,1827
+extreme:r6-20:25,extreme r6-20,mrv,BestFirst-mean,2311
+extreme:r6-20:25,extreme r6-20,mrv,BestFirst-mean+CBJ,2299
+extreme:r6-20:25,extreme r6-20,static,Restarts,
+extreme:r6-20:25,extreme r6-20,static,DFS,
+extreme:r6-20:25,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:25,extreme r6-20,static,FAGS-style,
+extreme:r6-20:25,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:25,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:25,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:26,extreme r6-20,mrv,Restarts,
+extreme:r6-20:26,extreme r6-20,mrv,DFS,996
+extreme:r6-20:26,extreme r6-20,mrv,DFS+CBJ,996
+extreme:r6-20:26,extreme r6-20,mrv,FAGS-style,880
+extreme:r6-20:26,extreme r6-20,mrv,FAGS-style+CBJ,878
+extreme:r6-20:26,extreme r6-20,mrv,BestFirst-mean,5309
+extreme:r6-20:26,extreme r6-20,mrv,BestFirst-mean+CBJ,5251
+extreme:r6-20:26,extreme r6-20,static,Restarts,
+extreme:r6-20:26,extreme r6-20,static,DFS,11016
+extreme:r6-20:26,extreme r6-20,static,DFS+CBJ,8033
+extreme:r6-20:26,extreme r6-20,static,FAGS-style,
+extreme:r6-20:26,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:26,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:26,extreme r6-20,static,BestFirst-mean+CBJ,15914
+extreme:r6-20:27,extreme r6-20,mrv,Restarts,
+extreme:r6-20:27,extreme r6-20,mrv,DFS,6107
+extreme:r6-20:27,extreme r6-20,mrv,DFS+CBJ,5110
+extreme:r6-20:27,extreme r6-20,mrv,FAGS-style,8674
+extreme:r6-20:27,extreme r6-20,mrv,FAGS-style+CBJ,8213
+extreme:r6-20:27,extreme r6-20,mrv,BestFirst-mean,6109
+extreme:r6-20:27,extreme r6-20,mrv,BestFirst-mean+CBJ,5235
+extreme:r6-20:27,extreme r6-20,static,Restarts,
+extreme:r6-20:27,extreme r6-20,static,DFS,
+extreme:r6-20:27,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:27,extreme r6-20,static,FAGS-style,
+extreme:r6-20:27,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:27,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:27,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:28,extreme r6-20,mrv,Restarts,
+extreme:r6-20:28,extreme r6-20,mrv,DFS,14751
+extreme:r6-20:28,extreme r6-20,mrv,DFS+CBJ,13808
+extreme:r6-20:28,extreme r6-20,mrv,FAGS-style,11347
+extreme:r6-20:28,extreme r6-20,mrv,FAGS-style+CBJ,11055
+extreme:r6-20:28,extreme r6-20,mrv,BestFirst-mean,14659
+extreme:r6-20:28,extreme r6-20,mrv,BestFirst-mean+CBJ,13947
+extreme:r6-20:28,extreme r6-20,static,Restarts,
+extreme:r6-20:28,extreme r6-20,static,DFS,
+extreme:r6-20:28,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:28,extreme r6-20,static,FAGS-style,
+extreme:r6-20:28,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:28,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:28,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:29,extreme r6-20,mrv,Restarts,
+extreme:r6-20:29,extreme r6-20,mrv,DFS,11776
+extreme:r6-20:29,extreme r6-20,mrv,DFS+CBJ,11056
+extreme:r6-20:29,extreme r6-20,mrv,FAGS-style,12844
+extreme:r6-20:29,extreme r6-20,mrv,FAGS-style+CBJ,12524
+extreme:r6-20:29,extreme r6-20,mrv,BestFirst-mean,12948
+extreme:r6-20:29,extreme r6-20,mrv,BestFirst-mean+CBJ,12406
+extreme:r6-20:29,extreme r6-20,static,Restarts,
+extreme:r6-20:29,extreme r6-20,static,DFS,
+extreme:r6-20:29,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:29,extreme r6-20,static,FAGS-style,
+extreme:r6-20:29,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:29,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:29,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:30,extreme r6-20,mrv,Restarts,
+extreme:r6-20:30,extreme r6-20,mrv,DFS,8330
+extreme:r6-20:30,extreme r6-20,mrv,DFS+CBJ,7129
+extreme:r6-20:30,extreme r6-20,mrv,FAGS-style,4143
+extreme:r6-20:30,extreme r6-20,mrv,FAGS-style+CBJ,3631
+extreme:r6-20:30,extreme r6-20,mrv,BestFirst-mean,8730
+extreme:r6-20:30,extreme r6-20,mrv,BestFirst-mean+CBJ,7034
+extreme:r6-20:30,extreme r6-20,static,Restarts,
+extreme:r6-20:30,extreme r6-20,static,DFS,
+extreme:r6-20:30,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:30,extreme r6-20,static,FAGS-style,
+extreme:r6-20:30,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:30,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:30,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:31,extreme r6-20,mrv,Restarts,
+extreme:r6-20:31,extreme r6-20,mrv,DFS,2608
+extreme:r6-20:31,extreme r6-20,mrv,DFS+CBJ,2604
+extreme:r6-20:31,extreme r6-20,mrv,FAGS-style,5716
+extreme:r6-20:31,extreme r6-20,mrv,FAGS-style+CBJ,5708
+extreme:r6-20:31,extreme r6-20,mrv,BestFirst-mean,3414
+extreme:r6-20:31,extreme r6-20,mrv,BestFirst-mean+CBJ,3404
+extreme:r6-20:31,extreme r6-20,static,Restarts,
+extreme:r6-20:31,extreme r6-20,static,DFS,
+extreme:r6-20:31,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:31,extreme r6-20,static,FAGS-style,
+extreme:r6-20:31,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:31,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:31,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:32,extreme r6-20,mrv,Restarts,11092
+extreme:r6-20:32,extreme r6-20,mrv,DFS,17234
+extreme:r6-20:32,extreme r6-20,mrv,DFS+CBJ,15491
+extreme:r6-20:32,extreme r6-20,mrv,FAGS-style,1659
+extreme:r6-20:32,extreme r6-20,mrv,FAGS-style+CBJ,1621
+extreme:r6-20:32,extreme r6-20,mrv,BestFirst-mean,11272
+extreme:r6-20:32,extreme r6-20,mrv,BestFirst-mean+CBJ,10076
+extreme:r6-20:32,extreme r6-20,static,Restarts,
+extreme:r6-20:32,extreme r6-20,static,DFS,
+extreme:r6-20:32,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:32,extreme r6-20,static,FAGS-style,
+extreme:r6-20:32,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:32,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:32,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:33,extreme r6-20,mrv,Restarts,
+extreme:r6-20:33,extreme r6-20,mrv,DFS,3605
+extreme:r6-20:33,extreme r6-20,mrv,DFS+CBJ,3603
+extreme:r6-20:33,extreme r6-20,mrv,FAGS-style,3483
+extreme:r6-20:33,extreme r6-20,mrv,FAGS-style+CBJ,3483
+extreme:r6-20:33,extreme r6-20,mrv,BestFirst-mean,3457
+extreme:r6-20:33,extreme r6-20,mrv,BestFirst-mean+CBJ,3455
+extreme:r6-20:33,extreme r6-20,static,Restarts,
+extreme:r6-20:33,extreme r6-20,static,DFS,9009
+extreme:r6-20:33,extreme r6-20,static,DFS+CBJ,5379
+extreme:r6-20:33,extreme r6-20,static,FAGS-style,
+extreme:r6-20:33,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:33,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:33,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:34,extreme r6-20,mrv,Restarts,16503
+extreme:r6-20:34,extreme r6-20,mrv,DFS,15838
+extreme:r6-20:34,extreme r6-20,mrv,DFS+CBJ,15556
+extreme:r6-20:34,extreme r6-20,mrv,FAGS-style,16662
+extreme:r6-20:34,extreme r6-20,mrv,FAGS-style+CBJ,16540
+extreme:r6-20:34,extreme r6-20,mrv,BestFirst-mean,16028
+extreme:r6-20:34,extreme r6-20,mrv,BestFirst-mean+CBJ,15939
+extreme:r6-20:34,extreme r6-20,static,Restarts,
+extreme:r6-20:34,extreme r6-20,static,DFS,
+extreme:r6-20:34,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:34,extreme r6-20,static,FAGS-style,
+extreme:r6-20:34,extreme r6-20,static,FAGS-style+CBJ,18752
+extreme:r6-20:34,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:34,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:35,extreme r6-20,mrv,Restarts,3860
+extreme:r6-20:35,extreme r6-20,mrv,DFS,3782
+extreme:r6-20:35,extreme r6-20,mrv,DFS+CBJ,3770
+extreme:r6-20:35,extreme r6-20,mrv,FAGS-style,773
+extreme:r6-20:35,extreme r6-20,mrv,FAGS-style+CBJ,773
+extreme:r6-20:35,extreme r6-20,mrv,BestFirst-mean,2903
+extreme:r6-20:35,extreme r6-20,mrv,BestFirst-mean+CBJ,2902
+extreme:r6-20:35,extreme r6-20,static,Restarts,
+extreme:r6-20:35,extreme r6-20,static,DFS,
+extreme:r6-20:35,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:35,extreme r6-20,static,FAGS-style,
+extreme:r6-20:35,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:35,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:35,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:36,extreme r6-20,mrv,Restarts,612
+extreme:r6-20:36,extreme r6-20,mrv,DFS,2797
+extreme:r6-20:36,extreme r6-20,mrv,DFS+CBJ,2706
+extreme:r6-20:36,extreme r6-20,mrv,FAGS-style,1016
+extreme:r6-20:36,extreme r6-20,mrv,FAGS-style+CBJ,1014
+extreme:r6-20:36,extreme r6-20,mrv,BestFirst-mean,2464
+extreme:r6-20:36,extreme r6-20,mrv,BestFirst-mean+CBJ,2420
+extreme:r6-20:36,extreme r6-20,static,Restarts,
+extreme:r6-20:36,extreme r6-20,static,DFS,15985
+extreme:r6-20:36,extreme r6-20,static,DFS+CBJ,11647
+extreme:r6-20:36,extreme r6-20,static,FAGS-style,13437
+extreme:r6-20:36,extreme r6-20,static,FAGS-style+CBJ,10814
+extreme:r6-20:36,extreme r6-20,static,BestFirst-mean,15953
+extreme:r6-20:36,extreme r6-20,static,BestFirst-mean+CBJ,11678
+extreme:r6-20:37,extreme r6-20,mrv,Restarts,2752
+extreme:r6-20:37,extreme r6-20,mrv,DFS,5021
+extreme:r6-20:37,extreme r6-20,mrv,DFS+CBJ,3658
+extreme:r6-20:37,extreme r6-20,mrv,FAGS-style,3448
+extreme:r6-20:37,extreme r6-20,mrv,FAGS-style+CBJ,2918
+extreme:r6-20:37,extreme r6-20,mrv,BestFirst-mean,4906
+extreme:r6-20:37,extreme r6-20,mrv,BestFirst-mean+CBJ,3648
+extreme:r6-20:37,extreme r6-20,static,Restarts,
+extreme:r6-20:37,extreme r6-20,static,DFS,2000
+extreme:r6-20:37,extreme r6-20,static,DFS+CBJ,1229
+extreme:r6-20:37,extreme r6-20,static,FAGS-style,3913
+extreme:r6-20:37,extreme r6-20,static,FAGS-style+CBJ,2399
+extreme:r6-20:37,extreme r6-20,static,BestFirst-mean,15740
+extreme:r6-20:37,extreme r6-20,static,BestFirst-mean+CBJ,8105
+extreme:r6-20:38,extreme r6-20,mrv,Restarts,
+extreme:r6-20:38,extreme r6-20,mrv,DFS,10218
+extreme:r6-20:38,extreme r6-20,mrv,DFS+CBJ,10092
+extreme:r6-20:38,extreme r6-20,mrv,FAGS-style,3257
+extreme:r6-20:38,extreme r6-20,mrv,FAGS-style+CBJ,3208
+extreme:r6-20:38,extreme r6-20,mrv,BestFirst-mean,10631
+extreme:r6-20:38,extreme r6-20,mrv,BestFirst-mean+CBJ,10496
+extreme:r6-20:38,extreme r6-20,static,Restarts,
+extreme:r6-20:38,extreme r6-20,static,DFS,
+extreme:r6-20:38,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:38,extreme r6-20,static,FAGS-style,
+extreme:r6-20:38,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:38,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:38,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:39,extreme r6-20,mrv,Restarts,
+extreme:r6-20:39,extreme r6-20,mrv,DFS,4245
+extreme:r6-20:39,extreme r6-20,mrv,DFS+CBJ,4171
+extreme:r6-20:39,extreme r6-20,mrv,FAGS-style,2736
+extreme:r6-20:39,extreme r6-20,mrv,FAGS-style+CBJ,2732
+extreme:r6-20:39,extreme r6-20,mrv,BestFirst-mean,4289
+extreme:r6-20:39,extreme r6-20,mrv,BestFirst-mean+CBJ,4215
+extreme:r6-20:39,extreme r6-20,static,Restarts,
+extreme:r6-20:39,extreme r6-20,static,DFS,
+extreme:r6-20:39,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:39,extreme r6-20,static,FAGS-style,
+extreme:r6-20:39,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:39,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:39,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:40,extreme r6-20,mrv,Restarts,5243
+extreme:r6-20:40,extreme r6-20,mrv,DFS,2529
+extreme:r6-20:40,extreme r6-20,mrv,DFS+CBJ,2311
+extreme:r6-20:40,extreme r6-20,mrv,FAGS-style,3059
+extreme:r6-20:40,extreme r6-20,mrv,FAGS-style+CBJ,2990
+extreme:r6-20:40,extreme r6-20,mrv,BestFirst-mean,2492
+extreme:r6-20:40,extreme r6-20,mrv,BestFirst-mean+CBJ,2277
+extreme:r6-20:40,extreme r6-20,static,Restarts,
+extreme:r6-20:40,extreme r6-20,static,DFS,
+extreme:r6-20:40,extreme r6-20,static,DFS+CBJ,15822
+extreme:r6-20:40,extreme r6-20,static,FAGS-style,
+extreme:r6-20:40,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:40,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:40,extreme r6-20,static,BestFirst-mean+CBJ,11371
+extreme:r6-20:41,extreme r6-20,mrv,Restarts,1559
+extreme:r6-20:41,extreme r6-20,mrv,DFS,13583
+extreme:r6-20:41,extreme r6-20,mrv,DFS+CBJ,13373
+extreme:r6-20:41,extreme r6-20,mrv,FAGS-style,6470
+extreme:r6-20:41,extreme r6-20,mrv,FAGS-style+CBJ,6466
+extreme:r6-20:41,extreme r6-20,mrv,BestFirst-mean,14624
+extreme:r6-20:41,extreme r6-20,mrv,BestFirst-mean+CBJ,14409
+extreme:r6-20:41,extreme r6-20,static,Restarts,
+extreme:r6-20:41,extreme r6-20,static,DFS,
+extreme:r6-20:41,extreme r6-20,static,DFS+CBJ,13748
+extreme:r6-20:41,extreme r6-20,static,FAGS-style,
+extreme:r6-20:41,extreme r6-20,static,FAGS-style+CBJ,14124
+extreme:r6-20:41,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:41,extreme r6-20,static,BestFirst-mean+CBJ,19986
+extreme:r6-20:42,extreme r6-20,mrv,Restarts,
+extreme:r6-20:42,extreme r6-20,mrv,DFS,2032
+extreme:r6-20:42,extreme r6-20,mrv,DFS+CBJ,1783
+extreme:r6-20:42,extreme r6-20,mrv,FAGS-style,8682
+extreme:r6-20:42,extreme r6-20,mrv,FAGS-style+CBJ,8299
+extreme:r6-20:42,extreme r6-20,mrv,BestFirst-mean,1910
+extreme:r6-20:42,extreme r6-20,mrv,BestFirst-mean+CBJ,1648
+extreme:r6-20:42,extreme r6-20,static,Restarts,
+extreme:r6-20:42,extreme r6-20,static,DFS,
+extreme:r6-20:42,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:42,extreme r6-20,static,FAGS-style,
+extreme:r6-20:42,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:42,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:42,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:43,extreme r6-20,mrv,Restarts,
+extreme:r6-20:43,extreme r6-20,mrv,DFS,3164
+extreme:r6-20:43,extreme r6-20,mrv,DFS+CBJ,3164
+extreme:r6-20:43,extreme r6-20,mrv,FAGS-style,5125
+extreme:r6-20:43,extreme r6-20,mrv,FAGS-style+CBJ,5125
+extreme:r6-20:43,extreme r6-20,mrv,BestFirst-mean,2719
+extreme:r6-20:43,extreme r6-20,mrv,BestFirst-mean+CBJ,2719
+extreme:r6-20:43,extreme r6-20,static,Restarts,
+extreme:r6-20:43,extreme r6-20,static,DFS,14867
+extreme:r6-20:43,extreme r6-20,static,DFS+CBJ,11431
+extreme:r6-20:43,extreme r6-20,static,FAGS-style,
+extreme:r6-20:43,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:43,extreme r6-20,static,BestFirst-mean,14828
+extreme:r6-20:43,extreme r6-20,static,BestFirst-mean+CBJ,11465
+extreme:r6-20:44,extreme r6-20,mrv,Restarts,342
+extreme:r6-20:44,extreme r6-20,mrv,DFS,3526
+extreme:r6-20:44,extreme r6-20,mrv,DFS+CBJ,3459
+extreme:r6-20:44,extreme r6-20,mrv,FAGS-style,1478
+extreme:r6-20:44,extreme r6-20,mrv,FAGS-style+CBJ,1475
+extreme:r6-20:44,extreme r6-20,mrv,BestFirst-mean,4673
+extreme:r6-20:44,extreme r6-20,mrv,BestFirst-mean+CBJ,4597
+extreme:r6-20:44,extreme r6-20,static,Restarts,
+extreme:r6-20:44,extreme r6-20,static,DFS,9560
+extreme:r6-20:44,extreme r6-20,static,DFS+CBJ,7280
+extreme:r6-20:44,extreme r6-20,static,FAGS-style,19616
+extreme:r6-20:44,extreme r6-20,static,FAGS-style+CBJ,15329
+extreme:r6-20:44,extreme r6-20,static,BestFirst-mean,15470
+extreme:r6-20:44,extreme r6-20,static,BestFirst-mean+CBJ,12120
+extreme:r6-20:45,extreme r6-20,mrv,Restarts,2069
+extreme:r6-20:45,extreme r6-20,mrv,DFS,
+extreme:r6-20:45,extreme r6-20,mrv,DFS+CBJ,
+extreme:r6-20:45,extreme r6-20,mrv,FAGS-style,9607
+extreme:r6-20:45,extreme r6-20,mrv,FAGS-style+CBJ,9429
+extreme:r6-20:45,extreme r6-20,mrv,BestFirst-mean,
+extreme:r6-20:45,extreme r6-20,mrv,BestFirst-mean+CBJ,
+extreme:r6-20:45,extreme r6-20,static,Restarts,
+extreme:r6-20:45,extreme r6-20,static,DFS,
+extreme:r6-20:45,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:45,extreme r6-20,static,FAGS-style,
+extreme:r6-20:45,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:45,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:45,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:46,extreme r6-20,mrv,Restarts,
+extreme:r6-20:46,extreme r6-20,mrv,DFS,608
+extreme:r6-20:46,extreme r6-20,mrv,DFS+CBJ,604
+extreme:r6-20:46,extreme r6-20,mrv,FAGS-style,394
+extreme:r6-20:46,extreme r6-20,mrv,FAGS-style+CBJ,392
+extreme:r6-20:46,extreme r6-20,mrv,BestFirst-mean,4724
+extreme:r6-20:46,extreme r6-20,mrv,BestFirst-mean+CBJ,4701
+extreme:r6-20:46,extreme r6-20,static,Restarts,
+extreme:r6-20:46,extreme r6-20,static,DFS,
+extreme:r6-20:46,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:46,extreme r6-20,static,FAGS-style,
+extreme:r6-20:46,extreme r6-20,static,FAGS-style+CBJ,
+extreme:r6-20:46,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:46,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r6-20:47,extreme r6-20,mrv,Restarts,
+extreme:r6-20:47,extreme r6-20,mrv,DFS,1847
+extreme:r6-20:47,extreme r6-20,mrv,DFS+CBJ,1847
+extreme:r6-20:47,extreme r6-20,mrv,FAGS-style,1456
+extreme:r6-20:47,extreme r6-20,mrv,FAGS-style+CBJ,1456
+extreme:r6-20:47,extreme r6-20,mrv,BestFirst-mean,1722
+extreme:r6-20:47,extreme r6-20,mrv,BestFirst-mean+CBJ,1722
+extreme:r6-20:47,extreme r6-20,static,Restarts,
+extreme:r6-20:47,extreme r6-20,static,DFS,
+extreme:r6-20:47,extreme r6-20,static,DFS+CBJ,17727
+extreme:r6-20:47,extreme r6-20,static,FAGS-style,8558
+extreme:r6-20:47,extreme r6-20,static,FAGS-style+CBJ,6733
+extreme:r6-20:47,extreme r6-20,static,BestFirst-mean,18818
+extreme:r6-20:47,extreme r6-20,static,BestFirst-mean+CBJ,13817
+extreme:r6-20:48,extreme r6-20,mrv,Restarts,88
+extreme:r6-20:48,extreme r6-20,mrv,DFS,1302
+extreme:r6-20:48,extreme r6-20,mrv,DFS+CBJ,1302
+extreme:r6-20:48,extreme r6-20,mrv,FAGS-style,1208
+extreme:r6-20:48,extreme r6-20,mrv,FAGS-style+CBJ,1201
+extreme:r6-20:48,extreme r6-20,mrv,BestFirst-mean,2716
+extreme:r6-20:48,extreme r6-20,mrv,BestFirst-mean+CBJ,2667
+extreme:r6-20:48,extreme r6-20,static,Restarts,
+extreme:r6-20:48,extreme r6-20,static,DFS,5300
+extreme:r6-20:48,extreme r6-20,static,DFS+CBJ,3537
+extreme:r6-20:48,extreme r6-20,static,FAGS-style,12609
+extreme:r6-20:48,extreme r6-20,static,FAGS-style+CBJ,8821
+extreme:r6-20:48,extreme r6-20,static,BestFirst-mean,11713
+extreme:r6-20:48,extreme r6-20,static,BestFirst-mean+CBJ,7778
+extreme:r6-20:49,extreme r6-20,mrv,Restarts,18450
+extreme:r6-20:49,extreme r6-20,mrv,DFS,8972
+extreme:r6-20:49,extreme r6-20,mrv,DFS+CBJ,7614
+extreme:r6-20:49,extreme r6-20,mrv,FAGS-style,3601
+extreme:r6-20:49,extreme r6-20,mrv,FAGS-style+CBJ,3296
+extreme:r6-20:49,extreme r6-20,mrv,BestFirst-mean,9577
+extreme:r6-20:49,extreme r6-20,mrv,BestFirst-mean+CBJ,8153
+extreme:r6-20:49,extreme r6-20,static,Restarts,
+extreme:r6-20:49,extreme r6-20,static,DFS,
+extreme:r6-20:49,extreme r6-20,static,DFS+CBJ,
+extreme:r6-20:49,extreme r6-20,static,FAGS-style,11092
+extreme:r6-20:49,extreme r6-20,static,FAGS-style+CBJ,6243
+extreme:r6-20:49,extreme r6-20,static,BestFirst-mean,
+extreme:r6-20:49,extreme r6-20,static,BestFirst-mean+CBJ,
+extreme:r21-50:0,extreme r21-50,mrv,Restarts,9783
+extreme:r21-50:0,extreme r21-50,mrv,DFS,11093
+extreme:r21-50:0,extreme r21-50,mrv,DFS+CBJ,10667
+extreme:r21-50:0,extreme r21-50,mrv,FAGS-style,6081
+extreme:r21-50:0,extreme r21-50,mrv,FAGS-style+CBJ,5982
+extreme:r21-50:0,extreme r21-50,mrv,BestFirst-mean,10459
+extreme:r21-50:0,extreme r21-50,mrv,BestFirst-mean+CBJ,10219
+extreme:r21-50:0,extreme r21-50,static,Restarts,
+extreme:r21-50:0,extreme r21-50,static,DFS,
+extreme:r21-50:0,extreme r21-50,static,DFS+CBJ,12530
+extreme:r21-50:0,extreme r21-50,static,FAGS-style,
+extreme:r21-50:0,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:0,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:0,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:1,extreme r21-50,mrv,Restarts,
+extreme:r21-50:1,extreme r21-50,mrv,DFS,1661
+extreme:r21-50:1,extreme r21-50,mrv,DFS+CBJ,1583
+extreme:r21-50:1,extreme r21-50,mrv,FAGS-style,1108
+extreme:r21-50:1,extreme r21-50,mrv,FAGS-style+CBJ,1092
+extreme:r21-50:1,extreme r21-50,mrv,BestFirst-mean,1500
+extreme:r21-50:1,extreme r21-50,mrv,BestFirst-mean+CBJ,1440
+extreme:r21-50:1,extreme r21-50,static,Restarts,
+extreme:r21-50:1,extreme r21-50,static,DFS,4310
+extreme:r21-50:1,extreme r21-50,static,DFS+CBJ,2554
+extreme:r21-50:1,extreme r21-50,static,FAGS-style,989
+extreme:r21-50:1,extreme r21-50,static,FAGS-style+CBJ,652
+extreme:r21-50:1,extreme r21-50,static,BestFirst-mean,2785
+extreme:r21-50:1,extreme r21-50,static,BestFirst-mean+CBJ,1757
+extreme:r21-50:2,extreme r21-50,mrv,Restarts,
+extreme:r21-50:2,extreme r21-50,mrv,DFS,3207
+extreme:r21-50:2,extreme r21-50,mrv,DFS+CBJ,3202
+extreme:r21-50:2,extreme r21-50,mrv,FAGS-style,3176
+extreme:r21-50:2,extreme r21-50,mrv,FAGS-style+CBJ,3176
+extreme:r21-50:2,extreme r21-50,mrv,BestFirst-mean,3152
+extreme:r21-50:2,extreme r21-50,mrv,BestFirst-mean+CBJ,3149
+extreme:r21-50:2,extreme r21-50,static,Restarts,
+extreme:r21-50:2,extreme r21-50,static,DFS,
+extreme:r21-50:2,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:2,extreme r21-50,static,FAGS-style,13243
+extreme:r21-50:2,extreme r21-50,static,FAGS-style+CBJ,9313
+extreme:r21-50:2,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:2,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:3,extreme r21-50,mrv,Restarts,
+extreme:r21-50:3,extreme r21-50,mrv,DFS,5749
+extreme:r21-50:3,extreme r21-50,mrv,DFS+CBJ,5640
+extreme:r21-50:3,extreme r21-50,mrv,FAGS-style,7528
+extreme:r21-50:3,extreme r21-50,mrv,FAGS-style+CBJ,7491
+extreme:r21-50:3,extreme r21-50,mrv,BestFirst-mean,8048
+extreme:r21-50:3,extreme r21-50,mrv,BestFirst-mean+CBJ,7923
+extreme:r21-50:3,extreme r21-50,static,Restarts,
+extreme:r21-50:3,extreme r21-50,static,DFS,13568
+extreme:r21-50:3,extreme r21-50,static,DFS+CBJ,10191
+extreme:r21-50:3,extreme r21-50,static,FAGS-style,
+extreme:r21-50:3,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:3,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:3,extreme r21-50,static,BestFirst-mean+CBJ,17819
+extreme:r21-50:4,extreme r21-50,mrv,Restarts,13729
+extreme:r21-50:4,extreme r21-50,mrv,DFS,532
+extreme:r21-50:4,extreme r21-50,mrv,DFS+CBJ,392
+extreme:r21-50:4,extreme r21-50,mrv,FAGS-style,737
+extreme:r21-50:4,extreme r21-50,mrv,FAGS-style+CBJ,715
+extreme:r21-50:4,extreme r21-50,mrv,BestFirst-mean,385
+extreme:r21-50:4,extreme r21-50,mrv,BestFirst-mean+CBJ,343
+extreme:r21-50:4,extreme r21-50,static,Restarts,
+extreme:r21-50:4,extreme r21-50,static,DFS,6206
+extreme:r21-50:4,extreme r21-50,static,DFS+CBJ,4176
+extreme:r21-50:4,extreme r21-50,static,FAGS-style,14033
+extreme:r21-50:4,extreme r21-50,static,FAGS-style+CBJ,10020
+extreme:r21-50:4,extreme r21-50,static,BestFirst-mean,11199
+extreme:r21-50:4,extreme r21-50,static,BestFirst-mean+CBJ,6704
+extreme:r21-50:5,extreme r21-50,mrv,Restarts,
+extreme:r21-50:5,extreme r21-50,mrv,DFS,
+extreme:r21-50:5,extreme r21-50,mrv,DFS+CBJ,
+extreme:r21-50:5,extreme r21-50,mrv,FAGS-style,16541
+extreme:r21-50:5,extreme r21-50,mrv,FAGS-style+CBJ,16327
+extreme:r21-50:5,extreme r21-50,mrv,BestFirst-mean,
+extreme:r21-50:5,extreme r21-50,mrv,BestFirst-mean+CBJ,
+extreme:r21-50:5,extreme r21-50,static,Restarts,
+extreme:r21-50:5,extreme r21-50,static,DFS,7345
+extreme:r21-50:5,extreme r21-50,static,DFS+CBJ,2809
+extreme:r21-50:5,extreme r21-50,static,FAGS-style,1208
+extreme:r21-50:5,extreme r21-50,static,FAGS-style+CBJ,788
+extreme:r21-50:5,extreme r21-50,static,BestFirst-mean,856
+extreme:r21-50:5,extreme r21-50,static,BestFirst-mean+CBJ,471
+extreme:r21-50:6,extreme r21-50,mrv,Restarts,10960
+extreme:r21-50:6,extreme r21-50,mrv,DFS,3154
+extreme:r21-50:6,extreme r21-50,mrv,DFS+CBJ,3092
+extreme:r21-50:6,extreme r21-50,mrv,FAGS-style,3142
+extreme:r21-50:6,extreme r21-50,mrv,FAGS-style+CBJ,3142
+extreme:r21-50:6,extreme r21-50,mrv,BestFirst-mean,3070
+extreme:r21-50:6,extreme r21-50,mrv,BestFirst-mean+CBJ,3020
+extreme:r21-50:6,extreme r21-50,static,Restarts,
+extreme:r21-50:6,extreme r21-50,static,DFS,
+extreme:r21-50:6,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:6,extreme r21-50,static,FAGS-style,
+extreme:r21-50:6,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:6,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:6,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:7,extreme r21-50,mrv,Restarts,
+extreme:r21-50:7,extreme r21-50,mrv,DFS,7186
+extreme:r21-50:7,extreme r21-50,mrv,DFS+CBJ,7045
+extreme:r21-50:7,extreme r21-50,mrv,FAGS-style,7718
+extreme:r21-50:7,extreme r21-50,mrv,FAGS-style+CBJ,7718
+extreme:r21-50:7,extreme r21-50,mrv,BestFirst-mean,8684
+extreme:r21-50:7,extreme r21-50,mrv,BestFirst-mean+CBJ,8613
+extreme:r21-50:7,extreme r21-50,static,Restarts,
+extreme:r21-50:7,extreme r21-50,static,DFS,9646
+extreme:r21-50:7,extreme r21-50,static,DFS+CBJ,8021
+extreme:r21-50:7,extreme r21-50,static,FAGS-style,5830
+extreme:r21-50:7,extreme r21-50,static,FAGS-style+CBJ,5142
+extreme:r21-50:7,extreme r21-50,static,BestFirst-mean,7897
+extreme:r21-50:7,extreme r21-50,static,BestFirst-mean+CBJ,6802
+extreme:r21-50:8,extreme r21-50,mrv,Restarts,
+extreme:r21-50:8,extreme r21-50,mrv,DFS,995
+extreme:r21-50:8,extreme r21-50,mrv,DFS+CBJ,957
+extreme:r21-50:8,extreme r21-50,mrv,FAGS-style,3096
+extreme:r21-50:8,extreme r21-50,mrv,FAGS-style+CBJ,3082
+extreme:r21-50:8,extreme r21-50,mrv,BestFirst-mean,986
+extreme:r21-50:8,extreme r21-50,mrv,BestFirst-mean+CBJ,948
+extreme:r21-50:8,extreme r21-50,static,Restarts,
+extreme:r21-50:8,extreme r21-50,static,DFS,19227
+extreme:r21-50:8,extreme r21-50,static,DFS+CBJ,14956
+extreme:r21-50:8,extreme r21-50,static,FAGS-style,
+extreme:r21-50:8,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:8,extreme r21-50,static,BestFirst-mean,15370
+extreme:r21-50:8,extreme r21-50,static,BestFirst-mean+CBJ,12332
+extreme:r21-50:9,extreme r21-50,mrv,Restarts,
+extreme:r21-50:9,extreme r21-50,mrv,DFS,6772
+extreme:r21-50:9,extreme r21-50,mrv,DFS+CBJ,6292
+extreme:r21-50:9,extreme r21-50,mrv,FAGS-style,4893
+extreme:r21-50:9,extreme r21-50,mrv,FAGS-style+CBJ,4824
+extreme:r21-50:9,extreme r21-50,mrv,BestFirst-mean,6484
+extreme:r21-50:9,extreme r21-50,mrv,BestFirst-mean+CBJ,6071
+extreme:r21-50:9,extreme r21-50,static,Restarts,
+extreme:r21-50:9,extreme r21-50,static,DFS,
+extreme:r21-50:9,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:9,extreme r21-50,static,FAGS-style,
+extreme:r21-50:9,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:9,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:9,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:10,extreme r21-50,mrv,Restarts,
+extreme:r21-50:10,extreme r21-50,mrv,DFS,4314
+extreme:r21-50:10,extreme r21-50,mrv,DFS+CBJ,4267
+extreme:r21-50:10,extreme r21-50,mrv,FAGS-style,2187
+extreme:r21-50:10,extreme r21-50,mrv,FAGS-style+CBJ,2170
+extreme:r21-50:10,extreme r21-50,mrv,BestFirst-mean,4332
+extreme:r21-50:10,extreme r21-50,mrv,BestFirst-mean+CBJ,4285
+extreme:r21-50:10,extreme r21-50,static,Restarts,
+extreme:r21-50:10,extreme r21-50,static,DFS,
+extreme:r21-50:10,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:10,extreme r21-50,static,FAGS-style,
+extreme:r21-50:10,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:10,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:10,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:11,extreme r21-50,mrv,Restarts,
+extreme:r21-50:11,extreme r21-50,mrv,DFS,6965
+extreme:r21-50:11,extreme r21-50,mrv,DFS+CBJ,6764
+extreme:r21-50:11,extreme r21-50,mrv,FAGS-style,9819
+extreme:r21-50:11,extreme r21-50,mrv,FAGS-style+CBJ,9680
+extreme:r21-50:11,extreme r21-50,mrv,BestFirst-mean,11656
+extreme:r21-50:11,extreme r21-50,mrv,BestFirst-mean+CBJ,11287
+extreme:r21-50:11,extreme r21-50,static,Restarts,
+extreme:r21-50:11,extreme r21-50,static,DFS,
+extreme:r21-50:11,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:11,extreme r21-50,static,FAGS-style,
+extreme:r21-50:11,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:11,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:11,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:12,extreme r21-50,mrv,Restarts,
+extreme:r21-50:12,extreme r21-50,mrv,DFS,8710
+extreme:r21-50:12,extreme r21-50,mrv,DFS+CBJ,7986
+extreme:r21-50:12,extreme r21-50,mrv,FAGS-style,7484
+extreme:r21-50:12,extreme r21-50,mrv,FAGS-style+CBJ,7236
+extreme:r21-50:12,extreme r21-50,mrv,BestFirst-mean,8237
+extreme:r21-50:12,extreme r21-50,mrv,BestFirst-mean+CBJ,7515
+extreme:r21-50:12,extreme r21-50,static,Restarts,
+extreme:r21-50:12,extreme r21-50,static,DFS,
+extreme:r21-50:12,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:12,extreme r21-50,static,FAGS-style,
+extreme:r21-50:12,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:12,extreme r21-50,static,BestFirst-mean,12478
+extreme:r21-50:12,extreme r21-50,static,BestFirst-mean+CBJ,7438
+extreme:r21-50:13,extreme r21-50,mrv,Restarts,
+extreme:r21-50:13,extreme r21-50,mrv,DFS,4480
+extreme:r21-50:13,extreme r21-50,mrv,DFS+CBJ,4387
+extreme:r21-50:13,extreme r21-50,mrv,FAGS-style,2758
+extreme:r21-50:13,extreme r21-50,mrv,FAGS-style+CBJ,2758
+extreme:r21-50:13,extreme r21-50,mrv,BestFirst-mean,3529
+extreme:r21-50:13,extreme r21-50,mrv,BestFirst-mean+CBJ,3464
+extreme:r21-50:13,extreme r21-50,static,Restarts,
+extreme:r21-50:13,extreme r21-50,static,DFS,
+extreme:r21-50:13,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:13,extreme r21-50,static,FAGS-style,
+extreme:r21-50:13,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:13,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:13,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:14,extreme r21-50,mrv,Restarts,17929
+extreme:r21-50:14,extreme r21-50,mrv,DFS,736
+extreme:r21-50:14,extreme r21-50,mrv,DFS+CBJ,559
+extreme:r21-50:14,extreme r21-50,mrv,FAGS-style,11148
+extreme:r21-50:14,extreme r21-50,mrv,FAGS-style+CBJ,11060
+extreme:r21-50:14,extreme r21-50,mrv,BestFirst-mean,814
+extreme:r21-50:14,extreme r21-50,mrv,BestFirst-mean+CBJ,755
+extreme:r21-50:14,extreme r21-50,static,Restarts,
+extreme:r21-50:14,extreme r21-50,static,DFS,272
+extreme:r21-50:14,extreme r21-50,static,DFS+CBJ,198
+extreme:r21-50:14,extreme r21-50,static,FAGS-style,143
+extreme:r21-50:14,extreme r21-50,static,FAGS-style+CBJ,143
+extreme:r21-50:14,extreme r21-50,static,BestFirst-mean,133
+extreme:r21-50:14,extreme r21-50,static,BestFirst-mean+CBJ,115
+extreme:r21-50:15,extreme r21-50,mrv,Restarts,3521
+extreme:r21-50:15,extreme r21-50,mrv,DFS,5843
+extreme:r21-50:15,extreme r21-50,mrv,DFS+CBJ,5626
+extreme:r21-50:15,extreme r21-50,mrv,FAGS-style,4428
+extreme:r21-50:15,extreme r21-50,mrv,FAGS-style+CBJ,4327
+extreme:r21-50:15,extreme r21-50,mrv,BestFirst-mean,2140
+extreme:r21-50:15,extreme r21-50,mrv,BestFirst-mean+CBJ,2103
+extreme:r21-50:15,extreme r21-50,static,Restarts,
+extreme:r21-50:15,extreme r21-50,static,DFS,
+extreme:r21-50:15,extreme r21-50,static,DFS+CBJ,15658
+extreme:r21-50:15,extreme r21-50,static,FAGS-style,
+extreme:r21-50:15,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:15,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:15,extreme r21-50,static,BestFirst-mean+CBJ,19159
+extreme:r21-50:16,extreme r21-50,mrv,Restarts,
+extreme:r21-50:16,extreme r21-50,mrv,DFS,2113
+extreme:r21-50:16,extreme r21-50,mrv,DFS+CBJ,2065
+extreme:r21-50:16,extreme r21-50,mrv,FAGS-style,2231
+extreme:r21-50:16,extreme r21-50,mrv,FAGS-style+CBJ,2231
+extreme:r21-50:16,extreme r21-50,mrv,BestFirst-mean,1999
+extreme:r21-50:16,extreme r21-50,mrv,BestFirst-mean+CBJ,1941
+extreme:r21-50:16,extreme r21-50,static,Restarts,
+extreme:r21-50:16,extreme r21-50,static,DFS,
+extreme:r21-50:16,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:16,extreme r21-50,static,FAGS-style,
+extreme:r21-50:16,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:16,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:16,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:17,extreme r21-50,mrv,Restarts,
+extreme:r21-50:17,extreme r21-50,mrv,DFS,2813
+extreme:r21-50:17,extreme r21-50,mrv,DFS+CBJ,2792
+extreme:r21-50:17,extreme r21-50,mrv,FAGS-style,614
+extreme:r21-50:17,extreme r21-50,mrv,FAGS-style+CBJ,614
+extreme:r21-50:17,extreme r21-50,mrv,BestFirst-mean,2541
+extreme:r21-50:17,extreme r21-50,mrv,BestFirst-mean+CBJ,2521
+extreme:r21-50:17,extreme r21-50,static,Restarts,
+extreme:r21-50:17,extreme r21-50,static,DFS,
+extreme:r21-50:17,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:17,extreme r21-50,static,FAGS-style,
+extreme:r21-50:17,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:17,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:17,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:18,extreme r21-50,mrv,Restarts,2190
+extreme:r21-50:18,extreme r21-50,mrv,DFS,1846
+extreme:r21-50:18,extreme r21-50,mrv,DFS+CBJ,1846
+extreme:r21-50:18,extreme r21-50,mrv,FAGS-style,2215
+extreme:r21-50:18,extreme r21-50,mrv,FAGS-style+CBJ,2211
+extreme:r21-50:18,extreme r21-50,mrv,BestFirst-mean,1670
+extreme:r21-50:18,extreme r21-50,mrv,BestFirst-mean+CBJ,1668
+extreme:r21-50:18,extreme r21-50,static,Restarts,
+extreme:r21-50:18,extreme r21-50,static,DFS,5373
+extreme:r21-50:18,extreme r21-50,static,DFS+CBJ,4260
+extreme:r21-50:18,extreme r21-50,static,FAGS-style,5873
+extreme:r21-50:18,extreme r21-50,static,FAGS-style+CBJ,5035
+extreme:r21-50:18,extreme r21-50,static,BestFirst-mean,5364
+extreme:r21-50:18,extreme r21-50,static,BestFirst-mean+CBJ,4380
+extreme:r21-50:19,extreme r21-50,mrv,Restarts,
+extreme:r21-50:19,extreme r21-50,mrv,DFS,
+extreme:r21-50:19,extreme r21-50,mrv,DFS+CBJ,
+extreme:r21-50:19,extreme r21-50,mrv,FAGS-style,
+extreme:r21-50:19,extreme r21-50,mrv,FAGS-style+CBJ,
+extreme:r21-50:19,extreme r21-50,mrv,BestFirst-mean,
+extreme:r21-50:19,extreme r21-50,mrv,BestFirst-mean+CBJ,
+extreme:r21-50:19,extreme r21-50,static,Restarts,
+extreme:r21-50:19,extreme r21-50,static,DFS,
+extreme:r21-50:19,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:19,extreme r21-50,static,FAGS-style,
+extreme:r21-50:19,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:19,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:19,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:20,extreme r21-50,mrv,Restarts,
+extreme:r21-50:20,extreme r21-50,mrv,DFS,2171
+extreme:r21-50:20,extreme r21-50,mrv,DFS+CBJ,1971
+extreme:r21-50:20,extreme r21-50,mrv,FAGS-style,2847
+extreme:r21-50:20,extreme r21-50,mrv,FAGS-style+CBJ,2741
+extreme:r21-50:20,extreme r21-50,mrv,BestFirst-mean,795
+extreme:r21-50:20,extreme r21-50,mrv,BestFirst-mean+CBJ,778
+extreme:r21-50:20,extreme r21-50,static,Restarts,
+extreme:r21-50:20,extreme r21-50,static,DFS,
+extreme:r21-50:20,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:20,extreme r21-50,static,FAGS-style,
+extreme:r21-50:20,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:20,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:20,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:21,extreme r21-50,mrv,Restarts,
+extreme:r21-50:21,extreme r21-50,mrv,DFS,16365
+extreme:r21-50:21,extreme r21-50,mrv,DFS+CBJ,15993
+extreme:r21-50:21,extreme r21-50,mrv,FAGS-style,172
+extreme:r21-50:21,extreme r21-50,mrv,FAGS-style+CBJ,172
+extreme:r21-50:21,extreme r21-50,mrv,BestFirst-mean,16076
+extreme:r21-50:21,extreme r21-50,mrv,BestFirst-mean+CBJ,15722
+extreme:r21-50:21,extreme r21-50,static,Restarts,
+extreme:r21-50:21,extreme r21-50,static,DFS,
+extreme:r21-50:21,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:21,extreme r21-50,static,FAGS-style,
+extreme:r21-50:21,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:21,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:21,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:22,extreme r21-50,mrv,Restarts,
+extreme:r21-50:22,extreme r21-50,mrv,DFS,6520
+extreme:r21-50:22,extreme r21-50,mrv,DFS+CBJ,6297
+extreme:r21-50:22,extreme r21-50,mrv,FAGS-style,3363
+extreme:r21-50:22,extreme r21-50,mrv,FAGS-style+CBJ,3354
+extreme:r21-50:22,extreme r21-50,mrv,BestFirst-mean,6509
+extreme:r21-50:22,extreme r21-50,mrv,BestFirst-mean+CBJ,6261
+extreme:r21-50:22,extreme r21-50,static,Restarts,
+extreme:r21-50:22,extreme r21-50,static,DFS,
+extreme:r21-50:22,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:22,extreme r21-50,static,FAGS-style,
+extreme:r21-50:22,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:22,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:22,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:23,extreme r21-50,mrv,Restarts,5651
+extreme:r21-50:23,extreme r21-50,mrv,DFS,8899
+extreme:r21-50:23,extreme r21-50,mrv,DFS+CBJ,8502
+extreme:r21-50:23,extreme r21-50,mrv,FAGS-style,8218
+extreme:r21-50:23,extreme r21-50,mrv,FAGS-style+CBJ,8132
+extreme:r21-50:23,extreme r21-50,mrv,BestFirst-mean,8899
+extreme:r21-50:23,extreme r21-50,mrv,BestFirst-mean+CBJ,8590
+extreme:r21-50:23,extreme r21-50,static,Restarts,
+extreme:r21-50:23,extreme r21-50,static,DFS,2509
+extreme:r21-50:23,extreme r21-50,static,DFS+CBJ,1597
+extreme:r21-50:23,extreme r21-50,static,FAGS-style,
+extreme:r21-50:23,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:23,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:23,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:24,extreme r21-50,mrv,Restarts,
+extreme:r21-50:24,extreme r21-50,mrv,DFS,6748
+extreme:r21-50:24,extreme r21-50,mrv,DFS+CBJ,6531
+extreme:r21-50:24,extreme r21-50,mrv,FAGS-style,8525
+extreme:r21-50:24,extreme r21-50,mrv,FAGS-style+CBJ,8396
+extreme:r21-50:24,extreme r21-50,mrv,BestFirst-mean,6748
+extreme:r21-50:24,extreme r21-50,mrv,BestFirst-mean+CBJ,6526
+extreme:r21-50:24,extreme r21-50,static,Restarts,
+extreme:r21-50:24,extreme r21-50,static,DFS,
+extreme:r21-50:24,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:24,extreme r21-50,static,FAGS-style,
+extreme:r21-50:24,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:24,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:24,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:25,extreme r21-50,mrv,Restarts,
+extreme:r21-50:25,extreme r21-50,mrv,DFS,17356
+extreme:r21-50:25,extreme r21-50,mrv,DFS+CBJ,17000
+extreme:r21-50:25,extreme r21-50,mrv,FAGS-style,19183
+extreme:r21-50:25,extreme r21-50,mrv,FAGS-style+CBJ,18996
+extreme:r21-50:25,extreme r21-50,mrv,BestFirst-mean,17347
+extreme:r21-50:25,extreme r21-50,mrv,BestFirst-mean+CBJ,16977
+extreme:r21-50:25,extreme r21-50,static,Restarts,
+extreme:r21-50:25,extreme r21-50,static,DFS,
+extreme:r21-50:25,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:25,extreme r21-50,static,FAGS-style,
+extreme:r21-50:25,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:25,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:25,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:26,extreme r21-50,mrv,Restarts,
+extreme:r21-50:26,extreme r21-50,mrv,DFS,19201
+extreme:r21-50:26,extreme r21-50,mrv,DFS+CBJ,18081
+extreme:r21-50:26,extreme r21-50,mrv,FAGS-style,8937
+extreme:r21-50:26,extreme r21-50,mrv,FAGS-style+CBJ,8837
+extreme:r21-50:26,extreme r21-50,mrv,BestFirst-mean,19001
+extreme:r21-50:26,extreme r21-50,mrv,BestFirst-mean+CBJ,17823
+extreme:r21-50:26,extreme r21-50,static,Restarts,
+extreme:r21-50:26,extreme r21-50,static,DFS,
+extreme:r21-50:26,extreme r21-50,static,DFS+CBJ,14783
+extreme:r21-50:26,extreme r21-50,static,FAGS-style,13944
+extreme:r21-50:26,extreme r21-50,static,FAGS-style+CBJ,10332
+extreme:r21-50:26,extreme r21-50,static,BestFirst-mean,11194
+extreme:r21-50:26,extreme r21-50,static,BestFirst-mean+CBJ,6411
+extreme:r21-50:27,extreme r21-50,mrv,Restarts,15167
+extreme:r21-50:27,extreme r21-50,mrv,DFS,6426
+extreme:r21-50:27,extreme r21-50,mrv,DFS+CBJ,6154
+extreme:r21-50:27,extreme r21-50,mrv,FAGS-style,380
+extreme:r21-50:27,extreme r21-50,mrv,FAGS-style+CBJ,362
+extreme:r21-50:27,extreme r21-50,mrv,BestFirst-mean,1100
+extreme:r21-50:27,extreme r21-50,mrv,BestFirst-mean+CBJ,1081
+extreme:r21-50:27,extreme r21-50,static,Restarts,
+extreme:r21-50:27,extreme r21-50,static,DFS,
+extreme:r21-50:27,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:27,extreme r21-50,static,FAGS-style,
+extreme:r21-50:27,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:27,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:27,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:28,extreme r21-50,mrv,Restarts,
+extreme:r21-50:28,extreme r21-50,mrv,DFS,15686
+extreme:r21-50:28,extreme r21-50,mrv,DFS+CBJ,15483
+extreme:r21-50:28,extreme r21-50,mrv,FAGS-style,13913
+extreme:r21-50:28,extreme r21-50,mrv,FAGS-style+CBJ,13827
+extreme:r21-50:28,extreme r21-50,mrv,BestFirst-mean,14686
+extreme:r21-50:28,extreme r21-50,mrv,BestFirst-mean+CBJ,14518
+extreme:r21-50:28,extreme r21-50,static,Restarts,
+extreme:r21-50:28,extreme r21-50,static,DFS,5323
+extreme:r21-50:28,extreme r21-50,static,DFS+CBJ,3919
+extreme:r21-50:28,extreme r21-50,static,FAGS-style,
+extreme:r21-50:28,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:28,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:28,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:29,extreme r21-50,mrv,Restarts,
+extreme:r21-50:29,extreme r21-50,mrv,DFS,6766
+extreme:r21-50:29,extreme r21-50,mrv,DFS+CBJ,6673
+extreme:r21-50:29,extreme r21-50,mrv,FAGS-style,6738
+extreme:r21-50:29,extreme r21-50,mrv,FAGS-style+CBJ,6693
+extreme:r21-50:29,extreme r21-50,mrv,BestFirst-mean,6780
+extreme:r21-50:29,extreme r21-50,mrv,BestFirst-mean+CBJ,6711
+extreme:r21-50:29,extreme r21-50,static,Restarts,
+extreme:r21-50:29,extreme r21-50,static,DFS,
+extreme:r21-50:29,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:29,extreme r21-50,static,FAGS-style,
+extreme:r21-50:29,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:29,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:29,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:30,extreme r21-50,mrv,Restarts,8628
+extreme:r21-50:30,extreme r21-50,mrv,DFS,3555
+extreme:r21-50:30,extreme r21-50,mrv,DFS+CBJ,3463
+extreme:r21-50:30,extreme r21-50,mrv,FAGS-style,3485
+extreme:r21-50:30,extreme r21-50,mrv,FAGS-style+CBJ,3456
+extreme:r21-50:30,extreme r21-50,mrv,BestFirst-mean,2009
+extreme:r21-50:30,extreme r21-50,mrv,BestFirst-mean+CBJ,1966
+extreme:r21-50:30,extreme r21-50,static,Restarts,
+extreme:r21-50:30,extreme r21-50,static,DFS,
+extreme:r21-50:30,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:30,extreme r21-50,static,FAGS-style,17014
+extreme:r21-50:30,extreme r21-50,static,FAGS-style+CBJ,12860
+extreme:r21-50:30,extreme r21-50,static,BestFirst-mean,8159
+extreme:r21-50:30,extreme r21-50,static,BestFirst-mean+CBJ,5702
+extreme:r21-50:31,extreme r21-50,mrv,Restarts,
+extreme:r21-50:31,extreme r21-50,mrv,DFS,2930
+extreme:r21-50:31,extreme r21-50,mrv,DFS+CBJ,2895
+extreme:r21-50:31,extreme r21-50,mrv,FAGS-style,1138
+extreme:r21-50:31,extreme r21-50,mrv,FAGS-style+CBJ,1110
+extreme:r21-50:31,extreme r21-50,mrv,BestFirst-mean,3002
+extreme:r21-50:31,extreme r21-50,mrv,BestFirst-mean+CBJ,2974
+extreme:r21-50:31,extreme r21-50,static,Restarts,
+extreme:r21-50:31,extreme r21-50,static,DFS,
+extreme:r21-50:31,extreme r21-50,static,DFS+CBJ,14997
+extreme:r21-50:31,extreme r21-50,static,FAGS-style,
+extreme:r21-50:31,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:31,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:31,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:32,extreme r21-50,mrv,Restarts,
+extreme:r21-50:32,extreme r21-50,mrv,DFS,12371
+extreme:r21-50:32,extreme r21-50,mrv,DFS+CBJ,9079
+extreme:r21-50:32,extreme r21-50,mrv,FAGS-style,11682
+extreme:r21-50:32,extreme r21-50,mrv,FAGS-style+CBJ,10519
+extreme:r21-50:32,extreme r21-50,mrv,BestFirst-mean,12299
+extreme:r21-50:32,extreme r21-50,mrv,BestFirst-mean+CBJ,8663
+extreme:r21-50:32,extreme r21-50,static,Restarts,
+extreme:r21-50:32,extreme r21-50,static,DFS,6419
+extreme:r21-50:32,extreme r21-50,static,DFS+CBJ,3805
+extreme:r21-50:32,extreme r21-50,static,FAGS-style,2506
+extreme:r21-50:32,extreme r21-50,static,FAGS-style+CBJ,1473
+extreme:r21-50:32,extreme r21-50,static,BestFirst-mean,5059
+extreme:r21-50:32,extreme r21-50,static,BestFirst-mean+CBJ,2987
+extreme:r21-50:33,extreme r21-50,mrv,Restarts,
+extreme:r21-50:33,extreme r21-50,mrv,DFS,10819
+extreme:r21-50:33,extreme r21-50,mrv,DFS+CBJ,10320
+extreme:r21-50:33,extreme r21-50,mrv,FAGS-style,9935
+extreme:r21-50:33,extreme r21-50,mrv,FAGS-style+CBJ,9781
+extreme:r21-50:33,extreme r21-50,mrv,BestFirst-mean,7516
+extreme:r21-50:33,extreme r21-50,mrv,BestFirst-mean+CBJ,7127
+extreme:r21-50:33,extreme r21-50,static,Restarts,
+extreme:r21-50:33,extreme r21-50,static,DFS,
+extreme:r21-50:33,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:33,extreme r21-50,static,FAGS-style,
+extreme:r21-50:33,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:33,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:33,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:34,extreme r21-50,mrv,Restarts,
+extreme:r21-50:34,extreme r21-50,mrv,DFS,4265
+extreme:r21-50:34,extreme r21-50,mrv,DFS+CBJ,4148
+extreme:r21-50:34,extreme r21-50,mrv,FAGS-style,5450
+extreme:r21-50:34,extreme r21-50,mrv,FAGS-style+CBJ,5336
+extreme:r21-50:34,extreme r21-50,mrv,BestFirst-mean,3293
+extreme:r21-50:34,extreme r21-50,mrv,BestFirst-mean+CBJ,3149
+extreme:r21-50:34,extreme r21-50,static,Restarts,
+extreme:r21-50:34,extreme r21-50,static,DFS,
+extreme:r21-50:34,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:34,extreme r21-50,static,FAGS-style,
+extreme:r21-50:34,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:34,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:34,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:35,extreme r21-50,mrv,Restarts,
+extreme:r21-50:35,extreme r21-50,mrv,DFS,7017
+extreme:r21-50:35,extreme r21-50,mrv,DFS+CBJ,5938
+extreme:r21-50:35,extreme r21-50,mrv,FAGS-style,4241
+extreme:r21-50:35,extreme r21-50,mrv,FAGS-style+CBJ,3676
+extreme:r21-50:35,extreme r21-50,mrv,BestFirst-mean,9164
+extreme:r21-50:35,extreme r21-50,mrv,BestFirst-mean+CBJ,8307
+extreme:r21-50:35,extreme r21-50,static,Restarts,
+extreme:r21-50:35,extreme r21-50,static,DFS,
+extreme:r21-50:35,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:35,extreme r21-50,static,FAGS-style,
+extreme:r21-50:35,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:35,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:35,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:36,extreme r21-50,mrv,Restarts,
+extreme:r21-50:36,extreme r21-50,mrv,DFS,862
+extreme:r21-50:36,extreme r21-50,mrv,DFS+CBJ,730
+extreme:r21-50:36,extreme r21-50,mrv,FAGS-style,392
+extreme:r21-50:36,extreme r21-50,mrv,FAGS-style+CBJ,392
+extreme:r21-50:36,extreme r21-50,mrv,BestFirst-mean,257
+extreme:r21-50:36,extreme r21-50,mrv,BestFirst-mean+CBJ,257
+extreme:r21-50:36,extreme r21-50,static,Restarts,
+extreme:r21-50:36,extreme r21-50,static,DFS,120
+extreme:r21-50:36,extreme r21-50,static,DFS+CBJ,109
+extreme:r21-50:36,extreme r21-50,static,FAGS-style,114
+extreme:r21-50:36,extreme r21-50,static,FAGS-style+CBJ,109
+extreme:r21-50:36,extreme r21-50,static,BestFirst-mean,207
+extreme:r21-50:36,extreme r21-50,static,BestFirst-mean+CBJ,202
+extreme:r21-50:37,extreme r21-50,mrv,Restarts,
+extreme:r21-50:37,extreme r21-50,mrv,DFS,1790
+extreme:r21-50:37,extreme r21-50,mrv,DFS+CBJ,1746
+extreme:r21-50:37,extreme r21-50,mrv,FAGS-style,5871
+extreme:r21-50:37,extreme r21-50,mrv,FAGS-style+CBJ,5759
+extreme:r21-50:37,extreme r21-50,mrv,BestFirst-mean,3678
+extreme:r21-50:37,extreme r21-50,mrv,BestFirst-mean+CBJ,3551
+extreme:r21-50:37,extreme r21-50,static,Restarts,
+extreme:r21-50:37,extreme r21-50,static,DFS,
+extreme:r21-50:37,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:37,extreme r21-50,static,FAGS-style,
+extreme:r21-50:37,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:37,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:37,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:38,extreme r21-50,mrv,Restarts,456
+extreme:r21-50:38,extreme r21-50,mrv,DFS,2999
+extreme:r21-50:38,extreme r21-50,mrv,DFS+CBJ,2846
+extreme:r21-50:38,extreme r21-50,mrv,FAGS-style,2172
+extreme:r21-50:38,extreme r21-50,mrv,FAGS-style+CBJ,2167
+extreme:r21-50:38,extreme r21-50,mrv,BestFirst-mean,2330
+extreme:r21-50:38,extreme r21-50,mrv,BestFirst-mean+CBJ,2289
+extreme:r21-50:38,extreme r21-50,static,Restarts,
+extreme:r21-50:38,extreme r21-50,static,DFS,3422
+extreme:r21-50:38,extreme r21-50,static,DFS+CBJ,2948
+extreme:r21-50:38,extreme r21-50,static,FAGS-style,1797
+extreme:r21-50:38,extreme r21-50,static,FAGS-style+CBJ,1597
+extreme:r21-50:38,extreme r21-50,static,BestFirst-mean,2363
+extreme:r21-50:38,extreme r21-50,static,BestFirst-mean+CBJ,2014
+extreme:r21-50:39,extreme r21-50,mrv,Restarts,
+extreme:r21-50:39,extreme r21-50,mrv,DFS,2380
+extreme:r21-50:39,extreme r21-50,mrv,DFS+CBJ,2280
+extreme:r21-50:39,extreme r21-50,mrv,FAGS-style,1451
+extreme:r21-50:39,extreme r21-50,mrv,FAGS-style+CBJ,1442
+extreme:r21-50:39,extreme r21-50,mrv,BestFirst-mean,2595
+extreme:r21-50:39,extreme r21-50,mrv,BestFirst-mean+CBJ,2495
+extreme:r21-50:39,extreme r21-50,static,Restarts,
+extreme:r21-50:39,extreme r21-50,static,DFS,
+extreme:r21-50:39,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:39,extreme r21-50,static,FAGS-style,10602
+extreme:r21-50:39,extreme r21-50,static,FAGS-style+CBJ,8061
+extreme:r21-50:39,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:39,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:40,extreme r21-50,mrv,Restarts,10709
+extreme:r21-50:40,extreme r21-50,mrv,DFS,3668
+extreme:r21-50:40,extreme r21-50,mrv,DFS+CBJ,3646
+extreme:r21-50:40,extreme r21-50,mrv,FAGS-style,2522
+extreme:r21-50:40,extreme r21-50,mrv,FAGS-style+CBJ,2515
+extreme:r21-50:40,extreme r21-50,mrv,BestFirst-mean,2641
+extreme:r21-50:40,extreme r21-50,mrv,BestFirst-mean+CBJ,2617
+extreme:r21-50:40,extreme r21-50,static,Restarts,
+extreme:r21-50:40,extreme r21-50,static,DFS,4504
+extreme:r21-50:40,extreme r21-50,static,DFS+CBJ,3581
+extreme:r21-50:40,extreme r21-50,static,FAGS-style,7950
+extreme:r21-50:40,extreme r21-50,static,FAGS-style+CBJ,6497
+extreme:r21-50:40,extreme r21-50,static,BestFirst-mean,4527
+extreme:r21-50:40,extreme r21-50,static,BestFirst-mean+CBJ,3590
+extreme:r21-50:41,extreme r21-50,mrv,Restarts,
+extreme:r21-50:41,extreme r21-50,mrv,DFS,2004
+extreme:r21-50:41,extreme r21-50,mrv,DFS+CBJ,1962
+extreme:r21-50:41,extreme r21-50,mrv,FAGS-style,1978
+extreme:r21-50:41,extreme r21-50,mrv,FAGS-style+CBJ,1963
+extreme:r21-50:41,extreme r21-50,mrv,BestFirst-mean,9779
+extreme:r21-50:41,extreme r21-50,mrv,BestFirst-mean+CBJ,9638
+extreme:r21-50:41,extreme r21-50,static,Restarts,
+extreme:r21-50:41,extreme r21-50,static,DFS,
+extreme:r21-50:41,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:41,extreme r21-50,static,FAGS-style,
+extreme:r21-50:41,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:41,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:41,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:42,extreme r21-50,mrv,Restarts,
+extreme:r21-50:42,extreme r21-50,mrv,DFS,7947
+extreme:r21-50:42,extreme r21-50,mrv,DFS+CBJ,6539
+extreme:r21-50:42,extreme r21-50,mrv,FAGS-style,5469
+extreme:r21-50:42,extreme r21-50,mrv,FAGS-style+CBJ,4787
+extreme:r21-50:42,extreme r21-50,mrv,BestFirst-mean,7107
+extreme:r21-50:42,extreme r21-50,mrv,BestFirst-mean+CBJ,6068
+extreme:r21-50:42,extreme r21-50,static,Restarts,
+extreme:r21-50:42,extreme r21-50,static,DFS,18620
+extreme:r21-50:42,extreme r21-50,static,DFS+CBJ,12283
+extreme:r21-50:42,extreme r21-50,static,FAGS-style,
+extreme:r21-50:42,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:42,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:42,extreme r21-50,static,BestFirst-mean+CBJ,14001
+extreme:r21-50:43,extreme r21-50,mrv,Restarts,
+extreme:r21-50:43,extreme r21-50,mrv,DFS,
+extreme:r21-50:43,extreme r21-50,mrv,DFS+CBJ,
+extreme:r21-50:43,extreme r21-50,mrv,FAGS-style,7772
+extreme:r21-50:43,extreme r21-50,mrv,FAGS-style+CBJ,7687
+extreme:r21-50:43,extreme r21-50,mrv,BestFirst-mean,
+extreme:r21-50:43,extreme r21-50,mrv,BestFirst-mean+CBJ,
+extreme:r21-50:43,extreme r21-50,static,Restarts,
+extreme:r21-50:43,extreme r21-50,static,DFS,
+extreme:r21-50:43,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:43,extreme r21-50,static,FAGS-style,
+extreme:r21-50:43,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:43,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:43,extreme r21-50,static,BestFirst-mean+CBJ,
+extreme:r21-50:44,extreme r21-50,mrv,Restarts,5378
+extreme:r21-50:44,extreme r21-50,mrv,DFS,8416
+extreme:r21-50:44,extreme r21-50,mrv,DFS+CBJ,8154
+extreme:r21-50:44,extreme r21-50,mrv,FAGS-style,844
+extreme:r21-50:44,extreme r21-50,mrv,FAGS-style+CBJ,822
+extreme:r21-50:44,extreme r21-50,mrv,BestFirst-mean,536
+extreme:r21-50:44,extreme r21-50,mrv,BestFirst-mean+CBJ,536
+extreme:r21-50:44,extreme r21-50,static,Restarts,
+extreme:r21-50:44,extreme r21-50,static,DFS,8556
+extreme:r21-50:44,extreme r21-50,static,DFS+CBJ,5100
+extreme:r21-50:44,extreme r21-50,static,FAGS-style,842
+extreme:r21-50:44,extreme r21-50,static,FAGS-style+CBJ,676
+extreme:r21-50:44,extreme r21-50,static,BestFirst-mean,503
+extreme:r21-50:44,extreme r21-50,static,BestFirst-mean+CBJ,198
+extreme:r21-50:45,extreme r21-50,mrv,Restarts,
+extreme:r21-50:45,extreme r21-50,mrv,DFS,4663
+extreme:r21-50:45,extreme r21-50,mrv,DFS+CBJ,4352
+extreme:r21-50:45,extreme r21-50,mrv,FAGS-style,5149
+extreme:r21-50:45,extreme r21-50,mrv,FAGS-style+CBJ,5001
+extreme:r21-50:45,extreme r21-50,mrv,BestFirst-mean,5092
+extreme:r21-50:45,extreme r21-50,mrv,BestFirst-mean+CBJ,4841
+extreme:r21-50:45,extreme r21-50,static,Restarts,
+extreme:r21-50:45,extreme r21-50,static,DFS,
+extreme:r21-50:45,extreme r21-50,static,DFS+CBJ,
+extreme:r21-50:45,extreme r21-50,static,FAGS-style,
+extreme:r21-50:45,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:45,extreme r21-50,static,BestFirst-mean,
+extreme:r21-50:45,extreme r21-50,static,BestFirst-mean+CBJ,18186
+extreme:r21-50:46,extreme r21-50,mrv,Restarts,7608
+extreme:r21-50:46,extreme r21-50,mrv,DFS,1320
+extreme:r21-50:46,extreme r21-50,mrv,DFS+CBJ,1320
+extreme:r21-50:46,extreme r21-50,mrv,FAGS-style,345
+extreme:r21-50:46,extreme r21-50,mrv,FAGS-style+CBJ,345
+extreme:r21-50:46,extreme r21-50,mrv,BestFirst-mean,1089
+extreme:r21-50:46,extreme r21-50,mrv,BestFirst-mean+CBJ,1089
+extreme:r21-50:46,extreme r21-50,static,Restarts,
+extreme:r21-50:46,extreme r21-50,static,DFS,434
+extreme:r21-50:46,extreme r21-50,static,DFS+CBJ,192
+extreme:r21-50:46,extreme r21-50,static,FAGS-style,10271
+extreme:r21-50:46,extreme r21-50,static,FAGS-style+CBJ,7491
+extreme:r21-50:46,extreme r21-50,static,BestFirst-mean,3282
+extreme:r21-50:46,extreme r21-50,static,BestFirst-mean+CBJ,2184
+extreme:r21-50:47,extreme r21-50,mrv,Restarts,
+extreme:r21-50:47,extreme r21-50,mrv,DFS,1975
+extreme:r21-50:47,extreme r21-50,mrv,DFS+CBJ,1727
+extreme:r21-50:47,extreme r21-50,mrv,FAGS-style,1883
+extreme:r21-50:47,extreme r21-50,mrv,FAGS-style+CBJ,1834
+extreme:r21-50:47,extreme r21-50,mrv,BestFirst-mean,2085
+extreme:r21-50:47,extreme r21-50,mrv,BestFirst-mean+CBJ,1880
+extreme:r21-50:47,extreme r21-50,static,Restarts,
+extreme:r21-50:47,extreme r21-50,static,DFS,6808
+extreme:r21-50:47,extreme r21-50,static,DFS+CBJ,3057
+extreme:r21-50:47,extreme r21-50,static,FAGS-style,534
+extreme:r21-50:47,extreme r21-50,static,FAGS-style+CBJ,385
+extreme:r21-50:47,extreme r21-50,static,BestFirst-mean,1496
+extreme:r21-50:47,extreme r21-50,static,BestFirst-mean+CBJ,832
+extreme:r21-50:48,extreme r21-50,mrv,Restarts,7785
+extreme:r21-50:48,extreme r21-50,mrv,DFS,3612
+extreme:r21-50:48,extreme r21-50,mrv,DFS+CBJ,3474
+extreme:r21-50:48,extreme r21-50,mrv,FAGS-style,109
+extreme:r21-50:48,extreme r21-50,mrv,FAGS-style+CBJ,109
+extreme:r21-50:48,extreme r21-50,mrv,BestFirst-mean,3603
+extreme:r21-50:48,extreme r21-50,mrv,BestFirst-mean+CBJ,3454
+extreme:r21-50:48,extreme r21-50,static,Restarts,
+extreme:r21-50:48,extreme r21-50,static,DFS,
+extreme:r21-50:48,extreme r21-50,static,DFS+CBJ,13924
+extreme:r21-50:48,extreme r21-50,static,FAGS-style,18764
+extreme:r21-50:48,extreme r21-50,static,FAGS-style+CBJ,13914
+extreme:r21-50:48,extreme r21-50,static,BestFirst-mean,19017
+extreme:r21-50:48,extreme r21-50,static,BestFirst-mean+CBJ,13589
+extreme:r21-50:49,extreme r21-50,mrv,Restarts,13155
+extreme:r21-50:49,extreme r21-50,mrv,DFS,3956
+extreme:r21-50:49,extreme r21-50,mrv,DFS+CBJ,3882
+extreme:r21-50:49,extreme r21-50,mrv,FAGS-style,5094
+extreme:r21-50:49,extreme r21-50,mrv,FAGS-style+CBJ,5049
+extreme:r21-50:49,extreme r21-50,mrv,BestFirst-mean,6865
+extreme:r21-50:49,extreme r21-50,mrv,BestFirst-mean+CBJ,6757
+extreme:r21-50:49,extreme r21-50,static,Restarts,
+extreme:r21-50:49,extreme r21-50,static,DFS,5590
+extreme:r21-50:49,extreme r21-50,static,DFS+CBJ,4144
+extreme:r21-50:49,extreme r21-50,static,FAGS-style,
+extreme:r21-50:49,extreme r21-50,static,FAGS-style+CBJ,
+extreme:r21-50:49,extreme r21-50,static,BestFirst-mean,12909
+extreme:r21-50:49,extreme r21-50,static,BestFirst-mean+CBJ,9356
+extreme:r51-10000:0,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:0,extreme r51-10000,mrv,DFS,17668
+extreme:r51-10000:0,extreme r51-10000,mrv,DFS+CBJ,17050
+extreme:r51-10000:0,extreme r51-10000,mrv,FAGS-style,11060
+extreme:r51-10000:0,extreme r51-10000,mrv,FAGS-style+CBJ,10912
+extreme:r51-10000:0,extreme r51-10000,mrv,BestFirst-mean,17675
+extreme:r51-10000:0,extreme r51-10000,mrv,BestFirst-mean+CBJ,16985
+extreme:r51-10000:0,extreme r51-10000,static,Restarts,
+extreme:r51-10000:0,extreme r51-10000,static,DFS,
+extreme:r51-10000:0,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:0,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:0,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:0,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:0,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:1,extreme r51-10000,mrv,Restarts,18988
+extreme:r51-10000:1,extreme r51-10000,mrv,DFS,2360
+extreme:r51-10000:1,extreme r51-10000,mrv,DFS+CBJ,2299
+extreme:r51-10000:1,extreme r51-10000,mrv,FAGS-style,2769
+extreme:r51-10000:1,extreme r51-10000,mrv,FAGS-style+CBJ,2733
+extreme:r51-10000:1,extreme r51-10000,mrv,BestFirst-mean,1405
+extreme:r51-10000:1,extreme r51-10000,mrv,BestFirst-mean+CBJ,1313
+extreme:r51-10000:1,extreme r51-10000,static,Restarts,
+extreme:r51-10000:1,extreme r51-10000,static,DFS,10097
+extreme:r51-10000:1,extreme r51-10000,static,DFS+CBJ,6930
+extreme:r51-10000:1,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:1,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:1,extreme r51-10000,static,BestFirst-mean,16122
+extreme:r51-10000:1,extreme r51-10000,static,BestFirst-mean+CBJ,10475
+extreme:r51-10000:2,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:2,extreme r51-10000,mrv,DFS,6460
+extreme:r51-10000:2,extreme r51-10000,mrv,DFS+CBJ,6270
+extreme:r51-10000:2,extreme r51-10000,mrv,FAGS-style,4976
+extreme:r51-10000:2,extreme r51-10000,mrv,FAGS-style+CBJ,4913
+extreme:r51-10000:2,extreme r51-10000,mrv,BestFirst-mean,6757
+extreme:r51-10000:2,extreme r51-10000,mrv,BestFirst-mean+CBJ,6559
+extreme:r51-10000:2,extreme r51-10000,static,Restarts,
+extreme:r51-10000:2,extreme r51-10000,static,DFS,
+extreme:r51-10000:2,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:2,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:2,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:2,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:2,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:3,extreme r51-10000,mrv,Restarts,4859
+extreme:r51-10000:3,extreme r51-10000,mrv,DFS,1558
+extreme:r51-10000:3,extreme r51-10000,mrv,DFS+CBJ,1348
+extreme:r51-10000:3,extreme r51-10000,mrv,FAGS-style,1483
+extreme:r51-10000:3,extreme r51-10000,mrv,FAGS-style+CBJ,1454
+extreme:r51-10000:3,extreme r51-10000,mrv,BestFirst-mean,1500
+extreme:r51-10000:3,extreme r51-10000,mrv,BestFirst-mean+CBJ,1384
+extreme:r51-10000:3,extreme r51-10000,static,Restarts,
+extreme:r51-10000:3,extreme r51-10000,static,DFS,945
+extreme:r51-10000:3,extreme r51-10000,static,DFS+CBJ,661
+extreme:r51-10000:3,extreme r51-10000,static,FAGS-style,577
+extreme:r51-10000:3,extreme r51-10000,static,FAGS-style+CBJ,547
+extreme:r51-10000:3,extreme r51-10000,static,BestFirst-mean,417
+extreme:r51-10000:3,extreme r51-10000,static,BestFirst-mean+CBJ,294
+extreme:r51-10000:4,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:4,extreme r51-10000,mrv,DFS,15824
+extreme:r51-10000:4,extreme r51-10000,mrv,DFS+CBJ,14943
+extreme:r51-10000:4,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:4,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:4,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:4,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:4,extreme r51-10000,static,Restarts,
+extreme:r51-10000:4,extreme r51-10000,static,DFS,
+extreme:r51-10000:4,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:4,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:4,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:4,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:4,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:5,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:5,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:5,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:5,extreme r51-10000,mrv,FAGS-style,15659
+extreme:r51-10000:5,extreme r51-10000,mrv,FAGS-style+CBJ,15584
+extreme:r51-10000:5,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:5,extreme r51-10000,mrv,BestFirst-mean+CBJ,19368
+extreme:r51-10000:5,extreme r51-10000,static,Restarts,
+extreme:r51-10000:5,extreme r51-10000,static,DFS,
+extreme:r51-10000:5,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:5,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:5,extreme r51-10000,static,FAGS-style+CBJ,16287
+extreme:r51-10000:5,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:5,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:6,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:6,extreme r51-10000,mrv,DFS,12739
+extreme:r51-10000:6,extreme r51-10000,mrv,DFS+CBJ,12487
+extreme:r51-10000:6,extreme r51-10000,mrv,FAGS-style,16157
+extreme:r51-10000:6,extreme r51-10000,mrv,FAGS-style+CBJ,16075
+extreme:r51-10000:6,extreme r51-10000,mrv,BestFirst-mean,16034
+extreme:r51-10000:6,extreme r51-10000,mrv,BestFirst-mean+CBJ,15753
+extreme:r51-10000:6,extreme r51-10000,static,Restarts,
+extreme:r51-10000:6,extreme r51-10000,static,DFS,
+extreme:r51-10000:6,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:6,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:6,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:6,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:6,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:7,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:7,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:7,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:7,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:7,extreme r51-10000,mrv,FAGS-style+CBJ,19768
+extreme:r51-10000:7,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:7,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:7,extreme r51-10000,static,Restarts,
+extreme:r51-10000:7,extreme r51-10000,static,DFS,
+extreme:r51-10000:7,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:7,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:7,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:7,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:7,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:8,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:8,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:8,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:8,extreme r51-10000,mrv,FAGS-style,899
+extreme:r51-10000:8,extreme r51-10000,mrv,FAGS-style+CBJ,818
+extreme:r51-10000:8,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:8,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:8,extreme r51-10000,static,Restarts,
+extreme:r51-10000:8,extreme r51-10000,static,DFS,
+extreme:r51-10000:8,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:8,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:8,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:8,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:8,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:9,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:9,extreme r51-10000,mrv,DFS,5607
+extreme:r51-10000:9,extreme r51-10000,mrv,DFS+CBJ,5448
+extreme:r51-10000:9,extreme r51-10000,mrv,FAGS-style,6117
+extreme:r51-10000:9,extreme r51-10000,mrv,FAGS-style+CBJ,5935
+extreme:r51-10000:9,extreme r51-10000,mrv,BestFirst-mean,6192
+extreme:r51-10000:9,extreme r51-10000,mrv,BestFirst-mean+CBJ,5961
+extreme:r51-10000:9,extreme r51-10000,static,Restarts,
+extreme:r51-10000:9,extreme r51-10000,static,DFS,
+extreme:r51-10000:9,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:9,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:9,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:9,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:9,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:10,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:10,extreme r51-10000,mrv,DFS,2179
+extreme:r51-10000:10,extreme r51-10000,mrv,DFS+CBJ,1964
+extreme:r51-10000:10,extreme r51-10000,mrv,FAGS-style,6375
+extreme:r51-10000:10,extreme r51-10000,mrv,FAGS-style+CBJ,6326
+extreme:r51-10000:10,extreme r51-10000,mrv,BestFirst-mean,2631
+extreme:r51-10000:10,extreme r51-10000,mrv,BestFirst-mean+CBJ,2587
+extreme:r51-10000:10,extreme r51-10000,static,Restarts,
+extreme:r51-10000:10,extreme r51-10000,static,DFS,
+extreme:r51-10000:10,extreme r51-10000,static,DFS+CBJ,14056
+extreme:r51-10000:10,extreme r51-10000,static,FAGS-style,11569
+extreme:r51-10000:10,extreme r51-10000,static,FAGS-style+CBJ,8616
+extreme:r51-10000:10,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:10,extreme r51-10000,static,BestFirst-mean+CBJ,14560
+extreme:r51-10000:11,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:11,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:11,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:11,extreme r51-10000,mrv,FAGS-style,13848
+extreme:r51-10000:11,extreme r51-10000,mrv,FAGS-style+CBJ,13730
+extreme:r51-10000:11,extreme r51-10000,mrv,BestFirst-mean,9032
+extreme:r51-10000:11,extreme r51-10000,mrv,BestFirst-mean+CBJ,8948
+extreme:r51-10000:11,extreme r51-10000,static,Restarts,
+extreme:r51-10000:11,extreme r51-10000,static,DFS,
+extreme:r51-10000:11,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:11,extreme r51-10000,static,FAGS-style,2249
+extreme:r51-10000:11,extreme r51-10000,static,FAGS-style+CBJ,1725
+extreme:r51-10000:11,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:11,extreme r51-10000,static,BestFirst-mean+CBJ,13820
+extreme:r51-10000:12,extreme r51-10000,mrv,Restarts,9453
+extreme:r51-10000:12,extreme r51-10000,mrv,DFS,3153
+extreme:r51-10000:12,extreme r51-10000,mrv,DFS+CBJ,3129
+extreme:r51-10000:12,extreme r51-10000,mrv,FAGS-style,5091
+extreme:r51-10000:12,extreme r51-10000,mrv,FAGS-style+CBJ,5087
+extreme:r51-10000:12,extreme r51-10000,mrv,BestFirst-mean,3084
+extreme:r51-10000:12,extreme r51-10000,mrv,BestFirst-mean+CBJ,3060
+extreme:r51-10000:12,extreme r51-10000,static,Restarts,
+extreme:r51-10000:12,extreme r51-10000,static,DFS,2143
+extreme:r51-10000:12,extreme r51-10000,static,DFS+CBJ,1586
+extreme:r51-10000:12,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:12,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:12,extreme r51-10000,static,BestFirst-mean,14649
+extreme:r51-10000:12,extreme r51-10000,static,BestFirst-mean+CBJ,10704
+extreme:r51-10000:13,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:13,extreme r51-10000,mrv,DFS,1839
+extreme:r51-10000:13,extreme r51-10000,mrv,DFS+CBJ,1781
+extreme:r51-10000:13,extreme r51-10000,mrv,FAGS-style,6592
+extreme:r51-10000:13,extreme r51-10000,mrv,FAGS-style+CBJ,6449
+extreme:r51-10000:13,extreme r51-10000,mrv,BestFirst-mean,5027
+extreme:r51-10000:13,extreme r51-10000,mrv,BestFirst-mean+CBJ,4726
+extreme:r51-10000:13,extreme r51-10000,static,Restarts,
+extreme:r51-10000:13,extreme r51-10000,static,DFS,
+extreme:r51-10000:13,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:13,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:13,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:13,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:13,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:14,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:14,extreme r51-10000,mrv,DFS,16081
+extreme:r51-10000:14,extreme r51-10000,mrv,DFS+CBJ,14274
+extreme:r51-10000:14,extreme r51-10000,mrv,FAGS-style,5330
+extreme:r51-10000:14,extreme r51-10000,mrv,FAGS-style+CBJ,4931
+extreme:r51-10000:14,extreme r51-10000,mrv,BestFirst-mean,15715
+extreme:r51-10000:14,extreme r51-10000,mrv,BestFirst-mean+CBJ,14232
+extreme:r51-10000:14,extreme r51-10000,static,Restarts,
+extreme:r51-10000:14,extreme r51-10000,static,DFS,
+extreme:r51-10000:14,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:14,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:14,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:14,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:14,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:15,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:15,extreme r51-10000,mrv,DFS,10524
+extreme:r51-10000:15,extreme r51-10000,mrv,DFS+CBJ,10091
+extreme:r51-10000:15,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:15,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:15,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:15,extreme r51-10000,mrv,BestFirst-mean+CBJ,19678
+extreme:r51-10000:15,extreme r51-10000,static,Restarts,
+extreme:r51-10000:15,extreme r51-10000,static,DFS,
+extreme:r51-10000:15,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:15,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:15,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:15,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:15,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:16,extreme r51-10000,mrv,Restarts,5793
+extreme:r51-10000:16,extreme r51-10000,mrv,DFS,1415
+extreme:r51-10000:16,extreme r51-10000,mrv,DFS+CBJ,1191
+extreme:r51-10000:16,extreme r51-10000,mrv,FAGS-style,651
+extreme:r51-10000:16,extreme r51-10000,mrv,FAGS-style+CBJ,609
+extreme:r51-10000:16,extreme r51-10000,mrv,BestFirst-mean,1583
+extreme:r51-10000:16,extreme r51-10000,mrv,BestFirst-mean+CBJ,1545
+extreme:r51-10000:16,extreme r51-10000,static,Restarts,
+extreme:r51-10000:16,extreme r51-10000,static,DFS,71
+extreme:r51-10000:16,extreme r51-10000,static,DFS+CBJ,66
+extreme:r51-10000:16,extreme r51-10000,static,FAGS-style,3593
+extreme:r51-10000:16,extreme r51-10000,static,FAGS-style+CBJ,1934
+extreme:r51-10000:16,extreme r51-10000,static,BestFirst-mean,765
+extreme:r51-10000:16,extreme r51-10000,static,BestFirst-mean+CBJ,519
+extreme:r51-10000:17,extreme r51-10000,mrv,Restarts,1790
+extreme:r51-10000:17,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:17,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:17,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:17,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:17,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:17,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:17,extreme r51-10000,static,Restarts,
+extreme:r51-10000:17,extreme r51-10000,static,DFS,
+extreme:r51-10000:17,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:17,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:17,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:17,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:17,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:18,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:18,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:18,extreme r51-10000,mrv,DFS+CBJ,
+extreme:r51-10000:18,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:18,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:18,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:18,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:18,extreme r51-10000,static,Restarts,
+extreme:r51-10000:18,extreme r51-10000,static,DFS,
+extreme:r51-10000:18,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:18,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:18,extreme r51-10000,static,FAGS-style+CBJ,15331
+extreme:r51-10000:18,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:18,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:19,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:19,extreme r51-10000,mrv,DFS,6564
+extreme:r51-10000:19,extreme r51-10000,mrv,DFS+CBJ,6462
+extreme:r51-10000:19,extreme r51-10000,mrv,FAGS-style,13340
+extreme:r51-10000:19,extreme r51-10000,mrv,FAGS-style+CBJ,13208
+extreme:r51-10000:19,extreme r51-10000,mrv,BestFirst-mean,10037
+extreme:r51-10000:19,extreme r51-10000,mrv,BestFirst-mean+CBJ,9868
+extreme:r51-10000:19,extreme r51-10000,static,Restarts,
+extreme:r51-10000:19,extreme r51-10000,static,DFS,
+extreme:r51-10000:19,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:19,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:19,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:19,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:19,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:20,extreme r51-10000,mrv,Restarts,465
+extreme:r51-10000:20,extreme r51-10000,mrv,DFS,1602
+extreme:r51-10000:20,extreme r51-10000,mrv,DFS+CBJ,1511
+extreme:r51-10000:20,extreme r51-10000,mrv,FAGS-style,1180
+extreme:r51-10000:20,extreme r51-10000,mrv,FAGS-style+CBJ,1180
+extreme:r51-10000:20,extreme r51-10000,mrv,BestFirst-mean,1388
+extreme:r51-10000:20,extreme r51-10000,mrv,BestFirst-mean+CBJ,1360
+extreme:r51-10000:20,extreme r51-10000,static,Restarts,
+extreme:r51-10000:20,extreme r51-10000,static,DFS,1638
+extreme:r51-10000:20,extreme r51-10000,static,DFS+CBJ,1401
+extreme:r51-10000:20,extreme r51-10000,static,FAGS-style,483
+extreme:r51-10000:20,extreme r51-10000,static,FAGS-style+CBJ,444
+extreme:r51-10000:20,extreme r51-10000,static,BestFirst-mean,320
+extreme:r51-10000:20,extreme r51-10000,static,BestFirst-mean+CBJ,284
+extreme:r51-10000:21,extreme r51-10000,mrv,Restarts,9067
+extreme:r51-10000:21,extreme r51-10000,mrv,DFS,
+extreme:r51-10000:21,extreme r51-10000,mrv,DFS+CBJ,18887
+extreme:r51-10000:21,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:21,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:21,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:21,extreme r51-10000,mrv,BestFirst-mean+CBJ,19838
+extreme:r51-10000:21,extreme r51-10000,static,Restarts,
+extreme:r51-10000:21,extreme r51-10000,static,DFS,
+extreme:r51-10000:21,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:21,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:21,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:21,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:21,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:22,extreme r51-10000,mrv,Restarts,7795
+extreme:r51-10000:22,extreme r51-10000,mrv,DFS,8379
+extreme:r51-10000:22,extreme r51-10000,mrv,DFS+CBJ,7976
+extreme:r51-10000:22,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:22,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:22,extreme r51-10000,mrv,BestFirst-mean,
+extreme:r51-10000:22,extreme r51-10000,mrv,BestFirst-mean+CBJ,
+extreme:r51-10000:22,extreme r51-10000,static,Restarts,
+extreme:r51-10000:22,extreme r51-10000,static,DFS,
+extreme:r51-10000:22,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:22,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:22,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:22,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:22,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:23,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:23,extreme r51-10000,mrv,DFS,453
+extreme:r51-10000:23,extreme r51-10000,mrv,DFS+CBJ,453
+extreme:r51-10000:23,extreme r51-10000,mrv,FAGS-style,4975
+extreme:r51-10000:23,extreme r51-10000,mrv,FAGS-style+CBJ,4953
+extreme:r51-10000:23,extreme r51-10000,mrv,BestFirst-mean,4247
+extreme:r51-10000:23,extreme r51-10000,mrv,BestFirst-mean+CBJ,4173
+extreme:r51-10000:23,extreme r51-10000,static,Restarts,
+extreme:r51-10000:23,extreme r51-10000,static,DFS,
+extreme:r51-10000:23,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:23,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:23,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:23,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:23,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:24,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:24,extreme r51-10000,mrv,DFS,4059
+extreme:r51-10000:24,extreme r51-10000,mrv,DFS+CBJ,3692
+extreme:r51-10000:24,extreme r51-10000,mrv,FAGS-style,16737
+extreme:r51-10000:24,extreme r51-10000,mrv,FAGS-style+CBJ,16352
+extreme:r51-10000:24,extreme r51-10000,mrv,BestFirst-mean,12490
+extreme:r51-10000:24,extreme r51-10000,mrv,BestFirst-mean+CBJ,11726
+extreme:r51-10000:24,extreme r51-10000,static,Restarts,
+extreme:r51-10000:24,extreme r51-10000,static,DFS,
+extreme:r51-10000:24,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:24,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:24,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:24,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:24,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:25,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:25,extreme r51-10000,mrv,DFS,1184
+extreme:r51-10000:25,extreme r51-10000,mrv,DFS+CBJ,1184
+extreme:r51-10000:25,extreme r51-10000,mrv,FAGS-style,17750
+extreme:r51-10000:25,extreme r51-10000,mrv,FAGS-style+CBJ,17366
+extreme:r51-10000:25,extreme r51-10000,mrv,BestFirst-mean,3717
+extreme:r51-10000:25,extreme r51-10000,mrv,BestFirst-mean+CBJ,3712
+extreme:r51-10000:25,extreme r51-10000,static,Restarts,
+extreme:r51-10000:25,extreme r51-10000,static,DFS,
+extreme:r51-10000:25,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:25,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:25,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:25,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:25,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:26,extreme r51-10000,mrv,Restarts,5448
+extreme:r51-10000:26,extreme r51-10000,mrv,DFS,7581
+extreme:r51-10000:26,extreme r51-10000,mrv,DFS+CBJ,6737
+extreme:r51-10000:26,extreme r51-10000,mrv,FAGS-style,8766
+extreme:r51-10000:26,extreme r51-10000,mrv,FAGS-style+CBJ,8310
+extreme:r51-10000:26,extreme r51-10000,mrv,BestFirst-mean,4969
+extreme:r51-10000:26,extreme r51-10000,mrv,BestFirst-mean+CBJ,4269
+extreme:r51-10000:26,extreme r51-10000,static,Restarts,
+extreme:r51-10000:26,extreme r51-10000,static,DFS,
+extreme:r51-10000:26,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:26,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:26,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:26,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:26,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:27,extreme r51-10000,mrv,Restarts,3304
+extreme:r51-10000:27,extreme r51-10000,mrv,DFS,1239
+extreme:r51-10000:27,extreme r51-10000,mrv,DFS+CBJ,1146
+extreme:r51-10000:27,extreme r51-10000,mrv,FAGS-style,829
+extreme:r51-10000:27,extreme r51-10000,mrv,FAGS-style+CBJ,816
+extreme:r51-10000:27,extreme r51-10000,mrv,BestFirst-mean,1582
+extreme:r51-10000:27,extreme r51-10000,mrv,BestFirst-mean+CBJ,1429
+extreme:r51-10000:27,extreme r51-10000,static,Restarts,
+extreme:r51-10000:27,extreme r51-10000,static,DFS,19901
+extreme:r51-10000:27,extreme r51-10000,static,DFS+CBJ,14222
+extreme:r51-10000:27,extreme r51-10000,static,FAGS-style,3653
+extreme:r51-10000:27,extreme r51-10000,static,FAGS-style+CBJ,3184
+extreme:r51-10000:27,extreme r51-10000,static,BestFirst-mean,16729
+extreme:r51-10000:27,extreme r51-10000,static,BestFirst-mean+CBJ,12463
+extreme:r51-10000:28,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:28,extreme r51-10000,mrv,DFS,13932
+extreme:r51-10000:28,extreme r51-10000,mrv,DFS+CBJ,13735
+extreme:r51-10000:28,extreme r51-10000,mrv,FAGS-style,
+extreme:r51-10000:28,extreme r51-10000,mrv,FAGS-style+CBJ,
+extreme:r51-10000:28,extreme r51-10000,mrv,BestFirst-mean,19945
+extreme:r51-10000:28,extreme r51-10000,mrv,BestFirst-mean+CBJ,19786
+extreme:r51-10000:28,extreme r51-10000,static,Restarts,
+extreme:r51-10000:28,extreme r51-10000,static,DFS,
+extreme:r51-10000:28,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:28,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:28,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:28,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:28,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:29,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:29,extreme r51-10000,mrv,DFS,10460
+extreme:r51-10000:29,extreme r51-10000,mrv,DFS+CBJ,10353
+extreme:r51-10000:29,extreme r51-10000,mrv,FAGS-style,4485
+extreme:r51-10000:29,extreme r51-10000,mrv,FAGS-style+CBJ,4474
+extreme:r51-10000:29,extreme r51-10000,mrv,BestFirst-mean,3973
+extreme:r51-10000:29,extreme r51-10000,mrv,BestFirst-mean+CBJ,3966
+extreme:r51-10000:29,extreme r51-10000,static,Restarts,
+extreme:r51-10000:29,extreme r51-10000,static,DFS,
+extreme:r51-10000:29,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:29,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:29,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:29,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:29,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:30,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:30,extreme r51-10000,mrv,DFS,8640
+extreme:r51-10000:30,extreme r51-10000,mrv,DFS+CBJ,8181
+extreme:r51-10000:30,extreme r51-10000,mrv,FAGS-style,557
+extreme:r51-10000:30,extreme r51-10000,mrv,FAGS-style+CBJ,521
+extreme:r51-10000:30,extreme r51-10000,mrv,BestFirst-mean,131
+extreme:r51-10000:30,extreme r51-10000,mrv,BestFirst-mean+CBJ,131
+extreme:r51-10000:30,extreme r51-10000,static,Restarts,
+extreme:r51-10000:30,extreme r51-10000,static,DFS,
+extreme:r51-10000:30,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:30,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:30,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:30,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:30,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:31,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:31,extreme r51-10000,mrv,DFS,9258
+extreme:r51-10000:31,extreme r51-10000,mrv,DFS+CBJ,8568
+extreme:r51-10000:31,extreme r51-10000,mrv,FAGS-style,7720
+extreme:r51-10000:31,extreme r51-10000,mrv,FAGS-style+CBJ,7231
+extreme:r51-10000:31,extreme r51-10000,mrv,BestFirst-mean,10121
+extreme:r51-10000:31,extreme r51-10000,mrv,BestFirst-mean+CBJ,9455
+extreme:r51-10000:31,extreme r51-10000,static,Restarts,
+extreme:r51-10000:31,extreme r51-10000,static,DFS,
+extreme:r51-10000:31,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:31,extreme r51-10000,static,FAGS-style,9514
+extreme:r51-10000:31,extreme r51-10000,static,FAGS-style+CBJ,6092
+extreme:r51-10000:31,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:31,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:32,extreme r51-10000,mrv,Restarts,2122
+extreme:r51-10000:32,extreme r51-10000,mrv,DFS,2390
+extreme:r51-10000:32,extreme r51-10000,mrv,DFS+CBJ,2348
+extreme:r51-10000:32,extreme r51-10000,mrv,FAGS-style,2098
+extreme:r51-10000:32,extreme r51-10000,mrv,FAGS-style+CBJ,2094
+extreme:r51-10000:32,extreme r51-10000,mrv,BestFirst-mean,2292
+extreme:r51-10000:32,extreme r51-10000,mrv,BestFirst-mean+CBJ,2252
+extreme:r51-10000:32,extreme r51-10000,static,Restarts,
+extreme:r51-10000:32,extreme r51-10000,static,DFS,
+extreme:r51-10000:32,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:32,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:32,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:32,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:32,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:33,extreme r51-10000,mrv,Restarts,3843
+extreme:r51-10000:33,extreme r51-10000,mrv,DFS,1293
+extreme:r51-10000:33,extreme r51-10000,mrv,DFS+CBJ,1145
+extreme:r51-10000:33,extreme r51-10000,mrv,FAGS-style,1460
+extreme:r51-10000:33,extreme r51-10000,mrv,FAGS-style+CBJ,1439
+extreme:r51-10000:33,extreme r51-10000,mrv,BestFirst-mean,6732
+extreme:r51-10000:33,extreme r51-10000,mrv,BestFirst-mean+CBJ,5856
+extreme:r51-10000:33,extreme r51-10000,static,Restarts,
+extreme:r51-10000:33,extreme r51-10000,static,DFS,18597
+extreme:r51-10000:33,extreme r51-10000,static,DFS+CBJ,11181
+extreme:r51-10000:33,extreme r51-10000,static,FAGS-style,18449
+extreme:r51-10000:33,extreme r51-10000,static,FAGS-style+CBJ,14096
+extreme:r51-10000:33,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:33,extreme r51-10000,static,BestFirst-mean+CBJ,12367
+extreme:r51-10000:34,extreme r51-10000,mrv,Restarts,18963
+extreme:r51-10000:34,extreme r51-10000,mrv,DFS,11880
+extreme:r51-10000:34,extreme r51-10000,mrv,DFS+CBJ,11467
+extreme:r51-10000:34,extreme r51-10000,mrv,FAGS-style,10732
+extreme:r51-10000:34,extreme r51-10000,mrv,FAGS-style+CBJ,10504
+extreme:r51-10000:34,extreme r51-10000,mrv,BestFirst-mean,12975
+extreme:r51-10000:34,extreme r51-10000,mrv,BestFirst-mean+CBJ,12382
+extreme:r51-10000:34,extreme r51-10000,static,Restarts,
+extreme:r51-10000:34,extreme r51-10000,static,DFS,
+extreme:r51-10000:34,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:34,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:34,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:34,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:34,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:35,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:35,extreme r51-10000,mrv,DFS,16845
+extreme:r51-10000:35,extreme r51-10000,mrv,DFS+CBJ,16141
+extreme:r51-10000:35,extreme r51-10000,mrv,FAGS-style,16461
+extreme:r51-10000:35,extreme r51-10000,mrv,FAGS-style+CBJ,16030
+extreme:r51-10000:35,extreme r51-10000,mrv,BestFirst-mean,16130
+extreme:r51-10000:35,extreme r51-10000,mrv,BestFirst-mean+CBJ,15388
+extreme:r51-10000:35,extreme r51-10000,static,Restarts,
+extreme:r51-10000:35,extreme r51-10000,static,DFS,
+extreme:r51-10000:35,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:35,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:35,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:35,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:35,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:36,extreme r51-10000,mrv,Restarts,11492
+extreme:r51-10000:36,extreme r51-10000,mrv,DFS,1386
+extreme:r51-10000:36,extreme r51-10000,mrv,DFS+CBJ,1381
+extreme:r51-10000:36,extreme r51-10000,mrv,FAGS-style,1572
+extreme:r51-10000:36,extreme r51-10000,mrv,FAGS-style+CBJ,1572
+extreme:r51-10000:36,extreme r51-10000,mrv,BestFirst-mean,1776
+extreme:r51-10000:36,extreme r51-10000,mrv,BestFirst-mean+CBJ,1764
+extreme:r51-10000:36,extreme r51-10000,static,Restarts,
+extreme:r51-10000:36,extreme r51-10000,static,DFS,3232
+extreme:r51-10000:36,extreme r51-10000,static,DFS+CBJ,2309
+extreme:r51-10000:36,extreme r51-10000,static,FAGS-style,2971
+extreme:r51-10000:36,extreme r51-10000,static,FAGS-style+CBJ,2444
+extreme:r51-10000:36,extreme r51-10000,static,BestFirst-mean,2887
+extreme:r51-10000:36,extreme r51-10000,static,BestFirst-mean+CBJ,2031
+extreme:r51-10000:37,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:37,extreme r51-10000,mrv,DFS,1727
+extreme:r51-10000:37,extreme r51-10000,mrv,DFS+CBJ,1665
+extreme:r51-10000:37,extreme r51-10000,mrv,FAGS-style,3016
+extreme:r51-10000:37,extreme r51-10000,mrv,FAGS-style+CBJ,2954
+extreme:r51-10000:37,extreme r51-10000,mrv,BestFirst-mean,3887
+extreme:r51-10000:37,extreme r51-10000,mrv,BestFirst-mean+CBJ,3778
+extreme:r51-10000:37,extreme r51-10000,static,Restarts,
+extreme:r51-10000:37,extreme r51-10000,static,DFS,
+extreme:r51-10000:37,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:37,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:37,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:37,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:37,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:38,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:38,extreme r51-10000,mrv,DFS,3627
+extreme:r51-10000:38,extreme r51-10000,mrv,DFS+CBJ,3435
+extreme:r51-10000:38,extreme r51-10000,mrv,FAGS-style,715
+extreme:r51-10000:38,extreme r51-10000,mrv,FAGS-style+CBJ,706
+extreme:r51-10000:38,extreme r51-10000,mrv,BestFirst-mean,1470
+extreme:r51-10000:38,extreme r51-10000,mrv,BestFirst-mean+CBJ,1416
+extreme:r51-10000:38,extreme r51-10000,static,Restarts,
+extreme:r51-10000:38,extreme r51-10000,static,DFS,
+extreme:r51-10000:38,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:38,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:38,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:38,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:38,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:39,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:39,extreme r51-10000,mrv,DFS,2104
+extreme:r51-10000:39,extreme r51-10000,mrv,DFS+CBJ,1923
+extreme:r51-10000:39,extreme r51-10000,mrv,FAGS-style,3845
+extreme:r51-10000:39,extreme r51-10000,mrv,FAGS-style+CBJ,3803
+extreme:r51-10000:39,extreme r51-10000,mrv,BestFirst-mean,1527
+extreme:r51-10000:39,extreme r51-10000,mrv,BestFirst-mean+CBJ,1361
+extreme:r51-10000:39,extreme r51-10000,static,Restarts,
+extreme:r51-10000:39,extreme r51-10000,static,DFS,2918
+extreme:r51-10000:39,extreme r51-10000,static,DFS+CBJ,2521
+extreme:r51-10000:39,extreme r51-10000,static,FAGS-style,7133
+extreme:r51-10000:39,extreme r51-10000,static,FAGS-style+CBJ,6326
+extreme:r51-10000:39,extreme r51-10000,static,BestFirst-mean,2206
+extreme:r51-10000:39,extreme r51-10000,static,BestFirst-mean+CBJ,1793
+extreme:r51-10000:40,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:40,extreme r51-10000,mrv,DFS,14905
+extreme:r51-10000:40,extreme r51-10000,mrv,DFS+CBJ,14782
+extreme:r51-10000:40,extreme r51-10000,mrv,FAGS-style,7204
+extreme:r51-10000:40,extreme r51-10000,mrv,FAGS-style+CBJ,7198
+extreme:r51-10000:40,extreme r51-10000,mrv,BestFirst-mean,15594
+extreme:r51-10000:40,extreme r51-10000,mrv,BestFirst-mean+CBJ,15441
+extreme:r51-10000:40,extreme r51-10000,static,Restarts,
+extreme:r51-10000:40,extreme r51-10000,static,DFS,
+extreme:r51-10000:40,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:40,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:40,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:40,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:40,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:41,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:41,extreme r51-10000,mrv,DFS,10466
+extreme:r51-10000:41,extreme r51-10000,mrv,DFS+CBJ,10303
+extreme:r51-10000:41,extreme r51-10000,mrv,FAGS-style,8018
+extreme:r51-10000:41,extreme r51-10000,mrv,FAGS-style+CBJ,7969
+extreme:r51-10000:41,extreme r51-10000,mrv,BestFirst-mean,10466
+extreme:r51-10000:41,extreme r51-10000,mrv,BestFirst-mean+CBJ,10273
+extreme:r51-10000:41,extreme r51-10000,static,Restarts,
+extreme:r51-10000:41,extreme r51-10000,static,DFS,5089
+extreme:r51-10000:41,extreme r51-10000,static,DFS+CBJ,3087
+extreme:r51-10000:41,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:41,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:41,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:41,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:42,extreme r51-10000,mrv,Restarts,1728
+extreme:r51-10000:42,extreme r51-10000,mrv,DFS,5140
+extreme:r51-10000:42,extreme r51-10000,mrv,DFS+CBJ,5074
+extreme:r51-10000:42,extreme r51-10000,mrv,FAGS-style,533
+extreme:r51-10000:42,extreme r51-10000,mrv,FAGS-style+CBJ,533
+extreme:r51-10000:42,extreme r51-10000,mrv,BestFirst-mean,5560
+extreme:r51-10000:42,extreme r51-10000,mrv,BestFirst-mean+CBJ,5494
+extreme:r51-10000:42,extreme r51-10000,static,Restarts,
+extreme:r51-10000:42,extreme r51-10000,static,DFS,3706
+extreme:r51-10000:42,extreme r51-10000,static,DFS+CBJ,3223
+extreme:r51-10000:42,extreme r51-10000,static,FAGS-style,15391
+extreme:r51-10000:42,extreme r51-10000,static,FAGS-style+CBJ,13051
+extreme:r51-10000:42,extreme r51-10000,static,BestFirst-mean,5681
+extreme:r51-10000:42,extreme r51-10000,static,BestFirst-mean+CBJ,5012
+extreme:r51-10000:43,extreme r51-10000,mrv,Restarts,3723
+extreme:r51-10000:43,extreme r51-10000,mrv,DFS,316
+extreme:r51-10000:43,extreme r51-10000,mrv,DFS+CBJ,306
+extreme:r51-10000:43,extreme r51-10000,mrv,FAGS-style,530
+extreme:r51-10000:43,extreme r51-10000,mrv,FAGS-style+CBJ,522
+extreme:r51-10000:43,extreme r51-10000,mrv,BestFirst-mean,227
+extreme:r51-10000:43,extreme r51-10000,mrv,BestFirst-mean+CBJ,225
+extreme:r51-10000:43,extreme r51-10000,static,Restarts,
+extreme:r51-10000:43,extreme r51-10000,static,DFS,
+extreme:r51-10000:43,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:43,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:43,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:43,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:43,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:44,extreme r51-10000,mrv,Restarts,2130
+extreme:r51-10000:44,extreme r51-10000,mrv,DFS,6376
+extreme:r51-10000:44,extreme r51-10000,mrv,DFS+CBJ,6035
+extreme:r51-10000:44,extreme r51-10000,mrv,FAGS-style,12141
+extreme:r51-10000:44,extreme r51-10000,mrv,FAGS-style+CBJ,11755
+extreme:r51-10000:44,extreme r51-10000,mrv,BestFirst-mean,12372
+extreme:r51-10000:44,extreme r51-10000,mrv,BestFirst-mean+CBJ,12009
+extreme:r51-10000:44,extreme r51-10000,static,Restarts,
+extreme:r51-10000:44,extreme r51-10000,static,DFS,
+extreme:r51-10000:44,extreme r51-10000,static,DFS+CBJ,17438
+extreme:r51-10000:44,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:44,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:44,extreme r51-10000,static,BestFirst-mean,15022
+extreme:r51-10000:44,extreme r51-10000,static,BestFirst-mean+CBJ,10806
+extreme:r51-10000:45,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:45,extreme r51-10000,mrv,DFS,2522
+extreme:r51-10000:45,extreme r51-10000,mrv,DFS+CBJ,2469
+extreme:r51-10000:45,extreme r51-10000,mrv,FAGS-style,6747
+extreme:r51-10000:45,extreme r51-10000,mrv,FAGS-style+CBJ,6727
+extreme:r51-10000:45,extreme r51-10000,mrv,BestFirst-mean,2483
+extreme:r51-10000:45,extreme r51-10000,mrv,BestFirst-mean+CBJ,2444
+extreme:r51-10000:45,extreme r51-10000,static,Restarts,
+extreme:r51-10000:45,extreme r51-10000,static,DFS,
+extreme:r51-10000:45,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:45,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:45,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:45,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:45,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:46,extreme r51-10000,mrv,Restarts,396
+extreme:r51-10000:46,extreme r51-10000,mrv,DFS,1073
+extreme:r51-10000:46,extreme r51-10000,mrv,DFS+CBJ,1023
+extreme:r51-10000:46,extreme r51-10000,mrv,FAGS-style,1362
+extreme:r51-10000:46,extreme r51-10000,mrv,FAGS-style+CBJ,1362
+extreme:r51-10000:46,extreme r51-10000,mrv,BestFirst-mean,6054
+extreme:r51-10000:46,extreme r51-10000,mrv,BestFirst-mean+CBJ,5909
+extreme:r51-10000:46,extreme r51-10000,static,Restarts,
+extreme:r51-10000:46,extreme r51-10000,static,DFS,
+extreme:r51-10000:46,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:46,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:46,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:46,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:46,extreme r51-10000,static,BestFirst-mean+CBJ,15452
+extreme:r51-10000:47,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:47,extreme r51-10000,mrv,DFS,10012
+extreme:r51-10000:47,extreme r51-10000,mrv,DFS+CBJ,8882
+extreme:r51-10000:47,extreme r51-10000,mrv,FAGS-style,17780
+extreme:r51-10000:47,extreme r51-10000,mrv,FAGS-style+CBJ,17125
+extreme:r51-10000:47,extreme r51-10000,mrv,BestFirst-mean,19281
+extreme:r51-10000:47,extreme r51-10000,mrv,BestFirst-mean+CBJ,17908
+extreme:r51-10000:47,extreme r51-10000,static,Restarts,
+extreme:r51-10000:47,extreme r51-10000,static,DFS,
+extreme:r51-10000:47,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:47,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:47,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:47,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:47,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:48,extreme r51-10000,mrv,Restarts,
+extreme:r51-10000:48,extreme r51-10000,mrv,DFS,7314
+extreme:r51-10000:48,extreme r51-10000,mrv,DFS+CBJ,7026
+extreme:r51-10000:48,extreme r51-10000,mrv,FAGS-style,9478
+extreme:r51-10000:48,extreme r51-10000,mrv,FAGS-style+CBJ,9383
+extreme:r51-10000:48,extreme r51-10000,mrv,BestFirst-mean,7318
+extreme:r51-10000:48,extreme r51-10000,mrv,BestFirst-mean+CBJ,7114
+extreme:r51-10000:48,extreme r51-10000,static,Restarts,
+extreme:r51-10000:48,extreme r51-10000,static,DFS,
+extreme:r51-10000:48,extreme r51-10000,static,DFS+CBJ,
+extreme:r51-10000:48,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:48,extreme r51-10000,static,FAGS-style+CBJ,
+extreme:r51-10000:48,extreme r51-10000,static,BestFirst-mean,
+extreme:r51-10000:48,extreme r51-10000,static,BestFirst-mean+CBJ,
+extreme:r51-10000:49,extreme r51-10000,mrv,Restarts,14746
+extreme:r51-10000:49,extreme r51-10000,mrv,DFS,620
+extreme:r51-10000:49,extreme r51-10000,mrv,DFS+CBJ,453
+extreme:r51-10000:49,extreme r51-10000,mrv,FAGS-style,2614
+extreme:r51-10000:49,extreme r51-10000,mrv,FAGS-style+CBJ,2516
+extreme:r51-10000:49,extreme r51-10000,mrv,BestFirst-mean,617
+extreme:r51-10000:49,extreme r51-10000,mrv,BestFirst-mean+CBJ,463
+extreme:r51-10000:49,extreme r51-10000,static,Restarts,
+extreme:r51-10000:49,extreme r51-10000,static,DFS,8624
+extreme:r51-10000:49,extreme r51-10000,static,DFS+CBJ,1652
+extreme:r51-10000:49,extreme r51-10000,static,FAGS-style,
+extreme:r51-10000:49,extreme r51-10000,static,FAGS-style+CBJ,16270
+extreme:r51-10000:49,extreme r51-10000,static,BestFirst-mean,11259
+extreme:r51-10000:49,extreme r51-10000,static,BestFirst-mean+CBJ,3486
+top95:0,top95,mrv,Restarts,2206
+top95:0,top95,mrv,DFS,167
+top95:0,top95,mrv,DFS+CBJ,156
+top95:0,top95,mrv,FAGS-style,139
+top95:0,top95,mrv,FAGS-style+CBJ,139
+top95:0,top95,mrv,BestFirst-mean,477
+top95:0,top95,mrv,BestFirst-mean+CBJ,423
+top95:0,top95,static,Restarts,
+top95:0,top95,static,DFS,
+top95:0,top95,static,DFS+CBJ,
+top95:0,top95,static,FAGS-style,
+top95:0,top95,static,FAGS-style+CBJ,
+top95:0,top95,static,BestFirst-mean,
+top95:0,top95,static,BestFirst-mean+CBJ,
+top95:1,top95,mrv,Restarts,
+top95:1,top95,mrv,DFS,1518
+top95:1,top95,mrv,DFS+CBJ,1218
+top95:1,top95,mrv,FAGS-style,1605
+top95:1,top95,mrv,FAGS-style+CBJ,1507
+top95:1,top95,mrv,BestFirst-mean,1737
+top95:1,top95,mrv,BestFirst-mean+CBJ,1379
+top95:1,top95,static,Restarts,
+top95:1,top95,static,DFS,
+top95:1,top95,static,DFS+CBJ,11833
+top95:1,top95,static,FAGS-style,
+top95:1,top95,static,FAGS-style+CBJ,
+top95:1,top95,static,BestFirst-mean,
+top95:1,top95,static,BestFirst-mean+CBJ,
+top95:2,top95,mrv,Restarts,
+top95:2,top95,mrv,DFS,1176
+top95:2,top95,mrv,DFS+CBJ,1033
+top95:2,top95,mrv,FAGS-style,1340
+top95:2,top95,mrv,FAGS-style+CBJ,1273
+top95:2,top95,mrv,BestFirst-mean,1522
+top95:2,top95,mrv,BestFirst-mean+CBJ,1365
+top95:2,top95,static,Restarts,
+top95:2,top95,static,DFS,
+top95:2,top95,static,DFS+CBJ,11844
+top95:2,top95,static,FAGS-style,
+top95:2,top95,static,FAGS-style+CBJ,
+top95:2,top95,static,BestFirst-mean,
+top95:2,top95,static,BestFirst-mean+CBJ,8714
+top95:3,top95,mrv,Restarts,
+top95:3,top95,mrv,DFS,
+top95:3,top95,mrv,DFS+CBJ,
+top95:3,top95,mrv,FAGS-style,
+top95:3,top95,mrv,FAGS-style+CBJ,
+top95:3,top95,mrv,BestFirst-mean,
+top95:3,top95,mrv,BestFirst-mean+CBJ,
+top95:3,top95,static,Restarts,
+top95:3,top95,static,DFS,
+top95:3,top95,static,DFS+CBJ,
+top95:3,top95,static,FAGS-style,
+top95:3,top95,static,FAGS-style+CBJ,
+top95:3,top95,static,BestFirst-mean,
+top95:3,top95,static,BestFirst-mean+CBJ,
+top95:4,top95,mrv,Restarts,
+top95:4,top95,mrv,DFS,
+top95:4,top95,mrv,DFS+CBJ,
+top95:4,top95,mrv,FAGS-style,
+top95:4,top95,mrv,FAGS-style+CBJ,
+top95:4,top95,mrv,BestFirst-mean,
+top95:4,top95,mrv,BestFirst-mean+CBJ,
+top95:4,top95,static,Restarts,
+top95:4,top95,static,DFS,
+top95:4,top95,static,DFS+CBJ,
+top95:4,top95,static,FAGS-style,
+top95:4,top95,static,FAGS-style+CBJ,
+top95:4,top95,static,BestFirst-mean,
+top95:4,top95,static,BestFirst-mean+CBJ,
+top95:5,top95,mrv,Restarts,
+top95:5,top95,mrv,DFS,
+top95:5,top95,mrv,DFS+CBJ,
+top95:5,top95,mrv,FAGS-style,
+top95:5,top95,mrv,FAGS-style+CBJ,
+top95:5,top95,mrv,BestFirst-mean,
+top95:5,top95,mrv,BestFirst-mean+CBJ,
+top95:5,top95,static,Restarts,
+top95:5,top95,static,DFS,
+top95:5,top95,static,DFS+CBJ,19037
+top95:5,top95,static,FAGS-style,
+top95:5,top95,static,FAGS-style+CBJ,
+top95:5,top95,static,BestFirst-mean,
+top95:5,top95,static,BestFirst-mean+CBJ,18944
+top95:6,top95,mrv,Restarts,
+top95:6,top95,mrv,DFS,
+top95:6,top95,mrv,DFS+CBJ,
+top95:6,top95,mrv,FAGS-style,
+top95:6,top95,mrv,FAGS-style+CBJ,
+top95:6,top95,mrv,BestFirst-mean,
+top95:6,top95,mrv,BestFirst-mean+CBJ,
+top95:6,top95,static,Restarts,
+top95:6,top95,static,DFS,
+top95:6,top95,static,DFS+CBJ,
+top95:6,top95,static,FAGS-style,
+top95:6,top95,static,FAGS-style+CBJ,
+top95:6,top95,static,BestFirst-mean,
+top95:6,top95,static,BestFirst-mean+CBJ,
+top95:7,top95,mrv,Restarts,
+top95:7,top95,mrv,DFS,
+top95:7,top95,mrv,DFS+CBJ,
+top95:7,top95,mrv,FAGS-style,
+top95:7,top95,mrv,FAGS-style+CBJ,
+top95:7,top95,mrv,BestFirst-mean,
+top95:7,top95,mrv,BestFirst-mean+CBJ,
+top95:7,top95,static,Restarts,
+top95:7,top95,static,DFS,
+top95:7,top95,static,DFS+CBJ,
+top95:7,top95,static,FAGS-style,
+top95:7,top95,static,FAGS-style+CBJ,
+top95:7,top95,static,BestFirst-mean,
+top95:7,top95,static,BestFirst-mean+CBJ,
+top95:8,top95,mrv,Restarts,
+top95:8,top95,mrv,DFS,
+top95:8,top95,mrv,DFS+CBJ,
+top95:8,top95,mrv,FAGS-style,
+top95:8,top95,mrv,FAGS-style+CBJ,
+top95:8,top95,mrv,BestFirst-mean,
+top95:8,top95,mrv,BestFirst-mean+CBJ,
+top95:8,top95,static,Restarts,
+top95:8,top95,static,DFS,
+top95:8,top95,static,DFS+CBJ,
+top95:8,top95,static,FAGS-style,
+top95:8,top95,static,FAGS-style+CBJ,
+top95:8,top95,static,BestFirst-mean,
+top95:8,top95,static,BestFirst-mean+CBJ,
+top95:9,top95,mrv,Restarts,
+top95:9,top95,mrv,DFS,
+top95:9,top95,mrv,DFS+CBJ,
+top95:9,top95,mrv,FAGS-style,
+top95:9,top95,mrv,FAGS-style+CBJ,
+top95:9,top95,mrv,BestFirst-mean,
+top95:9,top95,mrv,BestFirst-mean+CBJ,
+top95:9,top95,static,Restarts,
+top95:9,top95,static,DFS,
+top95:9,top95,static,DFS+CBJ,
+top95:9,top95,static,FAGS-style,
+top95:9,top95,static,FAGS-style+CBJ,
+top95:9,top95,static,BestFirst-mean,
+top95:9,top95,static,BestFirst-mean+CBJ,
+top95:10,top95,mrv,Restarts,5848
+top95:10,top95,mrv,DFS,
+top95:10,top95,mrv,DFS+CBJ,
+top95:10,top95,mrv,FAGS-style,1205
+top95:10,top95,mrv,FAGS-style+CBJ,1185
+top95:10,top95,mrv,BestFirst-mean,
+top95:10,top95,mrv,BestFirst-mean+CBJ,13756
+top95:10,top95,static,Restarts,
+top95:10,top95,static,DFS,
+top95:10,top95,static,DFS+CBJ,
+top95:10,top95,static,FAGS-style,
+top95:10,top95,static,FAGS-style+CBJ,
+top95:10,top95,static,BestFirst-mean,
+top95:10,top95,static,BestFirst-mean+CBJ,
+top95:11,top95,mrv,Restarts,
+top95:11,top95,mrv,DFS,3797
+top95:11,top95,mrv,DFS+CBJ,3739
+top95:11,top95,mrv,FAGS-style,5108
+top95:11,top95,mrv,FAGS-style+CBJ,5098
+top95:11,top95,mrv,BestFirst-mean,3919
+top95:11,top95,mrv,BestFirst-mean+CBJ,3878
+top95:11,top95,static,Restarts,
+top95:11,top95,static,DFS,18578
+top95:11,top95,static,DFS+CBJ,11550
+top95:11,top95,static,FAGS-style,4572
+top95:11,top95,static,FAGS-style+CBJ,2918
+top95:11,top95,static,BestFirst-mean,19044
+top95:11,top95,static,BestFirst-mean+CBJ,11796
+top95:12,top95,mrv,Restarts,
+top95:12,top95,mrv,DFS,4164
+top95:12,top95,mrv,DFS+CBJ,3382
+top95:12,top95,mrv,FAGS-style,6172
+top95:12,top95,mrv,FAGS-style+CBJ,5846
+top95:12,top95,mrv,BestFirst-mean,4846
+top95:12,top95,mrv,BestFirst-mean+CBJ,4467
+top95:12,top95,static,Restarts,
+top95:12,top95,static,DFS,
+top95:12,top95,static,DFS+CBJ,
+top95:12,top95,static,FAGS-style,
+top95:12,top95,static,FAGS-style+CBJ,
+top95:12,top95,static,BestFirst-mean,
+top95:12,top95,static,BestFirst-mean+CBJ,
+top95:13,top95,mrv,Restarts,
+top95:13,top95,mrv,DFS,3019
+top95:13,top95,mrv,DFS+CBJ,2495
+top95:13,top95,mrv,FAGS-style,
+top95:13,top95,mrv,FAGS-style+CBJ,
+top95:13,top95,mrv,BestFirst-mean,
+top95:13,top95,mrv,BestFirst-mean+CBJ,18765
+top95:13,top95,static,Restarts,
+top95:13,top95,static,DFS,14140
+top95:13,top95,static,DFS+CBJ,7722
+top95:13,top95,static,FAGS-style,
+top95:13,top95,static,FAGS-style+CBJ,
+top95:13,top95,static,BestFirst-mean,
+top95:13,top95,static,BestFirst-mean+CBJ,
+top95:14,top95,mrv,Restarts,
+top95:14,top95,mrv,DFS,3061
+top95:14,top95,mrv,DFS+CBJ,2616
+top95:14,top95,mrv,FAGS-style,4712
+top95:14,top95,mrv,FAGS-style+CBJ,4441
+top95:14,top95,mrv,BestFirst-mean,3061
+top95:14,top95,mrv,BestFirst-mean+CBJ,2534
+top95:14,top95,static,Restarts,
+top95:14,top95,static,DFS,
+top95:14,top95,static,DFS+CBJ,
+top95:14,top95,static,FAGS-style,
+top95:14,top95,static,FAGS-style+CBJ,
+top95:14,top95,static,BestFirst-mean,
+top95:14,top95,static,BestFirst-mean+CBJ,
+top95:15,top95,mrv,Restarts,3582
+top95:15,top95,mrv,DFS,
+top95:15,top95,mrv,DFS+CBJ,
+top95:15,top95,mrv,FAGS-style,7695
+top95:15,top95,mrv,FAGS-style+CBJ,4466
+top95:15,top95,mrv,BestFirst-mean,
+top95:15,top95,mrv,BestFirst-mean+CBJ,17953
+top95:15,top95,static,Restarts,
+top95:15,top95,static,DFS,
+top95:15,top95,static,DFS+CBJ,
+top95:15,top95,static,FAGS-style,
+top95:15,top95,static,FAGS-style+CBJ,
+top95:15,top95,static,BestFirst-mean,
+top95:15,top95,static,BestFirst-mean+CBJ,
+top95:16,top95,mrv,Restarts,3822
+top95:16,top95,mrv,DFS,197
+top95:16,top95,mrv,DFS+CBJ,191
+top95:16,top95,mrv,FAGS-style,1257
+top95:16,top95,mrv,FAGS-style+CBJ,980
+top95:16,top95,mrv,BestFirst-mean,193
+top95:16,top95,mrv,BestFirst-mean+CBJ,187
+top95:16,top95,static,Restarts,
+top95:16,top95,static,DFS,
+top95:16,top95,static,DFS+CBJ,
+top95:16,top95,static,FAGS-style,
+top95:16,top95,static,FAGS-style+CBJ,
+top95:16,top95,static,BestFirst-mean,
+top95:16,top95,static,BestFirst-mean+CBJ,
+top95:17,top95,mrv,Restarts,
+top95:17,top95,mrv,DFS,
+top95:17,top95,mrv,DFS+CBJ,
+top95:17,top95,mrv,FAGS-style,
+top95:17,top95,mrv,FAGS-style+CBJ,
+top95:17,top95,mrv,BestFirst-mean,
+top95:17,top95,mrv,BestFirst-mean+CBJ,
+top95:17,top95,static,Restarts,
+top95:17,top95,static,DFS,
+top95:17,top95,static,DFS+CBJ,
+top95:17,top95,static,FAGS-style,
+top95:17,top95,static,FAGS-style+CBJ,
+top95:17,top95,static,BestFirst-mean,
+top95:17,top95,static,BestFirst-mean+CBJ,
+top95:18,top95,mrv,Restarts,10153
+top95:18,top95,mrv,DFS,1010
+top95:18,top95,mrv,DFS+CBJ,1010
+top95:18,top95,mrv,FAGS-style,582
+top95:18,top95,mrv,FAGS-style+CBJ,582
+top95:18,top95,mrv,BestFirst-mean,549
+top95:18,top95,mrv,BestFirst-mean+CBJ,549
+top95:18,top95,static,Restarts,
+top95:18,top95,static,DFS,3510
+top95:18,top95,static,DFS+CBJ,2735
+top95:18,top95,static,FAGS-style,2895
+top95:18,top95,static,FAGS-style+CBJ,2469
+top95:18,top95,static,BestFirst-mean,3131
+top95:18,top95,static,BestFirst-mean+CBJ,2445
+top95:19,top95,mrv,Restarts,207
+top95:19,top95,mrv,DFS,597
+top95:19,top95,mrv,DFS+CBJ,580
+top95:19,top95,mrv,FAGS-style,359
+top95:19,top95,mrv,FAGS-style+CBJ,359
+top95:19,top95,mrv,BestFirst-mean,617
+top95:19,top95,mrv,BestFirst-mean+CBJ,600
+top95:19,top95,static,Restarts,
+top95:19,top95,static,DFS,3544
+top95:19,top95,static,DFS+CBJ,1536
+top95:19,top95,static,FAGS-style,5425
+top95:19,top95,static,FAGS-style+CBJ,3704
+top95:19,top95,static,BestFirst-mean,724
+top95:19,top95,static,BestFirst-mean+CBJ,460
+top95:20,top95,mrv,Restarts,5524
+top95:20,top95,mrv,DFS,
+top95:20,top95,mrv,DFS+CBJ,
+top95:20,top95,mrv,FAGS-style,
+top95:20,top95,mrv,FAGS-style+CBJ,
+top95:20,top95,mrv,BestFirst-mean,
+top95:20,top95,mrv,BestFirst-mean+CBJ,
+top95:20,top95,static,Restarts,
+top95:20,top95,static,DFS,
+top95:20,top95,static,DFS+CBJ,
+top95:20,top95,static,FAGS-style,
+top95:20,top95,static,FAGS-style+CBJ,
+top95:20,top95,static,BestFirst-mean,
+top95:20,top95,static,BestFirst-mean+CBJ,
+top95:21,top95,mrv,Restarts,362
+top95:21,top95,mrv,DFS,349
+top95:21,top95,mrv,DFS+CBJ,349
+top95:21,top95,mrv,FAGS-style,77
+top95:21,top95,mrv,FAGS-style+CBJ,77
+top95:21,top95,mrv,BestFirst-mean,362
+top95:21,top95,mrv,BestFirst-mean+CBJ,362
+top95:21,top95,static,Restarts,
+top95:21,top95,static,DFS,
+top95:21,top95,static,DFS+CBJ,14852
+top95:21,top95,static,FAGS-style,
+top95:21,top95,static,FAGS-style+CBJ,10237
+top95:21,top95,static,BestFirst-mean,7575
+top95:21,top95,static,BestFirst-mean+CBJ,2801
+top95:22,top95,mrv,Restarts,3136
+top95:22,top95,mrv,DFS,2508
+top95:22,top95,mrv,DFS+CBJ,2346
+top95:22,top95,mrv,FAGS-style,1236
+top95:22,top95,mrv,FAGS-style+CBJ,1188
+top95:22,top95,mrv,BestFirst-mean,823
+top95:22,top95,mrv,BestFirst-mean+CBJ,678
+top95:22,top95,static,Restarts,
+top95:22,top95,static,DFS,
+top95:22,top95,static,DFS+CBJ,
+top95:22,top95,static,FAGS-style,
+top95:22,top95,static,FAGS-style+CBJ,
+top95:22,top95,static,BestFirst-mean,
+top95:22,top95,static,BestFirst-mean+CBJ,
+top95:23,top95,mrv,Restarts,
+top95:23,top95,mrv,DFS,4488
+top95:23,top95,mrv,DFS+CBJ,4136
+top95:23,top95,mrv,FAGS-style,6416
+top95:23,top95,mrv,FAGS-style+CBJ,6188
+top95:23,top95,mrv,BestFirst-mean,5197
+top95:23,top95,mrv,BestFirst-mean+CBJ,4810
+top95:23,top95,static,Restarts,
+top95:23,top95,static,DFS,
+top95:23,top95,static,DFS+CBJ,
+top95:23,top95,static,FAGS-style,
+top95:23,top95,static,FAGS-style+CBJ,
+top95:23,top95,static,BestFirst-mean,
+top95:23,top95,static,BestFirst-mean+CBJ,
+top95:24,top95,mrv,Restarts,
+top95:24,top95,mrv,DFS,3353
+top95:24,top95,mrv,DFS+CBJ,2834
+top95:24,top95,mrv,FAGS-style,3735
+top95:24,top95,mrv,FAGS-style+CBJ,3628
+top95:24,top95,mrv,BestFirst-mean,438
+top95:24,top95,mrv,BestFirst-mean+CBJ,417
+top95:24,top95,static,Restarts,
+top95:24,top95,static,DFS,
+top95:24,top95,static,DFS+CBJ,9542
+top95:24,top95,static,FAGS-style,17712
+top95:24,top95,static,FAGS-style+CBJ,9975
+top95:24,top95,static,BestFirst-mean,
+top95:24,top95,static,BestFirst-mean+CBJ,10255
+top95:25,top95,mrv,Restarts,
+top95:25,top95,mrv,DFS,6023
+top95:25,top95,mrv,DFS+CBJ,5397
+top95:25,top95,mrv,FAGS-style,5046
+top95:25,top95,mrv,FAGS-style+CBJ,4925
+top95:25,top95,mrv,BestFirst-mean,9869
+top95:25,top95,mrv,BestFirst-mean+CBJ,8696
+top95:25,top95,static,Restarts,
+top95:25,top95,static,DFS,
+top95:25,top95,static,DFS+CBJ,
+top95:25,top95,static,FAGS-style,
+top95:25,top95,static,FAGS-style+CBJ,
+top95:25,top95,static,BestFirst-mean,
+top95:25,top95,static,BestFirst-mean+CBJ,
+top95:26,top95,mrv,Restarts,
+top95:26,top95,mrv,DFS,16379
+top95:26,top95,mrv,DFS+CBJ,10843
+top95:26,top95,mrv,FAGS-style,9870
+top95:26,top95,mrv,FAGS-style+CBJ,9445
+top95:26,top95,mrv,BestFirst-mean,13008
+top95:26,top95,mrv,BestFirst-mean+CBJ,9381
+top95:26,top95,static,Restarts,
+top95:26,top95,static,DFS,
+top95:26,top95,static,DFS+CBJ,
+top95:26,top95,static,FAGS-style,
+top95:26,top95,static,FAGS-style+CBJ,
+top95:26,top95,static,BestFirst-mean,
+top95:26,top95,static,BestFirst-mean+CBJ,
+top95:27,top95,mrv,Restarts,
+top95:27,top95,mrv,DFS,
+top95:27,top95,mrv,DFS+CBJ,
+top95:27,top95,mrv,FAGS-style,
+top95:27,top95,mrv,FAGS-style+CBJ,
+top95:27,top95,mrv,BestFirst-mean,
+top95:27,top95,mrv,BestFirst-mean+CBJ,
+top95:27,top95,static,Restarts,
+top95:27,top95,static,DFS,
+top95:27,top95,static,DFS+CBJ,
+top95:27,top95,static,FAGS-style,
+top95:27,top95,static,FAGS-style+CBJ,
+top95:27,top95,static,BestFirst-mean,
+top95:27,top95,static,BestFirst-mean+CBJ,
+top95:28,top95,mrv,Restarts,
+top95:28,top95,mrv,DFS,476
+top95:28,top95,mrv,DFS+CBJ,472
+top95:28,top95,mrv,FAGS-style,455
+top95:28,top95,mrv,FAGS-style+CBJ,455
+top95:28,top95,mrv,BestFirst-mean,479
+top95:28,top95,mrv,BestFirst-mean+CBJ,475
+top95:28,top95,static,Restarts,
+top95:28,top95,static,DFS,9244
+top95:28,top95,static,DFS+CBJ,5454
+top95:28,top95,static,FAGS-style,11225
+top95:28,top95,static,FAGS-style+CBJ,7004
+top95:28,top95,static,BestFirst-mean,9086
+top95:28,top95,static,BestFirst-mean+CBJ,5409
+top95:29,top95,mrv,Restarts,
+top95:29,top95,mrv,DFS,5241
+top95:29,top95,mrv,DFS+CBJ,4232
+top95:29,top95,mrv,FAGS-style,13830
+top95:29,top95,mrv,FAGS-style+CBJ,12541
+top95:29,top95,mrv,BestFirst-mean,9115
+top95:29,top95,mrv,BestFirst-mean+CBJ,6364
+top95:29,top95,static,Restarts,
+top95:29,top95,static,DFS,
+top95:29,top95,static,DFS+CBJ,
+top95:29,top95,static,FAGS-style,
+top95:29,top95,static,FAGS-style+CBJ,17875
+top95:29,top95,static,BestFirst-mean,
+top95:29,top95,static,BestFirst-mean+CBJ,
+top95:30,top95,mrv,Restarts,
+top95:30,top95,mrv,DFS,1330
+top95:30,top95,mrv,DFS+CBJ,1308
+top95:30,top95,mrv,FAGS-style,3197
+top95:30,top95,mrv,FAGS-style+CBJ,3177
+top95:30,top95,mrv,BestFirst-mean,1696
+top95:30,top95,mrv,BestFirst-mean+CBJ,1672
+top95:30,top95,static,Restarts,
+top95:30,top95,static,DFS,
+top95:30,top95,static,DFS+CBJ,
+top95:30,top95,static,FAGS-style,
+top95:30,top95,static,FAGS-style+CBJ,
+top95:30,top95,static,BestFirst-mean,
+top95:30,top95,static,BestFirst-mean+CBJ,
+top95:31,top95,mrv,Restarts,5023
+top95:31,top95,mrv,DFS,322
+top95:31,top95,mrv,DFS+CBJ,274
+top95:31,top95,mrv,FAGS-style,235
+top95:31,top95,mrv,FAGS-style+CBJ,235
+top95:31,top95,mrv,BestFirst-mean,541
+top95:31,top95,mrv,BestFirst-mean+CBJ,534
+top95:31,top95,static,Restarts,
+top95:31,top95,static,DFS,6814
+top95:31,top95,static,DFS+CBJ,4537
+top95:31,top95,static,FAGS-style,6891
+top95:31,top95,static,FAGS-style+CBJ,5576
+top95:31,top95,static,BestFirst-mean,6955
+top95:31,top95,static,BestFirst-mean+CBJ,4636
+top95:32,top95,mrv,Restarts,3515
+top95:32,top95,mrv,DFS,810
+top95:32,top95,mrv,DFS+CBJ,790
+top95:32,top95,mrv,FAGS-style,117
+top95:32,top95,mrv,FAGS-style+CBJ,117
+top95:32,top95,mrv,BestFirst-mean,277
+top95:32,top95,mrv,BestFirst-mean+CBJ,277
+top95:32,top95,static,Restarts,
+top95:32,top95,static,DFS,
+top95:32,top95,static,DFS+CBJ,13459
+top95:32,top95,static,FAGS-style,2415
+top95:32,top95,static,FAGS-style+CBJ,1565
+top95:32,top95,static,BestFirst-mean,16635
+top95:32,top95,static,BestFirst-mean+CBJ,11421
+top95:33,top95,mrv,Restarts,
+top95:33,top95,mrv,DFS,
+top95:33,top95,mrv,DFS+CBJ,
+top95:33,top95,mrv,FAGS-style,8540
+top95:33,top95,mrv,FAGS-style+CBJ,8135
+top95:33,top95,mrv,BestFirst-mean,
+top95:33,top95,mrv,BestFirst-mean+CBJ,
+top95:33,top95,static,Restarts,
+top95:33,top95,static,DFS,
+top95:33,top95,static,DFS+CBJ,
+top95:33,top95,static,FAGS-style,
+top95:33,top95,static,FAGS-style+CBJ,
+top95:33,top95,static,BestFirst-mean,
+top95:33,top95,static,BestFirst-mean+CBJ,
+top95:34,top95,mrv,Restarts,
+top95:34,top95,mrv,DFS,7346
+top95:34,top95,mrv,DFS+CBJ,5825
+top95:34,top95,mrv,FAGS-style,2095
+top95:34,top95,mrv,FAGS-style+CBJ,2072
+top95:34,top95,mrv,BestFirst-mean,3939
+top95:34,top95,mrv,BestFirst-mean+CBJ,3396
+top95:34,top95,static,Restarts,
+top95:34,top95,static,DFS,
+top95:34,top95,static,DFS+CBJ,13125
+top95:34,top95,static,FAGS-style,3750
+top95:34,top95,static,FAGS-style+CBJ,3083
+top95:34,top95,static,BestFirst-mean,
+top95:34,top95,static,BestFirst-mean+CBJ,18257
+top95:35,top95,mrv,Restarts,373
+top95:35,top95,mrv,DFS,1395
+top95:35,top95,mrv,DFS+CBJ,973
+top95:35,top95,mrv,FAGS-style,916
+top95:35,top95,mrv,FAGS-style+CBJ,794
+top95:35,top95,mrv,BestFirst-mean,133
+top95:35,top95,mrv,BestFirst-mean+CBJ,133
+top95:35,top95,static,Restarts,
+top95:35,top95,static,DFS,
+top95:35,top95,static,DFS+CBJ,
+top95:35,top95,static,FAGS-style,
+top95:35,top95,static,FAGS-style+CBJ,
+top95:35,top95,static,BestFirst-mean,
+top95:35,top95,static,BestFirst-mean+CBJ,
+top95:36,top95,mrv,Restarts,15129
+top95:36,top95,mrv,DFS,111
+top95:36,top95,mrv,DFS+CBJ,111
+top95:36,top95,mrv,FAGS-style,698
+top95:36,top95,mrv,FAGS-style+CBJ,628
+top95:36,top95,mrv,BestFirst-mean,112
+top95:36,top95,mrv,BestFirst-mean+CBJ,112
+top95:36,top95,static,Restarts,
+top95:36,top95,static,DFS,
+top95:36,top95,static,DFS+CBJ,
+top95:36,top95,static,FAGS-style,
+top95:36,top95,static,FAGS-style+CBJ,
+top95:36,top95,static,BestFirst-mean,
+top95:36,top95,static,BestFirst-mean+CBJ,
+top95:37,top95,mrv,Restarts,4630
+top95:37,top95,mrv,DFS,661
+top95:37,top95,mrv,DFS+CBJ,608
+top95:37,top95,mrv,FAGS-style,749
+top95:37,top95,mrv,FAGS-style+CBJ,749
+top95:37,top95,mrv,BestFirst-mean,333
+top95:37,top95,mrv,BestFirst-mean+CBJ,294
+top95:37,top95,static,Restarts,
+top95:37,top95,static,DFS,4090
+top95:37,top95,static,DFS+CBJ,2317
+top95:37,top95,static,FAGS-style,2699
+top95:37,top95,static,FAGS-style+CBJ,1643
+top95:37,top95,static,BestFirst-mean,4089
+top95:37,top95,static,BestFirst-mean+CBJ,2334
+top95:38,top95,mrv,Restarts,
+top95:38,top95,mrv,DFS,4604
+top95:38,top95,mrv,DFS+CBJ,3957
+top95:38,top95,mrv,FAGS-style,982
+top95:38,top95,mrv,FAGS-style+CBJ,927
+top95:38,top95,mrv,BestFirst-mean,952
+top95:38,top95,mrv,BestFirst-mean+CBJ,859
+top95:38,top95,static,Restarts,
+top95:38,top95,static,DFS,
+top95:38,top95,static,DFS+CBJ,
+top95:38,top95,static,FAGS-style,
+top95:38,top95,static,FAGS-style+CBJ,
+top95:38,top95,static,BestFirst-mean,
+top95:38,top95,static,BestFirst-mean+CBJ,
+top95:39,top95,mrv,Restarts,6947
+top95:39,top95,mrv,DFS,79
+top95:39,top95,mrv,DFS+CBJ,79
+top95:39,top95,mrv,FAGS-style,1285
+top95:39,top95,mrv,FAGS-style+CBJ,1279
+top95:39,top95,mrv,BestFirst-mean,171
+top95:39,top95,mrv,BestFirst-mean+CBJ,171
+top95:39,top95,static,Restarts,
+top95:39,top95,static,DFS,4237
+top95:39,top95,static,DFS+CBJ,2451
+top95:39,top95,static,FAGS-style,1485
+top95:39,top95,static,FAGS-style+CBJ,1039
+top95:39,top95,static,BestFirst-mean,8086
+top95:39,top95,static,BestFirst-mean+CBJ,4953
+top95:40,top95,mrv,Restarts,
+top95:40,top95,mrv,DFS,
+top95:40,top95,mrv,DFS+CBJ,
+top95:40,top95,mrv,FAGS-style,
+top95:40,top95,mrv,FAGS-style+CBJ,
+top95:40,top95,mrv,BestFirst-mean,
+top95:40,top95,mrv,BestFirst-mean+CBJ,
+top95:40,top95,static,Restarts,
+top95:40,top95,static,DFS,
+top95:40,top95,static,DFS+CBJ,
+top95:40,top95,static,FAGS-style,
+top95:40,top95,static,FAGS-style+CBJ,
+top95:40,top95,static,BestFirst-mean,
+top95:40,top95,static,BestFirst-mean+CBJ,
+top95:41,top95,mrv,Restarts,
+top95:41,top95,mrv,DFS,1443
+top95:41,top95,mrv,DFS+CBJ,1003
+top95:41,top95,mrv,FAGS-style,13028
+top95:41,top95,mrv,FAGS-style+CBJ,11248
+top95:41,top95,mrv,BestFirst-mean,7762
+top95:41,top95,mrv,BestFirst-mean+CBJ,4925
+top95:41,top95,static,Restarts,
+top95:41,top95,static,DFS,
+top95:41,top95,static,DFS+CBJ,
+top95:41,top95,static,FAGS-style,4538
+top95:41,top95,static,FAGS-style+CBJ,3336
+top95:41,top95,static,BestFirst-mean,
+top95:41,top95,static,BestFirst-mean+CBJ,18328
+top95:42,top95,mrv,Restarts,10327
+top95:42,top95,mrv,DFS,7237
+top95:42,top95,mrv,DFS+CBJ,6964
+top95:42,top95,mrv,FAGS-style,1209
+top95:42,top95,mrv,FAGS-style+CBJ,1193
+top95:42,top95,mrv,BestFirst-mean,7223
+top95:42,top95,mrv,BestFirst-mean+CBJ,6951
+top95:42,top95,static,Restarts,
+top95:42,top95,static,DFS,
+top95:42,top95,static,DFS+CBJ,
+top95:42,top95,static,FAGS-style,
+top95:42,top95,static,FAGS-style+CBJ,
+top95:42,top95,static,BestFirst-mean,
+top95:42,top95,static,BestFirst-mean+CBJ,
+top95:43,top95,mrv,Restarts,19281
+top95:43,top95,mrv,DFS,2301
+top95:43,top95,mrv,DFS+CBJ,2261
+top95:43,top95,mrv,FAGS-style,1576
+top95:43,top95,mrv,FAGS-style+CBJ,1406
+top95:43,top95,mrv,BestFirst-mean,484
+top95:43,top95,mrv,BestFirst-mean+CBJ,484
+top95:43,top95,static,Restarts,
+top95:43,top95,static,DFS,17313
+top95:43,top95,static,DFS+CBJ,8724
+top95:43,top95,static,FAGS-style,7364
+top95:43,top95,static,FAGS-style+CBJ,5212
+top95:43,top95,static,BestFirst-mean,5328
+top95:43,top95,static,BestFirst-mean+CBJ,3517
+top95:44,top95,mrv,Restarts,18391
+top95:44,top95,mrv,DFS,192
+top95:44,top95,mrv,DFS+CBJ,192
+top95:44,top95,mrv,FAGS-style,3039
+top95:44,top95,mrv,FAGS-style+CBJ,3036
+top95:44,top95,mrv,BestFirst-mean,2151
+top95:44,top95,mrv,BestFirst-mean+CBJ,2137
+top95:44,top95,static,Restarts,
+top95:44,top95,static,DFS,
+top95:44,top95,static,DFS+CBJ,11686
+top95:44,top95,static,FAGS-style,
+top95:44,top95,static,FAGS-style+CBJ,
+top95:44,top95,static,BestFirst-mean,
+top95:44,top95,static,BestFirst-mean+CBJ,
+top95:45,top95,mrv,Restarts,
+top95:45,top95,mrv,DFS,
+top95:45,top95,mrv,DFS+CBJ,
+top95:45,top95,mrv,FAGS-style,
+top95:45,top95,mrv,FAGS-style+CBJ,
+top95:45,top95,mrv,BestFirst-mean,
+top95:45,top95,mrv,BestFirst-mean+CBJ,
+top95:45,top95,static,Restarts,
+top95:45,top95,static,DFS,
+top95:45,top95,static,DFS+CBJ,
+top95:45,top95,static,FAGS-style,
+top95:45,top95,static,FAGS-style+CBJ,
+top95:45,top95,static,BestFirst-mean,
+top95:45,top95,static,BestFirst-mean+CBJ,
+top95:46,top95,mrv,Restarts,
+top95:46,top95,mrv,DFS,6454
+top95:46,top95,mrv,DFS+CBJ,5893
+top95:46,top95,mrv,FAGS-style,11720
+top95:46,top95,mrv,FAGS-style+CBJ,11346
+top95:46,top95,mrv,BestFirst-mean,6498
+top95:46,top95,mrv,BestFirst-mean+CBJ,5768
+top95:46,top95,static,Restarts,
+top95:46,top95,static,DFS,
+top95:46,top95,static,DFS+CBJ,
+top95:46,top95,static,FAGS-style,
+top95:46,top95,static,FAGS-style+CBJ,
+top95:46,top95,static,BestFirst-mean,
+top95:46,top95,static,BestFirst-mean+CBJ,
+top95:47,top95,mrv,Restarts,4160
+top95:47,top95,mrv,DFS,1094
+top95:47,top95,mrv,DFS+CBJ,785
+top95:47,top95,mrv,FAGS-style,640
+top95:47,top95,mrv,FAGS-style+CBJ,640
+top95:47,top95,mrv,BestFirst-mean,1095
+top95:47,top95,mrv,BestFirst-mean+CBJ,856
+top95:47,top95,static,Restarts,
+top95:47,top95,static,DFS,16302
+top95:47,top95,static,DFS+CBJ,9949
+top95:47,top95,static,FAGS-style,
+top95:47,top95,static,FAGS-style+CBJ,
+top95:47,top95,static,BestFirst-mean,1162
+top95:47,top95,static,BestFirst-mean+CBJ,770
+top95:48,top95,mrv,Restarts,
+top95:48,top95,mrv,DFS,6764
+top95:48,top95,mrv,DFS+CBJ,5403
+top95:48,top95,mrv,FAGS-style,7938
+top95:48,top95,mrv,FAGS-style+CBJ,7311
+top95:48,top95,mrv,BestFirst-mean,12794
+top95:48,top95,mrv,BestFirst-mean+CBJ,9219
+top95:48,top95,static,Restarts,
+top95:48,top95,static,DFS,
+top95:48,top95,static,DFS+CBJ,
+top95:48,top95,static,FAGS-style,
+top95:48,top95,static,FAGS-style+CBJ,13627
+top95:48,top95,static,BestFirst-mean,
+top95:48,top95,static,BestFirst-mean+CBJ,
+top95:49,top95,mrv,Restarts,
+top95:49,top95,mrv,DFS,
+top95:49,top95,mrv,DFS+CBJ,13993
+top95:49,top95,mrv,FAGS-style,5111
+top95:49,top95,mrv,FAGS-style+CBJ,4192
+top95:49,top95,mrv,BestFirst-mean,5498
+top95:49,top95,mrv,BestFirst-mean+CBJ,1227
+top95:49,top95,static,Restarts,
+top95:49,top95,static,DFS,
+top95:49,top95,static,DFS+CBJ,
+top95:49,top95,static,FAGS-style,
+top95:49,top95,static,FAGS-style+CBJ,
+top95:49,top95,static,BestFirst-mean,
+top95:49,top95,static,BestFirst-mean+CBJ,
+top95:50,top95,mrv,Restarts,106
+top95:50,top95,mrv,DFS,655
+top95:50,top95,mrv,DFS+CBJ,655
+top95:50,top95,mrv,FAGS-style,971
+top95:50,top95,mrv,FAGS-style+CBJ,971
+top95:50,top95,mrv,BestFirst-mean,832
+top95:50,top95,mrv,BestFirst-mean+CBJ,830
+top95:50,top95,static,Restarts,
+top95:50,top95,static,DFS,
+top95:50,top95,static,DFS+CBJ,
+top95:50,top95,static,FAGS-style,
+top95:50,top95,static,FAGS-style+CBJ,
+top95:50,top95,static,BestFirst-mean,
+top95:50,top95,static,BestFirst-mean+CBJ,
+top95:51,top95,mrv,Restarts,
+top95:51,top95,mrv,DFS,1242
+top95:51,top95,mrv,DFS+CBJ,1242
+top95:51,top95,mrv,FAGS-style,3160
+top95:51,top95,mrv,FAGS-style+CBJ,3055
+top95:51,top95,mrv,BestFirst-mean,1302
+top95:51,top95,mrv,BestFirst-mean+CBJ,1302
+top95:51,top95,static,Restarts,
+top95:51,top95,static,DFS,
+top95:51,top95,static,DFS+CBJ,
+top95:51,top95,static,FAGS-style,
+top95:51,top95,static,FAGS-style+CBJ,
+top95:51,top95,static,BestFirst-mean,
+top95:51,top95,static,BestFirst-mean+CBJ,
+top95:52,top95,mrv,Restarts,
+top95:52,top95,mrv,DFS,3898
+top95:52,top95,mrv,DFS+CBJ,3841
+top95:52,top95,mrv,FAGS-style,3506
+top95:52,top95,mrv,FAGS-style+CBJ,3494
+top95:52,top95,mrv,BestFirst-mean,3131
+top95:52,top95,mrv,BestFirst-mean+CBJ,3092
+top95:52,top95,static,Restarts,
+top95:52,top95,static,DFS,
+top95:52,top95,static,DFS+CBJ,
+top95:52,top95,static,FAGS-style,
+top95:52,top95,static,FAGS-style+CBJ,
+top95:52,top95,static,BestFirst-mean,
+top95:52,top95,static,BestFirst-mean+CBJ,
+top95:53,top95,mrv,Restarts,1515
+top95:53,top95,mrv,DFS,119
+top95:53,top95,mrv,DFS+CBJ,119
+top95:53,top95,mrv,FAGS-style,109
+top95:53,top95,mrv,FAGS-style+CBJ,109
+top95:53,top95,mrv,BestFirst-mean,223
+top95:53,top95,mrv,BestFirst-mean+CBJ,220
+top95:53,top95,static,Restarts,
+top95:53,top95,static,DFS,6649
+top95:53,top95,static,DFS+CBJ,3386
+top95:53,top95,static,FAGS-style,11099
+top95:53,top95,static,FAGS-style+CBJ,8530
+top95:53,top95,static,BestFirst-mean,4399
+top95:53,top95,static,BestFirst-mean+CBJ,3289
+top95:54,top95,mrv,Restarts,
+top95:54,top95,mrv,DFS,5499
+top95:54,top95,mrv,DFS+CBJ,4941
+top95:54,top95,mrv,FAGS-style,5706
+top95:54,top95,mrv,FAGS-style+CBJ,5585
+top95:54,top95,mrv,BestFirst-mean,5307
+top95:54,top95,mrv,BestFirst-mean+CBJ,4829
+top95:54,top95,static,Restarts,
+top95:54,top95,static,DFS,
+top95:54,top95,static,DFS+CBJ,
+top95:54,top95,static,FAGS-style,
+top95:54,top95,static,FAGS-style+CBJ,
+top95:54,top95,static,BestFirst-mean,
+top95:54,top95,static,BestFirst-mean+CBJ,
+top95:55,top95,mrv,Restarts,1147
+top95:55,top95,mrv,DFS,543
+top95:55,top95,mrv,DFS+CBJ,543
+top95:55,top95,mrv,FAGS-style,134
+top95:55,top95,mrv,FAGS-style+CBJ,131
+top95:55,top95,mrv,BestFirst-mean,231
+top95:55,top95,mrv,BestFirst-mean+CBJ,231
+top95:55,top95,static,Restarts,
+top95:55,top95,static,DFS,
+top95:55,top95,static,DFS+CBJ,13023
+top95:55,top95,static,FAGS-style,2441
+top95:55,top95,static,FAGS-style+CBJ,1894
+top95:55,top95,static,BestFirst-mean,10966
+top95:55,top95,static,BestFirst-mean+CBJ,6766
+top95:56,top95,mrv,Restarts,11436
+top95:56,top95,mrv,DFS,13663
+top95:56,top95,mrv,DFS+CBJ,13469
+top95:56,top95,mrv,FAGS-style,12484
+top95:56,top95,mrv,FAGS-style+CBJ,12255
+top95:56,top95,mrv,BestFirst-mean,14766
+top95:56,top95,mrv,BestFirst-mean+CBJ,14549
+top95:56,top95,static,Restarts,
+top95:56,top95,static,DFS,
+top95:56,top95,static,DFS+CBJ,
+top95:56,top95,static,FAGS-style,
+top95:56,top95,static,FAGS-style+CBJ,
+top95:56,top95,static,BestFirst-mean,
+top95:56,top95,static,BestFirst-mean+CBJ,
+top95:57,top95,mrv,Restarts,2369
+top95:57,top95,mrv,DFS,2021
+top95:57,top95,mrv,DFS+CBJ,1994
+top95:57,top95,mrv,FAGS-style,4653
+top95:57,top95,mrv,FAGS-style+CBJ,4620
+top95:57,top95,mrv,BestFirst-mean,2606
+top95:57,top95,mrv,BestFirst-mean+CBJ,2590
+top95:57,top95,static,Restarts,
+top95:57,top95,static,DFS,7760
+top95:57,top95,static,DFS+CBJ,5102
+top95:57,top95,static,FAGS-style,
+top95:57,top95,static,FAGS-style+CBJ,18637
+top95:57,top95,static,BestFirst-mean,8737
+top95:57,top95,static,BestFirst-mean+CBJ,6099
+top95:58,top95,mrv,Restarts,
+top95:58,top95,mrv,DFS,934
+top95:58,top95,mrv,DFS+CBJ,931
+top95:58,top95,mrv,FAGS-style,1926
+top95:58,top95,mrv,FAGS-style+CBJ,1875
+top95:58,top95,mrv,BestFirst-mean,806
+top95:58,top95,mrv,BestFirst-mean+CBJ,806
+top95:58,top95,static,Restarts,
+top95:58,top95,static,DFS,
+top95:58,top95,static,DFS+CBJ,
+top95:58,top95,static,FAGS-style,
+top95:58,top95,static,FAGS-style+CBJ,
+top95:58,top95,static,BestFirst-mean,
+top95:58,top95,static,BestFirst-mean+CBJ,
+top95:59,top95,mrv,Restarts,2738
+top95:59,top95,mrv,DFS,2363
+top95:59,top95,mrv,DFS+CBJ,2174
+top95:59,top95,mrv,FAGS-style,1677
+top95:59,top95,mrv,FAGS-style+CBJ,1653
+top95:59,top95,mrv,BestFirst-mean,1863
+top95:59,top95,mrv,BestFirst-mean+CBJ,1714
+top95:59,top95,static,Restarts,
+top95:59,top95,static,DFS,
+top95:59,top95,static,DFS+CBJ,19534
+top95:59,top95,static,FAGS-style,
+top95:59,top95,static,FAGS-style+CBJ,
+top95:59,top95,static,BestFirst-mean,
+top95:59,top95,static,BestFirst-mean+CBJ,
+top95:60,top95,mrv,Restarts,
+top95:60,top95,mrv,DFS,5953
+top95:60,top95,mrv,DFS+CBJ,5763
+top95:60,top95,mrv,FAGS-style,3291
+top95:60,top95,mrv,FAGS-style+CBJ,3291
+top95:60,top95,mrv,BestFirst-mean,6722
+top95:60,top95,mrv,BestFirst-mean+CBJ,6537
+top95:60,top95,static,Restarts,
+top95:60,top95,static,DFS,
+top95:60,top95,static,DFS+CBJ,
+top95:60,top95,static,FAGS-style,15804
+top95:60,top95,static,FAGS-style+CBJ,9846
+top95:60,top95,static,BestFirst-mean,
+top95:60,top95,static,BestFirst-mean+CBJ,17729
+top95:61,top95,mrv,Restarts,
+top95:61,top95,mrv,DFS,685
+top95:61,top95,mrv,DFS+CBJ,645
+top95:61,top95,mrv,FAGS-style,329
+top95:61,top95,mrv,FAGS-style+CBJ,329
+top95:61,top95,mrv,BestFirst-mean,685
+top95:61,top95,mrv,BestFirst-mean+CBJ,645
+top95:61,top95,static,Restarts,
+top95:61,top95,static,DFS,
+top95:61,top95,static,DFS+CBJ,
+top95:61,top95,static,FAGS-style,
+top95:61,top95,static,FAGS-style+CBJ,
+top95:61,top95,static,BestFirst-mean,
+top95:61,top95,static,BestFirst-mean+CBJ,
+top95:62,top95,mrv,Restarts,2077
+top95:62,top95,mrv,DFS,3682
+top95:62,top95,mrv,DFS+CBJ,3595
+top95:62,top95,mrv,FAGS-style,3721
+top95:62,top95,mrv,FAGS-style+CBJ,3713
+top95:62,top95,mrv,BestFirst-mean,3501
+top95:62,top95,mrv,BestFirst-mean+CBJ,3423
+top95:62,top95,static,Restarts,
+top95:62,top95,static,DFS,4317
+top95:62,top95,static,DFS+CBJ,2944
+top95:62,top95,static,FAGS-style,13350
+top95:62,top95,static,FAGS-style+CBJ,10577
+top95:62,top95,static,BestFirst-mean,4393
+top95:62,top95,static,BestFirst-mean+CBJ,3182
+top95:63,top95,mrv,Restarts,
+top95:63,top95,mrv,DFS,5308
+top95:63,top95,mrv,DFS+CBJ,4777
+top95:63,top95,mrv,FAGS-style,12401
+top95:63,top95,mrv,FAGS-style+CBJ,12172
+top95:63,top95,mrv,BestFirst-mean,5562
+top95:63,top95,mrv,BestFirst-mean+CBJ,5170
+top95:63,top95,static,Restarts,
+top95:63,top95,static,DFS,
+top95:63,top95,static,DFS+CBJ,
+top95:63,top95,static,FAGS-style,
+top95:63,top95,static,FAGS-style+CBJ,
+top95:63,top95,static,BestFirst-mean,
+top95:63,top95,static,BestFirst-mean+CBJ,
+top95:64,top95,mrv,Restarts,1248
+top95:64,top95,mrv,DFS,809
+top95:64,top95,mrv,DFS+CBJ,763
+top95:64,top95,mrv,FAGS-style,300
+top95:64,top95,mrv,FAGS-style+CBJ,291
+top95:64,top95,mrv,BestFirst-mean,93
+top95:64,top95,mrv,BestFirst-mean+CBJ,93
+top95:64,top95,static,Restarts,
+top95:64,top95,static,DFS,
+top95:64,top95,static,DFS+CBJ,
+top95:64,top95,static,FAGS-style,
+top95:64,top95,static,FAGS-style+CBJ,
+top95:64,top95,static,BestFirst-mean,4479
+top95:64,top95,static,BestFirst-mean+CBJ,2280
+top95:65,top95,mrv,Restarts,2279
+top95:65,top95,mrv,DFS,6233
+top95:65,top95,mrv,DFS+CBJ,4152
+top95:65,top95,mrv,FAGS-style,8128
+top95:65,top95,mrv,FAGS-style+CBJ,6959
+top95:65,top95,mrv,BestFirst-mean,3951
+top95:65,top95,mrv,BestFirst-mean+CBJ,3330
+top95:65,top95,static,Restarts,
+top95:65,top95,static,DFS,
+top95:65,top95,static,DFS+CBJ,
+top95:65,top95,static,FAGS-style,
+top95:65,top95,static,FAGS-style+CBJ,
+top95:65,top95,static,BestFirst-mean,
+top95:65,top95,static,BestFirst-mean+CBJ,
+top95:66,top95,mrv,Restarts,
+top95:66,top95,mrv,DFS,5211
+top95:66,top95,mrv,DFS+CBJ,3881
+top95:66,top95,mrv,FAGS-style,13726
+top95:66,top95,mrv,FAGS-style+CBJ,12371
+top95:66,top95,mrv,BestFirst-mean,9095
+top95:66,top95,mrv,BestFirst-mean+CBJ,5950
+top95:66,top95,static,Restarts,
+top95:66,top95,static,DFS,
+top95:66,top95,static,DFS+CBJ,
+top95:66,top95,static,FAGS-style,
+top95:66,top95,static,FAGS-style+CBJ,17949
+top95:66,top95,static,BestFirst-mean,
+top95:66,top95,static,BestFirst-mean+CBJ,
+top95:67,top95,mrv,Restarts,
+top95:67,top95,mrv,DFS,3984
+top95:67,top95,mrv,DFS+CBJ,3589
+top95:67,top95,mrv,FAGS-style,4583
+top95:67,top95,mrv,FAGS-style+CBJ,4181
+top95:67,top95,mrv,BestFirst-mean,3796
+top95:67,top95,mrv,BestFirst-mean+CBJ,3416
+top95:67,top95,static,Restarts,
+top95:67,top95,static,DFS,
+top95:67,top95,static,DFS+CBJ,6874
+top95:67,top95,static,FAGS-style,
+top95:67,top95,static,FAGS-style+CBJ,
+top95:67,top95,static,BestFirst-mean,
+top95:67,top95,static,BestFirst-mean+CBJ,
+top95:68,top95,mrv,Restarts,8164
+top95:68,top95,mrv,DFS,643
+top95:68,top95,mrv,DFS+CBJ,641
+top95:68,top95,mrv,FAGS-style,3478
+top95:68,top95,mrv,FAGS-style+CBJ,3380
+top95:68,top95,mrv,BestFirst-mean,1145
+top95:68,top95,mrv,BestFirst-mean+CBJ,1139
+top95:68,top95,static,Restarts,
+top95:68,top95,static,DFS,19782
+top95:68,top95,static,DFS+CBJ,11980
+top95:68,top95,static,FAGS-style,
+top95:68,top95,static,FAGS-style+CBJ,
+top95:68,top95,static,BestFirst-mean,19254
+top95:68,top95,static,BestFirst-mean+CBJ,12370
+top95:69,top95,mrv,Restarts,
+top95:69,top95,mrv,DFS,3873
+top95:69,top95,mrv,DFS+CBJ,3707
+top95:69,top95,mrv,FAGS-style,6641
+top95:69,top95,mrv,FAGS-style+CBJ,6543
+top95:69,top95,mrv,BestFirst-mean,7285
+top95:69,top95,mrv,BestFirst-mean+CBJ,6948
+top95:69,top95,static,Restarts,
+top95:69,top95,static,DFS,
+top95:69,top95,static,DFS+CBJ,
+top95:69,top95,static,FAGS-style,
+top95:69,top95,static,FAGS-style+CBJ,
+top95:69,top95,static,BestFirst-mean,
+top95:69,top95,static,BestFirst-mean+CBJ,
+top95:70,top95,mrv,Restarts,
+top95:70,top95,mrv,DFS,
+top95:70,top95,mrv,DFS+CBJ,
+top95:70,top95,mrv,FAGS-style,
+top95:70,top95,mrv,FAGS-style+CBJ,
+top95:70,top95,mrv,BestFirst-mean,
+top95:70,top95,mrv,BestFirst-mean+CBJ,
+top95:70,top95,static,Restarts,
+top95:70,top95,static,DFS,
+top95:70,top95,static,DFS+CBJ,
+top95:70,top95,static,FAGS-style,
+top95:70,top95,static,FAGS-style+CBJ,
+top95:70,top95,static,BestFirst-mean,
+top95:70,top95,static,BestFirst-mean+CBJ,
+top95:71,top95,mrv,Restarts,
+top95:71,top95,mrv,DFS,677
+top95:71,top95,mrv,DFS+CBJ,674
+top95:71,top95,mrv,FAGS-style,2542
+top95:71,top95,mrv,FAGS-style+CBJ,2529
+top95:71,top95,mrv,BestFirst-mean,643
+top95:71,top95,mrv,BestFirst-mean+CBJ,640
+top95:71,top95,static,Restarts,
+top95:71,top95,static,DFS,
+top95:71,top95,static,DFS+CBJ,
+top95:71,top95,static,FAGS-style,
+top95:71,top95,static,FAGS-style+CBJ,
+top95:71,top95,static,BestFirst-mean,
+top95:71,top95,static,BestFirst-mean+CBJ,
+top95:72,top95,mrv,Restarts,657
+top95:72,top95,mrv,DFS,1222
+top95:72,top95,mrv,DFS+CBJ,1183
+top95:72,top95,mrv,FAGS-style,11061
+top95:72,top95,mrv,FAGS-style+CBJ,9884
+top95:72,top95,mrv,BestFirst-mean,4006
+top95:72,top95,mrv,BestFirst-mean+CBJ,2707
+top95:72,top95,static,Restarts,
+top95:72,top95,static,DFS,
+top95:72,top95,static,DFS+CBJ,
+top95:72,top95,static,FAGS-style,
+top95:72,top95,static,FAGS-style+CBJ,17865
+top95:72,top95,static,BestFirst-mean,
+top95:72,top95,static,BestFirst-mean+CBJ,
+top95:73,top95,mrv,Restarts,
+top95:73,top95,mrv,DFS,3846
+top95:73,top95,mrv,DFS+CBJ,3726
+top95:73,top95,mrv,FAGS-style,2670
+top95:73,top95,mrv,FAGS-style+CBJ,2625
+top95:73,top95,mrv,BestFirst-mean,3627
+top95:73,top95,mrv,BestFirst-mean+CBJ,3506
+top95:73,top95,static,Restarts,
+top95:73,top95,static,DFS,
+top95:73,top95,static,DFS+CBJ,
+top95:73,top95,static,FAGS-style,
+top95:73,top95,static,FAGS-style+CBJ,
+top95:73,top95,static,BestFirst-mean,
+top95:73,top95,static,BestFirst-mean+CBJ,
+top95:74,top95,mrv,Restarts,
+top95:74,top95,mrv,DFS,426
+top95:74,top95,mrv,DFS+CBJ,318
+top95:74,top95,mrv,FAGS-style,2769
+top95:74,top95,mrv,FAGS-style+CBJ,2755
+top95:74,top95,mrv,BestFirst-mean,1341
+top95:74,top95,mrv,BestFirst-mean+CBJ,1326
+top95:74,top95,static,Restarts,
+top95:74,top95,static,DFS,4075
+top95:74,top95,static,DFS+CBJ,3092
+top95:74,top95,static,FAGS-style,7810
+top95:74,top95,static,FAGS-style+CBJ,6125
+top95:74,top95,static,BestFirst-mean,5947
+top95:74,top95,static,BestFirst-mean+CBJ,4657
+top95:75,top95,mrv,Restarts,
+top95:75,top95,mrv,DFS,5487
+top95:75,top95,mrv,DFS+CBJ,4913
+top95:75,top95,mrv,FAGS-style,4831
+top95:75,top95,mrv,FAGS-style+CBJ,4647
+top95:75,top95,mrv,BestFirst-mean,5561
+top95:75,top95,mrv,BestFirst-mean+CBJ,5013
+top95:75,top95,static,Restarts,
+top95:75,top95,static,DFS,
+top95:75,top95,static,DFS+CBJ,
+top95:75,top95,static,FAGS-style,
+top95:75,top95,static,FAGS-style+CBJ,
+top95:75,top95,static,BestFirst-mean,
+top95:75,top95,static,BestFirst-mean+CBJ,
+top95:76,top95,mrv,Restarts,
+top95:76,top95,mrv,DFS,3442
+top95:76,top95,mrv,DFS+CBJ,3440
+top95:76,top95,mrv,FAGS-style,2619
+top95:76,top95,mrv,FAGS-style+CBJ,2619
+top95:76,top95,mrv,BestFirst-mean,3379
+top95:76,top95,mrv,BestFirst-mean+CBJ,3377
+top95:76,top95,static,Restarts,
+top95:76,top95,static,DFS,
+top95:76,top95,static,DFS+CBJ,16932
+top95:76,top95,static,FAGS-style,
+top95:76,top95,static,FAGS-style+CBJ,18111
+top95:76,top95,static,BestFirst-mean,
+top95:76,top95,static,BestFirst-mean+CBJ,17888
+top95:77,top95,mrv,Restarts,
+top95:77,top95,mrv,DFS,6849
+top95:77,top95,mrv,DFS+CBJ,6190
+top95:77,top95,mrv,FAGS-style,860
+top95:77,top95,mrv,FAGS-style+CBJ,852
+top95:77,top95,mrv,BestFirst-mean,6855
+top95:77,top95,mrv,BestFirst-mean+CBJ,6071
+top95:77,top95,static,Restarts,
+top95:77,top95,static,DFS,
+top95:77,top95,static,DFS+CBJ,
+top95:77,top95,static,FAGS-style,
+top95:77,top95,static,FAGS-style+CBJ,
+top95:77,top95,static,BestFirst-mean,
+top95:77,top95,static,BestFirst-mean+CBJ,
+top95:78,top95,mrv,Restarts,
+top95:78,top95,mrv,DFS,9418
+top95:78,top95,mrv,DFS+CBJ,6021
+top95:78,top95,mrv,FAGS-style,12221
+top95:78,top95,mrv,FAGS-style+CBJ,10783
+top95:78,top95,mrv,BestFirst-mean,9416
+top95:78,top95,mrv,BestFirst-mean+CBJ,6687
+top95:78,top95,static,Restarts,
+top95:78,top95,static,DFS,
+top95:78,top95,static,DFS+CBJ,
+top95:78,top95,static,FAGS-style,4454
+top95:78,top95,static,FAGS-style+CBJ,3286
+top95:78,top95,static,BestFirst-mean,
+top95:78,top95,static,BestFirst-mean+CBJ,
+top95:79,top95,mrv,Restarts,
+top95:79,top95,mrv,DFS,611
+top95:79,top95,mrv,DFS+CBJ,476
+top95:79,top95,mrv,FAGS-style,490
+top95:79,top95,mrv,FAGS-style+CBJ,441
+top95:79,top95,mrv,BestFirst-mean,577
+top95:79,top95,mrv,BestFirst-mean+CBJ,468
+top95:79,top95,static,Restarts,
+top95:79,top95,static,DFS,10318
+top95:79,top95,static,DFS+CBJ,6382
+top95:79,top95,static,FAGS-style,6534
+top95:79,top95,static,FAGS-style+CBJ,4690
+top95:79,top95,static,BestFirst-mean,8324
+top95:79,top95,static,BestFirst-mean+CBJ,5263
+top95:80,top95,mrv,Restarts,
+top95:80,top95,mrv,DFS,2451
+top95:80,top95,mrv,DFS+CBJ,2174
+top95:80,top95,mrv,FAGS-style,1921
+top95:80,top95,mrv,FAGS-style+CBJ,1849
+top95:80,top95,mrv,BestFirst-mean,1442
+top95:80,top95,mrv,BestFirst-mean+CBJ,1434
+top95:80,top95,static,Restarts,
+top95:80,top95,static,DFS,
+top95:80,top95,static,DFS+CBJ,
+top95:80,top95,static,FAGS-style,
+top95:80,top95,static,FAGS-style+CBJ,
+top95:80,top95,static,BestFirst-mean,13230
+top95:80,top95,static,BestFirst-mean+CBJ,6910
+top95:81,top95,mrv,Restarts,16534
+top95:81,top95,mrv,DFS,692
+top95:81,top95,mrv,DFS+CBJ,628
+top95:81,top95,mrv,FAGS-style,292
+top95:81,top95,mrv,FAGS-style+CBJ,292
+top95:81,top95,mrv,BestFirst-mean,907
+top95:81,top95,mrv,BestFirst-mean+CBJ,817
+top95:81,top95,static,Restarts,
+top95:81,top95,static,DFS,7427
+top95:81,top95,static,DFS+CBJ,3180
+top95:81,top95,static,FAGS-style,3656
+top95:81,top95,static,FAGS-style+CBJ,2885
+top95:81,top95,static,BestFirst-mean,8743
+top95:81,top95,static,BestFirst-mean+CBJ,3951
+top95:82,top95,mrv,Restarts,
+top95:82,top95,mrv,DFS,3164
+top95:82,top95,mrv,DFS+CBJ,2711
+top95:82,top95,mrv,FAGS-style,4190
+top95:82,top95,mrv,FAGS-style+CBJ,4180
+top95:82,top95,mrv,BestFirst-mean,3109
+top95:82,top95,mrv,BestFirst-mean+CBJ,2656
+top95:82,top95,static,Restarts,
+top95:82,top95,static,DFS,
+top95:82,top95,static,DFS+CBJ,
+top95:82,top95,static,FAGS-style,
+top95:82,top95,static,FAGS-style+CBJ,
+top95:82,top95,static,BestFirst-mean,
+top95:82,top95,static,BestFirst-mean+CBJ,
+top95:83,top95,mrv,Restarts,6786
+top95:83,top95,mrv,DFS,279
+top95:83,top95,mrv,DFS+CBJ,277
+top95:83,top95,mrv,FAGS-style,2463
+top95:83,top95,mrv,FAGS-style+CBJ,2282
+top95:83,top95,mrv,BestFirst-mean,519
+top95:83,top95,mrv,BestFirst-mean+CBJ,510
+top95:83,top95,static,Restarts,
+top95:83,top95,static,DFS,
+top95:83,top95,static,DFS+CBJ,14115
+top95:83,top95,static,FAGS-style,
+top95:83,top95,static,FAGS-style+CBJ,18662
+top95:83,top95,static,BestFirst-mean,
+top95:83,top95,static,BestFirst-mean+CBJ,5686
+top95:84,top95,mrv,Restarts,
+top95:84,top95,mrv,DFS,414
+top95:84,top95,mrv,DFS+CBJ,414
+top95:84,top95,mrv,FAGS-style,477
+top95:84,top95,mrv,FAGS-style+CBJ,477
+top95:84,top95,mrv,BestFirst-mean,337
+top95:84,top95,mrv,BestFirst-mean+CBJ,337
+top95:84,top95,static,Restarts,
+top95:84,top95,static,DFS,5351
+top95:84,top95,static,DFS+CBJ,2735
+top95:84,top95,static,FAGS-style,
+top95:84,top95,static,FAGS-style+CBJ,8237
+top95:84,top95,static,BestFirst-mean,
+top95:84,top95,static,BestFirst-mean+CBJ,6955
+top95:85,top95,mrv,Restarts,14573
+top95:85,top95,mrv,DFS,763
+top95:85,top95,mrv,DFS+CBJ,750
+top95:85,top95,mrv,FAGS-style,235
+top95:85,top95,mrv,FAGS-style+CBJ,235
+top95:85,top95,mrv,BestFirst-mean,735
+top95:85,top95,mrv,BestFirst-mean+CBJ,722
+top95:85,top95,static,Restarts,
+top95:85,top95,static,DFS,17601
+top95:85,top95,static,DFS+CBJ,11972
+top95:85,top95,static,FAGS-style,7007
+top95:85,top95,static,FAGS-style+CBJ,5051
+top95:85,top95,static,BestFirst-mean,7524
+top95:85,top95,static,BestFirst-mean+CBJ,5093
+top95:86,top95,mrv,Restarts,
+top95:86,top95,mrv,DFS,3393
+top95:86,top95,mrv,DFS+CBJ,3343
+top95:86,top95,mrv,FAGS-style,6398
+top95:86,top95,mrv,FAGS-style+CBJ,6340
+top95:86,top95,mrv,BestFirst-mean,2882
+top95:86,top95,mrv,BestFirst-mean+CBJ,2828
+top95:86,top95,static,Restarts,
+top95:86,top95,static,DFS,7337
+top95:86,top95,static,DFS+CBJ,5326
+top95:86,top95,static,FAGS-style,
+top95:86,top95,static,FAGS-style+CBJ,
+top95:86,top95,static,BestFirst-mean,7863
+top95:86,top95,static,BestFirst-mean+CBJ,5506
+top95:87,top95,mrv,Restarts,3124
+top95:87,top95,mrv,DFS,299
+top95:87,top95,mrv,DFS+CBJ,299
+top95:87,top95,mrv,FAGS-style,536
+top95:87,top95,mrv,FAGS-style+CBJ,534
+top95:87,top95,mrv,BestFirst-mean,1023
+top95:87,top95,mrv,BestFirst-mean+CBJ,1009
+top95:87,top95,static,Restarts,
+top95:87,top95,static,DFS,5377
+top95:87,top95,static,DFS+CBJ,2247
+top95:87,top95,static,FAGS-style,7518
+top95:87,top95,static,FAGS-style+CBJ,4750
+top95:87,top95,static,BestFirst-mean,6824
+top95:87,top95,static,BestFirst-mean+CBJ,4058
+top95:88,top95,mrv,Restarts,17237
+top95:88,top95,mrv,DFS,1188
+top95:88,top95,mrv,DFS+CBJ,1132
+top95:88,top95,mrv,FAGS-style,4448
+top95:88,top95,mrv,FAGS-style+CBJ,4169
+top95:88,top95,mrv,BestFirst-mean,3577
+top95:88,top95,mrv,BestFirst-mean+CBJ,3319
+top95:88,top95,static,Restarts,
+top95:88,top95,static,DFS,
+top95:88,top95,static,DFS+CBJ,
+top95:88,top95,static,FAGS-style,
+top95:88,top95,static,FAGS-style+CBJ,
+top95:88,top95,static,BestFirst-mean,
+top95:88,top95,static,BestFirst-mean+CBJ,
+top95:89,top95,mrv,Restarts,
+top95:89,top95,mrv,DFS,2370
+top95:89,top95,mrv,DFS+CBJ,2222
+top95:89,top95,mrv,FAGS-style,2681
+top95:89,top95,mrv,FAGS-style+CBJ,2677
+top95:89,top95,mrv,BestFirst-mean,1635
+top95:89,top95,mrv,BestFirst-mean+CBJ,1569
+top95:89,top95,static,Restarts,
+top95:89,top95,static,DFS,13216
+top95:89,top95,static,DFS+CBJ,8186
+top95:89,top95,static,FAGS-style,
+top95:89,top95,static,FAGS-style+CBJ,9493
+top95:89,top95,static,BestFirst-mean,13050
+top95:89,top95,static,BestFirst-mean+CBJ,8342
+top95:90,top95,mrv,Restarts,2791
+top95:90,top95,mrv,DFS,605
+top95:90,top95,mrv,DFS+CBJ,577
+top95:90,top95,mrv,FAGS-style,408
+top95:90,top95,mrv,FAGS-style+CBJ,408
+top95:90,top95,mrv,BestFirst-mean,534
+top95:90,top95,mrv,BestFirst-mean+CBJ,513
+top95:90,top95,static,Restarts,
+top95:90,top95,static,DFS,
+top95:90,top95,static,DFS+CBJ,
+top95:90,top95,static,FAGS-style,
+top95:90,top95,static,FAGS-style+CBJ,
+top95:90,top95,static,BestFirst-mean,
+top95:90,top95,static,BestFirst-mean+CBJ,
+top95:91,top95,mrv,Restarts,
+top95:91,top95,mrv,DFS,524
+top95:91,top95,mrv,DFS+CBJ,524
+top95:91,top95,mrv,FAGS-style,2000
+top95:91,top95,mrv,FAGS-style+CBJ,2000
+top95:91,top95,mrv,BestFirst-mean,524
+top95:91,top95,mrv,BestFirst-mean+CBJ,524
+top95:91,top95,static,Restarts,
+top95:91,top95,static,DFS,19437
+top95:91,top95,static,DFS+CBJ,13711
+top95:91,top95,static,FAGS-style,
+top95:91,top95,static,FAGS-style+CBJ,16411
+top95:91,top95,static,BestFirst-mean,19488
+top95:91,top95,static,BestFirst-mean+CBJ,14467
+top95:92,top95,mrv,Restarts,2064
+top95:92,top95,mrv,DFS,611
+top95:92,top95,mrv,DFS+CBJ,567
+top95:92,top95,mrv,FAGS-style,82
+top95:92,top95,mrv,FAGS-style+CBJ,82
+top95:92,top95,mrv,BestFirst-mean,253
+top95:92,top95,mrv,BestFirst-mean+CBJ,231
+top95:92,top95,static,Restarts,
+top95:92,top95,static,DFS,10178
+top95:92,top95,static,DFS+CBJ,7692
+top95:92,top95,static,FAGS-style,
+top95:92,top95,static,FAGS-style+CBJ,
+top95:92,top95,static,BestFirst-mean,
+top95:92,top95,static,BestFirst-mean+CBJ,
+top95:93,top95,mrv,Restarts,
+top95:93,top95,mrv,DFS,211
+top95:93,top95,mrv,DFS+CBJ,204
+top95:93,top95,mrv,FAGS-style,889
+top95:93,top95,mrv,FAGS-style+CBJ,873
+top95:93,top95,mrv,BestFirst-mean,362
+top95:93,top95,mrv,BestFirst-mean+CBJ,349
+top95:93,top95,static,Restarts,
+top95:93,top95,static,DFS,
+top95:93,top95,static,DFS+CBJ,
+top95:93,top95,static,FAGS-style,
+top95:93,top95,static,FAGS-style+CBJ,
+top95:93,top95,static,BestFirst-mean,
+top95:93,top95,static,BestFirst-mean+CBJ,
+top95:94,top95,mrv,Restarts,
+top95:94,top95,mrv,DFS,6227
+top95:94,top95,mrv,DFS+CBJ,5827
+top95:94,top95,mrv,FAGS-style,4718
+top95:94,top95,mrv,FAGS-style+CBJ,4456
+top95:94,top95,mrv,BestFirst-mean,6735
+top95:94,top95,mrv,BestFirst-mean+CBJ,6246
+top95:94,top95,static,Restarts,
+top95:94,top95,static,DFS,
+top95:94,top95,static,DFS+CBJ,
+top95:94,top95,static,FAGS-style,
+top95:94,top95,static,FAGS-style+CBJ,
+top95:94,top95,static,BestFirst-mean,
+top95:94,top95,static,BestFirst-mean+CBJ,

@@ -1,0 +1,54 @@
+SUDOKU (real task): FC search, LCV verifier, conflict-set diagnosis
+
+-- ordering = mrv (295 puzzles, budget 20000) --
+  Restarts            @500= 11.5% @2000= 17.6% @5000= 27.8% @20000= 45.1%   median cost=>20000
+  DFS                 @500= 19.0% @2000= 37.6% @5000= 61.4% @20000= 88.8%   median cost=3393
+  DFS+CBJ             @500= 20.0% @2000= 39.7% @5000= 63.7% @20000= 89.8%   median cost=3202
+  FAGS-style          @500= 21.0% @2000= 41.4% @5000= 62.7% @20000= 91.5%   median cost=3059
+  FAGS-style+CBJ      @500= 21.0% @2000= 41.4% @5000= 64.7% @20000= 91.9%   median cost=2990
+  BestFirst-mean      @500= 21.0% @2000= 38.6% @5000= 60.0% @20000= 88.1%   median cost=3414
+  BestFirst-mean+CBJ  @500= 21.7% @2000= 40.0% @5000= 62.0% @20000= 90.5%   median cost=3242
+  mean CBJ jump distance (assignments skipped per backjump): 2.03
+-- ordering = static (295 puzzles, budget 20000) --
+  Restarts            @500=  0.7% @2000=  1.7% @5000=  2.4% @20000=  2.7%   median cost=>20000
+  DFS                 @500=  4.7% @2000=  8.5% @5000= 19.0% @20000= 37.3%   median cost=>20000
+  DFS+CBJ             @500=  5.4% @2000= 13.2% @5000= 26.8% @20000= 47.1%   median cost=>20000
+  FAGS-style          @500=  5.4% @2000= 11.2% @5000= 19.7% @20000= 36.6%   median cost=>20000
+  FAGS-style+CBJ      @500=  6.4% @2000= 14.6% @5000= 21.7% @20000= 44.1%   median cost=>20000
+  BestFirst-mean      @500=  5.1% @2000= 11.5% @5000= 19.0% @20000= 37.6%   median cost=>20000
+  BestFirst-mean+CBJ  @500=  8.1% @2000= 13.9% @5000= 24.4% @20000= 46.1%   median cost=>20000
+  mean CBJ jump distance (assignments skipped per backjump): 2.55
+  R3 DFS+CBJ: mean log-cost reduction mrv=0.058 (x1.06), static=0.198 (x1.22)
+  R3 FAGS-style+CBJ: mean log-cost reduction mrv=0.023 (x1.02), static=0.123 (x1.13)
+  R3 BestFirst-mean+CBJ: mean log-cost reduction mrv=0.055 (x1.06), static=0.185 (x1.20)
+
+TESTS (per-puzzle paired sign-flip, Holm)
+  mrv            DFS+CBJ - DFS                          success@20000        diff=+0.010 [+0.000,+0.024] p_holm=1
+  mrv            DFS+CBJ - DFS                          log_cost (censored)  diff=-0.058 [-0.069,-0.049] p_holm=7.75e-21
+  mrv            FAGS-style+CBJ - FAGS-style            success@20000        diff=+0.003 [+0.000,+0.010] p_holm=1
+  mrv            FAGS-style+CBJ - FAGS-style            log_cost (censored)  diff=-0.023 [-0.029,-0.018] p_holm=2.26e-12
+  mrv            BestFirst-mean+CBJ - BestFirst-mean    success@20000        diff=+0.024 [+0.007,+0.041] p_holm=0.157
+  mrv            BestFirst-mean+CBJ - BestFirst-mean    log_cost (censored)  diff=-0.055 [-0.069,-0.043] p_holm=3.09e-12
+  mrv            FAGS-style - DFS                       success@20000        diff=+0.027 [+0.000,+0.054] p_holm=0.752
+  mrv            FAGS-style - DFS                       log_cost (censored)  diff=-0.082 [-0.196,+0.027] p_holm=0.986
+  mrv            FAGS-style - BestFirst-mean            success@20000        diff=+0.034 [+0.010,+0.058] p_holm=0.0638
+  mrv            FAGS-style - BestFirst-mean            log_cost (censored)  diff=-0.112 [-0.209,-0.017] p_holm=0.219
+  mrv            DFS - Restarts                         success@20000        diff=+0.437 [+0.373,+0.502] p_holm=4.63e-26
+  mrv            DFS - Restarts                         log_cost (censored)  diff=-1.105 [-1.263,-0.947] p_holm=1.56e-24
+  static         DFS+CBJ - DFS                          success@20000        diff=+0.098 [+0.064,+0.132] p_holm=1.01e-06
+  static         DFS+CBJ - DFS                          log_cost (censored)  diff=-0.198 [-0.233,-0.169] p_holm=1.21e-21
+  static         FAGS-style+CBJ - FAGS-style            success@20000        diff=+0.075 [+0.047,+0.105] p_holm=3.27e-05
+  static         FAGS-style+CBJ - FAGS-style            log_cost (censored)  diff=-0.123 [-0.144,-0.104] p_holm=1.69e-20
+  static         BestFirst-mean+CBJ - BestFirst-mean    success@20000        diff=+0.085 [+0.054,+0.115] p_holm=7.45e-06
+  static         BestFirst-mean+CBJ - BestFirst-mean    log_cost (censored)  diff=-0.185 [-0.218,-0.155] p_holm=2.21e-20
+  static         FAGS-style - DFS                       success@20000        diff=-0.007 [-0.054,+0.041] p_holm=1
+  static         FAGS-style - DFS                       log_cost (censored)  diff=-0.035 [-0.107,+0.043] p_holm=1
+  static         FAGS-style - BestFirst-mean            success@20000        diff=-0.010 [-0.047,+0.031] p_holm=1
+  static         FAGS-style - BestFirst-mean            log_cost (censored)  diff=-0.002 [-0.064,+0.057] p_holm=1
+  static         DFS - Restarts                         success@20000        diff=+0.346 [+0.292,+0.400] p_holm=1.39e-22
+  static         DFS - Restarts                         log_cost (censored)  diff=-0.603 [-0.727,-0.484] p_holm=6.65e-16
+  static vs mrv  gain of DFS+CBJ over DFS               log_cost reduction   diff=+0.140 [+0.108,+0.174] p_holm=1e-12
+  static vs mrv  gain of FAGS-style+CBJ over FAGS-style log_cost reduction   diff=+0.100 [+0.080,+0.122] p_holm=2.67e-14
+  static vs mrv  gain of BestFirst-mean+CBJ over BestFirst-mean log_cost reduction   diff=+0.131 [+0.097,+0.166] p_holm=1.5e-10
+
+runtime 1976s
