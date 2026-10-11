@@ -55,9 +55,17 @@ def best_first_search(
     verifier: Verifier,
     node_budget: int = 20,
     max_depth: int = 6,
+    score_budget: int | None = None,
 ) -> SearchResult:
     """Expand the single best-scoring frontier hypothesis at a time, globally
-    across all depths, until node_budget distinct nodes have been visited."""
+    across all depths, until node_budget distinct nodes have been visited.
+
+    score_budget, if set, additionally stops the search once that many
+    verifier calls (edges scored) have been made. node_budget counts every
+    scored child as visited, while beam_search only counts the children it
+    keeps, so matching the two on nodes_visited gives best-first far fewer
+    verifier calls; matching on score_budget is the like-for-like comparison.
+    """
     t0 = time.perf_counter()
     start = query.start_node
 
@@ -83,7 +91,10 @@ def best_first_search(
     frontier: list[tuple[float, int, _Node]] = [(0.0, counter, root)]
     best_seen = root
 
-    while frontier and len(all_visited_nodes) < node_budget:
+    def _out_of_budget() -> bool:
+        return len(all_visited_nodes) >= node_budget or (score_budget is not None and edges_explored >= score_budget)
+
+    while frontier and not _out_of_budget():
         neg_score, _, node = heapq.heappop(frontier)
         if node.n_hops >= max_depth:
             continue
@@ -132,7 +143,7 @@ def best_first_search(
             if new_cumulative > best_seen.cumulative_score:
                 best_seen = child
 
-            if len(all_visited_nodes) >= node_budget:
+            if _out_of_budget():
                 break
 
     elapsed = time.perf_counter() - t0

@@ -141,7 +141,10 @@ def mcts_search(
     node_budget: int = 20,
     max_depth: int = 6,
     exploration_constant: float = 1.0,
+    score_budget: int | None = None,
 ) -> SearchResult:
+    """score_budget, if set, also stops once that many verifier calls have
+    been made (see best_first_search for why this is the fairer budget)."""
     t0 = time.perf_counter()
     start = query.start_node
 
@@ -186,7 +189,8 @@ def mcts_search(
     stale_count = 0
     simulations = 0
 
-    while len(all_visited_nodes) < node_budget and simulations < max_simulations and stale_count < stale_limit:
+    while (len(all_visited_nodes) < node_budget and simulations < max_simulations and stale_count < stale_limit
+           and (score_budget is None or edges_explored_ref[0] < score_budget)):
         simulations += 1
         _prev_visited_count = len(all_visited_nodes)
 
