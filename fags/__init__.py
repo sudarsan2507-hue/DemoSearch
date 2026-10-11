@@ -93,6 +93,10 @@ class Query:
     keywords: list[str]           # keywords the verifier matches against
     difficulty: str = "medium"    # "easy" | "medium" | "hard"
     hop_count: int = 0
+    # Index of the gold path this query was generated from. Queries cycle
+    # over gold paths, so several queries can share one; statistics must
+    # cluster on this id rather than treat such queries as independent.
+    gold_path_id: int = -1
 
 
 # ──────────────────────────────────────────────

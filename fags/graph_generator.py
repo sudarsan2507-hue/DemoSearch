@@ -81,9 +81,10 @@ for _a, _b in sorted(CONFUSABLE_PAIRS):
 class GraphGenerator:
     """Generates a synthetic knowledge graph and associated queries."""
 
-    def __init__(self, num_nodes: int, seed: int = 42) -> None:
+    def __init__(self, num_nodes: int, seed: int = 42, legacy_evidence_bug: bool = False) -> None:
         self.num_nodes = num_nodes
         self.rng = random.Random(seed)
+        self.legacy_evidence_bug = legacy_evidence_bug
         self.graph = KnowledgeGraph()
         self._gold_paths: list[dict] = []   # internal gold-path records
         self._domains = list(DOMAIN_RELATIONS.keys())
@@ -108,6 +109,7 @@ class GraphGenerator:
         for i in range(num_queries):
             gp = self._gold_paths[i % len(self._gold_paths)]
             q = self._query_from_gold_path(gp, query_index=i)
+            q.gold_path_id = i % len(self._gold_paths)
             queries.append(q)
         return queries
 
@@ -166,11 +168,20 @@ class GraphGenerator:
                 evidence_key = f"answer_for_{path_nodes[0]}"
                 ans_node.evidence[evidence_key] = "correct"
 
-            # Add evidence along intermediate nodes
+            # Add evidence along intermediate nodes. Each node gets its own
+            # key (path id + step), so a gold path never contradicts itself.
+            # The legacy scheme reused one key per start node with a
+            # different value at every step, so every 3+ hop gold path
+            # tripped the contradiction check - kept behind a flag only to
+            # reproduce pre-2026-10 results.
+            path_id = len(self._gold_paths)
             for j, nid in enumerate(path_nodes[1:-1], start=1):
                 n = self.graph.get_node(nid)
                 if n:
-                    n.evidence[f"path_{path_nodes[0]}"] = f"step_{j}"
+                    if self.legacy_evidence_bug:
+                        n.evidence[f"path_{path_nodes[0]}"] = f"step_{j}"
+                    else:
+                        n.evidence[f"gold_{path_id}_step_{j}"] = "on_path"
 
             self._gold_paths.append({
                 "nodes": path_nodes,
@@ -356,9 +367,14 @@ def generate_dataset(
     num_nodes: int,
     num_queries: int = 1000,
     seed: int = 42,
+    legacy_evidence_bug: bool = False,
 ) -> tuple[KnowledgeGraph, list[Query]]:
-    """One-call graph + query generation."""
-    gen = GraphGenerator(num_nodes=num_nodes, seed=seed)
+    """One-call graph + query generation.
+
+    legacy_evidence_bug=True reproduces the pre-2026-10 generator, under
+    which every 3+ hop gold path contradicts itself (see PROJECT_STATUS.md).
+    """
+    gen = GraphGenerator(num_nodes=num_nodes, seed=seed, legacy_evidence_bug=legacy_evidence_bug)
     graph = gen.generate()
     queries = gen.generate_queries(num_queries)
     return graph, queries
