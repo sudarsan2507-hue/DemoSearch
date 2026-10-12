@@ -59,7 +59,7 @@ class GroqLLM:
             self.cache_hits += 1
             return self._cache[key]
         from groq import RateLimitError, APIStatusError, APIConnectionError
-        for attempt in range(8):
+        for attempt in range(30):
             try:
                 resp = self.client.chat.completions.create(
                     model=self.model, messages=messages, temperature=temp,
@@ -73,11 +73,12 @@ class GroqLLM:
                 retry = e.response.headers.get("retry-after") if getattr(e, "response", None) is not None else None
                 time.sleep(float(retry) + 1 if retry else min(60, 5 * (attempt + 1)))
             except (APIConnectionError, APIStatusError) as e:  # transient server/network errors
-                if attempt == 7 or (isinstance(e, APIStatusError) and e.status_code < 500):
+                if isinstance(e, APIStatusError) and e.status_code < 500:
                     raise
-                time.sleep(min(60, 2 ** attempt * 3))
+                time.sleep(min(60, 2 ** min(attempt, 5) * 3))
         else:
-            raise RuntimeError("Groq call failed after retries")
+            # Persistent rate limiting: stop gracefully so the run can resume later.
+            raise QuotaExhausted("still rate-limited after 30 retries")
         text = resp.choices[0].message.content or ""
         self.calls += 1
         self._cache[key] = text

@@ -70,6 +70,8 @@ def analyse(tag: str) -> list[str]:
     out.append(f"  mean corrupted test reports per noisy_hard run: {nb:.2f}")
     tests = []
     for a, b, h in PAIRS:
+        if a not in CONDITIONS or b not in CONDITIONS:
+            continue  # e.g. self_diag, dropped from the run to fit the token quota
         r = cluster_paired_test(succ[b][MAX_ATTEMPTS], succ[a][MAX_ATTEMPTS], clusters)
         tests.append((h, a, b, r))
     adj = holm([r["p"] for *_, r in tests])
