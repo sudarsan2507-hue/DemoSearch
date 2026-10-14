@@ -122,12 +122,19 @@ def _under(path: tuple, pruned: set) -> bool:
     return any(path[:i] in pruned for i in range(1, len(path) + 1))
 
 
-def _act_on_diagnosis(culprit: tuple, counts: dict, pruned: set, mode: str) -> None:
+def _act_on_diagnosis(culprit: tuple, counts: dict, pruned: set, mode: str, deferred: set | None = None) -> None:
     """mode 'hard': prune the named subtree on the first diagnosis.
-    mode 'vote2': prune only once two separate failures name the same node."""
+    mode 'vote2': prune only once two separate failures name the same node.
+    mode 'defer': never prune; move the named subtree behind everything else
+        (soft backjumping). A correct diagnosis names a dead subtree, so the
+        goal is found before it would be revisited - same cost as 'hard'. A
+        wrong one only delays the solution, never removes it.
+    mode 'vote_defer': defer on the first diagnosis, prune on the second."""
     counts[culprit] = counts.get(culprit, 0) + 1
-    if mode == "hard" or (mode == "vote2" and counts[culprit] >= 2):
+    if mode == "hard" or (mode in ("vote2", "vote_defer") and counts[culprit] >= 2):
         pruned.add(culprit)
+    elif mode in ("defer", "vote_defer") and deferred is not None:
+        deferred.add(culprit)
 
 
 # ── Policies. Each returns expansions-to-goal, or None if out of budget. ─
@@ -138,9 +145,19 @@ def dfs(tree: DelayedFailureTree, budget: int, use_diagnosis: bool = False,
     this becomes conflict-directed backjumping: jump straight past the named
     culprit instead of exhausting the subtree under it."""
     stack, pruned, counts, cost = [()], set(), {}, 0
-    while stack and cost < budget:
+    deferred: set = set()
+    later: list = []  # deferred nodes, in the order DFS would have expanded them
+    while cost < budget:
+        if not stack:
+            if not later:
+                break
+            stack, later = later[::-1], []  # promote, keeping DFS order
+            deferred.clear()
         p = stack.pop()
         if pruned and _under(p, pruned):
+            continue
+        if deferred and _under(p, deferred):
+            later.append(p)
             continue
         cost += 1
         if tree.is_goal(p):
@@ -149,7 +166,7 @@ def dfs(tree: DelayedFailureTree, budget: int, use_diagnosis: bool = False,
         if kids:
             stack.extend(cp for cp, _ in sorted(kids, key=lambda x: x[1]))
         elif use_diagnosis and (c := tree.diagnose(p)) is not None:
-            _act_on_diagnosis(c, counts, pruned, diag_mode)
+            _act_on_diagnosis(c, counts, pruned, diag_mode, deferred)
     return None
 
 
@@ -192,9 +209,20 @@ def best_first_mean(tree: DelayedFailureTree, budget: int, use_diagnosis: bool =
                     diag_mode: str = "hard") -> Optional[int]:
     """Global best-first on mean raw path score (the repo's best_first_search rule)."""
     frontier, pruned, counts, counter, cost = [(0.0, 0, (), 0.0)], set(), {}, 0, 0
-    while frontier and cost < budget:
-        _, _, p, total = heapq.heappop(frontier)
+    deferred: set = set()
+    later: list = []  # heap of deferred entries
+    while cost < budget:
+        if not frontier:
+            if not later:
+                break
+            frontier, later = later, []
+            deferred.clear()
+        entry = heapq.heappop(frontier)
+        _, _, p, total = entry
         if pruned and _under(p, pruned):
+            continue
+        if deferred and _under(p, deferred):
+            heapq.heappush(later, entry)
             continue
         cost += 1
         if tree.is_goal(p):
@@ -204,7 +232,7 @@ def best_first_mean(tree: DelayedFailureTree, budget: int, use_diagnosis: bool =
             counter += 1
             heapq.heappush(frontier, (-((total + s) / len(cp)), counter, cp, total + s))
         if not kids and use_diagnosis and (c := tree.diagnose(p)) is not None:
-            _act_on_diagnosis(c, counts, pruned, diag_mode)
+            _act_on_diagnosis(c, counts, pruned, diag_mode, deferred)
     return None
 
 
