@@ -262,6 +262,25 @@ def _perturb(expected_repr: str, others: list[str], rng: random.Random) -> str:
     return "None"
 
 
+def failure_reports(results: list[dict], corrupt_prob: float = 0.0, rng: random.Random | None = None,
+                    max_reports: int = 3) -> list[dict]:
+    """Structured version of describe_failures: one dict per reported failing
+    test with the expected value the checker shows (possibly corrupted).
+    Draws from rng in exactly the same order as describe_failures, so the same
+    rng seed yields the same corruptions in both."""
+    rng = rng or random.Random(0)
+    all_expected = [r["expected"] for r in results]
+    out = []
+    for r in [r for r in results if not r["passed"]][:max_reports]:
+        item = {"call": r["call"], "test": r["test"], "actual": r["actual"], "true_expected": r["expected"],
+                "shown_expected": r["expected"], "corrupted": False}
+        if r["call"] is not None and r["expected"] is not None and corrupt_prob > 0 and rng.random() < corrupt_prob:
+            item["shown_expected"] = _perturb(r["expected"], all_expected, rng)
+            item["corrupted"] = True
+        out.append(item)
+    return out
+
+
 def describe_failures(results: list[dict], corrupt_prob: float = 0.0, rng: random.Random | None = None,
                       max_reports: int = 3) -> tuple[str, int]:
     """Human-readable report of (at most max_reports) failing visible tests.

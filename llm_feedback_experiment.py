@@ -48,7 +48,9 @@ import sys
 import time
 from pathlib import Path
 
-from fags.codegen import load_problems, task_prompt, extract_code, run_split, describe_failures
+import os
+
+from fags.codegen import load_problems, task_prompt, extract_code, run_split, describe_failures, failure_reports
 from fags.llm import GroqLLM, QuotaExhausted
 
 ROOT = Path(__file__).resolve().parent
@@ -58,7 +60,39 @@ TEMPERATURE = 0.8
 CORRUPT_PROB = 0.5
 EXCLUDED_PATH = OUT_DIR / "mbppplus_excluded.json"  # written by the reference-solution check
 CONDITIONS = ["restart", "binary", "diagnostic", "noisy_hard", "noisy_soft"]
+# Follow-up conditions (SS29b), run only when listed in LLM_EXTRA_CONDITIONS so
+# that runs already in progress on other models are unaffected:
+#   noisy_vote2   two independent unreliable checkers; a report is stated as
+#                 fact only when both agree, otherwise both values are shown
+#                 (the LLM analogue of SS27's two-vote rule). Checker A is
+#                 identical to noisy_hard's checker.
+#   noisy_verify  noisy_soft's warning plus an explicit procedure: derive the
+#                 correct output from the task first, judge each report, then fix.
+EXTRA_CONDITIONS = [c for c in os.environ.get("LLM_EXTRA_CONDITIONS", "").split(",") if c]
 FIX = "Write a corrected version. Reply with the complete Python code in a single ```python code block."
+
+
+def _line(call: str, expected: str, actual: str) -> str:
+    did = ("returned `" + actual + "`") if not str(actual).startswith(("raised", "error", "timed")) else actual
+    return f"- `{call}` should return `{expected}`, but your code {did}."
+
+
+def vote2_message(results: list[dict], rng_key: str) -> tuple[str, int]:
+    a = failure_reports(results, CORRUPT_PROB, random.Random(rng_key))
+    b = failure_reports(results, CORRUPT_PROB, random.Random(rng_key + "|B"))
+    lines, wrong_as_fact = [], 0
+    for ra, rb in zip(a, b):
+        if ra["call"] is None:
+            lines.append(f"- `{ra['test']}` failed: {ra['actual']}")
+        elif ra["shown_expected"] == rb["shown_expected"]:
+            lines.append(_line(ra["call"], ra["shown_expected"], ra["actual"]))
+            wrong_as_fact += ra["shown_expected"] != ra["true_expected"]
+        else:
+            lines.append(f"- `{ra['call']}` failed (your code returned `{ra['actual']}`). The two checkers disagree "
+                         f"on the expected result: `{ra['shown_expected']}` or `{rb['shown_expected']}` - at most one is right.")
+    return ("Two independent automated checkers tested your code. Each is unreliable on its own (about half of "
+            "the expected values it reports are wrong); where they agree the value is shown as expected, where "
+            "they disagree both values are shown.\n" + "\n".join(lines) + f"\n\n{FIX}"), wrong_as_fact
 
 
 def feedback_message(cond: str, results: list[dict], rng_key: str) -> tuple[str, int]:
@@ -78,6 +112,15 @@ def feedback_message(cond: str, results: list[dict], rng_key: str) -> tuple[str,
                 "expected values it reports are wrong. Treat them as hints only - check each against the task "
                 "description and the example test, and ignore any that contradict them.\n"
                 f"{report}\n\n{FIX}"), n_bad
+    if cond == "noisy_verify":
+        return ("An automated checker reported the problems below. The checker is unreliable: about half of the "
+                "expected values it reports are wrong.\n"
+                f"{report}\n\n"
+                "Before changing any code: for each listed call, work out from the task description what the correct "
+                "result is, and state whether the checker's expected value is right or wrong. Then write a corrected "
+                "version based on your own conclusions, in a single ```python code block."), n_bad
+    if cond == "noisy_vote2":
+        return vote2_message(results, rng_key)
     raise ValueError(cond)
 
 
@@ -127,7 +170,7 @@ def main():
         print(f"first attempt: {len(problems) - len(failing)}/{len(problems)} pass visible; "
               f"hidden pass {sum(first[p.task_id]['hidden_pass'] for p in problems)}; repairing {len(failing)}", flush=True)
         for k, p in enumerate(failing):
-            for ci, cond in enumerate(CONDITIONS):
+            for ci, cond in enumerate(CONDITIONS + EXTRA_CONDITIONS):
                 if (p.task_id, cond) in done:
                     continue
                 f0 = first[p.task_id]
