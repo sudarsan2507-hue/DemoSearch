@@ -379,7 +379,7 @@ Readings, against §22's synthetic findings:
 
 - The headline numbers of §4–18 were artifacts of a generator bug (gold paths unreachable), a protocol that leaks the goal, inconsistent cost accounting, and pseudo-replicated statistics. On the fixed generator, **FAGS does beat budget-matched random restarts per verifier call on all three sizes** (§21) — the original "it's just extra budget" conclusion was itself an artifact.
 - Under an honest commit-to-an-answer protocol, **search is a solved sub-problem at beam width ~3** on both the synthetic benchmark and MetaQA; the remaining error is the verifier — overwhelmingly its **hop-blindness** in the synthetic task (53–67pp), and ranking quality on MetaQA 3-hop (51pp gap to oracle).
-- **Learning from failure provably cannot re-rank the frontier when failures are non-diagnostic** (§23 proposition); it helps — by up to +41pp at equal budget — exactly when failures are delayed *and* name their cause. Revival by raw score is never the helpful ingredient. That benefit survives noisy diagnoses only when they are treated as evidence (Bayesian down-weighting or two-vote agreement): pruning on every diagnosis becomes harmful at 5–20% diagnosis error (§27). The same pattern holds on a real task with nothing injected (Sudoku, §28): score-based revival ≈ systematic search, conflict-set diagnosis always helps, and helps significantly more when the search ordering lets failures surface late.
+- **Learning from failure provably cannot re-rank the frontier when failures are non-diagnostic** (§23 proposition); it helps — by up to +41pp at equal budget — exactly when failures are delayed *and* name their cause. Revival by raw score is never the helpful ingredient. That benefit survives noisy diagnoses only when they are treated as evidence (Bayesian down-weighting or two-vote agreement): pruning on every diagnosis becomes harmful at 5–20% diagnosis error (§27). The same pattern holds on a real task with nothing injected (Sudoku, §28): score-based revival ≈ systematic search, conflict-set diagnosis always helps, and helps significantly more when the search ordering lets failures surface late. The most robust way to act on a diagnosis is to *defer* the named branch rather than delete it (soft backjumping, §30): same cost as backjumping when diagnoses are right, never loses the solution when they are wrong, and never worse than ignoring diagnoses in 80/80 tested conditions.
 - Research directions that follow: (a) hop-/plan-aware verifiers (question decomposition, path-level scoring, LLM verifiers) evaluated under the commit protocol; (b) environments whose failures carry diagnostic content (contradictions naming evidence, unit-test failures, type errors) and learned diagnosis with noise; (c) cost-aware ordering (most-probable-first ≠ cheapest-to-goal, H3).
 
 ## 26. Housekeeping for the v2 work
@@ -451,3 +451,26 @@ Every policy is the unchanged code from `fags/delayed_failure.py`, plugged in th
 **Reading.** On a real task with real heuristics and real failure explanations, the §23 picture reappears. Reviving the best-scoring rejected alternative adds nothing reliable over plain systematic search. Using what a failure says about its cause helps, and helps more when the search design lets mistakes surface late. This also explains a known result in the constraint-satisfaction literature, that backjumping adds little on top of forward checking with MRV (Chen & van Beek, 2001): fail-first ordering keeps failure delay short, which is exactly the regime where §23 predicts diagnosis is worth little.
 
 **Limitations.** The diagnosis here is exact (sound), so §27's noisy-diagnosis results are not tested on a real task. The measured backjump distance differs only modestly between orderings (2.03 vs 2.55 assignments skipped), so "delay" is manipulated through the ordering rather than measured directly. The verifier is a fixed heuristic, not a learned or LLM verifier. The posterior policies were not run.
+
+## 30. Soft backjumping: defer, don't delete (`fags/delayed_failure.py` modes `defer` / `vote_defer`, `soft_backjump_experiment.py`, `results/v2/soft_backjump*`)
+
+**Why.** §27 showed hard pruning on diagnoses becomes harmful once ~5–20% of them are wrong. The Bayesian soft update fixed that but inherits the posterior ordering's weakness with a poor verifier (d′ = 0.5). This tests a policy that keeps depth-first / best-first ordering: on a diagnosis, **move the named subtree behind everything else instead of deleting it** ("soft backjumping"). A correct diagnosis names a dead subtree, so the goal is always found before it would be revisited — the cost is provably identical to hard pruning. A wrong diagnosis only delays the solution; it can never remove it. Also tested: `vote_defer` (defer on the first diagnosis of a node, prune on the second).
+
+**Setup.** §27's exact trees, grid (ε × ρ × K × d′, 300 trees per cell) and budget (100 expansions); per-tree paired tests, Holm over 576. Before the run: on 1,200 runs with ε = 0, defer and hard pruning had identical costs; at ε = 0.5 with a 20,000-expansion budget, hard-pruning DFS left 73/100 trees unsolvable, defer 0/100.
+
+**Pre-registered hypotheses** (tallies over the 40 cells with ε > 0):
+
+| Hypothesis | Comparison | Sig. wins | Sig. losses | Verdict |
+|---|---|---|---|---|
+| S1 | defer vs hard at ε = 0 (cost) | — | — | **holds exactly** (0 differences in 1,200 + 2,400 runs) |
+| S2 | DFS+defer / BestFirst-mean+defer vs no diagnosis | 36 / 34 | **0 / 0** | **holds** |
+| S3 | vote_defer vs vote2 (DFS / BF) | 0 / 1 | 0 / 0 | tie |
+| S3 | vote_defer vs defer (DFS / BF) | 0 / 0 | **23 / 22** | **refuted** — adding the vote hurts |
+| S4 | DFS+defer vs PostLB+soft | 11 | **0** | **holds** |
+| — | defer vs hard (DFS / BF) | **40 / 40** | 0 / 0 | |
+
+Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **83.0%** vs DFS+vote2 79.0%, DFS+hard 36.0%, PostLB+soft 34.0%, no diagnosis 30.0%; at ε = 0.5, 59.0% vs 50.7% / 20.3% / 16.7% / 30.0%. With the stronger verifier (d′ = 1, K = 3, ρ = 0.5), DFS+defer stays ≥ 93% up to ε = 0.5, where hard pruning falls to 38%.
+
+**Reading.** Soft backjumping is the best way of acting on failure diagnoses found in this project: identical to classic backjumping when diagnoses are right, complete when they are wrong, never significantly worse than ignoring diagnoses in any of 80 tested cells, better than hard pruning in all 80, and better than the Bayesian update wherever they differ. It needs no estimate of the diagnosis error rate. The vote refinement, which helped hard pruning in §27, *hurts* here: once deferral already makes wrong diagnoses cheap, waiting for a second one only throws away the value of correct first diagnoses. DFS+defer vs vote2 was not among the pre-registered tests; numerically defer is ≥ vote2 in every reported cell.
+
+**Limitations.** Same synthetic environment as §23/§27 (uniform diagnosis errors). Deferral was not run on Sudoku because its diagnoses are exact (§28), where defer ≡ hard by S1. The LLM analogue of "defer" is not obvious, since an LLM's context cannot simply postpone a hypothesis.
