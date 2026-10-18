@@ -239,12 +239,21 @@ def main():
                 attempts = [{k2: f0[k2] for k2 in ("code", "visible_pass", "hidden_pass")}]
                 last_vis = f0["visible"]
                 corrupted = 0
+                diag_stats = {"diag_reports": 0, "diag_correct": 0, "wrong_as_fact": 0, "diag_calls": 0}
                 for a in range(1, MAX_ATTEMPTS):
                     if attempts[-1]["visible_pass"]:
                         break
                     seed = 1000 * (ci + 1) + a
                     if cond == "restart":
                         text = llm.chat([{"role": "user", "content": task_prompt(p)}], seed=seed)
+                    elif cond in ("llm_diag", "llm_diag_vote2"):
+                        msg, st = llm_diag_message(llm, p, attempts[-1]["code"], last_vis, seed + 7,
+                                                   votes=1 if cond == "llm_diag" else 2)
+                        for key in diag_stats:
+                            diag_stats[key] += st[key]
+                        history.append({"role": "user", "content": msg})
+                        text = llm.chat(history, seed=seed)
+                        history.append({"role": "assistant", "content": text})
                     else:
                         msg, n_bad = feedback_message(cond, last_vis, f"{p.task_id}|{a}")
                         corrupted += n_bad
@@ -256,6 +265,8 @@ def main():
                     attempts.append({k2: rec[k2] for k2 in ("code", "visible_pass", "hidden_pass")})
                 out = {"task_id": p.task_id, "condition": cond, "model": model, "attempts": attempts,
                        "corrupted_reports": corrupted}
+                if cond.startswith("llm_diag"):
+                    out.update(diag_stats)
                 with runs_path.open("a", encoding="utf-8") as f:
                     f.write(json.dumps(out) + "\n")
                 done.add((p.task_id, cond))
