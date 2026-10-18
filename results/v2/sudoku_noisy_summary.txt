@@ -1,0 +1,70 @@
+SUDOKU WITH NOISY CONFLICT-SET DIAGNOSES (295 puzzles, budget 20000); success %
+
+mrv    DFS             no diagnosis  88.8%
+         eps=0.1  hard= 46.8%  vote2= 74.2%  defer= 92.9%
+         eps=0.3  hard= 26.4%  vote2= 49.8%  defer= 92.5%
+         eps=0.5  hard= 21.0%  vote2= 42.4%  defer= 92.9%
+mrv    BestFirst-mean  no diagnosis  88.1%
+         eps=0.1  hard= 44.7%  vote2= 74.9%  defer= 93.6%
+         eps=0.3  hard= 29.2%  vote2= 51.2%  defer= 93.6%
+         eps=0.5  hard= 20.0%  vote2= 42.7%  defer= 93.9%
+static DFS             no diagnosis  37.3%
+         eps=0.1  hard= 14.6%  vote2= 25.1%  defer= 42.7%
+         eps=0.3  hard=  8.1%  vote2= 13.9%  defer= 41.7%
+         eps=0.5  hard=  4.1%  vote2=  7.1%  defer= 38.3%
+static BestFirst-mean  no diagnosis  37.6%
+         eps=0.1  hard= 15.3%  vote2= 27.5%  defer= 41.0%
+         eps=0.3  hard=  9.2%  vote2= 12.9%  defer= 38.0%
+         eps=0.5  hard=  5.1%  vote2=  8.1%  defer= 36.6%
+
+TESTS (success, per-puzzle sign-flip, Holm)
+  T1 mrv    DFS             eps=0.1  hard - none    diff= -42.0pp  p_holm=1.58e-24
+  T2 mrv    DFS             eps=0.1  defer - none   diff=  +4.1pp  p_holm=0.08098
+  T3 mrv    DFS             eps=0.1  defer - hard   diff= +46.1pp  p_holm=7.383e-30
+  T4 mrv    DFS             eps=0.1  defer - vote2  diff= +18.6pp  p_holm=5.793e-12
+  T1 mrv    DFS             eps=0.3  hard - none    diff= -62.4pp  p_holm=1.95e-39
+  T2 mrv    DFS             eps=0.3  defer - none   diff=  +3.7pp  p_holm=0.2449
+  T3 mrv    DFS             eps=0.3  defer - hard   diff= +66.1pp  p_holm=1.134e-42
+  T4 mrv    DFS             eps=0.3  defer - vote2  diff= +42.7pp  p_holm=1.107e-27
+  T1 mrv    DFS             eps=0.5  hard - none    diff= -67.8pp  p_holm=6.743e-43
+  T2 mrv    DFS             eps=0.5  defer - none   diff=  +4.1pp  p_holm=0.18
+  T3 mrv    DFS             eps=0.5  defer - hard   diff= +71.9pp  p_holm=2.364e-46
+  T4 mrv    DFS             eps=0.5  defer - vote2  diff= +50.5pp  p_holm=1.118e-32
+  T1 mrv    BestFirst-mean  eps=0.1  hard - none    diff= -43.4pp  p_holm=9.621e-26
+  T2 mrv    BestFirst-mean  eps=0.1  defer - none   diff=  +5.4pp  p_holm=0.012
+  T3 mrv    BestFirst-mean  eps=0.1  defer - hard   diff= +48.8pp  p_holm=1.35e-31
+  T4 mrv    BestFirst-mean  eps=0.1  defer - vote2  diff= +18.6pp  p_holm=5.793e-12
+  T1 mrv    BestFirst-mean  eps=0.3  hard - none    diff= -59.0pp  p_holm=7.501e-37
+  T2 mrv    BestFirst-mean  eps=0.3  defer - none   diff=  +5.4pp  p_holm=0.03249
+  T3 mrv    BestFirst-mean  eps=0.3  defer - hard   diff= +64.4pp  p_holm=1.367e-41
+  T4 mrv    BestFirst-mean  eps=0.3  defer - vote2  diff= +42.4pp  p_holm=1.781e-27
+  T1 mrv    BestFirst-mean  eps=0.5  hard - none    diff= -68.1pp  p_holm=4.171e-43
+  T2 mrv    BestFirst-mean  eps=0.5  defer - none   diff=  +5.8pp  p_holm=0.008086
+  T3 mrv    BestFirst-mean  eps=0.5  defer - hard   diff= +73.9pp  p_holm=1.185e-47
+  T4 mrv    BestFirst-mean  eps=0.5  defer - vote2  diff= +51.2pp  p_holm=4.192e-33
+  T1 static DFS             eps=0.1  hard - none    diff= -22.7pp  p_holm=5.946e-11
+  T2 static DFS             eps=0.1  defer - none   diff=  +5.4pp  p_holm=0.2449
+  T3 static DFS             eps=0.1  defer - hard   diff= +28.1pp  p_holm=1.969e-18
+  T4 static DFS             eps=0.1  defer - vote2  diff= +17.6pp  p_holm=2.165e-09
+  T1 static DFS             eps=0.3  hard - none    diff= -29.2pp  p_holm=3.324e-16
+  T2 static DFS             eps=0.3  defer - none   diff=  +4.4pp  p_holm=0.5986
+  T3 static DFS             eps=0.3  defer - hard   diff= +33.6pp  p_holm=7.828e-22
+  T4 static DFS             eps=0.3  defer - vote2  diff= +27.8pp  p_holm=8.406e-18
+  T1 static DFS             eps=0.5  hard - none    diff= -33.2pp  p_holm=3.378e-21
+  T2 static DFS             eps=0.5  defer - none   diff=  +1.0pp  p_holm=1
+  T3 static DFS             eps=0.5  defer - hard   diff= +34.2pp  p_holm=2.943e-22
+  T4 static DFS             eps=0.5  defer - vote2  diff= +31.2pp  p_holm=2.34e-20
+  T1 static BestFirst-mean  eps=0.1  hard - none    diff= -22.4pp  p_holm=8.917e-11
+  T2 static BestFirst-mean  eps=0.1  defer - none   diff=  +3.4pp  p_holm=1
+  T3 static BestFirst-mean  eps=0.1  defer - hard   diff= +25.8pp  p_holm=6.241e-17
+  T4 static BestFirst-mean  eps=0.1  defer - vote2  diff= +13.6pp  p_holm=3.143e-06
+  T1 static BestFirst-mean  eps=0.3  hard - none    diff= -28.5pp  p_holm=8.483e-16
+  T2 static BestFirst-mean  eps=0.3  defer - none   diff=  +0.3pp  p_holm=1
+  T3 static BestFirst-mean  eps=0.3  defer - hard   diff= +28.8pp  p_holm=7.757e-19
+  T4 static BestFirst-mean  eps=0.3  defer - vote2  diff= +25.1pp  p_holm=1.64e-16
+  T1 static BestFirst-mean  eps=0.5  hard - none    diff= -32.5pp  p_holm=2.238e-20
+  T2 static BestFirst-mean  eps=0.5  defer - none   diff=  -1.0pp  p_holm=1
+  T3 static BestFirst-mean  eps=0.5  defer - hard   diff= +31.5pp  p_holm=1.517e-20
+  T4 static BestFirst-mean  eps=0.5  defer - vote2  diff= +28.5pp  p_holm=1.237e-18
+
+runtime 6514s
