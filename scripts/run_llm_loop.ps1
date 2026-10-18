@@ -15,7 +15,8 @@ if ($Extra) { $env:LLM_EXTRA_CONDITIONS = $Extra }
 function Finished {
     if ($Extra) {
         # follow-up conditions: done once every failing problem has all of them
-        $need = 79 * $Extra.Split(",").Count
+        $failing = python -c "import json; print(sum(not json.loads(l)['visible_pass'] for l in open('results/v2/llm_feedback_first_${tag}_v2.jsonl', encoding='utf-8')))"
+        $need = [int]$failing * $Extra.Split(",").Count
         $n = (Select-String -Path $runs -Pattern ('"condition": "(' + ($Extra -replace ",", "|") + ')"')).Count
         return $n -ge $need
     }
