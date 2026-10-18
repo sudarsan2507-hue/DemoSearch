@@ -379,7 +379,7 @@ Readings, against §22's synthetic findings:
 
 - The headline numbers of §4–18 were artifacts of a generator bug (gold paths unreachable), a protocol that leaks the goal, inconsistent cost accounting, and pseudo-replicated statistics. On the fixed generator, **FAGS does beat budget-matched random restarts per verifier call on all three sizes** (§21) — the original "it's just extra budget" conclusion was itself an artifact.
 - Under an honest commit-to-an-answer protocol, **search is a solved sub-problem at beam width ~3** on both the synthetic benchmark and MetaQA; the remaining error is the verifier — overwhelmingly its **hop-blindness** in the synthetic task (53–67pp), and ranking quality on MetaQA 3-hop (51pp gap to oracle).
-- **Learning from failure provably cannot re-rank the frontier when failures are non-diagnostic** (§23 proposition); it helps — by up to +41pp at equal budget — exactly when failures are delayed *and* name their cause. Revival by raw score is never the helpful ingredient. That benefit survives noisy diagnoses only when they are treated as evidence (Bayesian down-weighting or two-vote agreement): pruning on every diagnosis becomes harmful at 5–20% diagnosis error (§27). The same pattern holds on a real task with nothing injected (Sudoku, §28): score-based revival ≈ systematic search, conflict-set diagnosis always helps, and helps significantly more when the search ordering lets failures surface late. The most robust way to act on a diagnosis is to *defer* the named branch rather than delete it (soft backjumping, §30): same cost as backjumping when diagnoses are right, never loses the solution when they are wrong, and never worse than ignoring diagnoses in 80/80 tested conditions.
+- **Learning from failure provably cannot re-rank the frontier when failures are non-diagnostic** (§23 proposition); it helps — by up to +41pp at equal budget — exactly when failures are delayed *and* name their cause. Revival by raw score is never the helpful ingredient. That benefit survives noisy diagnoses only when they are treated as evidence (Bayesian down-weighting or two-vote agreement): pruning on every diagnosis becomes harmful at 5–20% diagnosis error (§27). The same pattern holds on a real task with nothing injected (Sudoku, §28): score-based revival ≈ systematic search, conflict-set diagnosis always helps, and helps significantly more when the search ordering lets failures surface late. The most robust way to act on a diagnosis is to *defer* the named branch rather than delete it (soft backjumping, §30): same cost as backjumping when diagnoses are right, never loses the solution when they are wrong, and never worse than ignoring diagnoses in 80/80 tested conditions. The pattern carries over to LLM agents repairing code (§29): on three models, failure feedback that says why raises repair success by 34–48 points over a fresh attempt, corrupted diagnoses erase most of that, and filtering diagnoses by agreement between two checkers recovers much of it.
 - Research directions that follow: (a) hop-/plan-aware verifiers (question decomposition, path-level scoring, LLM verifiers) evaluated under the commit protocol; (b) environments whose failures carry diagnostic content (contradictions naming evidence, unit-test failures, type errors) and learned diagnosis with noise; (c) cost-aware ordering (most-probable-first ≠ cheapest-to-goal, H3).
 
 ## 26. Housekeeping for the v2 work
@@ -451,6 +451,52 @@ Every policy is the unchanged code from `fags/delayed_failure.py`, plugged in th
 **Reading.** On a real task with real heuristics and real failure explanations, the §23 picture reappears. Reviving the best-scoring rejected alternative adds nothing reliable over plain systematic search. Using what a failure says about its cause helps, and helps more when the search design lets mistakes surface late. This also explains a known result in the constraint-satisfaction literature, that backjumping adds little on top of forward checking with MRV (Chen & van Beek, 2001): fail-first ordering keeps failure delay short, which is exactly the regime where §23 predicts diagnosis is worth little.
 
 **Limitations.** The diagnosis here is exact (sound), so §27's noisy-diagnosis results are not tested on a real task. The measured backjump distance differs only modestly between orderings (2.03 vs 2.55 assignments skipped), so "delay" is manipulated through the ordering rather than measured directly. The verifier is a fixed heuristic, not a learned or LLM verifier. The posterior policies were not run.
+
+## 29. Real LLM agents: code repair with failure feedback (`fags/llm.py`, `fags/codegen.py`, `llm_feedback_experiment.py`, `llm_feedback_analysis.py`, `results/v2/llm_*`)
+
+**Why.** §23–28 test the theory on synthetic search and Sudoku. This asks the same question of LLM agents, where "learning from failure" (Reflexion-style retry loops) is common practice: does feedback after a failure help only when it says *why*, and what happens when the "why" is sometimes wrong?
+
+**Task and protocol.** MBPP+ (EvalPlus; 373 usable problems after excluding 5 whose reference solution fails here). The agent sees the task and one example assert. EvalPlus's extended inputs are split per problem with a fixed seed: the 3 base inputs plus a random half of the rest are **visible** (the agent's code runs on them and failures can be reported back), the other half is **hidden** and used only for scoring. A first design used only the 3 base asserts as the visible suite; almost no first attempt failed them (14/300 for gpt-oss-20b), so there was nothing to repair. That design was discarded before any repair run. All conditions share the same first attempt; on a visible failure the agent gets up to 2 repairs (3 LLM calls in total), stopping early once the visible inputs pass. Success = the submitted program passes every hidden input. Temperature 0.8, fixed seeds, every LLM response cached on disk. Models via Groq: `qwen/qwen3.8-27b`, `openai/gpt-oss-120b`, `openai/gpt-oss-20b`.
+
+**Conditions** (what the agent is told after a visible failure):
+- **restart:** nothing; a fresh independent attempt (memoryless control).
+- **binary:** "your code failed at least one test" (a non-diagnostic failure, i.e. FAGS's premise).
+- **diagnostic:** up to 3 failing visible inputs, each with the call, the expected value and what the code returned.
+- **noisy_hard:** the same report, but each expected value is replaced by a plausible wrong one with probability 0.5, presented as fact.
+- **noisy_soft:** the identical corrupted reports, presented as unreliable ("about half of the expected values are wrong; check each against the task").
+- Follow-up, qwen only: **noisy_vote2** (two independent unreliable checkers; a value is shown as fact only when both agree, otherwise both candidates are shown; a wrong value is stated as fact in 6% of reports vs 48% for noisy_hard) and **noisy_verify** (noisy_soft plus an explicit procedure: work out the correct output from the task first, judge each report, then fix).
+
+Analysis is on the problems whose first attempt failed a visible input (qwen 79, gpt-oss-120b 73, gpt-oss-20b 75), the only ones where conditions can differ; paired per-problem sign-flip tests, Holm within each model.
+
+**Results** (success on hidden tests within 3 calls, % of initially failing problems):
+
+| Condition | qwen3.8-27b | gpt-oss-120b | gpt-oss-20b |
+|---|---|---|---|
+| restart | 22.8 | 20.5 | 20.0 |
+| binary | 19.0 | 38.4 | 22.7 |
+| **diagnostic** | **57.0** | **68.5** | **56.0** |
+| noisy_hard | 32.9 | 26.0 | 24.0 |
+| noisy_soft | 39.2 | 45.2 | 29.3 |
+| noisy_vote2 | 49.4 | — | — |
+| noisy_verify | 40.5 | — | — |
+
+**Pre-registered hypotheses:**
+
+| | Hypothesis | qwen3.8-27b | gpt-oss-120b | gpt-oss-20b |
+|---|---|---|---|---|
+| L1 | binary is not better than restart | **holds** (−3.8pp, n.s.) | **fails**: +17.8pp, Holm p = 0.013 | **holds** (+2.7pp, n.s.) |
+| L2 | diagnostic beats restart and binary | **holds**: +34.2 / +38.0pp | **holds**: +47.9 / +30.1pp | **holds**: +36.0 / +33.3pp (all Holm p < 0.0001) |
+| L3 | noisy_hard is worse than diagnostic and not better than restart | **holds**: −24.1pp; vs restart n.s. | **holds**: −42.5pp; vs restart n.s. | **holds**: −32.0pp; vs restart n.s. |
+| L4 | noisy_soft beats noisy_hard and is not worse than restart | partial: +6.3pp (n.s.); +16.5 vs restart (Holm p = 0.054) | **holds**: +19.2pp (p = 0.008); +24.7 vs restart (p = 0.0005) | partial: +5.3pp (n.s.); +9.3 vs restart (n.s.) |
+| L6 | noisy_vote2 beats noisy_hard (qwen) | **holds**: +16.5pp, Holm p = 0.018; +26.6 vs restart (p = 0.001) | | |
+| L7 | noisy_verify beats noisy_hard (qwen) | not supported: +7.6pp, n.s. (+17.7 vs restart, p = 0.048) | | |
+
+**Reading.**
+1. **The core claim replicates on three LLMs.** Telling the agent *why* it failed raises repair success by 34–48 points over a fresh attempt, on every model, with Holm p < 0.0001. Corrupting half of those diagnoses erases most of the gain (−24 to −43 points), leaving it statistically indistinguishable from a restart.
+2. **A non-diagnostic failure is worth little, with one model-dependent exception.** "It failed" adds nothing for qwen3.8-27b and gpt-oss-20b, but +17.8 points for gpt-oss-120b. The theory's proposition concerns ranking *unexplored* options; an LLM retry is not a pure frontier choice. A strong model can treat "my first approach was wrong" as information about its own approach (elimination in its own idea space), which the proposition allows. Even there it reaches only about half the diagnostic gain (38.4% vs 68.5%).
+3. **Handling unreliable diagnoses.** A one-line warning helps clearly only for the strongest model (gpt-oss-120b, +19 points); weaker models barely use it. A *structural* filter works regardless: the two-checker vote (the LLM analogue of §27's vote2) recovers +16.5 points over corrupted-as-fact on qwen, reaching 49.4% against 57.0% for clean diagnoses. Asking the model to verify each report itself helps less and not significantly. As in §27, cleaning the evidence before it reaches the agent beats asking the agent to be careful.
+
+**Limitations.** One benchmark (MBPP+), three open-weight models through one provider, a fixed corruption rate (0.5) and repair budget (3 calls); vote2/verify were run on qwen only. The corruption is injected (plausible wrong expected values), not a naturally noisy diagnoser. The repair loop is an LLM conversation, not tree search, so §30's deferral has no direct analogue here and was not tested.
 
 ## 30. Soft backjumping: defer, don't delete (`fags/delayed_failure.py` modes `defer` / `vote_defer`, `soft_backjump_experiment.py`, `results/v2/soft_backjump*`)
 

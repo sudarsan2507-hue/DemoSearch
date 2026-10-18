@@ -21,6 +21,9 @@ python failure_informativeness_experiment.py  # §23 when failure memory can hel
 python metaqa_experiment.py               # §24 MetaQA with BGE verifiers (needs data/metaqa/, see §24)
 python noisy_diagnosis_experiment.py      # §27 failure diagnoses that are sometimes wrong
 python sudoku_experiment.py               # §28 real task: Sudoku with conflict-set diagnosis (needs data/sudoku/)
+python llm_feedback_experiment.py qwen/qwen3.8-27b   # §29 LLM code repair with failure feedback (needs GROQ_API_KEY in .env, data/mbppplus/)
+python llm_feedback_analysis.py           # §29 analysis of the LLM runs
+python soft_backjump_experiment.py        # §30 soft backjumping: defer instead of delete
 ```
 
 Outputs go to `results/v2/`.
