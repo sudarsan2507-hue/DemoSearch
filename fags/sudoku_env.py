@@ -201,6 +201,13 @@ class SudokuTree:
                 node = target
             else:
                 node = parent
+        if culprit is not None and self.eps > 0:
+            import random
+            rng = random.Random(f"{self.seed}|diagerr|{dead}")
+            if rng.random() < self.eps:
+                others = [dead[:i] for i in range(1, len(dead)) if dead[:i] != culprit]
+                if others:
+                    return rng.choice(others)
         return culprit
 
     def solution(self, path: tuple) -> list[int]:
