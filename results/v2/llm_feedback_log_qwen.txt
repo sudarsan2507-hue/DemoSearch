@@ -1,0 +1,2 @@
+﻿[   324s] first attempts 50/374 (visible-fail so far 5), calls=48
+[   951s] first attempts 100/374 (visible-fail so far 8), calls=98

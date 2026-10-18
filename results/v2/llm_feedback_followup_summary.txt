@@ -1,0 +1,13 @@
+qwen follow-up on 79 problems (success@3, hidden tests):
+  restart        22.8%
+  diagnostic     57.0%
+  noisy_hard     32.9%
+  noisy_soft     39.2%
+  noisy_vote2    49.4%
+  noisy_verify   40.5%
+  L6  noisy_vote2   - noisy_hard  diff= +16.5pp [+7.6,+26.6] p=0.0036 p_holm=0.0180
+  L7  noisy_verify  - noisy_hard  diff=  +7.6pp [-2.5,+19.0] p=0.2740 p_holm=0.5479
+  -   noisy_vote2   - restart     diff= +26.6pp [+13.9,+39.2] p=0.0002 p_holm=0.0010
+  -   noisy_verify  - restart     diff= +17.7pp [+6.3,+30.4] p=0.0121 p_holm=0.0484
+  -   noisy_vote2   - noisy_soft  diff= +10.1pp [+1.3,+19.0] p=0.0605 p_holm=0.1815
+  -   noisy_verify  - noisy_soft  diff=  +1.3pp [-7.6,+10.1] p=1.0000 p_holm=1.0000

@@ -1,0 +1,7 @@
+﻿[   157s] first attempts 50/374 (visible-fail so far 1), calls=50
+[   431s] first attempts 100/374 (visible-fail so far 2), calls=100
+[   705s] first attempts 150/374 (visible-fail so far 6), calls=150
+[   900s] first attempts 200/374 (visible-fail so far 11), calls=200
+[  1103s] first attempts 250/374 (visible-fail so far 12), calls=250
+[  1331s] first attempts 300/374 (visible-fail so far 14), calls=300
+QUOTA EXHAUSTED after 330 calls - re-run later to resume. (Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01k4s82yz4ehta8vx1sqss869x` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199144, Requested 1183. Please try again in 2m21.264s. Need more tokens? Upgrade to Dev Tie)
