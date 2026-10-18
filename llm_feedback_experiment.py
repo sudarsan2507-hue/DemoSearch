@@ -42,8 +42,10 @@ Usage: python llm_feedback_experiment.py [model]   (default qwen/qwen3.8-27b)
 
 from __future__ import annotations
 
+import ast
 import json
 import random
+import re
 import sys
 import time
 from pathlib import Path
@@ -122,6 +124,65 @@ def feedback_message(cond: str, results: list[dict], rng_key: str) -> tuple[str,
     if cond == "noisy_vote2":
         return vote2_message(results, rng_key)
     raise ValueError(cond)
+
+
+def _same_value(a: str, b: str) -> bool:
+    try:
+        return ast.literal_eval(a) == ast.literal_eval(b)
+    except Exception:
+        return a.strip() == b.strip()
+
+
+def llm_diagnoses(llm, p, code: str, results: list[dict], seed: int) -> dict[int, str]:
+    """A separate reviewer call (same model) predicts the correct result of each
+    reported failing call from the task alone - it never sees the true
+    expected values, so its mistakes are natural, not injected.
+    Returns {report index: predicted value as text}."""
+    reps = [r for r in failure_reports(results) if r["call"] is not None]
+    if not reps:
+        return {}
+    lines = "\n".join(f"{i + 1}. `{r['call']}` returned `{r['actual']}`" for i, r in enumerate(reps))
+    prompt = (f"You are reviewing a Python solution that fails some tests.\nTask: {p.text}\n"
+              f"Example test from the task: {p.visible[0]}\n\nCode:\n```python\n{code}\n```\n\n"
+              "For each call below, the code's actual result is shown. Work out from the task what the correct "
+              "result should be.\n" + lines +
+              "\n\nReply with one line per call in the form `<number>: <correct result as a Python literal>` "
+              "and nothing else.")
+    text = llm.chat([{"role": "user", "content": prompt}], seed=seed)
+    out = {}
+    for line in re.sub(r"<think>.*?</think>", "", text, flags=re.S).splitlines():
+        m = re.match(r"\s*`?(\d+)[:.)]\s*`?(.+?)`?\s*$", line)
+        if m and 1 <= int(m.group(1)) <= len(reps):
+            out[int(m.group(1)) - 1] = m.group(2).strip()
+    return out
+
+
+def llm_diag_message(llm, p, code: str, results: list[dict], seed: int, votes: int) -> tuple[str, dict]:
+    """llm_diag (votes=1): the reviewer's predictions reported as fact.
+    llm_diag_vote2 (votes=2): two independent reviewers; a value is reported as
+    fact only when both agree, otherwise both candidates are shown."""
+    reps = [r for r in failure_reports(results) if r["call"] is not None]
+    preds = [llm_diagnoses(llm, p, code, results, seed + 50 * v) for v in range(votes)]
+    stats = {"diag_reports": 0, "diag_correct": 0, "wrong_as_fact": 0, "diag_calls": votes}
+    lines = [f"- `{r['test']}` failed: {r['actual']}" for r in failure_reports(results) if r["call"] is None]
+    for i, r in enumerate(reps):
+        cand = [pr.get(i) for pr in preds]
+        stats["diag_reports"] += 1
+        stats["diag_correct"] += bool(cand[0]) and _same_value(cand[0], r["true_expected"])
+        if votes == 1 or (all(cand) and _same_value(cand[0], cand[1])):
+            if cand[0]:
+                lines.append(_line(r["call"], cand[0], r["actual"]))
+                stats["wrong_as_fact"] += not _same_value(cand[0], r["true_expected"])
+            else:
+                lines.append(f"- `{r['call']}` gave a wrong result (your code returned `{r['actual']}`).")
+        else:
+            shown = " or ".join(f"`{c}`" for c in cand if c) or "unknown"
+            lines.append(f"- `{r['call']}` failed (your code returned `{r['actual']}`). Two reviewers disagree on "
+                         f"the expected result: {shown}.")
+    head = ("Your code failed these tests:\n" if votes == 1 else
+            "Two independent reviewers checked your code; where they agree the expected value is shown, where "
+            "they disagree both are shown.\n")
+    return head + "\n".join(lines) + f"\n\n{FIX}", stats
 
 
 def attempt_record(p, text: str) -> dict:
