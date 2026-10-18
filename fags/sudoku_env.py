@@ -72,7 +72,8 @@ class SudokuTree:
     puzzle (node generation is deterministic); diagnosis bookkeeping is per
     instance, so create one SudokuTree per policy run."""
 
-    def __init__(self, puzzle: str, seed: int = 0, cache: Optional[dict] = None, ordering: str = "mrv"):
+    def __init__(self, puzzle: str, seed: int = 0, cache: Optional[dict] = None, ordering: str = "mrv",
+                 diagnosis_error: float = 0.0):
         """ordering: 'mrv' (fewest remaining values first - failures surface
         quickly) or 'static' (first unassigned cell in row-major order -
         mistakes typically surface many assignments later). This is the
@@ -80,6 +81,11 @@ class SudokuTree:
         be reused with the same ordering."""
         self.seed = seed
         self.ordering = ordering
+        # diagnosis_error: probability that a returned culprit is replaced by a
+        # uniformly random *other* ancestor of the failure (possibly one on the
+        # solution path). The environment's own conflict-set bookkeeping stays
+        # exact; only what the search is told is corrupted.
+        self.eps = diagnosis_error
         self.grid = parse(puzzle)
         self._cache = cache if cache is not None else {}
         if () not in self._cache:
