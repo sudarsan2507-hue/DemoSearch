@@ -1,0 +1,22 @@
+WEBQSP (500 questions, 213 oracle path types)
+  oracle         Hits@1= 85.5% [ 80.8, 89.2]  F1= 86.0%  calls=     0.0  legacy-goal-test=100.0%
+  rel-greedy     Hits@1= 29.5% [ 22.5, 36.7]  F1= 28.2%  calls=    98.4  legacy-goal-test= 84.4%
+  rel-beam-3     Hits@1= 30.1% [ 23.4, 37.1]  F1= 28.5%  calls=   133.0  legacy-goal-test= 90.8%
+  rel-beam-8     Hits@1= 30.3% [ 23.5, 37.3]  F1= 28.7%  calls=   219.3  legacy-goal-test= 94.8%
+  rel-beam-32    Hits@1= 30.7% [ 23.9, 37.7]  F1= 29.0%  calls=   554.2  legacy-goal-test= 95.8%
+  path-greedy    Hits@1= 24.4% [ 17.2, 32.2]  F1= 22.8%  calls=    98.4  legacy-goal-test= 84.4%
+  path-beam-3    Hits@1= 23.6% [ 16.5, 31.6]  F1= 22.0%  calls=   133.0  legacy-goal-test= 90.8%
+  path-beam-8    Hits@1= 23.8% [ 16.9, 31.5]  F1= 22.0%  calls=   219.3  legacy-goal-test= 94.8%
+  path-beam-32   Hits@1= 24.6% [ 17.7, 32.3]  F1= 22.6%  calls=   554.2  legacy-goal-test= 95.8%
+
+TESTS (Hits@1 diff, cluster sign-flip, Holm)
+  W2 path-greedy - rel-greedy       diff=  -5.2pp [ -10.2,  -0.6] p_holm=0.1155
+  W2 path-beam-3 - rel-beam-3       diff=  -6.5pp [ -11.8,  -1.3] p_holm=0.07559
+  W2 path-beam-8 - rel-beam-8       diff=  -6.5pp [ -12.1,  -1.4] p_holm=0.07559
+  W2 path-beam-32 - rel-beam-32     diff=  -6.1pp [ -11.8,  -0.8] p_holm=0.1155
+  W1 path-beam-3 - path-greedy      diff=  -0.7pp [  -3.3,  +1.9] p_holm=1
+  W1 path-beam-8 - path-beam-3      diff=  +0.2pp [  -0.6,  +1.1] p_holm=1
+  W1 path-beam-32 - path-beam-8     diff=  +0.8pp [  +0.1,  +1.7] p_holm=0.3693
+  W3 oracle - path-beam-32          diff= +60.9pp [ +53.4, +68.3] p_holm=4.261e-13
+
+runtime 1081s
