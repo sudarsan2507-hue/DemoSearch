@@ -77,3 +77,87 @@ def load_questions(data_dir: str, limit: int | None, seed: int = 0) -> list[WQue
         if topics and answers:
             out.append(WQuestion(r.id, r.question, topics, answers, {k: dict(v) for k, v in adj.items()}))
     return out
+
+
+class TextEmbedder:
+    """BGE embeddings with an in-memory cache keyed by text."""
+
+    def __init__(self, model_name: str = "BAAI/bge-small-en-v1.5"):
+        os.environ.setdefault("HF_HUB_OFFLINE", "1")
+        import torch
+        torch.set_num_threads(int(os.environ.get("TORCH_THREADS", 2)))
+        from sentence_transformers import SentenceTransformer
+        self.model = SentenceTransformer(model_name)
+        self.cache: dict[str, np.ndarray] = {}
+
+    def embed(self, texts: list[str]) -> list[np.ndarray]:
+        missing = list({t for t in texts if t not in self.cache})
+        if missing:
+            for t, e in zip(missing, self.model.encode(missing, batch_size=256, normalize_embeddings=True, convert_to_numpy=True)):
+                self.cache[t] = e
+        return [self.cache[t] for t in texts]
+
+    def query(self, text: str) -> np.ndarray:
+        return self.model.encode("Represent this sentence for searching relevant passages: " + text,
+                                 normalize_embeddings=True, convert_to_numpy=True)
+
+
+@dataclass
+class WOutcome:
+    answer: frozenset
+    path: tuple
+    calls: int
+    touched_gold: bool
+
+
+def beam_paths(q: WQuestion, q_emb, emb: TextEmbedder, width: int, mode: str) -> WOutcome:
+    """Beam over relation paths of up to MAX_HOPS hops; commit to the best
+    complete hypothesis of any length (1 or 2 hops). mode: 'relation'
+    (hop-blind: each hop scored alone, ranked by mean) or 'path' (the whole
+    partial path is scored against the question)."""
+    beam = [((), q.topics, 0.0)]
+    finished = []
+    calls, touched = 0, False
+    for depth in range(MAX_HOPS):
+        cands = []
+        for path, ents, total in beam:
+            for dr in q.out_relations(ents):
+                nxt = q.step(ents, dr) - q.topics
+                calls += 1
+                if not nxt:
+                    continue
+                touched |= bool(nxt & q.answers)
+                cands.append((path + (dr,), nxt, total))
+        if not cands:
+            break
+        texts = [drel_text(c[0][-1]) if mode == "relation" else path_text(c[0]) for c in cands]
+        sims = [float(q_emb @ e) for e in emb.embed(texts)]
+        scored = []
+        for (path, nxt, total), s in zip(cands, sims):
+            new_total = total + s if mode == "relation" else s
+            rank = new_total / len(path) if mode == "relation" else new_total
+            scored.append((rank, path, nxt, new_total))
+        scored.sort(key=lambda x: -x[0])
+        finished += [(rank, path, nxt) for rank, path, nxt, _ in scored[:width]]
+        beam = [(path, nxt, tot) for _, path, nxt, tot in scored[:width]]
+    if not finished:
+        return WOutcome(frozenset(), (), calls, touched)
+    best = max(finished, key=lambda x: x[0])
+    return WOutcome(best[2], best[1], calls, touched)
+
+
+def all_paths(q: WQuestion, cap: int = 4000):
+    """Every executable path of 1..MAX_HOPS hops with its answer set (capped)."""
+    out, frontier = [], [((), q.topics)]
+    for _ in range(MAX_HOPS):
+        nxt_frontier = []
+        for path, ents in frontier:
+            for dr in q.out_relations(ents):
+                n = q.step(ents, dr) - q.topics
+                if n:
+                    out.append((path + (dr,), n))
+                    nxt_frontier.append((path + (dr,), n))
+                    if len(out) >= cap:
+                        return out
+        frontier = nxt_frontier
+    return out
