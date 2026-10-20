@@ -582,22 +582,24 @@ Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **8
 
 **Reading.** Across three models the pattern from §27/§30 holds for LLM agents too: filtering evidence *before* it reaches the agent (requiring two independent checkers to agree) reliably recovers much of the value of clean diagnoses, while asking the agent to be careful does not.
 
-### 33b. A naturally noisy reviewer (qwen3.8-27b) — INTERIM
+### 33b. A naturally noisy reviewer (qwen3.8-27b, final)
 
 Instead of injected corruption, a separate call to the same model plays reviewer after each failure. It sees the task, the code and each failing input with what the code returned, but **not** the correct answer, and must predict the correct output. Its predictions are reported to the coder as expected values (`llm_diag`), or, with two independent reviewers, as fact only when they agree (`llm_diag_vote2`). Pre-registered: N1 natural diagnoses beat restart; N2 they are worse than true diagnoses; N3 the two-reviewer vote beats one reviewer.
 
-**Interim, 66 of 79 problems** (to be updated when the run finishes):
+**Results, all 79 initially failing problems** (success on hidden tests within 3 coder calls; the reviewer calls come on top, 135 for `llm_diag` and 280 for `llm_diag_vote2`):
 
 | Condition | Success |
 |---|---|
-| restart | 22.7% |
-| binary | 19.7% |
-| diagnostic (true values) | 54.5% |
-| noisy_hard (injected, 50% wrong) | 30.3% |
-| llm_diag (one reviewer) | 31.8% |
-| llm_diag_vote2 (two reviewers) | 31.8% |
+| restart | 22.8% |
+| binary | 19.0% |
+| diagnostic (true values) | 57.0% |
+| noisy_hard (injected, 50% wrong) | 32.9% |
+| llm_diag (one reviewer) | 31.6% |
+| llm_diag_vote2 (two reviewers) | 34.2% |
 
-- The reviewer is right on only **33%** of reports (101/306), i.e. *noisier* than the injected 50% corruption. Requiring two reviewers to agree cuts wrong-values-stated-as-fact from 67% to 41% of reports.
-- **N1** (beats restart): not supported so far (+9.1 points, n.s.). **N2** (worse than true diagnoses): **holds** (−22.7 points, Holm p = 0.008). **N3** (vote beats one reviewer): not supported so far (+0.0 points).
+- The reviewer is right on only **32%** of reports (119/367), i.e. *noisier* than the injected 50% corruption. Requiring two reviewers to agree cuts wrong values stated as fact from 68% to 43% of reports.
+- **N1** (natural diagnoses beat restart): **not supported** (+8.9 points, Holm p = 0.46).
+- **N2** (worse than true diagnoses): **holds** (−25.3 points, Holm p = 0.0004).
+- **N3** (two-reviewer vote beats one reviewer): **not supported** (+2.5 points, Holm p = 0.75).
 
-**Interim reading.** A model diagnosing its own failing code without the answer is a poor diagnoser (about a third right), and at that error rate its "diagnoses" are worth little more than a restart, consistent with §27, where diagnosis errors above about 30–50% erased most of the benefit of acting on them. The agreement filter removes many wrong values but, so far, without improving repair success: when two weak reviewers disagree, the coder is left with little usable information either way.
+**Reading.** A model diagnosing its own failing code without seeing the answer is a poor diagnoser, right about a third of the time. At that error rate its "diagnoses" are worth no more than a fresh restart, and they land almost exactly where the injected 50%-wrong condition does (31.6% vs 32.9%). That is consistent with §27, where diagnosis errors above roughly 30–50% erased most of the benefit of acting on them. The agreement filter does remove many wrong values, but unlike §33a it does not translate into repair success. With injected noise, at least one of two checkers is usually right, so disagreement still brackets the answer; two weak reviewers who are both usually wrong leave the coder with little usable information either way. The practical lesson is that diagnosis quality has to be secured at the source (tests, execution traces, a stronger or independent diagnoser) before any filtering can pay off.
