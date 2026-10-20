@@ -581,3 +581,23 @@ Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **8
 - **L7 (verify beats corrupted-as-fact) fails on all three**: −2.7, −2.7 and +7.6 points, none significant. On the gpt-oss models, asking the model to judge each report itself performs no better than a blind restart.
 
 **Reading.** Across three models the pattern from §27/§30 holds for LLM agents too: filtering evidence *before* it reaches the agent (requiring two independent checkers to agree) reliably recovers much of the value of clean diagnoses, while asking the agent to be careful does not.
+
+### 33b. A naturally noisy reviewer (qwen3.8-27b) — INTERIM
+
+Instead of injected corruption, a separate call to the same model plays reviewer after each failure. It sees the task, the code and each failing input with what the code returned, but **not** the correct answer, and must predict the correct output. Its predictions are reported to the coder as expected values (`llm_diag`), or, with two independent reviewers, as fact only when they agree (`llm_diag_vote2`). Pre-registered: N1 natural diagnoses beat restart; N2 they are worse than true diagnoses; N3 the two-reviewer vote beats one reviewer.
+
+**Interim, 66 of 79 problems** (to be updated when the run finishes):
+
+| Condition | Success |
+|---|---|
+| restart | 22.7% |
+| binary | 19.7% |
+| diagnostic (true values) | 54.5% |
+| noisy_hard (injected, 50% wrong) | 30.3% |
+| llm_diag (one reviewer) | 31.8% |
+| llm_diag_vote2 (two reviewers) | 31.8% |
+
+- The reviewer is right on only **33%** of reports (101/306), i.e. *noisier* than the injected 50% corruption. Requiring two reviewers to agree cuts wrong-values-stated-as-fact from 67% to 41% of reports.
+- **N1** (beats restart): not supported so far (+9.1 points, n.s.). **N2** (worse than true diagnoses): **holds** (−22.7 points, Holm p = 0.008). **N3** (vote beats one reviewer): not supported so far (+0.0 points).
+
+**Interim reading.** A model diagnosing its own failing code without the answer is a poor diagnoser (about a third right), and at that error rate its "diagnoses" are worth little more than a restart, consistent with §27, where diagnosis errors above about 30–50% erased most of the benefit of acting on them. The agreement filter removes many wrong values but, so far, without improving repair success: when two weak reviewers disagree, the coder is left with little usable information either way.
