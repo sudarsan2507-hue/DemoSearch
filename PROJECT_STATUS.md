@@ -561,3 +561,23 @@ Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **8
 - **W4** (goal-test inflation): **holds**. 84–96% "success" vs 24–31% committed Hits@1.
 
 **Reading.** Two of §22's three central findings replicate on real questions: search width is irrelevant once a few hypotheses are kept, and the verifier is the bottleneck by a wide margin. The third does not. Naively concatenating relation names into one "path" sentence helps on MetaQA (§24) but hurts on WebQSP, where Freebase relation names are long and technical and the agent must also choose between 1- and 2-hop paths. So hop-blindness is the dominant error in the synthetic task, but *path-text scoring is not a universal fix*. Making verifiers hop-aware needs a better mechanism (question decomposition, learned path scorers, LLM judges), which is a fair limitation and open direction.
+
+## 33. LLM follow-ups: vote2/verify on gpt-oss, and a naturally noisy reviewer (`llm_feedback_experiment.py` conditions `noisy_vote2`, `noisy_verify`, `llm_diag`, `llm_diag_vote2`; `results/v2/llm_feedback_followup_summary.txt`)
+
+### 33a. vote2 and verify on the gpt-oss models (final)
+
+§29's vote2/verify results came from qwen only. Same 73 / 75 initially failing problems, same protocol (success on hidden tests within 3 calls):
+
+| Condition | gpt-oss-120b | gpt-oss-20b | (qwen, §29) |
+|---|---|---|---|
+| restart | 20.5% | 20.0% | 22.8% |
+| diagnostic | 68.5% | 56.0% | 57.0% |
+| noisy_hard (corrupted, as fact) | 26.0% | 24.0% | 32.9% |
+| noisy_soft (corrupted, flagged) | 45.2% | 29.3% | 39.2% |
+| **noisy_vote2** | **47.9%** | **36.0%** | **49.4%** |
+| noisy_verify | 23.3% | 21.3% | 40.5% |
+
+- **L6 (vote2 beats corrupted-as-fact) replicates in direction on all three models**: +21.9 points on gpt-oss-120b (Holm p = 0.009), +12.0 on gpt-oss-20b (CI excludes 0, Holm p = 0.15), +16.5 on qwen (p = 0.018). vote2 is the best way of handling unreliable diagnoses on every model.
+- **L7 (verify beats corrupted-as-fact) fails on all three**: −2.7, −2.7 and +7.6 points, none significant. On the gpt-oss models, asking the model to judge each report itself performs no better than a blind restart.
+
+**Reading.** Across three models the pattern from §27/§30 holds for LLM agents too: filtering evidence *before* it reaches the agent (requiring two independent checkers to agree) reliably recovers much of the value of clean diagnoses, while asking the agent to be careful does not.
