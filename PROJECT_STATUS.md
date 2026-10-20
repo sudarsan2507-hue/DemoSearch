@@ -520,3 +520,24 @@ Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **8
 **Reading.** Soft backjumping is the best way of acting on failure diagnoses found in this project: identical to classic backjumping when diagnoses are right, complete when they are wrong, never significantly worse than ignoring diagnoses in any of 80 tested cells, better than hard pruning in all 80, and better than the Bayesian update wherever they differ. It needs no estimate of the diagnosis error rate. The vote refinement, which helped hard pruning in §27, *hurts* here: once deferral already makes wrong diagnoses cheap, waiting for a second one only throws away the value of correct first diagnoses. DFS+defer vs vote2 was not among the pre-registered tests; numerically defer is ≥ vote2 in every reported cell.
 
 **Limitations.** Same synthetic environment as §23/§27 (uniform diagnosis errors). Sudoku's own diagnoses are exact (§28), where defer ≡ hard by S1; §31 tests deferral on Sudoku with noisy diagnoses. The LLM analogue of "defer" is not obvious, since an LLM's context cannot simply postpone a hypothesis.
+
+## 31. Soft backjumping on a real task: Sudoku with noisy diagnoses (`fags/sudoku_env.py` `diagnosis_error`, `sudoku_noisy_experiment.py`, `results/v2/sudoku_noisy*`)
+
+**Why.** §30's soft backjumping (defer the diagnosed branch instead of deleting it) was only tested on synthetic trees. Here the search trees, verifier (least-constraining value) and failures are real Sudoku (§28). With probability ε the culprit handed to the search is replaced by a uniformly random *other* ancestor of the failure, which may lie on the solution path. The environment's own conflict-set bookkeeping stays exact; only what the search is told is corrupted.
+
+**Setup.** The same 295 puzzles as §28, both orderings (MRV, static), DFS and best-first-mean, each with no diagnosis, hard pruning, vote2 and defer, at ε ∈ {0.1, 0.3, 0.5} (ε = 0 is §28 itself, where defer ≡ hard). Budget 20,000 expansions; per-puzzle paired tests, Holm over all 48 tests. Runtime 1 h 49 min.
+
+| Ordering | Search | No diagnosis | ε | Hard | Vote2 | **Defer** |
+|---|---|---|---|---|---|---|
+| MRV | DFS | 88.8% | 0.1 / 0.3 / 0.5 | 46.8 / 26.4 / 21.0% | 74.2 / 49.8 / 42.4% | **92.9 / 92.5 / 92.9%** |
+| MRV | BestFirst-mean | 88.1% | 0.1 / 0.3 / 0.5 | 44.7 / 29.2 / 20.0% | 74.9 / 51.2 / 42.7% | **93.6 / 93.6 / 93.9%** |
+| static | DFS | 37.3% | 0.1 / 0.3 / 0.5 | 14.6 / 8.1 / 4.1% | 25.1 / 13.9 / 7.1% | **42.7 / 41.7 / 38.3%** |
+| static | BestFirst-mean | 37.6% | 0.1 / 0.3 / 0.5 | 15.3 / 9.2 / 5.1% | 27.5 / 12.9 / 8.1% | **41.0 / 38.0 / 36.6%** |
+
+**Pre-registered hypotheses — all hold** (12 cells each):
+- **T1** (hard pruning on noisy diagnoses ends up worse than no diagnosis): **12/12**, by 22–68 points (Holm p ≤ 9e-11).
+- **T2** (defer is never significantly worse than no diagnosis): **holds in 12/12**; it is significantly *better* in 3 (best-first + MRV, +5.4 to +5.8 points).
+- **T3** (defer beats hard pruning): **12/12**, by 26–74 points.
+- **T4** (exploratory, defer vs vote2): **defer wins 12/12**, by 14–51 points.
+
+**Reading.** On a real task the picture from §30 is, if anything, sharper. Classic backjumping (hard pruning) collapses as soon as some diagnoses are wrong, because one wrong diagnosis can delete the solution. The vote rule softens that but still deletes. Deferral keeps the full benefit of correct diagnoses and turns a wrong one into a delay, so with MRV it stays at about 93% even when half the diagnoses are wrong, above the 88% of ignoring diagnoses altogether.
