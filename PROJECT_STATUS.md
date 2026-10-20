@@ -541,3 +541,23 @@ Example (d′ = 0.5, K = 5, ρ = 0.5, success @ 100): at ε = 0.3, DFS+defer **8
 - **T4** (exploratory, defer vs vote2): **defer wins 12/12**, by 14–51 points.
 
 **Reading.** On a real task the picture from §30 is, if anything, sharper. Classic backjumping (hard pruning) collapses as soon as some diagnoses are wrong, because one wrong diagnosis can delete the solution. The vote rule softens that but still deletes. Deferral keeps the full benefit of correct diagnoses and turns a wrong one into a delay, so with MRV it stays at about 93% even when half the diagnoses are wrong, above the 88% of ignoring diagnoses altogether.
+
+## 32. Second KGQA dataset: WebQSP with real BGE verifiers (`fags/webqsp.py`, `webqsp_experiment.py`, `results/v2/webqsp_*`)
+
+**Why.** §24's MetaQA check had too few question types for significance, and MetaQA's relations are clean and type-constrained. WebQSP is real user questions over Freebase. The RoG release (`rmanluo/RoG-webqsp`, data git-ignored in `data/webqsp/`) ships each test question with its own subgraph (median about 4,400 triples).
+
+**Setup.** 500 random test questions (213 distinct oracle relation paths). Search over directed relation paths of up to 2 hops from the topic entities. Unlike MetaQA **the hop count is not given**: the agent commits to whichever 1- or 2-hop path scores best. Verifiers are BGE (`bge-small-en-v1.5`): relation-level (hop-blind; each hop scored alone, ranked by mean) and path-level (the whole partial path's text scored against the question). Freebase relation ids are turned into text from their last two segments. Exhaustive path-level scoring was too expensive (thousands of 2-hop paths per question), so beam-32 is the near-exhaustive reference. The oracle is the best executable path by F1. Expected Hits@1 against the answer set; tests clustered on oracle path, Holm. Runtime 18 min.
+
+| Method | Hits@1 | Legacy goal-test "success" |
+|---|---|---|
+| oracle (best path by F1) | 85.5% | — |
+| rel-greedy / beam-3 / 8 / 32 | 29.5 / 30.1 / 30.3 / 30.7% | 84–96% |
+| path-greedy / beam-3 / 8 / 32 | 24.4 / 23.6 / 23.8 / 24.6% | 84–96% |
+
+**Pre-registered hypotheses:**
+- **W1** (search saturates): **holds**. Greedy and beam-32 differ by 0.2 points (path) and 1.2 points (relation).
+- **W2** (hop-aware beats hop-blind): **not supported; the direction reverses**. Path-level is 5–6.5 points *worse* at every width (CIs exclude 0, Holm p = 0.08–0.12).
+- **W3** (the verifier is the ceiling): **holds strongly**. Oracle vs path-beam-32: +60.9 points (p = 4e-13).
+- **W4** (goal-test inflation): **holds**. 84–96% "success" vs 24–31% committed Hits@1.
+
+**Reading.** Two of §22's three central findings replicate on real questions: search width is irrelevant once a few hypotheses are kept, and the verifier is the bottleneck by a wide margin. The third does not. Naively concatenating relation names into one "path" sentence helps on MetaQA (§24) but hurts on WebQSP, where Freebase relation names are long and technical and the agent must also choose between 1- and 2-hop paths. So hop-blindness is the dominant error in the synthetic task, but *path-text scoring is not a universal fix*. Making verifiers hop-aware needs a better mechanism (question decomposition, learned path scorers, LLM judges), which is a fair limitation and open direction.
