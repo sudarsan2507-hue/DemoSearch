@@ -1,6 +1,7 @@
 """Builds the four README figures in docs/figures/ from the result files in
-results/v2/. Each figure is a portrait, two-part summary of one finding:
-a headline view plus a supporting view. Rerun after any experiment rerun."""
+results/v2/, in a conventional paper style: serif type, boxed axes, panel
+labels (a)/(b), boxed legends, distinct markers per series, no titles inside
+the image (the captions live in the README). Rerun after any experiment rerun."""
 
 from __future__ import annotations
 
@@ -22,111 +23,90 @@ RES = os.path.join(ROOT, "results", "v2")
 OUT = os.path.join(ROOT, "docs", "figures")
 os.makedirs(OUT, exist_ok=True)
 
-# Reference palette (dataviz skill), light mode. Slots 1-4 validated as a set
-# for adjacent-pair use; the lighter slots always carry direct labels.
-S1, S2, S3, S4 = "#2a78d6", "#eb6834", "#1baf7a", "#eda100"
-INK, INK2, MUTED, GRID, AXIS, SURF = "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7", "#fcfcfb"
-NEUTRAL = "#b9b7ae"  # baseline conditions
+# Colour-blind-safe categorical colours (validated as a set); every series also
+# gets its own marker and the legend names it, so colour is never needed alone.
+C1, C2, C3, C4 = "#2a78d6", "#eb6834", "#1baf7a", "#eda100"
+GRAY = "#9a9a9a"
+MARKERS = ["o", "s", "^", "D"]
 plt.rcParams.update({
-    "font.family": ["Segoe UI", "DejaVu Sans"], "font.size": 9.5, "text.color": INK,
-    "axes.edgecolor": AXIS, "axes.labelcolor": INK2, "xtick.color": MUTED, "ytick.color": MUTED,
-    "axes.facecolor": SURF, "figure.facecolor": SURF, "axes.spines.top": False, "axes.spines.right": False,
-    "axes.grid": True, "grid.color": GRID, "grid.linewidth": 0.8, "axes.axisbelow": True,
-    "legend.frameon": False, "savefig.dpi": 170, "savefig.bbox": "tight",
+    "font.family": "serif", "font.serif": ["Times New Roman", "DejaVu Serif"], "mathtext.fontset": "stix",
+    "font.size": 10, "axes.labelsize": 10, "xtick.labelsize": 9, "ytick.labelsize": 9, "legend.fontsize": 8.5,
+    "axes.linewidth": 0.8, "axes.edgecolor": "black", "axes.facecolor": "white", "figure.facecolor": "white",
+    "xtick.direction": "in", "ytick.direction": "in", "xtick.top": True, "ytick.right": True,
+    "xtick.major.width": 0.8, "ytick.major.width": 0.8,
+    "axes.grid": True, "grid.color": "#d9d9d9", "grid.linestyle": ":", "grid.linewidth": 0.6, "axes.axisbelow": True,
+    "legend.frameon": True, "legend.edgecolor": "black", "legend.fancybox": False, "legend.framealpha": 1.0,
+    "lines.linewidth": 1.4, "lines.markersize": 5, "savefig.dpi": 200, "savefig.bbox": "tight",
 })
-PORTRAIT = (6.2, 8.4)
+PORTRAIT = (4.6, 6.6)
 
 
-def header(fig, title, subtitle):
-    fig.text(0.02, 0.985, title, fontsize=13, fontweight="bold", color=INK, va="top")
-    fig.text(0.02, 0.952, subtitle, fontsize=9.5, color=INK2, va="top")
+def label(ax, letter):
+    ax.text(-0.14, 1.04, f"({letter})", transform=ax.transAxes, fontsize=11, fontweight="bold", va="bottom")
 
 
-def panel_title(ax, letter, text):
-    ax.set_title(f"{letter}  {text}", loc="left", fontsize=10.5, fontweight="bold", color=INK, pad=8)
-
-
-def footnote(fig, text):
-    fig.text(0.02, 0.012, text, fontsize=8, color=MUTED, va="bottom", wrap=True)
-
-
-def end_label(ax, x, y, text, color=INK2, dy=0):
-    ax.annotate(text, (x, y), xytext=(7, dy), textcoords="offset points", va="center", fontsize=8.5, color=color)
-
-
-# 1. Failure delay: diagnosis gain grows with how late mistakes surface.
+# Figure 1. Diagnosis gain vs failure delay.
 def fig_delay():
     succ = defaultdict(dict)
     for r in csv.DictReader(open(os.path.join(RES, "failure_informativeness.csv"), encoding="utf-8")):
         if r["rho"] == "1.0":
             succ[(float(r["d_prime"]), int(r["max_delay"]))][r["method"]] = float(r["success@100"])
     ks = list(range(6))
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.45})
-    header(fig, "Failure diagnosis pays off when mistakes surface late",
-           "Synthetic search trees: success within 100 expansions, with vs without diagnosis (§23)")
-    for d, color in zip((0.5, 1.0, 2.0), (S1, S2, S3)):
-        g = [100 * (succ[(d, k)]["DFS+diag"] - succ[(d, k)]["DFS"]) for k in ks]
-        a1.plot(ks, g, color=color, lw=2, marker="o", ms=4)
-        end_label(a1, ks[-1], g[-1], f"d′ = {d:g}   +{g[-1]:.0f}")
-    panel_title(a1, "A", "Gain for depth-first search, by verifier strength d′")
-    a1.set_ylabel("success gain (points)")
-    a1.text(0.02, 0.93, "weaker verifier → bigger gain", transform=a1.transAxes, fontsize=8.5, color=INK2)
-    pol = [("DFS", "DFS", S1, 4), ("FAGS-style", "FAGS-style revival", S2, -5), ("BestFirst-mean", "Best-first", S3, -4),
-           ("Posterior", "Bayesian posterior", S4, 0)]
-    for base, label, color, dy in pol:
-        g = [100 * (succ[(1.0, k)][f"{base}+diag"] - succ[(1.0, k)][base]) for k in ks]
-        a2.plot(ks, g, color=color, lw=2, marker="o", ms=4)
-        end_label(a2, ks[-1], g[-1], f"{label}   +{g[-1]:.0f}", dy=dy)
-    panel_title(a2, "B", "Same effect for every search policy (d′ = 1)")
-    a2.set_ylabel("success gain (points)")
-    for ax in (a1, a2):
-        ax.set_xlim(-0.2, 7.9)
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.38})
+    for (d, color), m in zip(zip((0.5, 1.0, 2.0), (C1, C2, C3)), MARKERS):
+        a1.plot(ks, [100 * (succ[(d, k)]["DFS+diag"] - succ[(d, k)]["DFS"]) for k in ks],
+                color=color, marker=m, label=f"$d'={d:g}$")
+    a1.legend(title="Verifier strength", loc="upper left", title_fontsize=8.5)
+    pol = [("DFS", "Depth-first"), ("FAGS-style", "FAGS-style revival"), ("BestFirst-mean", "Best-first"),
+           ("Posterior", "Bayesian posterior")]
+    for (base, name), color, m in zip(pol, (C1, C2, C3, C4), MARKERS):
+        a2.plot(ks, [100 * (succ[(1.0, k)][f"{base}+diag"] - succ[(1.0, k)][base]) for k in ks],
+                color=color, marker=m, label=name)
+    a2.legend(title="Search policy ($d'=1$)", loc="upper left", title_fontsize=8.5)
+    for ax, letter in ((a1, "a"), (a2, "b")):
         ax.set_xticks(ks)
-        ax.set_xlabel("steps between a mistake and the dead end it causes")
-    footnote(fig, "300 trees per point; every failure names its cause (ρ = 1). Gains at delay ≤ 1 are exactly 0: "
-                  "an immediate failure already pinpoints the mistake.")
+        ax.set_xlim(-0.3, 5.3)
+        ax.set_ylim(-4, 75)
+        ax.set_xlabel("Failure delay $K$ (steps from mistake to dead end)")
+        ax.set_ylabel("Success gain from diagnosis (pp)")
+        label(ax, letter)
     fig.savefig(os.path.join(OUT, "diagnosis_vs_delay.png"))
     plt.close(fig)
 
 
-# 2. LLM code repair: small multiples, one panel per model, with 95% CIs.
+# Figure 2. LLM code repair by feedback type, one panel per model.
 def fig_llm():
-    conds = [("restart", "Fresh retry", NEUTRAL), ("binary", '"It failed"', NEUTRAL),
-             ("diagnostic", "Exact diagnosis", S1),
-             ("noisy_hard", "50%-wrong diagnosis, as fact", S2), ("noisy_soft", "…flagged as unreliable", S2),
-             ("noisy_verify", "…model told to verify", S2), ("noisy_vote2", "…two checkers must agree", S2)]
+    conds = [("restart", "Fresh retry", GRAY), ("binary", "Failure signal only", GRAY),
+             ("diagnostic", "Exact diagnosis", C1),
+             ("noisy_hard", "Noisy diagnosis (as fact)", C2), ("noisy_soft", "Noisy, flagged unreliable", C2),
+             ("noisy_verify", "Noisy, model verifies", C2), ("noisy_vote2", "Noisy, two checkers agree", C2)]
     models = ["qwen3.8-27b", "gpt-oss-120b", "gpt-oss-20b"]
-    fig, axes = plt.subplots(3, 1, figsize=(6.2, 9.4), sharex=True, gridspec_kw={"hspace": 0.35})
-    header(fig, "LLMs repair code when told why it failed",
-           "MBPP+ problems whose first attempt failed; success on hidden tests within 3 LLM calls (§29, §33a)")
-    for ax, tag in zip(axes, models):
+    fig, axes = plt.subplots(3, 1, figsize=(4.6, 8.2), sharex=True, gridspec_kw={"hspace": 0.32})
+    for ax, tag, letter in zip(axes, models, "abc"):
         runs = defaultdict(dict)
         for line in open(os.path.join(RES, f"llm_feedback_runs_{tag}_v2.jsonl"), encoding="utf-8"):
             r = json.loads(line)
             runs[r["task_id"]][r["condition"]] = r
         done = sorted(t for t, d in runs.items() if all(c in d for c, _, _ in conds))
-        y = np.arange(len(conds))
-        for i, (c, label, color) in enumerate(conds):
+        for i, (c, _, color) in enumerate(conds):
             xs = [int(submitted(runs[t][c]["attempts"], 3)["hidden_pass"]) for t in done]
             m, lo, hi = (100 * v for v in cluster_bootstrap_ci(xs, done, seed=1))
-            ax.barh(i, m, height=0.62, color=color)
-            ax.errorbar(m, i, xerr=[[m - lo], [hi - m]], fmt="none", ecolor=INK2, elinewidth=1, capsize=2.5)
-            ax.text(hi + 1.2, i, f"{m:.0f}%", va="center", fontsize=8.5, color=INK2)
-        ax.set_yticks(y, [label for _, label, _ in conds], color=INK, fontsize=9)
+            ax.barh(i, m, height=0.65, color=color, edgecolor="black", linewidth=0.5)
+            ax.errorbar(m, i, xerr=[[m - lo], [hi - m]], fmt="none", ecolor="black", elinewidth=0.8, capsize=2)
+        ax.set_yticks(range(len(conds)), [name for _, name, _ in conds])
         ax.invert_yaxis()
         ax.grid(axis="y", visible=False)
-        ax.set_xlim(0, 92)
-        panel_title(ax, "", f"{tag}   (n = {len(done)} problems)")
-    axes[-1].set_xlabel("% of initially failing problems solved   (bars: mean, whiskers: 95% bootstrap CI)")
-    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for c in (NEUTRAL, S1, S2)]
-    fig.legend(handles, ["no diagnosis", "true diagnosis", "unreliable diagnosis (50% wrong)"],
-               loc="upper left", bbox_to_anchor=(0.02, 0.935), ncol=3, fontsize=8.5)
-    footnote(fig, "Visible tests give the feedback; success is judged only on held-out EvalPlus inputs the model never sees.")
+        ax.set_xlim(0, 85)
+        ax.tick_params(axis="y", length=0)
+        ax.text(0.98, 0.05, f"{tag}\n$n={len(done)}$", transform=ax.transAxes, ha="right", va="bottom", fontsize=8.5,
+                bbox={"boxstyle": "square,pad=0.3", "facecolor": "white", "edgecolor": "black", "linewidth": 0.6})
+        label(ax, letter)
+    axes[-1].set_xlabel("Problems solved on held-out tests (%)")
     fig.savefig(os.path.join(OUT, "llm_feedback.png"))
     plt.close(fig)
 
 
-# 3. Soft backjumping on real Sudoku with noisy diagnoses, both orderings.
+# Figure 3. Acting on noisy diagnoses in Sudoku, two variable orderings.
 def fig_sudoku():
     rows = list(csv.DictReader(open(os.path.join(RES, "sudoku_noisy.csv"), encoding="utf-8")))
     key = [k for k in rows[0] if k.startswith("success@")][0]
@@ -135,33 +115,26 @@ def fig_sudoku():
         return 100 * float(next(r[key] for r in rows if r["ordering"] == order and r["search"] == "DFS"
                                  and r["mode"] == mode and float(r["eps"]) == eps))
     eps = [0.1, 0.3, 0.5]
-    fig, axes = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.45})
-    header(fig, "Defer, don't delete: acting on unreliable diagnoses",
-           "295 hard Sudoku puzzles, depth-first search, 20,000-step budget (§31)")
-    for ax, order, letter, text in ((axes[0], "mrv", "A", "Fail-first ordering (mistakes surface quickly)"),
-                                    (axes[1], "static", "B", "Row-by-row ordering (mistakes surface late)")):
-        none = get(order, "none", 0.0)
-        ax.axhline(none, color=MUTED, lw=1.4, ls=(0, (4, 3)))
-        ax.text(0.1, none - 2.5, f"ignore diagnoses  {none:.0f}%", ha="left", va="top", fontsize=8.5, color=MUTED)
-        nudge = {"mrv": {"defer": 0, "vote2": 0, "hard": 0}, "static": {"defer": 7, "vote2": 6, "hard": -6}}[order]
-        for mode, label, color in (("defer", "Defer (soft backjumping)", S1), ("vote2", "Prune if two agree", S2),
-                                   ("hard", "Prune immediately", S3)):
-            ys = [get(order, mode, e) for e in eps]
-            ax.plot(eps, ys, color=color, lw=2, marker="o", ms=4)
-            end_label(ax, eps[-1], ys[-1], f"{label}  {ys[-1]:.0f}%", dy=nudge[mode])
-        panel_title(ax, letter, text)
-        ax.set_xticks(eps, ["10%", "30%", "50%"])
-        ax.set_xlim(0.07, 0.8)
+    fig, axes = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.38})
+    for ax, order, letter, name in ((axes[0], "mrv", "a", "MRV ordering"), (axes[1], "static", "b", "Static ordering")):
+        ax.axhline(get(order, "none", 0.0), color="black", lw=1.0, ls="--", label="No diagnosis")
+        for (mode, lab), color, m in zip((("defer", "Defer (soft backjumping)"), ("vote2", "Prune after two votes"),
+                                           ("hard", "Prune immediately")), (C1, C2, C3), MARKERS):
+            ax.plot([100 * e for e in eps], [get(order, mode, e) for e in eps], color=color, marker=m, label=lab)
+        ax.set_xticks([10, 30, 50])
+        ax.set_xlim(5, 55)
         ax.set_ylim(0, 100)
-        ax.set_ylabel("puzzles solved (%)")
-        ax.set_xlabel("share of failure diagnoses that are wrong")
-    footnote(fig, "A wrong diagnosis blames a random earlier move, possibly one on the solution path. Defer beat both "
-                  "pruning rules in all 12 tested conditions and was never worse than ignoring diagnoses.")
+        ax.set_xlabel(r"Diagnosis error rate $\epsilon$ (%)")
+        ax.set_ylabel("Puzzles solved (%)")
+        ax.text(0.02, 0.04 if order == "mrv" else 0.95, name, transform=ax.transAxes, ha="left",
+                va="bottom" if order == "mrv" else "top", fontsize=9, style="italic")
+        label(ax, letter)
+    axes[1].legend(loc="upper right")
     fig.savefig(os.path.join(OUT, "sudoku_soft_backjumping.png"))
     plt.close(fig)
 
 
-# 4. KGQA: the verifier is the ceiling, and search width doesn't matter.
+# Figure 4. Knowledge-graph QA: verifier ceiling and beam-width sweep.
 def fig_kgqa():
     syn = {r["beam_width"]: 100 * float(r["hits1_answer_set"])
            for r in csv.DictReader(open(os.path.join(RES, "error_decomposition.csv"), encoding="utf-8"))
@@ -172,47 +145,43 @@ def fig_kgqa():
             syn_goal = float(line.split("legacy goal-test beam-8 acc=")[1].rstrip("%\n"))
     mq = {r["method"]: r for r in csv.DictReader(open(os.path.join(RES, "metaqa_results.csv"), encoding="utf-8")) if r["hops"] == "3"}
     wq = {r["method"]: r for r in csv.DictReader(open(os.path.join(RES, "webqsp_results.csv"), encoding="utf-8"))}
-    groups = ["Synthetic KG", "MetaQA 3-hop", "WebQSP"]
+    groups = ["Synthetic", "MetaQA (3-hop)", "WebQSP"]
     search = [syn["8"], 100 * float(mq["path-beam-8"]["hits1"]), 100 * float(wq["rel-beam-32"]["hits1"])]
     oracle = [100.0, 100 * float(mq["oracle"]["hits1"]), 100 * float(wq["oracle"]["hits1"])]
     goal = [syn_goal, 100 * float(mq["path-beam-8"]["goal_test_rate"]), 100 * float(wq["rel-beam-32"]["goal_test_rate"])]
 
-    fig, (a1, a2) = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.55})
-    header(fig, "In knowledge-graph QA the verifier is the bottleneck",
-           "Same relation-path search scored three ways, on three datasets (§22, §24, §32)")
+    fig, (a1, a2) = plt.subplots(2, 1, figsize=PORTRAIT, gridspec_kw={"hspace": 0.38})
     x = np.arange(len(groups))
-    w = 0.25
-    for i, (vals, label, color) in enumerate(((search, "Search's committed answer", S1),
-                                               (oracle, "Best possible path", S2),
-                                               (goal, "Old 'touched the answer' score", S3))):
-        bars = a1.bar(x + (i - 1) * (w + 0.02), vals, width=w, color=color, label=label)
-        for b, v in zip(bars, vals):
-            a1.text(b.get_x() + b.get_width() / 2, v + 1.5, f"{v:.0f}", ha="center", fontsize=8, color=INK2)
-    a1.set_xticks(x, groups, color=INK)
+    w = 0.26
+    for i, (vals, name, color, hatch) in enumerate(((search, "Committed answer", C1, ""),
+                                                     (oracle, "Oracle path", C2, "//"),
+                                                     (goal, "Goal-test score", C3, ".."))):
+        a1.bar(x + (i - 1) * w, vals, width=w, color=color, edgecolor="black", linewidth=0.5, hatch=hatch, label=name)
+    a1.set_xticks(x, groups)
     a1.set_ylim(0, 115)
-    a1.set_ylabel("accuracy (%)")
+    a1.set_ylabel("Accuracy (%)")
     a1.grid(axis="x", visible=False)
-    a1.legend(loc="upper center", bbox_to_anchor=(0.5, -0.1), ncol=3, fontsize=8)
-    panel_title(a1, "A", "Large gap to the best path; the old score hid it")
+    a1.tick_params(axis="x", length=0)
+    a1.legend(loc="upper center", ncol=3, fontsize=7.8, handlelength=1.4, columnspacing=0.9)
+    label(a1, "a")
 
-    series = [("Synthetic KG", [(1, syn["1"]), (3, syn["3"]), (8, syn["8"]), (64, syn["64"])], S1),
-              ("MetaQA 3-hop", [(1, 100 * float(mq["path-greedy"]["hits1"])), (3, 100 * float(mq["path-beam-3"]["hits1"])),
-                                (8, 100 * float(mq["path-beam-8"]["hits1"])), (18, 100 * float(mq["path-beam-18"]["hits1"]))], S2),
+    series = [("Synthetic", [(1, syn["1"]), (3, syn["3"]), (8, syn["8"]), (64, syn["64"])], C1),
+              ("MetaQA (3-hop)", [(1, 100 * float(mq["path-greedy"]["hits1"])), (3, 100 * float(mq["path-beam-3"]["hits1"])),
+                                  (8, 100 * float(mq["path-beam-8"]["hits1"])), (18, 100 * float(mq["path-beam-18"]["hits1"]))], C2),
               ("WebQSP", [(1, 100 * float(wq["rel-greedy"]["hits1"])), (3, 100 * float(wq["rel-beam-3"]["hits1"])),
-                          (8, 100 * float(wq["rel-beam-8"]["hits1"])), (32, 100 * float(wq["rel-beam-32"]["hits1"]))], S3)]
-    for (name, pts, color), dy in zip(series, (-6, 0, 6)):
+                          (8, 100 * float(wq["rel-beam-8"]["hits1"])), (32, 100 * float(wq["rel-beam-32"]["hits1"]))], C3)]
+    for (name, pts, color), m in zip(series, MARKERS):
         xs, ys = zip(*pts)
-        a2.plot(xs, ys, color=color, lw=2, marker="o", ms=4)
-        end_label(a2, xs[-1], ys[-1], f"{name}  {ys[-1]:.0f}%", dy=dy)
+        a2.plot(xs, ys, color=color, marker=m, label=name)
     a2.set_xscale("log")
     a2.set_xticks([1, 3, 8, 18, 32, 64], ["1", "3", "8", "18", "32", "64"])
-    a2.set_xlim(0.8, 260)
+    a2.minorticks_off()
+    a2.set_xlim(0.8, 80)
     a2.set_ylim(0, 60)
-    a2.set_xlabel("beam width (number of hypotheses kept; 1 = greedy)")
-    a2.set_ylabel("accuracy (%)")
-    panel_title(a2, "B", "Searching wider doesn't help past ~3 hypotheses")
-    footnote(fig, "Synthetic: rule-based verifier, Medium graph, 1,500 queries. MetaQA (1,000 questions) and WebQSP "
-                  "(500 questions): BGE embedding verifiers. Accuracy = committed answer in the gold answer set.")
+    a2.set_xlabel("Beam width")
+    a2.set_ylabel("Accuracy (%)")
+    a2.legend(loc="lower right")
+    label(a2, "b")
     fig.savefig(os.path.join(OUT, "kgqa_verifier_ceiling.png"))
     plt.close(fig)
 
