@@ -50,7 +50,7 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 
 ## Day 8 — 2026-06-23
 
-- [x] 23. Add `DiversityMemory` to `fags/memory.py` — revives the highest-scoring rejected candidate that is NOT the same as/confusable with/highly coherent with the winning relation (the user's proposed fix for §6's finding that targeted revival loses to dumb random restarts); threaded an additive `winner_relation` param through `FailureMemory.store()` and `failure_search.py`'s call site
+- [x] 23. Add `DiversityMemory` to `fags/memory.py` — revives the highest-scoring rejected candidate that is NOT the same as/confusable with/highly coherent with the winning relation (the user's proposed fix for Section 6's finding that targeted revival loses to dumb random restarts); threaded an additive `winner_relation` param through `FailureMemory.store()` and `failure_search.py`'s call site
 - [x] 24. Add Diversity Memory experiment (`diversity_memory_experiment.py`, `results/diversity_memory_*`) — tests it against the budget-matched control across all 3 graph sizes; finding: mechanism fires on ~99% of opportunities but is statistically indistinguishable from plain Top1Memory everywhere, and the Large-graph loss vs the control becomes significant where it wasn't before
 - [x] 25. Update `PROJECT_STATUS.md` with the Diversity Memory finding and final revised takeaway
 
@@ -78,8 +78,8 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 
 ## Day 14 — 2026-06-27
 
-- [x] 36. Add `score_aggregation` (sum vs mean) and `diversity_penalty_weight` (soft per-parent penalty) to `fags/beam_search.py` — two genuinely different top-K ranking rules, vs §12's hard cap which only constrained the existing rule
-- [x] 37. Add beam search top-K ranking variants experiment (`beam_search_topk_variants_experiment.py`, `results/beam_search_topk_variants_*`) — widths {5,8} x diversity penalties {0,0.05,0.1,0.2} x aggregation {mean,sum} across all 3 graph sizes; finding: sum aggregation is a clean null (0/6), soft diversity penalty just replicates §12's hard-cap pattern (3 wins/2 losses, same Small/Medium-helps-Large-hurts split), combined washes out to 0/18 — fourth/fifth refinement attempt to fail to beat plain beam search
+- [x] 36. Add `score_aggregation` (sum vs mean) and `diversity_penalty_weight` (soft per-parent penalty) to `fags/beam_search.py` — two genuinely different top-K ranking rules, vs Section 12's hard cap which only constrained the existing rule
+- [x] 37. Add beam search top-K ranking variants experiment (`beam_search_topk_variants_experiment.py`, `results/beam_search_topk_variants_*`) — widths {5,8} x diversity penalties {0,0.05,0.1,0.2} x aggregation {mean,sum} across all 3 graph sizes; finding: sum aggregation is a clean null (0/6), soft diversity penalty just replicates Section 12's hard-cap pattern (3 wins/2 losses, same Small/Medium-helps-Large-hurts split), combined washes out to 0/18 — fourth/fifth refinement attempt to fail to beat plain beam search
 - [x] 38. Update `PROJECT_STATUS.md` with the top-K ranking-rule variants finding
 
 ## Day 15 — 2026-06-27
@@ -90,19 +90,19 @@ gets its own row here before/when it's committed. Pace target: ~5 commits/day.
 
 ## Day 16 — 2026-06-28
 
-- [x] 42. Add Monte Carlo Tree Search (`fags/mcts_search.py`) — UCB1 selection + greedy rollout + backpropagation, budget-capped by total nodes visited; built to test whether explicit exploration/exploitation balance fixes best-first search's tunnel-vision collapse from §15
+- [x] 42. Add Monte Carlo Tree Search (`fags/mcts_search.py`) — UCB1 selection + greedy rollout + backpropagation, budget-capped by total nodes visited; built to test whether explicit exploration/exploitation balance fixes best-first search's tunnel-vision collapse from Section 15
 - [x] 43. Add MCTS vs beam search experiment (`mcts_search_experiment.py`, `results/mcts_search_*`) — per-query budget-matched comparison across widths {2,3,5,8} x all 3 graph sizes, with best-first shown for reference; **finding: MCTS loses to beam search 10/12 (2 non-significant ties) but completely fixes best-first's collapse (10-15x better than best-first on Large at low budgets)** — confirms the exploration-vs-exploitation theory but still doesn't beat beam search
 - [x] 44. Update `PROJECT_STATUS.md` with the MCTS finding
 
 ## Day 17 — 2026-06-28
 
 - [x] 45. Fix MCTS safety-net scaling bug (`fags/mcts_search.py`) before testing larger node budgets — max_simulations was scaling UP with node_budget, backwards; could spin 128,000+ wasted simulations once budget exceeds a graph's reachable size. Replaced with a stale-count detector (bails once the reachable space stops growing, independent of budget size) plus a fixed backstop
-- [x] 46. Add MCTS-at-large-budgets experiment (`mcts_large_budget_experiment.py`, `results/mcts_large_budget_*`) — sweeps both algorithms up to 1280-node budgets on Medium/Large graphs; caught and corrected a measurement pitfall (beam was only swept to width=60/~186 nodes while MCTS reached ~372, which would have overstated the gap as +56% instead of the true +15.40%) by extending beam's sweep to matched cost before reporting; **finding: MCTS does catch up to and pass beam search, but only at ~5-10x larger budgets (200+ nodes) than anything compared in §16 (5-40 nodes)**
+- [x] 46. Add MCTS-at-large-budgets experiment (`mcts_large_budget_experiment.py`, `results/mcts_large_budget_*`) — sweeps both algorithms up to 1280-node budgets on Medium/Large graphs; caught and corrected a measurement pitfall (beam was only swept to width=60/~186 nodes while MCTS reached ~372, which would have overstated the gap as +56% instead of the true +15.40%) by extending beam's sweep to matched cost before reporting; **finding: MCTS does catch up to and pass beam search, but only at ~5-10x larger budgets (200+ nodes) than anything compared in Section 16 (5-40 nodes)**
 - [x] 47. Update `PROJECT_STATUS.md` with the corrected MCTS-crossover finding — revises the "beam search undefeated" framing to "undefeated at small/moderate budgets; MCTS wins at large ones"
 
 ## Day 18 — 2026-06-28
 
-- [x] 48. Add beam-seeded MCTS hybrid (`fags/beam_seeded_mcts_search.py`) — spends the first `seed_depth` hops on plain beam-search-style expansion (sealing each round's losers) before handing the remaining budget to standard MCTS starting from the seeded tips, built to test whether removing MCTS's "rediscover diversity" cost closes the §17 crossover gap
+- [x] 48. Add beam-seeded MCTS hybrid (`fags/beam_seeded_mcts_search.py`) — spends the first `seed_depth` hops on plain beam-search-style expansion (sealing each round's losers) before handing the remaining budget to standard MCTS starting from the seeded tips, built to test whether removing MCTS's "rediscover diversity" cost closes the Section 17 crossover gap
 - [x] 49. Fix a node-budget-vs-depth-cap bug in the hybrid before it could be evaluated — seeding was capped by node count, which let it run all the way to max_depth whenever budget was generous, leaving MCTS zero hops of room (measured: 67% of non-immediately-successful seedings hit this). Re-capped by depth instead
 - [x] 50. Add beam-seeded MCTS vs beam search vs pure MCTS experiment (`beam_seeded_mcts_experiment.py`, `results/beam_seeded_mcts_*`) — per-query budget-matched comparison across widths {2,3,5,8,15,25,40} x all 3 graph sizes; **finding: the hybrid never beats plain beam search (0/21), and is at best a wash with pure MCTS (4 wins/7 losses/10 ties)** — beam-seeding did not close the small-budget gap
 - [x] 51. Update `PROJECT_STATUS.md` with the beam-seeded MCTS finding — eighth independent composition/improvement attempt across the project, none have beaten the relevant baseline in its budget regime
