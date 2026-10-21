@@ -22,12 +22,12 @@ All comparisons are paired, with cluster-level tests and Holm correction; hypoth
 
 <table>
   <tr>
-    <td width="50%"><img src="docs/figures/diagnosis_vs_delay.png" alt="Diagnosis gain vs failure delay"><br><sub><b>Fig. 1</b> · Diagnosis gain vs how late mistakes surface, for three verifier strengths (A) and four search policies (B).</sub></td>
-    <td width="50%"><img src="docs/figures/llm_feedback.png" alt="LLM code repair by feedback type"><br><sub><b>Fig. 2</b> · LLM code repair by type of failure feedback, per model, with 95% confidence intervals.</sub></td>
+    <td width="50%" valign="top"><img src="docs/figures/diagnosis_vs_delay.png" alt="Diagnosis gain vs failure delay"><br><sub><b>Figure 1.</b> Gain in success rate from using failure diagnoses, as a function of how many steps separate a mistake from the dead end it causes (synthetic trees, 300 per point, budget 100 expansions). (a) Depth-first search under three verifier strengths <i>d′</i>. (b) Four search policies at <i>d′</i> = 1. The gain is zero when failures surface immediately and grows with the delay (§23).</sub></td>
+    <td width="50%" valign="top"><img src="docs/figures/llm_feedback.png" alt="LLM code repair by feedback type"><br><sub><b>Figure 2.</b> LLM code repair on MBPP+ problems whose first attempt failed: share solved on held-out tests within three LLM calls, by the feedback given after a failure. Gray: no diagnosis; blue: exact diagnosis; orange: diagnoses whose expected values are wrong half the time, handled four ways. Error bars are 95% bootstrap confidence intervals; (a)–(c) are the three models (§29, §33a).</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src="docs/figures/sudoku_soft_backjumping.png" alt="Soft backjumping on Sudoku with noisy diagnoses"><br><sub><b>Fig. 3</b> · Acting on wrong diagnoses in Sudoku: deferring vs two pruning rules, under two variable orderings.</sub></td>
-    <td width="50%"><img src="docs/figures/kgqa_verifier_ceiling.png" alt="Verifier ceiling in knowledge-graph QA"><br><sub><b>Fig. 4</b> · Knowledge-graph QA: the gap to the best path (A) and why wider search doesn't close it (B).</sub></td>
+    <td width="50%" valign="top"><img src="docs/figures/sudoku_soft_backjumping.png" alt="Soft backjumping on Sudoku with noisy diagnoses"><br><sub><b>Figure 3.</b> Depth-first Sudoku search (295 hard puzzles, 20,000-step budget) when a fraction ε of failure diagnoses blame the wrong move. Deferring the blamed branch (soft backjumping) is compared with pruning it immediately or after two agreeing diagnoses; the dashed line ignores diagnoses. (a) MRV ordering, where mistakes surface quickly. (b) Static ordering, where they surface late (§31).</sub></td>
+    <td width="50%" valign="top"><img src="docs/figures/kgqa_verifier_ceiling.png" alt="Verifier ceiling in knowledge-graph QA"><br><sub><b>Figure 4.</b> Knowledge-graph QA on a synthetic graph, MetaQA 3-hop and WebQSP. (a) Accuracy of the search's committed answer, of the best (oracle) relation path, and the inflated "goal-test" score the original code reported. (b) Accuracy against beam width: keeping more than about three hypotheses does not help, so the gap in (a) lies with the verifier, not the search (§22, §24, §32).</sub></td>
   </tr>
 </table>
 
