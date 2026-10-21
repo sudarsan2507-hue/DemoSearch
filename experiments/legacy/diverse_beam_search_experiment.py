@@ -148,7 +148,7 @@ def main():
 
         rf.write("BY GRAPH SIZE\n-------------\n")
         per_size_verdict = {}
-        for size_label in sizes_seen := sorted({r["size_label"] for r in capped_records}, key=lambda s: ["Small", "Medium", "Large"].index(s)):
+        for size_label in (sizes_seen := sorted({r["size_label"] for r in capped_records}, key=lambda s: ["Small", "Medium", "Large"].index(s))):
             rows = [r for r in capped_records if r["size_label"] == size_label]
             wins = sum(1 for r in rows if r["gain_vs_plain"] > 0 and r["p_vs_plain"] < 0.05)
             losses = sum(1 for r in rows if r["gain_vs_plain"] < 0 and r["p_vs_plain"] < 0.05)
