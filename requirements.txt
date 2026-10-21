@@ -2,3 +2,9 @@ numpy>=1.24.0
 matplotlib>=3.7.0
 scipy>=1.10.0
 tabulate>=0.9.0
+# v2 experiments
+pandas>=2.0.0                  # MBPP+, Sudoku and WebQSP data loading
+pyarrow>=14.0.0                # parquet files (MBPP+, WebQSP)
+sentence-transformers>=3.0.0   # BGE verifiers (MetaQA, WebQSP, HybridVerifier)
+groq>=0.9.0                    # LLM code-repair experiments
+python-dotenv>=1.0.0           # reads GROQ_API_KEY from .env
