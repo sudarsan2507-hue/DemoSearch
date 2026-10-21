@@ -35,7 +35,7 @@ import matplotlib.pyplot as plt
 from fags.delayed_failure import DelayedFailureTree, dfs, best_first_mean, posterior_search
 from fags.stats import cluster_paired_test, holm
 
-RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "v2")
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "v2")
 TREES = int(os.environ.get("SB_TREES", 300))
 EPS = [0.0, 0.05, 0.1, 0.2, 0.3, 0.5]
 RHOS = [0.5, 1.0]

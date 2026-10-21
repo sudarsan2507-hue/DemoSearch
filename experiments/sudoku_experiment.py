@@ -36,7 +36,7 @@ from fags.sudoku_env import SudokuTree
 from fags.delayed_failure import dfs, fags_style, best_first_mean, random_restarts
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "sudoku")
 RESULTS_DIR = os.path.join(ROOT, "results", "v2")
 os.makedirs(RESULTS_DIR, exist_ok=True)

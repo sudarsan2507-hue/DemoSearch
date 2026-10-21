@@ -16,9 +16,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 from fags.stats import cluster_bootstrap_ci
-from llm_feedback_analysis import submitted
+from experiments.llm_feedback_analysis import submitted
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RES = os.path.join(ROOT, "results", "v2")
 OUT = os.path.join(ROOT, "docs", "figures")
 os.makedirs(OUT, exist_ok=True)

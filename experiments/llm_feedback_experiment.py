@@ -37,7 +37,7 @@ free-tier token quota (200k tokens/day for gpt-oss models).
 Resumable: run again after a daily quota stop; finished work is skipped and
 LLM calls are cached on disk.
 
-Usage: python llm_feedback_experiment.py [model]   (default qwen/qwen3.8-27b)
+Usage: python -m experiments.llm_feedback_experiment [model]   (default qwen/qwen3.8-27b)
 """
 
 from __future__ import annotations
@@ -55,7 +55,7 @@ import os
 from fags.codegen import load_problems, task_prompt, extract_code, run_split, describe_failures, failure_reports
 from fags.llm import GroqLLM, QuotaExhausted
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 OUT_DIR = ROOT / "results" / "v2"
 MAX_ATTEMPTS = 3
 TEMPERATURE = 0.8

@@ -32,9 +32,9 @@ from fags.beam_search import beam_search
 from fags.best_first_search import best_first_search
 from fags.mcts_search import mcts_search
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
-from budget_matched_control_experiment import random_restart_baseline
+from experiments.legacy.budget_matched_control_experiment import random_restart_baseline
 
-RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "v2")
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "v2")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 SIZES = {"Small": 20, "Medium": 100, "Large": 1000}

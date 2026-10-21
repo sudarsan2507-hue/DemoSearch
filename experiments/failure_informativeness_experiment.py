@@ -28,7 +28,7 @@ from fags.delayed_failure import (
 )
 from fags.stats import cluster_paired_test, holm
 
-RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "v2")
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "v2")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 TREES = int(os.environ.get("FI_TREES", 300))

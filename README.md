@@ -2,7 +2,7 @@
 
 **When does learning from failure help a search agent?**
 
-This started as FAGS (Failure-Aware Graph Search): a knowledge-graph search agent that remembers branches it rejected and revives the best one at a dead end. It grew into a study of failure feedback across synthetic search, Sudoku, two knowledge-graph QA datasets and LLM code repair. Every number below comes from the full research log, [`PROJECT_STATUS.md`](PROJECT_STATUS.md).
+This started as FAGS (Failure-Aware Graph Search): a knowledge-graph search agent that remembers branches it rejected and revives the best one at a dead end. It grew into a study of failure feedback across synthetic search, Sudoku, two knowledge-graph QA datasets and LLM code repair. Every number below comes from the full research log, [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md).
 
 > **Reading the log:** start at **Section 21**. Sections 4–18 were run before a bug in the graph generator was fixed, so their numbers are unreliable; they are kept only as a record of how the project developed.
 
@@ -48,25 +48,40 @@ LLM experiments need a Groq key: copy `.env.example` to `.env` and set `GROQ_API
 | `data/mbppplus/` | `evalplus/mbppplus` |
 | `data/webqsp/` | `rmanluo/RoG-webqsp` |
 
-## Run
+## Repository layout
 
-Each script writes to `results/v2/`; section numbers refer to `PROJECT_STATUS.md`.
-
-```bash
-python revalidation_experiment.py             # Section 21 original claims, re-tested
-python error_decomposition_experiment.py      # Section 22 honest scoring + error breakdown
-python failure_informativeness_experiment.py  # Section 23 failure delay x diagnosis
-python metaqa_experiment.py                   # Section 24 MetaQA
-python noisy_diagnosis_experiment.py          # Section 27 wrong diagnoses
-python sudoku_experiment.py                   # Section 28 Sudoku
-python llm_feedback_experiment.py qwen/qwen3.8-27b && python llm_feedback_analysis.py   # Section 29 LLM repair
-python soft_backjump_experiment.py            # Section 30 soft backjumping
-python sudoku_noisy_experiment.py             # Section 31 Sudoku + wrong diagnoses (~2 h)
-python webqsp_experiment.py                   # Section 32 WebQSP
-python make_readme_figures.py                 # rebuild the figures above
+```
+DemoSearch/
+├── fags/                  core library: graphs, verifiers, search algorithms, environments, statistics
+├── experiments/           current experiments (Sections 21–33 of the log)
+│   └── legacy/            original FAGS experiments (Sections 1–20) and ad-hoc audit scripts
+├── scripts/               figure builder and the long-running LLM loop
+├── docs/                  research log (PROJECT_STATUS.md), commit plan, README figures
+├── results/               experiment outputs; results/v2/ holds the current ones
+├── archive/patches/       one-off code-patching scripts kept for history (do not run)
+└── data/                  downloaded datasets (git-ignored)
 ```
 
-The Section 33 LLM follow-ups add conditions via `LLM_EXTRA_CONDITIONS` (e.g. `noisy_vote2,noisy_verify` or `llm_diag,llm_diag_vote2`). LLM runs resume after quota limits, and every response is cached, so reruns are free.
+## Run
+
+Run everything from the repository root as a module (`python -m …`). Each experiment writes to `results/v2/`; section numbers refer to [`docs/PROJECT_STATUS.md`](docs/PROJECT_STATUS.md).
+
+```bash
+python -m experiments.revalidation_experiment             # Section 21 original claims, re-tested
+python -m experiments.error_decomposition_experiment      # Section 22 honest scoring + error breakdown
+python -m experiments.failure_informativeness_experiment  # Section 23 failure delay x diagnosis
+python -m experiments.metaqa_experiment                   # Section 24 MetaQA
+python -m experiments.noisy_diagnosis_experiment          # Section 27 wrong diagnoses
+python -m experiments.sudoku_experiment                   # Section 28 Sudoku
+python -m experiments.llm_feedback_experiment qwen/qwen3.8-27b   # Section 29 LLM repair
+python -m experiments.llm_feedback_analysis               # Section 29 analysis
+python -m experiments.soft_backjump_experiment            # Section 30 soft backjumping
+python -m experiments.sudoku_noisy_experiment             # Section 31 Sudoku + wrong diagnoses (~2 h)
+python -m experiments.webqsp_experiment                   # Section 32 WebQSP
+python -m scripts.make_readme_figures                     # rebuild the figures above
+```
+
+The Section 33 LLM follow-ups add conditions via `LLM_EXTRA_CONDITIONS` (e.g. `noisy_vote2,noisy_verify` or `llm_diag,llm_diag_vote2`). LLM runs resume after quota limits, and every response is cached, so reruns are free. Legacy experiments run the same way, e.g. `python -m experiments.legacy.beam_search_experiment`.
 
 ## Code
 

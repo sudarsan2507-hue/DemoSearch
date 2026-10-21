@@ -29,7 +29,7 @@ from fags.beam_search import beam_search
 from fags.committed import answer_set, beam_commit, OraclePlanVerifier, HopAwareVerifier
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
 
-RESULTS_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "results", "v2")
+RESULTS_DIR = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "results", "v2")
 os.makedirs(RESULTS_DIR, exist_ok=True)
 
 SIZES = {"Small": 20, "Medium": 100, "Large": 1000}

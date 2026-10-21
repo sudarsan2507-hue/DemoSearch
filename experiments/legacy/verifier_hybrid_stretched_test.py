@@ -118,7 +118,7 @@ def main():
     evaluate_verifier_accuracy(graph, queries, rule_v, "Rule-based Verifier", use_question=True)
     
     # BGE Stretched (no coherence)
-    from verifier_scaling_test import ScaledVerifier
+    from experiments.legacy.verifier_scaling_test import ScaledVerifier
     bge_stretched_kw = ScaledVerifier(scale_mode="stretched", noise_std=0.30, seed=42)
     evaluate_verifier_accuracy(graph, queries, bge_stretched_kw, "BGE Stretched (keywords only, no coherence)", use_question=False)
     

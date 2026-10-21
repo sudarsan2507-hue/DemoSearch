@@ -28,7 +28,7 @@ function Finished {
 
 for ($i = 0; $i -lt 300; $i++) {
     if (Finished) { Add-Content $Log "LOOP: finished"; break }
-    python llm_feedback_experiment.py $Model *>> $Log
+    python -m experiments.llm_feedback_experiment $Model *>> $Log
     if (Finished) { Add-Content $Log "LOOP: finished"; break }
     Start-Sleep -Seconds 1800
 }

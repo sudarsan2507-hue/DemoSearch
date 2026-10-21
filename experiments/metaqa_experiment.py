@@ -26,7 +26,7 @@ import numpy as np
 from fags.metaqa import KB, Embedder, load_questions, beam_paths, all_k_paths, hits1, f1
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DATA = os.path.join(ROOT, "data", "metaqa")
 RESULTS_DIR = os.path.join(ROOT, "results", "v2")
 os.makedirs(RESULTS_DIR, exist_ok=True)

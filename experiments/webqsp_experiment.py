@@ -24,7 +24,7 @@ from fags.webqsp import load_questions, TextEmbedder, beam_paths, all_paths
 from fags.metaqa import hits1, f1
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
 
-ROOT = os.path.dirname(os.path.abspath(__file__))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 RESULTS_DIR = os.path.join(ROOT, "results", "v2")
 N = int(os.environ.get("WEBQSP_N", 500))
 WIDTHS = [1, 3, 8, 32]

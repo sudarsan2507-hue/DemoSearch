@@ -4,6 +4,8 @@ _Analysis compiled from code (`fags/`, top-level scripts), `results/*.csv`, and 
 
 > **⚠ 2026-10-11 correction — read Sections 21–25 first.** Every number in Sections 4–18 was produced by a generator bug that made every 3+ hop gold path contradict itself (the gold path was unreachable in 76–98% of queries), under a protocol that hands the search a perfect goal test, with inconsistent cost accounting across algorithms and per-query tests on pseudo-replicated queries. Section 21 re-validates the core claims on the fixed generator (several reverse), Section 22 replaces the goal-test protocol with commit-to-an-answer and decomposes the error, Section 23 tests *when* learning from failure can help at all (with a theoretical result), and Section 24 checks external validity on MetaQA. Sections 4–18 are kept unchanged below as the historical record; reproduce them with `generate_dataset(..., legacy_evidence_bug=True)`.
 
+> **File locations (2026-10-21 reorganisation).** Scripts are referred to below by file name. They now live in folders and run as modules from the repository root: the experiments of Sections 21–33 are in `experiments/` (e.g. `python -m experiments.sudoku_experiment`), the earlier experiments, `main.py` and the `scratch/` audits are in `experiments/legacy/`, `make_readme_figures.py` and `run_llm_loop.ps1` are in `scripts/`, the one-off `patch_*.py` scripts are in `archive/patches/`, and this log and `COMMITS.md` are in `docs/`. The `fags/` library, `results/` and `data/` did not move.
+
 ## 1. What this project is
 
 A research codebase testing one hypothesis:

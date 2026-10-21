@@ -29,7 +29,7 @@ import numpy as np
 from fags.sudoku_env import SudokuTree
 from fags.delayed_failure import dfs, best_first_mean
 from fags.stats import cluster_paired_test, holm
-from sudoku_experiment import load_puzzles, ORDERINGS, RESULTS_DIR
+from experiments.sudoku_experiment import load_puzzles, ORDERINGS, RESULTS_DIR
 
 BUDGET = int(os.environ.get("SUDOKU_BUDGET", 20000))
 EPS = [0.1, 0.3, 0.5]

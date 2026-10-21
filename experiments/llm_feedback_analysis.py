@@ -7,7 +7,7 @@ whose first attempt failed a visible test can differ between conditions,
 so paired tests are run on that subset (clustered per problem, Holm), and
 overall pass rates are also reported over all problems.
 
-Usage: python llm_feedback_analysis.py [model_tag ...]   (default: every runs file found)
+Usage: python -m experiments.llm_feedback_analysis [model_tag ...]   (default: every runs file found)
 """
 
 from __future__ import annotations
@@ -19,9 +19,9 @@ from pathlib import Path
 import numpy as np
 
 from fags.stats import cluster_bootstrap_ci, cluster_paired_test, holm
-from llm_feedback_experiment import CONDITIONS, MAX_ATTEMPTS
+from experiments.llm_feedback_experiment import CONDITIONS, MAX_ATTEMPTS
 
-OUT_DIR = Path(__file__).resolve().parent / "results" / "v2"
+OUT_DIR = Path(__file__).resolve().parent.parent / "results" / "v2"
 PAIRS = [  # (a, b): a - b ; hypothesis label
     ("binary", "restart", "L1"), ("diagnostic", "restart", "L2"), ("diagnostic", "binary", "L2"),
     ("noisy_hard", "diagnostic", "L3"), ("noisy_hard", "restart", "L3"),
