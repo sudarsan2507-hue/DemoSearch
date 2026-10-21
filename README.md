@@ -4,23 +4,32 @@
 
 This started as FAGS (Failure-Aware Graph Search): a knowledge-graph search agent that remembers branches it rejected and revives the best one at a dead end. It grew into a study of failure feedback across synthetic search, Sudoku, two knowledge-graph QA datasets and LLM code repair. Every number below is in [`PROJECT_STATUS.md`](PROJECT_STATUS.md); **start at §21** (earlier sections predate a generator bug fix).
 
+| Evaluated on | Scale |
+|---|---|
+| Synthetic knowledge graphs and search trees | 3 graph sizes × 3 seeds; up to 300 trees per condition |
+| Sudoku (real puzzles, real heuristic, real failure explanations) | 295 hard puzzles |
+| Knowledge-graph QA with BGE embedding verifiers | MetaQA (2,000 questions), WebQSP (500 questions) |
+| LLM code repair (MBPP+ with held-out tests) | 3 models: qwen3.8-27b, gpt-oss-120b, gpt-oss-20b |
+
+All comparisons are paired, with cluster-level tests and Holm correction; hypotheses were written down before each run.
+
 ## Key results
 
-**1. A failure only helps if it says *why*, and then it helps most when mistakes surface late.** A bare "dead end" can't change which option to try next (proved in §23), so reviving the best-scoring rejected branch, FAGS's core idea, never beat plain systematic search. A diagnosis that names the cause adds +15 to +70 points once mistakes take 5 steps to surface.
+1. **A failure only helps if it says *why*.** A bare "dead end" can't change which option to try next (proved in §23), so reviving the best-scoring rejected branch, FAGS's core idea, never beat plain systematic search. A diagnosis that names the cause adds up to +70 points, and the later mistakes surface, the more it adds.
+2. **The same holds for LLMs repairing code.** Telling the model *why* a test failed gives 2.5–3.3× the repair success of a fresh retry on all three models. Wrong diagnoses erase the gain; requiring two checkers to agree recovers much of it, while asking the model to double-check does not (§29, §33a).
+3. **Defer, don't delete.** Classic backjumping prunes whatever a diagnosis blames, so one wrong diagnosis can delete the solution. Deferring the blamed branch instead ("soft backjumping", §30) costs nothing when diagnoses are right and stays above ignoring them even when half are wrong (§31).
+4. **In knowledge-graph QA the verifier is the bottleneck, not the search.** Searching wider than ~3 hypotheses changes nothing, the best possible path beats what the search picks by 50–70 points, and scoring by whether the search ever *touched* the answer inflated accuracy 2–3× (§22, §24, §32).
 
-![Diagnosis gain vs failure delay](docs/figures/diagnosis_vs_delay.png)
-
-**2. The same holds for LLMs repairing code.** Telling the model *why* a test failed raises repair success 2.5–3.3× over a fresh retry on all three models; telling it only *that* it failed helps much less (and not at all for two of the three). Wrong diagnoses erase the gain, and requiring two checkers to agree recovers much of it (§29, §33a).
-
-![LLM code repair by feedback type](docs/figures/llm_feedback.png)
-
-**3. Defer, don't delete.** When some diagnoses are wrong, classic backjumping (prune what the diagnosis blames) can delete the solution. Deferring the blamed branch instead ("soft backjumping", §30) costs nothing when diagnoses are right and stays above ignoring them even when half are wrong (§31).
-
-![Soft backjumping on Sudoku with noisy diagnoses](docs/figures/sudoku_soft_backjumping.png)
-
-**4. In knowledge-graph QA the verifier is the bottleneck, not the search.** Beam width beyond ~3 changes nothing, the best possible path beats what the search picks by 50–70 points, and scoring a search by whether it ever *touched* the answer inflates accuracy 2–3× (§22, §24, §32).
-
-![Verifier ceiling in knowledge-graph QA](docs/figures/kgqa_verifier_ceiling.png)
+<table>
+  <tr>
+    <td width="50%"><img src="docs/figures/diagnosis_vs_delay.png" alt="Diagnosis gain vs failure delay"><br><sub><b>Fig. 1</b> · Diagnosis gain vs how late mistakes surface, for three verifier strengths (A) and four search policies (B).</sub></td>
+    <td width="50%"><img src="docs/figures/llm_feedback.png" alt="LLM code repair by feedback type"><br><sub><b>Fig. 2</b> · LLM code repair by type of failure feedback, per model, with 95% confidence intervals.</sub></td>
+  </tr>
+  <tr>
+    <td width="50%"><img src="docs/figures/sudoku_soft_backjumping.png" alt="Soft backjumping on Sudoku with noisy diagnoses"><br><sub><b>Fig. 3</b> · Acting on wrong diagnoses in Sudoku: deferring vs two pruning rules, under two variable orderings.</sub></td>
+    <td width="50%"><img src="docs/figures/kgqa_verifier_ceiling.png" alt="Verifier ceiling in knowledge-graph QA"><br><sub><b>Fig. 4</b> · Knowledge-graph QA: the gap to the best path (A) and why wider search doesn't close it (B).</sub></td>
+  </tr>
+</table>
 
 ## Setup
 
