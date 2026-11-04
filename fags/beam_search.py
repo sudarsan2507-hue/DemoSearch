@@ -56,6 +56,90 @@ def _has_contradiction(hyp: _Hypothesis, target_evidence: dict) -> bool:
     return False
 
 
+def _expand(beam: list[_Hypothesis], graph: KnowledgeGraph, query: Query, verifier: Verifier,
+            score_aggregation: str) -> tuple[list[tuple[float, _Hypothesis, Edge]], int]:
+    """Score every valid one-hop extension of every live hypothesis."""
+    pool: list[tuple[float, _Hypothesis, Edge]] = []
+    n_scored = 0
+    for hyp in beam:
+        current = hyp.path[-1]
+        for edge in graph.get_neighbors(current):
+            if edge.target in hyp.visited_nodes:
+                continue
+            if (current, edge.relation, edge.target) in hyp.visited_edges:
+                continue
+            target_node = graph.get_node(edge.target)
+            target_evidence = target_node.evidence if target_node else {}
+            if _has_contradiction(hyp, target_evidence):
+                continue  # invalid transition, never scored
+
+            s = verifier.score(query, edge, hyp.path_relations)
+            n_scored += 1
+            if score_aggregation == "sum":
+                new_cumulative = hyp.cumulative_score + s
+            else:
+                new_cumulative = (hyp.cumulative_score * hyp.n_hops + s) / (hyp.n_hops + 1)
+            pool.append((new_cumulative, hyp, edge))
+    return pool, n_scored
+
+
+def _select_diverse(pool: list, beam_width: int, diversity_penalty_weight: float) -> list:
+    """Greedy iterative selection: re-rank remaining candidates by a
+    score reduced in proportion to how many already-picked
+    candidates this round share their parent, instead of a hard cap."""
+    chosen = []
+    children_count: dict[int, int] = {}
+    remaining = list(pool)
+    while remaining and len(chosen) < beam_width:
+        best_i = max(
+            range(len(remaining)),
+            key=lambda i: remaining[i][0] - diversity_penalty_weight * children_count.get(id(remaining[i][1]), 0),
+        )
+        item = remaining.pop(best_i)
+        children_count[id(item[1])] = children_count.get(id(item[1]), 0) + 1
+        chosen.append(item)
+    return chosen
+
+
+def _select_top(pool: list, beam_width: int, max_children_per_parent: Optional[int]) -> list:
+    """Plain top-K, optionally with a per-parent cap."""
+    pool.sort(key=lambda x: x[0], reverse=True)
+    effective_cap = None
+    if max_children_per_parent is not None:
+        live_parent_count = len({id(p) for _, p, _ in pool})
+        adaptive_floor = -(-beam_width // live_parent_count)  # ceil division
+        effective_cap = max(max_children_per_parent, adaptive_floor)
+
+    chosen = []
+    children_count: dict[int, int] = {}
+    for item in pool:
+        if len(chosen) >= beam_width:
+            break
+        if effective_cap is not None:
+            pid = id(item[1])
+            if children_count.get(pid, 0) >= effective_cap:
+                continue
+            children_count[pid] = children_count.get(pid, 0) + 1
+        chosen.append(item)
+    return chosen
+
+
+def _child(new_cumulative: float, parent: _Hypothesis, edge: Edge, graph: KnowledgeGraph) -> _Hypothesis:
+    target_node = graph.get_node(edge.target)
+    merged_evidence = dict(parent.collected_evidence)
+    if target_node and target_node.evidence:
+        merged_evidence.update(target_node.evidence)
+    return _Hypothesis(
+        path=parent.path + [edge.target],
+        path_relations=parent.path_relations + [edge.relation],
+        visited_nodes=parent.visited_nodes | {edge.target},
+        visited_edges=parent.visited_edges | {(parent.path[-1], edge.relation, edge.target)},
+        collected_evidence=merged_evidence,
+        cumulative_score=new_cumulative,
+        n_hops=parent.n_hops + 1,
+    )
+
+
 def beam_search(
     graph: KnowledgeGraph,
     query: Query,
@@ -116,101 +200,28 @@ def beam_search(
     )]
 
     for _ in range(max_depth):
-        pool: list[tuple[float, _Hypothesis, Edge]] = []
-
-        for hyp in beam:
-            current = hyp.path[-1]
-            for edge in graph.get_neighbors(current):
-                if edge.target in hyp.visited_nodes:
-                    continue
-                if (current, edge.relation, edge.target) in hyp.visited_edges:
-                    continue
-                target_node = graph.get_node(edge.target)
-                target_evidence = target_node.evidence if target_node else {}
-                if _has_contradiction(hyp, target_evidence):
-                    continue  # invalid transition, never scored
-
-                s = verifier.score(query, edge, hyp.path_relations)
-                edges_explored += 1
-                if score_aggregation == "sum":
-                    new_cumulative = hyp.cumulative_score + s
-                else:
-                    new_cumulative = (hyp.cumulative_score * hyp.n_hops + s) / (hyp.n_hops + 1)
-                pool.append((new_cumulative, hyp, edge))
-
+        pool, n_scored = _expand(beam, graph, query, verifier, score_aggregation)
+        edges_explored += n_scored
         if not pool:
             break  # every live hypothesis dead-ended
 
-        def _build_child(new_cumulative: float, parent: _Hypothesis, edge: Edge):
-            """Returns ('success', SearchResult) or ('continue', _Hypothesis)."""
-            new_path = parent.path + [edge.target]
-            all_visited_nodes.add(edge.target)
-
-            if edge.target == query.answer_node:
-                elapsed = time.perf_counter() - t0
-                return "success", SearchResult(
-                    query_id=query.id, success=True, path=new_path,
-                    nodes_visited=len(all_visited_nodes), search_depth=len(new_path) - 1,
-                    runtime=elapsed, failure_type=FailureType.NONE, edges_explored=edges_explored,
-                    visited_node_set=all_visited_nodes, path_relations=parent.path_relations + [edge.relation],
-                )
-
-            target_node = graph.get_node(edge.target)
-            merged_evidence = dict(parent.collected_evidence)
-            if target_node and target_node.evidence:
-                merged_evidence.update(target_node.evidence)
-
-            return "continue", _Hypothesis(
-                path=new_path,
-                path_relations=parent.path_relations + [edge.relation],
-                visited_nodes=parent.visited_nodes | {edge.target},
-                visited_edges=parent.visited_edges | {(parent.path[-1], edge.relation, edge.target)},
-                collected_evidence=merged_evidence,
-                cumulative_score=new_cumulative,
-                n_hops=parent.n_hops + 1,
-            )
+        if diversity_penalty_weight > 0:
+            chosen = _select_diverse(pool, beam_width, diversity_penalty_weight)
+        else:
+            chosen = _select_top(pool, beam_width, max_children_per_parent)
 
         new_beam: list[_Hypothesis] = []
-        children_count: dict[int, int] = {}
-
-        if diversity_penalty_weight > 0:
-            # Greedy iterative selection: re-rank remaining candidates by a
-            # score reduced in proportion to how many already-picked
-            # candidates this round share their parent, instead of a hard cap.
-            remaining = list(pool)
-            while remaining and len(new_beam) < beam_width:
-                best_i = max(
-                    range(len(remaining)),
-                    key=lambda i: remaining[i][0] - diversity_penalty_weight * children_count.get(id(remaining[i][1]), 0),
+        for new_cumulative, parent, edge in chosen:
+            all_visited_nodes.add(edge.target)
+            if edge.target == query.answer_node:
+                new_path = parent.path + [edge.target]
+                return SearchResult(
+                    query_id=query.id, success=True, path=new_path,
+                    nodes_visited=len(all_visited_nodes), search_depth=len(new_path) - 1,
+                    runtime=time.perf_counter() - t0, failure_type=FailureType.NONE, edges_explored=edges_explored,
+                    visited_node_set=all_visited_nodes, path_relations=parent.path_relations + [edge.relation],
                 )
-                new_cumulative, parent, edge = remaining.pop(best_i)
-                children_count[id(parent)] = children_count.get(id(parent), 0) + 1
-                kind, result = _build_child(new_cumulative, parent, edge)
-                if kind == "success":
-                    return result
-                new_beam.append(result)
-        else:
-            pool.sort(key=lambda x: x[0], reverse=True)
-
-            effective_cap = None
-            if max_children_per_parent is not None:
-                live_parent_count = len({id(p) for _, p, _ in pool})
-                adaptive_floor = -(-beam_width // live_parent_count)  # ceil division
-                effective_cap = max(max_children_per_parent, adaptive_floor)
-
-            for new_cumulative, parent, edge in pool:
-                if len(new_beam) >= beam_width:
-                    break
-                if effective_cap is not None:
-                    pid = id(parent)
-                    if children_count.get(pid, 0) >= effective_cap:
-                        continue
-                    children_count[pid] = children_count.get(pid, 0) + 1
-
-                kind, result = _build_child(new_cumulative, parent, edge)
-                if kind == "success":
-                    return result
-                new_beam.append(result)
+            new_beam.append(_child(new_cumulative, parent, edge, graph))
 
         beam = new_beam
         if not beam:

@@ -21,6 +21,41 @@ from scipy import stats
 from fags import SearchResult
 
 
+def _safe_div(num: float, den: float) -> float:
+    """num / den, or 0.0 when the denominator is not positive."""
+    return num / den if den > 0 else 0.0
+
+
+def _binom_ci(acc, size):
+    """95% Confidence Interval for Binomial Accuracy."""
+    if size == 0:
+        return 0.0, 0.0
+    se = math.sqrt((acc * (1 - acc)) / size)
+    margin = 1.96 * se
+    return max(0.0, acc - margin), min(1.0, acc + margin)
+
+
+def _recovery_metrics(baseline_results: list[SearchResult], fags_results: list[SearchResult]):
+    total_recoveries_attempted = sum(r.backtracks for r in fags_results)
+    queries_triggering_recovery = sum(1 for r in fags_results if r.backtracks > 0)
+    recovered_correct_queries = sum(
+        1 for b, f in zip(baseline_results, fags_results)
+        if not b.success and f.success and f.backtracks > 0
+    )
+    return (total_recoveries_attempted, queries_triggering_recovery,
+            _safe_div(recovered_correct_queries, queries_triggering_recovery))
+
+
+def _gold_path_metrics(fags_results: list[SearchResult]):
+    # denominator: baseline search pruned gold path & failed
+    pruned_and_failed_baseline = sum(1 for f in fags_results if f.gold_path_pruned)
+    # numerator: among those pruned & failed in baseline, how many were successfully recovered by FAGS
+    gold_path_recovered = sum(
+        1 for f in fags_results if f.gold_path_pruned and f.success and f.gold_path_recovered
+    )
+    return pruned_and_failed_baseline, gold_path_recovered, _safe_div(gold_path_recovered, pruned_and_failed_baseline)
+
+
 def evaluate_results(
     baseline_results: list[SearchResult],
     fags_results: list[SearchResult],
@@ -59,52 +94,20 @@ def evaluate_results(
     mean_nodes_f = float(np.mean(f_nodes))
     
     # Search cost & Efficiency Ratio
-    additional_search_cost = (
-        (mean_nodes_f - mean_nodes_b) / mean_nodes_b if mean_nodes_b > 0 else 0.0
-    )
-    efficiency_ratio = acc_gain / additional_search_cost if additional_search_cost > 0 else 0.0
+    additional_search_cost = _safe_div(mean_nodes_f - mean_nodes_b, mean_nodes_b)
+    efficiency_ratio = _safe_div(acc_gain, additional_search_cost)
 
-    # 95% Confidence Intervals for Binomial Accuracy
-    def binom_ci(acc, size):
-        if size == 0:
-            return 0.0, 0.0
-        se = math.sqrt((acc * (1 - acc)) / size)
-        margin = 1.96 * se
-        return max(0.0, acc - margin), min(1.0, acc + margin)
-
-    fags_ci_low, fags_ci_high = binom_ci(acc_fags, n)
-    base_ci_low, base_ci_high = binom_ci(acc_baseline, n)
+    fags_ci_low, fags_ci_high = _binom_ci(acc_fags, n)
+    base_ci_low, base_ci_high = _binom_ci(acc_baseline, n)
 
     # Paired t-tests
     t_stat_acc, p_val_acc = stats.ttest_rel(f_accs, b_accs)
     t_stat_cost, p_val_cost = stats.ttest_rel(f_nodes, b_nodes)
 
-    # Recovery metrics
-    total_recoveries_attempted = sum(r.backtracks for r in fags_results)
-    queries_triggering_recovery = sum(1 for r in fags_results if r.backtracks > 0)
-    
-    recovered_correct_queries = sum(
-        1 for b, f in zip(baseline_results, fags_results)
-        if not b.success and f.success and f.backtracks > 0
+    total_recoveries_attempted, queries_triggering_recovery, recovery_success_rate = _recovery_metrics(
+        baseline_results, fags_results
     )
-    recovery_success_rate = (
-        recovered_correct_queries / queries_triggering_recovery
-        if queries_triggering_recovery > 0 else 0.0
-    )
-
-    # Gold path recovery metrics
-    # denominator: baseline search pruned gold path & failed
-    pruned_and_failed_baseline = sum(
-        1 for f in fags_results if f.gold_path_pruned
-    )
-    # numerator: among those pruned & failed in baseline, how many were successfully recovered by FAGS
-    gold_path_recovered = sum(
-        1 for f in fags_results if f.gold_path_pruned and f.success and f.gold_path_recovered
-    )
-    gold_path_recovery_rate = (
-        gold_path_recovered / pruned_and_failed_baseline
-        if pruned_and_failed_baseline > 0 else 0.0
-    )
+    pruned_and_failed_baseline, gold_path_recovered, gold_path_recovery_rate = _gold_path_metrics(fags_results)
 
     return {
         "label": label,
