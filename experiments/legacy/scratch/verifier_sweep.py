@@ -13,16 +13,13 @@ from __future__ import annotations
 import os
 import csv
 import random
-import numpy as np
 import matplotlib.pyplot as plt
 
 from fags.graph_generator import generate_dataset
 from fags.verifier import Verifier
-from fags.memory import create_memory
-from fags.baseline_search import baseline_search
-from fags.failure_search import failure_search
+from fags.memory import FailureMemory, create_memory
 from fags.evaluation import evaluate_results
-from fags import KnowledgeGraph, Query, Edge
+from fags import Edge, KnowledgeGraph, Query, SearchResult
 
 RESULTS_DIR = r"d:\Projects\DemoSearch\results"
 os.makedirs(RESULTS_DIR, exist_ok=True)

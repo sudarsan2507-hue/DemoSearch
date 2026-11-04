@@ -1,4 +1,3 @@
-import re
 
 def patch():
     with open(r"d:\Projects\DemoSearch\fags\verifier.py", "r", encoding="utf-8") as f:

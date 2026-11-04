@@ -1,4 +1,3 @@
-import re
 
 def patch_file():
     with open(r"d:\Projects\DemoSearch\fags\failure_search.py", "r", encoding="utf-8") as f:

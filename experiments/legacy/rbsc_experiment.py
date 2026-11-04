@@ -1,15 +1,11 @@
 import os
-import csv
-import matplotlib.pyplot as plt
 import numpy as np
 
 from fags import KnowledgeGraph, Query, SearchResult
 from fags.graph_generator import generate_dataset
 from fags.verifier import Verifier
 from fags.memory import create_memory
-from fags.baseline_search import baseline_search
 from fags.failure_search import failure_search
-from fags.evaluation import evaluate_results
 
 RESULTS_DIR = r"d:\Projects\DemoSearch\results"
 os.makedirs(RESULTS_DIR, exist_ok=True)

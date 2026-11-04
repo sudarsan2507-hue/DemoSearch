@@ -14,7 +14,6 @@ import matplotlib.pyplot as plt
 
 from fags.graph_generator import generate_dataset
 from fags.verifier import Verifier
-from fags import Edge
 
 RESULTS_DIR = r"d:\Projects\DemoSearch\results"
 os.makedirs(RESULTS_DIR, exist_ok=True)

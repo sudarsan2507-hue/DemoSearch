@@ -8,7 +8,6 @@ which Failure-Aware Search is compared.
 from __future__ import annotations
 
 import time
-from typing import Sequence
 
 from fags import (
     Edge, FailureType, KnowledgeGraph, Query, SearchResult,

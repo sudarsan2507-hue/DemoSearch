@@ -1,13 +1,11 @@
 import random
 import sys
-import numpy as np
 
 # Fix stdout encoding to prevent unicode crashes on Windows
 sys.stdout.reconfigure(encoding='utf-8')
 
-from fags import Edge, Query
 from fags.graph_generator import generate_dataset
-from fags.verifier import Verifier, EmbeddingVerifier, RELATION_DESCRIPTIONS
+from fags.verifier import Verifier, EmbeddingVerifier
 
 def evaluate_verifier_accuracy(graph, queries, verifier, label="Verifier", use_question=True):
     total_hops = 0

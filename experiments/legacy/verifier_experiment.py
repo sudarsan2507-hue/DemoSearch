@@ -1,5 +1,4 @@
 import os
-import csv
 import numpy as np
 
 from fags import KnowledgeGraph, Query, SearchResult
@@ -8,7 +7,6 @@ from fags.verifier import Verifier, EmbeddingVerifier
 from fags.memory import create_memory
 from fags.baseline_search import baseline_search
 from fags.failure_search import failure_search
-from fags.evaluation import evaluate_results
 
 RESULTS_DIR = r"d:\Projects\DemoSearch\results"
 os.makedirs(RESULTS_DIR, exist_ok=True)

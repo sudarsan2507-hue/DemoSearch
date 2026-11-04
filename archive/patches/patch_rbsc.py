@@ -1,4 +1,3 @@
-import re
 
 def patch_file():
     # We will read failure_search.py, clean it up completely, and write a fresh, clean version.

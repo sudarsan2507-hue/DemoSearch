@@ -1,4 +1,3 @@
-import re
 
 with open(r"d:\Projects\DemoSearch\fags\failure_search.py", "r") as f:
     content = f.read()

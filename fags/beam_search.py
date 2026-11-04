@@ -29,7 +29,7 @@ is what that heuristic was a single-path substitute for.
 from __future__ import annotations
 
 import time
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
 from fags import Edge, FailureType, KnowledgeGraph, Query, SearchResult

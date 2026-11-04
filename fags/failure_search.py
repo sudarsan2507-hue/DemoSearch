@@ -11,10 +11,10 @@ Includes the full recovery pipeline:
 from __future__ import annotations
 
 import time
-from typing import Sequence, Any
+from typing import Any
 
 from fags import (
-    Edge, FailureType, KnowledgeGraph, Query, SearchResult, MemoryEntry,
+    Edge, FailureType, KnowledgeGraph, Query, SearchResult,
 )
 from fags.verifier import Verifier, RELATION_COHERENCE
 from fags.memory import FailureMemory

@@ -1,8 +1,10 @@
 import sys
-import numpy as np
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+from typing import Any, Sequence
+
+from fags import Edge
 from fags.graph_generator import generate_dataset
 from fags.verifier import Verifier, EmbeddingVerifier, RELATION_COHERENCE, _DEFAULT_COHERENCE
 
@@ -139,6 +141,4 @@ def main():
     evaluate_verifier_accuracy(graph, queries, hybrid_verifier_noisy, "BGE Hybrid Verifier (keywords + coherence)", use_question=False)
 
 if __name__ == "__main__":
-    from typing import Sequence, Any
-    from fags import Edge
     main()

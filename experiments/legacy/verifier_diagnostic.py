@@ -1,7 +1,5 @@
 import random
-import numpy as np
 
-from fags import Edge, Query
 from fags.graph_generator import generate_dataset
 from fags.verifier import Verifier, EmbeddingVerifier, RELATION_DESCRIPTIONS
 

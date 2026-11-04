@@ -25,7 +25,7 @@ import heapq
 import time
 from dataclasses import dataclass
 
-from fags import Edge, FailureType, KnowledgeGraph, Query, SearchResult
+from fags import FailureType, KnowledgeGraph, Query, SearchResult
 from fags.verifier import Verifier
 
 

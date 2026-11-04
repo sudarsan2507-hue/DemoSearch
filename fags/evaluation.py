@@ -15,7 +15,6 @@ statistical significance of accuracy and node visit changes.
 from __future__ import annotations
 
 import math
-from typing import Sequence
 import numpy as np
 from scipy import stats
 

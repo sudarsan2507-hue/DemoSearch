@@ -1,10 +1,12 @@
 import sys
-import numpy as np
 
 sys.stdout.reconfigure(encoding='utf-8')
 
+from typing import Any, Sequence
+
+from fags import Edge
 from fags.graph_generator import generate_dataset
-from fags.verifier import Verifier, EmbeddingVerifier, RELATION_COHERENCE, _DEFAULT_COHERENCE
+from fags.verifier import EmbeddingVerifier, RELATION_COHERENCE, _DEFAULT_COHERENCE
 
 class HybridStretchedVerifier(EmbeddingVerifier):
     def score(
@@ -128,6 +130,4 @@ def main():
     evaluate_verifier_accuracy(graph, queries, bge_hybrid_kw, "BGE Stretched Hybrid (question + coherence)", use_question=True)
 
 if __name__ == "__main__":
-    from typing import Sequence, Any
-    from fags import Edge
     main()

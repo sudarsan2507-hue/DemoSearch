@@ -16,7 +16,6 @@ presence of confusable relations at the first branch point.
 from __future__ import annotations
 
 import random
-from typing import Sequence
 
 from fags import Edge, KnowledgeGraph, Node, Query
 from fags.verifier import RELATION_KEYWORDS, CONFUSABLE_PAIRS
