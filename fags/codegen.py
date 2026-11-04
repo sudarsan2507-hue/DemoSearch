@@ -246,6 +246,11 @@ def _perturb(expected_repr: str, others: list[str], rng: random.Random) -> str:
         v = ast.literal_eval(expected_repr)
     except Exception:
         return "None"
+    return _perturb_value(v, rng)
+
+
+def _perturb_value(v, rng: random.Random) -> str:
+    """Type-preserving wrong value for a parsed literal."""
     if isinstance(v, bool):
         return repr(not v)
     if isinstance(v, int):
@@ -253,13 +258,18 @@ def _perturb(expected_repr: str, others: list[str], rng: random.Random) -> str:
     if isinstance(v, float):
         return repr(round(v * 1.5 + 1, 4))
     if isinstance(v, str):
-        return repr(v[::-1] if len(v) > 1 and v[::-1] != v else v + "a")
+        return repr(_reversed_or_extended(v, v + "a"))
     if isinstance(v, (list, tuple)):
-        w = list(v)[::-1] if len(v) > 1 and list(v)[::-1] != list(v) else list(v) + list(v)[:1] or [0]
+        w = _reversed_or_extended(list(v), list(v) + list(v)[:1] or [0])
         return repr(type(v)(w))
     if isinstance(v, (set, dict)):
         return repr(type(v)())
     return "None"
+
+
+def _reversed_or_extended(seq, extended):
+    """The sequence reversed when that changes it, else the given extension."""
+    return seq[::-1] if len(seq) > 1 and seq[::-1] != seq else extended
 
 
 def failure_reports(results: list[dict], corrupt_prob: float = 0.0, rng: random.Random | None = None,
