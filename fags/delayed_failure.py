@@ -170,6 +170,18 @@ def dfs(tree: DelayedFailureTree, budget: int, use_diagnosis: bool = False,
     return None
 
 
+def _fags_recover(dead: tuple, untried: dict, memory: list, expanded: set, pruned: set) -> Optional[tuple]:
+    """Next node after a dead end: an untried sibling first, else the best revivable memory entry."""
+    def ok(cp):
+        return cp not in expanded and not (pruned and _under(cp, pruned))
+    current = next((cp for cp in untried.get(dead[:-1], []) if ok(cp)), None)
+    while current is None and memory:
+        _, _, cp = heapq.heappop(memory)
+        if ok(cp):
+            current = cp
+    return current
+
+
 def fags_style(tree: DelayedFailureTree, budget: int, use_diagnosis: bool = False,
                diag_mode: str = "hard") -> Optional[int]:
     """FAGS's recovery policy: greedy descent; on a dead end, first the failed
@@ -193,15 +205,10 @@ def fags_style(tree: DelayedFailureTree, budget: int, use_diagnosis: bool = Fals
                 heapq.heappush(memory, (-s, counter, cp))
             current = kids[0][0]
             continue
-        dead, current = current, None
+        dead = current
         if use_diagnosis and (c := tree.diagnose(dead)) is not None:
             _act_on_diagnosis(c, counts, pruned, diag_mode)
-        ok = lambda cp: cp not in expanded and not (pruned and _under(cp, pruned))
-        current = next((cp for cp in untried.get(dead[:-1], []) if ok(cp)), None)
-        while current is None and memory:
-            _, _, cp = heapq.heappop(memory)
-            if ok(cp):
-                current = cp
+        current = _fags_recover(dead, untried, memory, expanded, pruned)
     return None
 
 
@@ -285,6 +292,57 @@ class _PNode:
         self.expanded = False
 
 
+def _kill(n: _PNode, local_blame: bool) -> None:
+    while n is not None:
+        n.alive = False
+        par = n.parent
+        if par is None:
+            return
+        if local_blame:
+            par.z = sum(math.exp(k.logw) for k in par.kids if k.alive)
+        if any(k.alive for k in par.kids):
+            return
+        n = par
+
+
+def _most_probable_unexpanded(root: _PNode) -> Optional[_PNode]:
+    heap, counter = [(0.0, 0, root)], 0
+    while heap:
+        neg, _, n = heapq.heappop(heap)
+        if not n.expanded:
+            return n
+        logz = math.log(n.z)
+        for k in n.kids:
+            if k.alive:
+                counter += 1
+                heapq.heappush(heap, (neg - (k.logw - logz), counter, k))
+    return None
+
+
+def _add_children(target: _PNode, kids, nodes: dict, d_hat: float) -> None:
+    m = max(s for _, s in kids)
+    for cp, s in kids:
+        k = _PNode(cp, target, d_hat * (s - m))
+        target.kids.append(k)
+        nodes[cp] = k
+        target.z += math.exp(k.logw)
+
+
+def _apply_diagnosis(tree: DelayedFailureTree, target: _PNode, node: _PNode,
+                     diag_error_hat: Optional[float], local_blame: bool) -> None:
+    """Hard kill when the diagnosis is trusted, otherwise a soft likelihood-ratio update."""
+    e = diag_error_hat
+    if not e:
+        _kill(node, local_blame)
+        return
+    m = tree.ancestor_candidates(target.path)
+    lr = (e / m) / ((1 - e) + e / m)
+    node.logw += math.log(lr)
+    if local_blame:
+        par = node.parent
+        par.z = sum(math.exp(k.logw) for k in par.kids if k.alive)
+
+
 def posterior_search(tree: DelayedFailureTree, budget: int, d_hat: float,
                      use_diagnosis: bool = False, local_blame: bool = False,
                      diag_error_hat: Optional[float] = None) -> Optional[int]:
@@ -311,30 +369,8 @@ def posterior_search(tree: DelayedFailureTree, budget: int, d_hat: float,
     nodes = {(): root}
     cost = 0
 
-    def kill(n: _PNode):
-        while n is not None:
-            n.alive = False
-            par = n.parent
-            if par is None:
-                return
-            if local_blame:
-                par.z = sum(math.exp(k.logw) for k in par.kids if k.alive)
-            if any(k.alive for k in par.kids):
-                return
-            n = par
-
     while cost < budget and root.alive:
-        heap, counter, target = [(0.0, 0, root)], 0, None
-        while heap:
-            neg, _, n = heapq.heappop(heap)
-            if not n.expanded:
-                target = n
-                break
-            logz = math.log(n.z)
-            for k in n.kids:
-                if k.alive:
-                    counter += 1
-                    heapq.heappush(heap, (neg - (k.logw - logz), counter, k))
+        target = _most_probable_unexpanded(root)
         if target is None:
             return None
         cost += 1
@@ -343,24 +379,9 @@ def posterior_search(tree: DelayedFailureTree, budget: int, d_hat: float,
             return cost
         kids = tree.children(target.path)
         if kids:
-            m = max(s for _, s in kids)
-            for cp, s in kids:
-                k = _PNode(cp, target, d_hat * (s - m))
-                target.kids.append(k)
-                nodes[cp] = k
-                target.z += math.exp(k.logw)
+            _add_children(target, kids, nodes, d_hat)
             continue
-        kill(target)
+        _kill(target, local_blame)
         if use_diagnosis and (c := tree.diagnose(target.path)) is not None and c in nodes and nodes[c].alive:
-            e = diag_error_hat
-            if not e:
-                kill(nodes[c])
-            else:
-                m = tree.ancestor_candidates(target.path)
-                lr = (e / m) / ((1 - e) + e / m)
-                node = nodes[c]
-                node.logw += math.log(lr)
-                if local_blame:
-                    par = node.parent
-                    par.z = sum(math.exp(k.logw) for k in par.kids if k.alive)
+            _apply_diagnosis(tree, target, nodes[c], diag_error_hat, local_blame)
     return None
