@@ -37,13 +37,11 @@ since the "wasted early simulations" problem is sidestepped by construction.
 
 from __future__ import annotations
 
-import math
 import time
-from typing import Optional
 
 from fags import Edge, FailureType, KnowledgeGraph, Query, SearchResult
 from fags.verifier import Verifier
-from fags.mcts_search import _TreeNode, _score_candidates, _rollout
+from fags.mcts_search import _TreeNode, _backpropagate, _expand_child, _rollout, _score_candidates, _select
 
 
 def _beam_seed(
@@ -206,13 +204,6 @@ def beam_seeded_mcts_search(
         return _report_failure(FailureType.DEAD_END)
 
     # --- Main MCTS refinement phase, starting from the seeded tips ---
-    def _ucb(child: _TreeNode, parent_visits: int) -> float:
-        if child.visits == 0:
-            return float("inf")
-        exploitation = child.value_sum / child.visits
-        exploration = exploration_constant * math.sqrt(math.log(parent_visits) / child.visits)
-        return exploitation + exploration
-
     max_simulations = 20000
     stale_limit = 300
     stale_count = 0
@@ -225,19 +216,7 @@ def beam_seeded_mcts_search(
         # --- Selection --- (sealed seeding-phase nodes just have a single
         # child to "select", so this walks straight down to whichever
         # seeded tip is currently most attractive before doing real UCB1).
-        node = root
-        while True:
-            if node.untried is None:
-                node.untried = _score_candidates(
-                    graph, query, verifier, node.graph_node, node.path_relations,
-                    node.visited_nodes, node.visited_edges, node.collected_evidence, edges_explored_ref,
-                )
-            if node.depth >= max_depth or (not node.untried and not node.children):
-                node.is_terminal = True
-                break
-            if node.untried:
-                break
-            node = max(node.children.values(), key=lambda c: _ucb(c, node.visits))
+        node = _select(root, graph, query, verifier, max_depth, edges_explored_ref, exploration_constant)
 
         # --- Expansion + rollout (identical to mcts_search.py) ---
         if node.is_terminal:
@@ -257,21 +236,7 @@ def beam_seeded_mcts_search(
                     visited_node_set=all_visited_nodes, path_relations=node.path_relations + [edge.relation],
                 )
 
-            target_node = graph.get_node(child_id)
-            merged_evidence = dict(node.collected_evidence)
-            if target_node and target_node.evidence:
-                merged_evidence.update(target_node.evidence)
-
-            child = _TreeNode(
-                graph_node=child_id,
-                path_relations=node.path_relations + [edge.relation],
-                visited_nodes=node.visited_nodes | {child_id},
-                visited_edges=node.visited_edges | {(node.graph_node, edge.relation, child_id)},
-                collected_evidence=merged_evidence,
-                depth=node.depth + 1,
-                parent=node,
-            )
-            node.children[child_id] = child
+            child = _expand_child(node, edge, graph)
 
             reward, success_info = _rollout(graph, query, verifier, child, all_visited_nodes, edges_explored_ref, max_depth)
             if success_info is not None:
@@ -285,16 +250,7 @@ def beam_seeded_mcts_search(
                 )
             leaf = child
 
-        # --- Backpropagation ---
-        n: Optional[_TreeNode] = leaf
-        while n is not None:
-            n.visits += 1
-            n.value_sum += reward
-            n = n.parent
-
-        if len(all_visited_nodes) == prev_visited_count:
-            stale_count += 1
-        else:
-            stale_count = 0
+        _backpropagate(leaf, reward)
+        stale_count = stale_count + 1 if len(all_visited_nodes) == prev_visited_count else 0
 
     return _report_failure(FailureType.BUDGET_EXHAUSTED)

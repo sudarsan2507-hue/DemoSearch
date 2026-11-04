@@ -134,6 +134,61 @@ def _rollout(
     return 0.0, None
 
 
+def _ucb(child: _TreeNode, parent_visits: int, exploration_constant: float) -> float:
+    if child.visits == 0:
+        return float("inf")
+    exploitation = child.value_sum / child.visits
+    exploration = exploration_constant * math.sqrt(math.log(parent_visits) / child.visits)
+    return exploitation + exploration
+
+
+def _select(root: _TreeNode, graph: KnowledgeGraph, query: Query, verifier: Verifier, max_depth: int,
+            edges_explored_ref: list[int], exploration_constant: float) -> _TreeNode:
+    """Walk down by UCB to a node that can be expanded, or mark one terminal."""
+    node = root
+    while True:
+        if node.untried is None:
+            node.untried = _score_candidates(
+                graph, query, verifier, node.graph_node, node.path_relations,
+                node.visited_nodes, node.visited_edges, node.collected_evidence, edges_explored_ref,
+            )
+        if node.depth >= max_depth or (not node.untried and not node.children):
+            node.is_terminal = True
+            return node
+        if node.untried:
+            return node  # expand here
+        parent_visits = node.visits
+        node = max(node.children.values(), key=lambda c: _ucb(c, parent_visits, exploration_constant))
+
+
+def _expand_child(node: _TreeNode, edge: Edge, graph: KnowledgeGraph) -> _TreeNode:
+    child_id = edge.target
+    target_node = graph.get_node(child_id)
+    merged_evidence = dict(node.collected_evidence)
+    if target_node and target_node.evidence:
+        merged_evidence.update(target_node.evidence)
+
+    child = _TreeNode(
+        graph_node=child_id,
+        path_relations=node.path_relations + [edge.relation],
+        visited_nodes=node.visited_nodes | {child_id},
+        visited_edges=node.visited_edges | {(node.graph_node, edge.relation, child_id)},
+        collected_evidence=merged_evidence,
+        depth=node.depth + 1,
+        parent=node,
+    )
+    node.children[child_id] = child
+    return child
+
+
+def _backpropagate(leaf: Optional[_TreeNode], reward: float) -> None:
+    n: Optional[_TreeNode] = leaf
+    while n is not None:
+        n.visits += 1
+        n.value_sum += reward
+        n = n.parent
+
+
 def mcts_search(
     graph: KnowledgeGraph,
     query: Query,
@@ -167,13 +222,6 @@ def mcts_search(
         collected_evidence=start_evidence, depth=0,
     )
 
-    def _ucb(child: _TreeNode, parent_visits: int) -> float:
-        if child.visits == 0:
-            return float("inf")
-        exploitation = child.value_sum / child.visits
-        exploration = exploration_constant * math.sqrt(math.log(parent_visits) / child.visits)
-        return exploitation + exploration
-
     # Safety cap: a node_budget that's never reached (e.g. a genuine dead-end
     # start with zero candidates) would otherwise spin forever re-selecting
     # the same terminal root. A second case needs its own guard: once
@@ -195,19 +243,7 @@ def mcts_search(
         _prev_visited_count = len(all_visited_nodes)
 
         # --- Selection ---
-        node = root
-        while True:
-            if node.untried is None:
-                node.untried = _score_candidates(
-                    graph, query, verifier, node.graph_node, node.path_relations,
-                    node.visited_nodes, node.visited_edges, node.collected_evidence, edges_explored_ref,
-                )
-            if node.depth >= max_depth or (not node.untried and not node.children):
-                node.is_terminal = True
-                break
-            if node.untried:
-                break  # expand here
-            node = max(node.children.values(), key=lambda c: _ucb(c, node.visits))
+        node = _select(root, graph, query, verifier, max_depth, edges_explored_ref, exploration_constant)
 
         # --- Expansion + rollout ---
         if node.is_terminal:
@@ -227,21 +263,7 @@ def mcts_search(
                     visited_node_set=all_visited_nodes, path_relations=node.path_relations + [edge.relation],
                 )
 
-            target_node = graph.get_node(child_id)
-            merged_evidence = dict(node.collected_evidence)
-            if target_node and target_node.evidence:
-                merged_evidence.update(target_node.evidence)
-
-            child = _TreeNode(
-                graph_node=child_id,
-                path_relations=node.path_relations + [edge.relation],
-                visited_nodes=node.visited_nodes | {child_id},
-                visited_edges=node.visited_edges | {(node.graph_node, edge.relation, child_id)},
-                collected_evidence=merged_evidence,
-                depth=node.depth + 1,
-                parent=node,
-            )
-            node.children[child_id] = child
+            child = _expand_child(node, edge, graph)
 
             reward, success_info = _rollout(graph, query, verifier, child, all_visited_nodes, edges_explored_ref, max_depth)
             if success_info is not None:
@@ -255,17 +277,8 @@ def mcts_search(
                 )
             leaf = child
 
-        # --- Backpropagation ---
-        n: Optional[_TreeNode] = leaf
-        while n is not None:
-            n.visits += 1
-            n.value_sum += reward
-            n = n.parent
-
-        if len(all_visited_nodes) == _prev_visited_count:
-            stale_count += 1
-        else:
-            stale_count = 0
+        _backpropagate(leaf, reward)
+        stale_count = stale_count + 1 if len(all_visited_nodes) == _prev_visited_count else 0
 
     # Budget exhausted without success: report the tree's most-trusted path
     # (most-visited child at each level, the standard MCTS "robust child" rule).
