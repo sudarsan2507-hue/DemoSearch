@@ -18,6 +18,30 @@ from fags.verifier import Verifier
 _RELEVANCE_FLOOR = 0.15
 
 
+def _scored_candidates(graph: KnowledgeGraph, query: Query, verifier: Verifier, current: str,
+                       visited_nodes: set[str], visited_edges: set[tuple[str, str, str]],
+                       path_relations: list[str]) -> list[tuple[float, Edge]]:
+    """Unvisited candidate edges from current, scored and sorted best first."""
+    candidates: list[Edge] = [
+        e for e in graph.get_neighbors(current)
+        if e.target not in visited_nodes
+        and (current, e.relation, e.target) not in visited_edges
+    ]
+    scored: list[tuple[float, Edge]] = [(verifier.score(query, edge, path_relations), edge) for edge in candidates]
+    scored.sort(key=lambda x: x[0], reverse=True)
+    return scored
+
+
+def _contradicts(node_obj, collected_evidence: dict[str, str]) -> bool:
+    """Record the node's evidence; True as soon as a value conflicts with what was seen."""
+    if node_obj and node_obj.evidence:
+        for k, v in node_obj.evidence.items():
+            if k in collected_evidence and collected_evidence[k] != v:
+                return True
+            collected_evidence[k] = v
+    return False
+
+
 def baseline_search(
     graph: KnowledgeGraph,
     query: Query,
@@ -47,25 +71,12 @@ def baseline_search(
     failure_type = FailureType.NONE
 
     for depth in range(max_depth):
-        # 1. Get candidate edges
-        neighbors = graph.get_neighbors(current)
-        candidates: list[Edge] = [
-            e for e in neighbors
-            if e.target not in visited_nodes
-            and (current, e.relation, e.target) not in visited_edges
-        ]
-
-        if not candidates:
+        # 1-2. Get and score candidate edges
+        scored = _scored_candidates(graph, query, verifier, current, visited_nodes, visited_edges, path_relations)
+        if not scored:
             failure_type = FailureType.DEAD_END
             break
-
-        # 2. Score candidates
-        scored: list[tuple[float, Edge]] = []
-        for edge in candidates:
-            s = verifier.score(query, edge, path_relations)
-            scored.append((s, edge))
-            edges_explored += 1
-        scored.sort(key=lambda x: x[0], reverse=True)
+        edges_explored += len(scored)
 
         # 3. Pick best
         best_score, best_edge = scored[0]
@@ -88,15 +99,9 @@ def baseline_search(
         path_relations.append(best_edge.relation)
 
         # 6. Collect evidence & check contradiction
-        node_obj = graph.get_node(current)
-        if node_obj and node_obj.evidence:
-            for k, v in node_obj.evidence.items():
-                if k in collected_evidence and collected_evidence[k] != v:
-                    failure_type = FailureType.CONTRADICTION
-                    break
-                collected_evidence[k] = v
-            if failure_type == FailureType.CONTRADICTION:
-                break
+        if _contradicts(graph.get_node(current), collected_evidence):
+            failure_type = FailureType.CONTRADICTION
+            break
 
         # 7. Check answer
         if current == query.answer_node:

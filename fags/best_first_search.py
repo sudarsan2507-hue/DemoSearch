@@ -25,7 +25,7 @@ import heapq
 import time
 from dataclasses import dataclass
 
-from fags import FailureType, KnowledgeGraph, Query, SearchResult
+from fags import Edge, FailureType, KnowledgeGraph, Query, SearchResult
 from fags.verifier import Verifier
 
 
@@ -47,6 +47,35 @@ def _has_contradiction(node: _Node, target_evidence: dict) -> bool:
         if k in node.collected_evidence and node.collected_evidence[k] != v:
             return True
     return False
+
+
+def _extension_allowed(graph: KnowledgeGraph, node: _Node, current: str, edge: Edge):
+    """(allowed, target node object) for extending node along edge."""
+    if edge.target in node.visited_nodes:
+        return False, None
+    if (current, edge.relation, edge.target) in node.visited_edges:
+        return False, None
+    target_node = graph.get_node(edge.target)
+    target_evidence = target_node.evidence if target_node else {}
+    if _has_contradiction(node, target_evidence):
+        return False, None
+    return True, target_node
+
+
+def _child_node(node: _Node, current: str, edge: Edge, target_node, new_path: list[str],
+                new_cumulative: float) -> _Node:
+    merged_evidence = dict(node.collected_evidence)
+    if target_node and target_node.evidence:
+        merged_evidence.update(target_node.evidence)
+    return _Node(
+        path=new_path,
+        path_relations=node.path_relations + [edge.relation],
+        visited_nodes=node.visited_nodes | {edge.target},
+        visited_edges=node.visited_edges | {(current, edge.relation, edge.target)},
+        collected_evidence=merged_evidence,
+        cumulative_score=new_cumulative,
+        n_hops=node.n_hops + 1,
+    )
 
 
 def best_first_search(
@@ -101,13 +130,8 @@ def best_first_search(
 
         current = node.path[-1]
         for edge in graph.get_neighbors(current):
-            if edge.target in node.visited_nodes:
-                continue
-            if (current, edge.relation, edge.target) in node.visited_edges:
-                continue
-            target_node = graph.get_node(edge.target)
-            target_evidence = target_node.evidence if target_node else {}
-            if _has_contradiction(node, target_evidence):
+            ok, target_node = _extension_allowed(graph, node, current, edge)
+            if not ok:
                 continue
 
             s = verifier.score(query, edge, node.path_relations)
@@ -125,19 +149,7 @@ def best_first_search(
                     visited_node_set=all_visited_nodes, path_relations=node.path_relations + [edge.relation],
                 )
 
-            merged_evidence = dict(node.collected_evidence)
-            if target_node and target_node.evidence:
-                merged_evidence.update(target_node.evidence)
-
-            child = _Node(
-                path=new_path,
-                path_relations=node.path_relations + [edge.relation],
-                visited_nodes=node.visited_nodes | {edge.target},
-                visited_edges=node.visited_edges | {(current, edge.relation, edge.target)},
-                collected_evidence=merged_evidence,
-                cumulative_score=new_cumulative,
-                n_hops=node.n_hops + 1,
-            )
+            child = _child_node(node, current, edge, target_node, new_path, new_cumulative)
             counter += 1
             heapq.heappush(frontier, (-new_cumulative, counter, child))
             if new_cumulative > best_seen.cumulative_score:
